@@ -21,5 +21,4 @@ services:
 
 imports:
     - { resource: ../src/Common/Shared/Infrastructure/config/services.yaml }
-    - { resource: ../src/Finance/Catalog/Infrastructure/config/services.yaml }
     - { resource: ../src/IdentityAccess/Infrastructure/config/services.yaml }
