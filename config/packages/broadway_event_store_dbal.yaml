@@ -1,0 +1,16 @@
+broadway:
+    event_store: broadway.event_store.dbal
+
+parameters:
+    event_store.dbal.table_name: events
+
+services:
+    broadway.event_store.dbal:
+        class: Broadway\EventStore\Dbal\DBALEventStore
+        arguments:
+            - "@doctrine.dbal.default_connection"
+            - "@broadway.serializer.payload"
+            - "@broadway.serializer.metadata"
+            - "%event_store.dbal.table_name%"
+            - true
+            - "@broadway.uuid.converter"

@@ -1,0 +1,30 @@
+.idea
+/client/
+/my-admin/
+
+###> symfony/framework-bundle ###
+/.env.local
+/.env.local.php
+/.env.*.local
+/config/secrets/prod/prod.decrypt.private.php
+/public/bundles/
+/var/
+/vendor/
+###< symfony/framework-bundle ###
+
+###> friendsofphp/php-cs-fixer ###
+/.php_cs
+/.php_cs.cache
+###< friendsofphp/php-cs-fixer ###
+
+###> lexik/jwt-authentication-bundle ###
+/config/jwt/
+###< lexik/jwt-authentication-bundle ###
+###> phpunit/phpunit ###
+/phpunit.xml
+.phpunit.result.cache
+###< phpunit/phpunit ###
+
+###> symfony/phpunit-bridge ###
+.phpunit
+###< symfony/phpunit-bridge ###

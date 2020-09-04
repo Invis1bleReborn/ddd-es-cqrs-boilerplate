@@ -1,0 +1,30 @@
+api_platform:
+    version: '0.1.0'
+    patch_formats:
+        json: ['application/merge-patch+json']
+
+    swagger:
+        versions: [3]
+        api_keys:
+            apiKey:
+                name: Authorization
+                type: header
+
+    resource_class_directories:
+        - '%kernel.project_dir%/src/IdentityAccess/Infrastructure/Access/Query'
+        - '%kernel.project_dir%/src/IdentityAccess/Infrastructure/Identity/Query'
+        - '%kernel.project_dir%/src/Finance/Catalog/Infrastructure/ProductGroup/Query'
+
+    exception_to_status:
+        # The 4 following handlers are registered by default, keep those lines to prevent unexpected side effects
+        Symfony\Component\Serializer\Exception\ExceptionInterface: 400
+        ApiPlatform\Core\Exception\InvalidArgumentException: 400
+        ApiPlatform\Core\Exception\FilterValidationException: 400
+        Doctrine\ORM\OptimisticLockException: 409
+
+        # Custom mapping
+        Symfony\Component\Security\Core\Exception\AccountStatusException: 401
+        Symfony\Component\Security\Core\Exception\BadCredentialsException: 401
+        Symfony\Component\Security\Core\Exception\UsernameNotFoundException: 401
+
+    show_webby: false
