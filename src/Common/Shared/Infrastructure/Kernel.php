@@ -48,7 +48,6 @@ class Kernel extends BaseKernel
 
         foreach ([
             'IdentityAccess\\',
-            'Finance\\',
         ] as $namespacePrefix) {
             $services->load(
                 $namespacePrefix,
