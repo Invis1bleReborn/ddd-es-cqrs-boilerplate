@@ -1,0 +1,51 @@
+doctrine:
+    dbal:
+        url: '%env(resolve:DATABASE_URL)%'
+
+        # IMPORTANT: You MUST configure your server version,
+        # either here or in the DATABASE_URL env var (see .env file)
+        #server_version: '5.7'
+
+        # exclude system tables
+#        schema_filter: ~^(?!%event_store.dbal.table_name%|%saga.state.doctrine.dbal.table_name%)~
+        schema_filter: ~^(?!%event_store.dbal.table_name%)~
+
+        types:
+            uuid_binary: Ramsey\Uuid\Doctrine\UuidBinaryType
+            datetime_immutable: Common\Shared\Infrastructure\Doctrine\DateTimeType
+            roles: IdentityAccess\Infrastructure\Access\Doctrine\RolesType
+        mapping_types:
+            uuid_binary: binary
+
+    orm:
+        auto_generate_proxy_classes: true
+        naming_strategy: doctrine.orm.naming_strategy.underscore_number_aware
+        auto_mapping: true
+        mappings:
+            Finance\Catalog\Query:
+                is_bundle: false
+                type: xml
+                dir: '%kernel.project_dir%/src/Finance/Catalog/Infrastructure/config/doctrine/Query'
+                prefix: Finance\Catalog\Infrastructure
+                alias: Finance\Catalog
+
+            Finance\Catalog\Domain:
+                is_bundle: false
+                type: xml
+                dir: '%kernel.project_dir%/src/Finance/Catalog/Infrastructure/config/doctrine/Domain'
+                prefix: Finance\Catalog\Domain
+                alias: Finance\Catalog
+
+            IdentityAccess\Query:
+                is_bundle: false
+                type: xml
+                dir: '%kernel.project_dir%/src/IdentityAccess/Infrastructure/config/doctrine/Query'
+                prefix: IdentityAccess\Infrastructure
+                alias: IdentityAccess
+
+            IdentityAccess\Domain:
+                is_bundle: false
+                type: xml
+                dir: '%kernel.project_dir%/src/IdentityAccess/Infrastructure/config/doctrine/Domain'
+                prefix: IdentityAccess\Domain
+                alias: IdentityAccess

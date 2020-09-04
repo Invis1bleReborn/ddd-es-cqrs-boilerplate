@@ -1,0 +1,6 @@
+doctrine_migrations:
+    migrations_paths:
+        DoctrineMigrations: '%kernel.project_dir%/src/Common/Shared/Infrastructure/DoctrineMigrations'
+
+    services:
+        Doctrine\Migrations\Version\MigrationFactory: Common\Shared\Infrastructure\Migrations\MigrationFactory

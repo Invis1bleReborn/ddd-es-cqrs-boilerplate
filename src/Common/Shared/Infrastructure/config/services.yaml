@@ -1,0 +1,37 @@
+services:
+    # default configuration for services in *this* file
+    _defaults:
+        autowire: true      # Automatically injects dependencies in your services.
+        autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+        bind:
+#            bool $debugFailures: '%kernel.debug%'
+            Broadway\EventStore\Dbal\DBALEventStore $eventStore: '@broadway.event_store.dbal'
+
+
+    Common\Shared\Infrastructure\Bus\CommandBus:
+        arguments:
+            - '@messenger.bus.command'
+
+#    Common\Shared\Infrastructure\Bus\QueryBus:
+#        arguments:
+#            - '@messenger.bus.query'
+
+    Common\Shared\Infrastructure\Bus\EventBus:
+        arguments:
+            - '@messenger.bus.event.async'
+
+    Common\Shared\Application\Bus\Event\EventBusInterface: '@Common\Shared\Infrastructure\Bus\EventBus'
+
+    Doctrine\Migrations\Version\DbalMigrationFactory: ~
+    Common\Shared\Infrastructure\Migrations\MigrationFactory:
+        decorates: Doctrine\Migrations\Version\DbalMigrationFactory
+
+    Common\Shared\Infrastructure\Query\Normalizer\DateTimeNormalizer:
+        arguments: [ '@serializer.normalizer.datetime' ]
+        tags: [ serializer.normalizer ]
+
+    Common\Shared\:
+        resource: '../../**/{UuidGenerator,Validator/Constraints/*Validator}.php'
+
+    Broadway\UuidGenerator\UuidGeneratorInterface: '@broadway.uuid.generator'
+    Common\Shared\Domain\ValueObject\UuidGeneratorInterface: '@Common\Shared\Infrastructure\Uuid\UuidGenerator'

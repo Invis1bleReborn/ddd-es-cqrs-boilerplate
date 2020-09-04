@@ -1,0 +1,25 @@
+# This file is the entry point to configure your own services.
+# Files in the packages/ subdirectory configure your dependencies.
+
+# Put parameters here that don't need to change on each machine where the app is deployed
+# https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
+parameters:
+    elastic:
+        hosts:
+            - '%env(ELASTIC_HOST)%'
+
+        env(ELASTIC_HOST): 'elasticsearch:9200'
+
+services:
+    # default configuration for services in *this* file
+    _defaults:
+        autowire: true      # Automatically injects dependencies in your services.
+        autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+
+    Broadway\EventHandling\EventBus: '@broadway.event_handling.event_bus'
+    Broadway\EventStore\EventStore: '@broadway.event_store.dbal'
+
+imports:
+    - { resource: ../src/Common/Shared/Infrastructure/config/services.yaml }
+    - { resource: ../src/Finance/Catalog/Infrastructure/config/services.yaml }
+    - { resource: ../src/IdentityAccess/Infrastructure/config/services.yaml }

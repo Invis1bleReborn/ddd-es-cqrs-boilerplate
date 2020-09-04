@@ -1,0 +1,61 @@
+security:
+    enable_authenticator_manager: true
+
+    encoders:
+        IdentityAccess\Infrastructure\Identity\Query\User: auto
+
+    providers:
+        users:
+            entity:
+                class: IdentityAccess\Infrastructure\Identity\Query\User
+                property: email.value
+
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        docs:
+            pattern: ^/api/docs
+            security: false
+
+        api_tokens_create:
+            pattern: ^/api/tokens$
+            methods: [ POST ]
+            security: false
+            stateless: true
+            lazy: true
+
+        api_users_create:
+            pattern: ^/api/users$
+            methods: [ POST ]
+            security: false
+            stateless: true
+            lazy: true
+
+        api:
+            security: true
+            stateless: true
+            lazy: true
+            user_checker: IdentityAccess\Infrastructure\Access\Security\UserCheckerAdapter
+            custom_authenticators:
+                - IdentityAccess\Infrastructure\Access\Security\JwtAuthenticator
+
+            # activate different ways to authenticate
+            # https://symfony.com/doc/current/security.html#firewalls-authentication
+
+            # https://symfony.com/doc/current/security/impersonating_user.html
+            # switch_user: true
+
+    access_control:
+        - { path: ^/api/docs,                               roles: PUBLIC_ACCESS }
+        - { path: ^/api/tokens/create$,  methods: [ POST ], roles: PUBLIC_ACCESS }
+        - { path: ^/api/tokens/refresh$, methods: [ POST ], roles: PUBLIC_ACCESS }
+        - { path: ^/api/users$,          methods: [ POST ], roles: PUBLIC_ACCESS }
+        - { path: ^/,                                       roles: IS_AUTHENTICATED_FULLY }
+
+    access_decision_manager:
+        strategy: unanimous
+
+    role_hierarchy:
+        ROLE_SUPER_ADMIN: ROLE_USER

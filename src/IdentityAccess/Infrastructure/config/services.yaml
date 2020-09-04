@@ -1,0 +1,57 @@
+services:
+    # default configuration for services in *this* file
+    _defaults:
+        autowire: true      # Automatically injects dependencies in your services.
+        autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+        bind:
+            int $refreshTokenTtl: '%gesdinet_jwt_refresh_token.ttl%'
+
+
+    IdentityAccess\:
+        resource: '../../**/*{AccessCheckerAdapter,Authenticator,Checker,CheckerAdapter,Handler,PasswordManager,TokenGenerator,UserProvider}.php'
+
+
+    # Request Transformers
+    IdentityAccess\Ui\Access\CreateToken\CreateTokenRequestTransformerInterface: '@IdentityAccess\Ui\Access\CreateToken\CreateTokenRequestTransformer'
+    IdentityAccess\Ui\Access\RefreshToken\RefreshTokenRequestTransformerInterface: '@IdentityAccess\Ui\Access\RefreshToken\RefreshTokenRequestTransformer'
+
+#    IdentityAccess\Ui\Identity\ChangeUserStatus\CheckPermissions:
+#        decorates: IdentityAccess\Ui\Identity\EnableUser\ChangeUserStatusRequestTransformer
+#
+#    IdentityAccess\Ui\Identity\ChangeUserStatus\ChangeUserStatusRequestTransformerInterface: '@IdentityAccess\Ui\Identity\ChangeUserStatus\CheckPermissions'
+
+    IdentityAccess\Ui\Identity\DisableUser\CheckPermissions:
+        decorates: IdentityAccess\Ui\Identity\DisableUser\DisableUserRequestTransformer
+
+    IdentityAccess\Ui\Identity\DisableUser\DisableUserRequestTransformerInterface: '@IdentityAccess\Ui\Identity\DisableUser\CheckPermissions'
+
+    IdentityAccess\Ui\Identity\EnableUser\CheckPermissions:
+        decorates: IdentityAccess\Ui\Identity\EnableUser\EnableUserRequestTransformer
+
+    IdentityAccess\Ui\Identity\EnableUser\EnableUserRequestTransformerInterface: '@IdentityAccess\Ui\Identity\EnableUser\CheckPermissions'
+
+#    IdentityAccess\Ui\Identity\RegisterUser\CheckPermissions:
+#        decorates: IdentityAccess\Ui\Identity\RegisterUser\RegisterUserRequestTransformer
+#
+#    IdentityAccess\Ui\Identity\RegisterUser\RegisterUserRequestTransformerInterface: '@IdentityAccess\Ui\Identity\RegisterUser\CheckPermissions'
+    IdentityAccess\Ui\Identity\RegisterUser\RegisterUserRequestTransformerInterface: '@IdentityAccess\Ui\Identity\RegisterUser\RegisterUserRequestTransformer'
+
+
+    Lexik\Bundle\JWTAuthenticationBundle\Security\Guard\JWTTokenAuthenticator: '@lexik_jwt_authentication.security.guard.jwt_token_authenticator'
+    IdentityAccess\Domain\Identity\Repository\UserRepositoryInterface: '@IdentityAccess\Infrastructure\Identity\Repository\UserStore'
+    IdentityAccess\Domain\Identity\PasswordEncoderInterface: '@IdentityAccess\Infrastructure\Identity\Password\PasswordManager'
+    IdentityAccess\Domain\Identity\PasswordCheckerInterface: '@IdentityAccess\Infrastructure\Identity\Password\PasswordManager'
+    IdentityAccess\Domain\Identity\Specification\UniqueEmailSpecificationInterface: '@IdentityAccess\Infrastructure\Identity\Specification\UniqueEmailSpecification'
+    IdentityAccess\Domain\Identity\Repository\CheckUserByEmailInterface: '@IdentityAccess\Infrastructure\Identity\Query\Orm\OrmUserReadModelRepository'
+    IdentityAccess\Application\Query\Access\TokenGeneratorInterface: '@IdentityAccess\Infrastructure\Access\Query\TokenGenerator'
+    IdentityAccess\Application\Query\Identity\UserProviderInterface: '@IdentityAccess\Infrastructure\Identity\Query\UserProvider'
+    IdentityAccess\Ui\Identity\AuthenticatedUserProviderInterface: '@IdentityAccess\Infrastructure\Identity\AuthenticatedUserProvider\AuthenticatedUserProvider'
+    IdentityAccess\Ui\Access\AccessCheckerInterface: '@IdentityAccess\Infrastructure\Access\Security\AccessCheckerAdapter'
+    IdentityAccess\Ui\Access\UserCheckerInterface: '@IdentityAccess\Ui\Access\UserChecker'
+    IdentityAccess\Ui\Access\RefreshTokenCheckerInterface: '@IdentityAccess\Ui\Access\RefreshTokenChecker'
+    IdentityAccess\Application\Query\Access\AccessTokenGeneratorInterface: '@IdentityAccess\Infrastructure\Access\Query\AccessTokenGenerator'
+    IdentityAccess\Application\Query\Access\RefreshTokenProviderInterface: '@IdentityAccess\Infrastructure\Access\Query\RefreshTokenProvider'
+
+    IdentityAccess\Infrastructure\Access\Serializer\Normalizer\SwaggerDecorator:
+        arguments:
+            $decorated: '@api_platform.swagger.normalizer.documentation'
