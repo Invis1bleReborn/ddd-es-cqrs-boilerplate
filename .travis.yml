@@ -1,0 +1,40 @@
+language: php
+
+php:
+    - 7.4
+
+sudo: false
+
+cache:
+    directories:
+        - $HOME/.composer/cache/files
+        - $HOME/symfony-bridge/.phpunit
+
+env:
+    global:
+        - PHPUNIT_FLAGS="-v"
+        - SYMFONY_PHPUNIT_DIR="$HOME/symfony-bridge/.phpunit"
+
+matrix:
+    fast_finish: true
+    include:
+        - php: 7.4
+          env: SYMFONY_DEPRECATIONS_HELPER="weak_vendors" COVERAGE=true PHPUNIT_FLAGS="-v --coverage-text"
+
+before_install:
+    - if [[ $COVERAGE != true ]]; then phpenv config-rm xdebug.ini || true; fi
+
+install:
+    - composer install --no-interaction
+    - ./vendor/bin/simple-phpunit install
+
+before_script:
+    - mkdir config/jwt
+    - openssl genrsa -passout pass:1111 -out config/jwt/private.pem -aes256 4096
+    - openssl rsa -passin pass:1111 -pubout -in config/jwt/private.pem -out config/jwt/public.pem
+    - bin/console doctrine:database:create --env=test
+    - bin/console doctrine:migrations:migrate --no-interaction --env=test
+
+script:
+    - composer validate --strict --no-check-lock
+    - ./vendor/bin/simple-phpunit $PHPUNIT_FLAGS
