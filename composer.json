@@ -1,4 +1,6 @@
 {
+    "name": "invis1ble-reborn/ddd-es-cqrs-boilerplate",
+    "description": "DDD ES CQRS Boilerplate",
     "type": "project",
     "license": "MIT",
     "require": {
