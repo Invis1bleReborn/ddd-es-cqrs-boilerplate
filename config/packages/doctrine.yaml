@@ -22,20 +22,6 @@ doctrine:
         naming_strategy: doctrine.orm.naming_strategy.underscore_number_aware
         auto_mapping: true
         mappings:
-            Finance\Catalog\Query:
-                is_bundle: false
-                type: xml
-                dir: '%kernel.project_dir%/src/Finance/Catalog/Infrastructure/config/doctrine/Query'
-                prefix: Finance\Catalog\Infrastructure
-                alias: Finance\Catalog
-
-            Finance\Catalog\Domain:
-                is_bundle: false
-                type: xml
-                dir: '%kernel.project_dir%/src/Finance/Catalog/Infrastructure/config/doctrine/Domain'
-                prefix: Finance\Catalog\Domain
-                alias: Finance\Catalog
-
             IdentityAccess\Query:
                 is_bundle: false
                 type: xml
