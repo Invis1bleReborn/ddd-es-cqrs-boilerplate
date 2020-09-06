@@ -34,7 +34,7 @@ before_install:
     - if [[ $COVERAGE != true ]]; then phpenv config-rm xdebug.ini || true; fi
 
 install:
-    - pecl install amqp
+    - yes autodetect | pecl install amqp
     - composer install --no-interaction
     - ./vendor/bin/simple-phpunit install
 
