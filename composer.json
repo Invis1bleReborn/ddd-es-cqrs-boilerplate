@@ -5,6 +5,7 @@
     "license": "MIT",
     "require": {
         "php": "~7.4.0",
+        "ext-amqp": "*",
         "ext-ctype": "*",
         "ext-iconv": "*",
         "api-platform/api-pack": "^1.3",
