@@ -5,11 +5,7 @@ php:
 
 services:
     - mysql
-
-addons:
-    apt:
-        packages:
-            - rabbitmq-server
+    - rabbitmq
 
 sudo: false
 
