@@ -1,0 +1,51 @@
+os: linux
+dist: xenial
+language: php
+
+php:
+    - 7.4
+
+addons:
+    apt:
+        packages:
+            - rabbitmq-server
+            - librabbitmq-dev
+
+services:
+    - mysql
+
+cache:
+    directories:
+        - $HOME/.composer/cache/files
+        - $HOME/symfony-bridge/.phpunit
+
+env:
+    global:
+        - PHPUNIT_FLAGS="-v"
+        - SYMFONY_PHPUNIT_DIR="$HOME/symfony-bridge/.phpunit"
+        - DATABASE_URL="mysqli://root@127.0.0.1:3306/ddd-es-cqrs__test?serverVersion=5.7"
+
+jobs:
+    fast_finish: true
+    include:
+        - php: 7.4
+          env: SYMFONY_DEPRECATIONS_HELPER=weak COVERAGE=true PHPUNIT_FLAGS="-v --coverage-text"
+
+before_install:
+    - if [[ $COVERAGE != true ]]; then phpenv config-rm xdebug.ini || true; fi
+
+install:
+    - yes autodetect | pecl install amqp
+    - composer install --no-interaction
+    - ./vendor/bin/simple-phpunit install
+
+before_script:
+    - mkdir config/jwt
+    - openssl genrsa -passout pass:1111 -out config/jwt/private.pem -aes256 4096
+    - openssl rsa -passin pass:1111 -pubout -in config/jwt/private.pem -out config/jwt/public.pem
+    - bin/console doctrine:database:create --env=test
+    - bin/console doctrine:migrations:migrate --no-interaction --env=test
+
+script:
+    - composer validate --strict --no-check-lock
+    - ./vendor/bin/simple-phpunit $PHPUNIT_FLAGS

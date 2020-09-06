@@ -13,7 +13,6 @@ api_platform:
     resource_class_directories:
         - '%kernel.project_dir%/src/IdentityAccess/Infrastructure/Access/Query'
         - '%kernel.project_dir%/src/IdentityAccess/Infrastructure/Identity/Query'
-        - '%kernel.project_dir%/src/Finance/Catalog/Infrastructure/ProductGroup/Query'
 
     exception_to_status:
         # The 4 following handlers are registered by default, keep those lines to prevent unexpected side effects
