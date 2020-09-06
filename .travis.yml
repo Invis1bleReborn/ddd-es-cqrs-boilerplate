@@ -3,6 +3,9 @@ language: php
 php:
     - 7.4
 
+services:
+    - mysql
+
 sudo: false
 
 cache:
@@ -14,6 +17,7 @@ env:
     global:
         - PHPUNIT_FLAGS="-v"
         - SYMFONY_PHPUNIT_DIR="$HOME/symfony-bridge/.phpunit"
+        - DATABASE_URL="mysqli://root@127.0.0.1:3306/ddd-es-cqrs__test?serverVersion=5.7"
 
 matrix:
     fast_finish: true
