@@ -11,6 +11,7 @@ mkdir config/jwt
 openssl genrsa -out config/jwt/private.pem -aes256 4096
 openssl rsa -pubout -in config/jwt/private.pem -out config/jwt/public.pem
 composer install --no-dev --optimize-autoloader
+bin/console cache:clear
 bin/console doctrine:database:create
 bin/console doctrine:migrations:migrate
 ```
@@ -20,6 +21,7 @@ bin/console doctrine:migrations:migrate
 
 ```bash
 composer install --no-dev --optimize-autoloader
+bin/console cache:clear
 bin/console doctrine:migrations:migrate
 ```
 
