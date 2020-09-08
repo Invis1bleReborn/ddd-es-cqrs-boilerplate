@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "25eccbd00f5aef35b1942742bd0573cf",
+    "content-hash": "639a0307d26c5216e401d253662059b6",
     "packages": [
         {
             "name": "api-platform/api-pack",
@@ -2021,16 +2021,16 @@
         },
         {
             "name": "gesdinet/jwt-refresh-token-bundle",
-            "version": "v0.9.1",
+            "version": "dev-fix-200",
             "source": {
                 "type": "git",
-                "url": "https://github.com/markitosgv/JWTRefreshTokenBundle.git",
-                "reference": "1f2729e45b5eb28d6461d94dadeb0211a96754e8"
+                "url": "https://github.com/Invis1bleReborn/JWTRefreshTokenBundle.git",
+                "reference": "0edab280c1e06add67390d2180639a85dede8007"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/markitosgv/JWTRefreshTokenBundle/zipball/1f2729e45b5eb28d6461d94dadeb0211a96754e8",
-                "reference": "1f2729e45b5eb28d6461d94dadeb0211a96754e8",
+                "url": "https://api.github.com/repos/Invis1bleReborn/JWTRefreshTokenBundle/zipball/0edab280c1e06add67390d2180639a85dede8007",
+                "reference": "0edab280c1e06add67390d2180639a85dede8007",
                 "shasum": ""
             },
             "require": {
@@ -2056,7 +2056,11 @@
                     "Gesdinet\\JWTRefreshTokenBundle\\": ""
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-4": {
+                    "Gesdinet\\JWTRefreshTokenBundle\\spec\\": "spec/"
+                }
+            },
             "license": [
                 "MIT"
             ],
@@ -2070,7 +2074,10 @@
             "keywords": [
                 "jwt refresh token bundle symfony json web"
             ],
-            "time": "2020-02-04T16:08:46+00:00"
+            "support": {
+                "source": "https://github.com/Invis1bleReborn/JWTRefreshTokenBundle/tree/fix-200"
+            },
+            "time": "2020-09-08T11:43:20+00:00"
         },
         {
             "name": "laminas/laminas-code",
@@ -11022,7 +11029,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "gesdinet/jwt-refresh-token-bundle": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
