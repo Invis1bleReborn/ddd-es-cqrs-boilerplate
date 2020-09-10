@@ -26,6 +26,8 @@ framework:
 
             events:
                 dsn: "%env(MESSENGER_TRANSPORT_DSN)%"
+                options:
+                    table_name: '%messenger.doctrine.table_name%'
                 retry_strategy:
                     delay: 2000
                     max_retries: 5
@@ -35,3 +37,6 @@ framework:
             # 'App\Message\YourMessage': async
 
             Common\Shared\Application\Bus\Event\EventInterface: events
+
+parameters:
+    messenger.doctrine.table_name: messenger_messages

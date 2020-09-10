@@ -13,6 +13,7 @@ openssl rsa -pubout -in config/jwt/private.pem -out config/jwt/public.pem
 composer install --no-dev --optimize-autoloader
 bin/console doctrine:database:create
 bin/console doctrine:migrations:migrate
+bin/console doctrine:schema:create
 ```
 
 
@@ -21,6 +22,7 @@ bin/console doctrine:migrations:migrate
 ```bash
 composer install --no-dev --optimize-autoloader
 bin/console doctrine:migrations:migrate
+bin/console doctrine:schema:update --force
 ```
 
 
