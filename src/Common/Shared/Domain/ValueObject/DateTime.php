@@ -51,12 +51,12 @@ class DateTime
 
     public function __toString(): string
     {
-        return $this->value->format(self::FORMAT);
+        return $this->value->format(static::FORMAT);
     }
 
     public function toString(): string
     {
-        return $this->value->format(self::FORMAT);
+        return $this->value->format(static::FORMAT);
     }
 
     public function toSeconds(): string
@@ -89,11 +89,17 @@ class DateTime
      */
     private static function create(string $value = null): self
     {
+        if (null === $value) {
+            $value = sprintf('@%.6F', microtime(true));
+            $timezone = new \DateTimeZone('UTC');
+        } else {
+            $timezone = null;
+        }
+
         try {
-            return new self(\DateTimeImmutable::createFromFormat(
-                'U.u',
-                $value ?? sprintf('%.6F', microtime(true)),
-                new \DateTimeZone('UTC')
+            return new self(new \DateTimeImmutable(
+                $value,
+                $timezone
             ));
         } catch (\Exception $e) {
             throw new DateTimeException($e);
