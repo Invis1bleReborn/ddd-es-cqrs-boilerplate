@@ -4,7 +4,7 @@
     xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
         https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
-    <entity name="IdentityAccess\Infrastructure\Identity\Query\User">
+    <entity name="IdentityAccess\Infrastructure\Identity\Query\User" table="`user`">
 
         <indexes>
             <index columns="enabled" />
