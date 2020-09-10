@@ -86,7 +86,8 @@
         ]
     },
     "conflict": {
-        "symfony/symfony": "*"
+        "symfony/symfony": "*",
+        "doctrine/doctrine-bundle": ">=2.1"
     },
     "extra": {
         "symfony": {
