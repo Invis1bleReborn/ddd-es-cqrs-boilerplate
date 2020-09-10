@@ -12,5 +12,5 @@ services:
             - "@broadway.serializer.payload"
             - "@broadway.serializer.metadata"
             - "%event_store.dbal.table_name%"
-            - true
+            - false
             - "@broadway.uuid.converter"

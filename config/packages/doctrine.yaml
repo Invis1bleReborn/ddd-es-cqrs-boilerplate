@@ -11,11 +11,9 @@ doctrine:
         schema_filter: ~^(?!%event_store.dbal.table_name%|%messenger.doctrine.table_name%)~
 
         types:
-            uuid_binary: Ramsey\Uuid\Doctrine\UuidBinaryType
+            uuid: Ramsey\Uuid\Doctrine\UuidType
             datetime_immutable: Common\Shared\Infrastructure\Doctrine\DateTimeType
             roles: IdentityAccess\Infrastructure\Access\Doctrine\RolesType
-        mapping_types:
-            uuid_binary: binary
 
     orm:
         auto_generate_proxy_classes: true
