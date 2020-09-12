@@ -34,16 +34,18 @@ class Kernel extends BaseKernel
         // TODO: refactor services registering
         $services = $container->services();
 
-        $serviceSuffixes = [
-            'Guard',
-            'GuardAdapter',
-            'Projector',
-            'Provider',
-            'Repository',
-            'Specification',
-            'Store',
-            'Transformer',
-            'TransformerAdapter',
+        $servicePatterns = [
+            'Ui/**/*Command',
+            'Ui/**/*Guard',
+            'Infrastructure/**/GuardAdapter/*GuardAdapter',
+            'Infrastructure/**/Query/*Projector',
+            'Infrastructure/**/Query/*Provider',
+            'Infrastructure/**/Query/**/*Repository',
+            'Infrastructure/**/Specification/*Specification',
+            'Infrastructure/**/Repository/*Store',
+            'Ui/**/*Transformer',
+            'Infrastructure/**/Request/*RequestTransformerAdapter',
+            'Infrastructure/**/View/*TransformerAdapter',
         ];
 
         foreach ([
@@ -51,7 +53,7 @@ class Kernel extends BaseKernel
         ] as $namespacePrefix) {
             $services->load(
                 $namespacePrefix,
-                $projectDir . '/src/' . strtr($namespacePrefix, '\\', '/') . '**/*{' . implode(',', $serviceSuffixes) . '}.php'
+                $projectDir . '/src/' . strtr($namespacePrefix, '\\', '/') . '{' . implode(',', $servicePatterns) . '}.php'
             )
                 ->autowire(true)
                 ->autoconfigure(true)
