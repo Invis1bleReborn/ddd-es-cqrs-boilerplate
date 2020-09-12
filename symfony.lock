@@ -161,6 +161,9 @@
     "gesdinet/jwt-refresh-token-bundle": {
         "version": "v0.9.1"
     },
+    "jdorn/sql-formatter": {
+        "version": "v1.2.17"
+    },
     "laminas/laminas-code": {
         "version": "3.4.1"
     },
@@ -363,6 +366,18 @@
     },
     "symfony/amqp-messenger": {
         "version": "v5.1.2"
+    },
+    "symfony/apache-pack": {
+        "version": "1.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "1.0",
+            "ref": "71599f5b0fdeeeec0fb90e9b17c85e6f5e1350c1"
+        },
+        "files": [
+            "public/.htaccess"
+        ]
     },
     "symfony/asset": {
         "version": "v5.0.8"

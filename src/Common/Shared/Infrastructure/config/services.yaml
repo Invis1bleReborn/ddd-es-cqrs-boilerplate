@@ -20,6 +20,7 @@ services:
         arguments:
             - '@messenger.bus.event.async'
 
+    Common\Shared\Application\Bus\Command\CommandBusInterface: '@Common\Shared\Infrastructure\Bus\CommandBus'
     Common\Shared\Application\Bus\Event\EventBusInterface: '@Common\Shared\Infrastructure\Bus\EventBus'
 
     Doctrine\Migrations\Version\DbalMigrationFactory: ~

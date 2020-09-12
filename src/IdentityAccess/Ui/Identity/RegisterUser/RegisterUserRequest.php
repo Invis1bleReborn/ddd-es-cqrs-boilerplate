@@ -43,7 +43,7 @@ final class RegisterUserRequest implements RequestInterface
     public ?bool $enabled;
 
     /**
-     * @Assert\Choice(callback={"IdentityAccess\Domain\Access\ValueObject\Role", "values"}, multiple=true)
+     * @Assert\Choice(callback={"IdentityAccess\Domain\Access\ValueObject\Role", "toArray"}, multiple=true)
      * @Assert\Unique
      */
     public ?array $roles;
