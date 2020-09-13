@@ -51,4 +51,6 @@ security:
         strategy: unanimous
 
     role_hierarchy:
-        ROLE_SUPER_ADMIN: ROLE_USER
+        ROLE_SUPER_ADMIN:
+            - ROLE_USER
+            - ROLE_ALLOWED_TO_SWITCH
