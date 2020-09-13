@@ -26,13 +26,6 @@ security:
             stateless: true
             lazy: true
 
-        api_users_create:
-            pattern: ^/api/users$
-            methods: [ POST ]
-            security: false
-            stateless: true
-            lazy: true
-
         api:
             security: true
             stateless: true
