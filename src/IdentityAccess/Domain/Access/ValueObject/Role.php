@@ -13,8 +13,10 @@ use MyCLabs\Enum\Enum;
  */
 class Role extends Enum
 {
-    private const USER = 'ROLE_USER';
-
     private const SUPERADMIN = 'ROLE_SUPER_ADMIN';
+
+    private const ALLOWED_TO_SWITCH = 'ROLE_ALLOWED_TO_SWITCH';
+
+    private const USER = 'ROLE_USER';
 
 }
