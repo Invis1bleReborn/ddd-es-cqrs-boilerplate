@@ -26,8 +26,6 @@ framework:
 
             events:
                 dsn: "%env(MESSENGER_TRANSPORT_DSN)%"
-                options:
-                    table_name: '%messenger.doctrine.table_name%'
                 retry_strategy:
                     delay: 2000
                     max_retries: 5
