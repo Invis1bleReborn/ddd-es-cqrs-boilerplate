@@ -21,6 +21,7 @@ cache:
 
 env:
     global:
+        - CC_TEST_REPORTER_ID=71d9916886fec366bc4eb1d8a9553c0da6db4e8be9a63214d5c4bdcecdd2bfb2
         - PHPUNIT_FLAGS="-v"
         - SYMFONY_PHPUNIT_DIR="$HOME/symfony-bridge/.phpunit"
         - DATABASE_URL="mysqli://root@127.0.0.1:3306/ddd-es-cqrs__test?serverVersion=5.7"
@@ -29,7 +30,7 @@ jobs:
     fast_finish: true
     include:
         - php: 7.4
-          env: SYMFONY_DEPRECATIONS_HELPER=weak COVERAGE=true PHPUNIT_FLAGS="-v --coverage-text"
+          env: SYMFONY_DEPRECATIONS_HELPER=weak COVERAGE=true PHPUNIT_FLAGS="-v --coverage-text  --coverage-clover build/logs/clover.xml"
 
 before_install:
     - if [[ $COVERAGE != true ]]; then phpenv config-rm xdebug.ini || true; fi
@@ -46,7 +47,11 @@ before_script:
     - bin/console doctrine:database:create --env=test
     - bin/console doctrine:migrations:migrate --no-interaction --env=test
     - bin/console doctrine:schema:update --force --env=test
+    - if [[ $COVERAGE == true ]]; then curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter && chmod +x ./cc-test-reporter && ./cc-test-reporter before-build; fi
 
 script:
     - composer validate --strict --no-check-lock
     - ./vendor/bin/simple-phpunit $PHPUNIT_FLAGS
+
+after_script:
+    - if [[ $COVERAGE == true ]]; then ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT; fi
