@@ -2,6 +2,8 @@ DDD ES CQRS Boilerplate
 =======================
 
 [![Build Status](https://travis-ci.org/Invis1bleReborn/ddd-es-cqrs-boilerplate.svg?branch=develop)](https://travis-ci.org/Invis1bleReborn/ddd-es-cqrs-boilerplate)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/85236f7a90b2ebf7ef50/test_coverage)](https://codeclimate.com/github/Invis1bleReborn/ddd-es-cqrs-boilerplate/test_coverage)
+[![Maintainability](https://api.codeclimate.com/v1/badges/85236f7a90b2ebf7ef50/maintainability)](https://codeclimate.com/github/Invis1bleReborn/ddd-es-cqrs-boilerplate/maintainability)
 
 
 ## Installation
