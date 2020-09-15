@@ -5,8 +5,8 @@ DDD ES CQRS Boilerplate
 [![Test Coverage](https://api.codeclimate.com/v1/badges/85236f7a90b2ebf7ef50/test_coverage)](https://codeclimate.com/github/Invis1bleReborn/ddd-es-cqrs-boilerplate/test_coverage)
 [![Maintainability](https://api.codeclimate.com/v1/badges/85236f7a90b2ebf7ef50/maintainability)](https://codeclimate.com/github/Invis1bleReborn/ddd-es-cqrs-boilerplate/maintainability)
 
-
-## Installation
+Installation
+------------
 
 ```bash
 mkdir config/jwt
@@ -18,8 +18,8 @@ bin/console doctrine:migrations:migrate
 bin/console doctrine:schema:create
 ```
 
-
 ## Migration
+------------
 
 ```bash
 composer install --no-dev --optimize-autoloader
@@ -27,9 +27,10 @@ bin/console doctrine:migrations:migrate
 bin/console doctrine:schema:update --force
 ```
 
-
 ## Setup permissions
+--------------------
 
 Follow instructions on [Symfony Guide](https://symfony.com/doc/current/setup/file_permissions.html).  
 Write permissions must be set on the following directories:
+
 1. `var/log`
