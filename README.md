@@ -18,7 +18,7 @@ bin/console doctrine:migrations:migrate
 bin/console doctrine:schema:create
 ```
 
-## Migration
+Migration
 ------------
 
 ```bash
@@ -27,10 +27,11 @@ bin/console doctrine:migrations:migrate
 bin/console doctrine:schema:update --force
 ```
 
-## Setup permissions
+Setup permissions
 --------------------
 
-Follow instructions on [Symfony Guide](https://symfony.com/doc/current/setup/file_permissions.html).  
+Follow instructions on
+[Symfony Guide](https://symfony.com/doc/current/setup/file_permissions.html).
 Write permissions must be set on the following directories:
 
 1. `var/log`
