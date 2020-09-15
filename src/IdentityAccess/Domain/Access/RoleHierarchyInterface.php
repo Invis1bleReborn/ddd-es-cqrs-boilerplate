@@ -16,8 +16,6 @@ interface RoleHierarchyInterface
 {
     public function reachableRoles(Roles $roles): Roles;
 
-    public function subordinates(Roles $roles1, Roles $roles2): bool;
-
     public function roleReachable(Roles $roles, Role $role): bool;
 
 }

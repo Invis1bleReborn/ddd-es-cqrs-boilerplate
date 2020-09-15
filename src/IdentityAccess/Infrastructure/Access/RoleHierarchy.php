@@ -27,22 +27,6 @@ class RoleHierarchy implements RoleHierarchyInterface
         return Roles::fromArray($this->roleHierarchy->getReachableRoleNames($roles->toArray()));
     }
 
-    public function subordinates(Roles $roles1, Roles $roles2): bool
-    {
-        $reachableRoles1 = $this->roleHierarchy->getReachableRoleNames($roles1->toArray());
-        $reachableRoles2 = $this->roleHierarchy->getReachableRoleNames($roles2->toArray());
-
-        if (count($reachableRoles1) <= count($reachableRoles2)) {
-            return false;
-        }
-
-        if (empty(array_diff($reachableRoles1, $reachableRoles2))) {
-            return true;
-        }
-
-        return false;
-    }
-
     public function roleReachable(Roles $roles, Role $role): bool
     {
         return $this->reachableRoles($roles)
