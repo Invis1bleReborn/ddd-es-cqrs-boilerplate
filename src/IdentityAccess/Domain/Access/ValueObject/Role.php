@@ -19,4 +19,8 @@ class Role extends Enum
 
     private const USER = 'ROLE_USER';
 
+    private const USER_DISABLER = 'ROLE_USER_DISABLER';
+
+    private const USER_ENABLER = 'ROLE_USER_ENABLER';
+
 }
