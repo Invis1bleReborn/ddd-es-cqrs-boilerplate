@@ -8,7 +8,7 @@ services:
 
 
     IdentityAccess\:
-        resource: '../../**/*{AccessCheckerAdapter,Authenticator,Checker,CheckerAdapter,Handler,PasswordManager,TokenGenerator,UserProvider}.php'
+        resource: '../../**/*{AccessCheckerAdapter,Authenticator,Checker,CheckerAdapter,Handler,PasswordManager,RoleHierarchy,TokenGenerator,UserProvider}.php'
 
 
     # Request Transformers
@@ -38,6 +38,7 @@ services:
 
 
     Lexik\Bundle\JWTAuthenticationBundle\Security\Guard\JWTTokenAuthenticator: '@lexik_jwt_authentication.security.guard.jwt_token_authenticator'
+    IdentityAccess\Domain\Access\RoleHierarchyInterface: '@IdentityAccess\Infrastructure\Access\RoleHierarchy'
     IdentityAccess\Domain\Identity\Repository\UserRepositoryInterface: '@IdentityAccess\Infrastructure\Identity\Repository\UserStore'
     IdentityAccess\Domain\Identity\PasswordEncoderInterface: '@IdentityAccess\Infrastructure\Identity\Password\PasswordManager'
     IdentityAccess\Domain\Identity\PasswordCheckerInterface: '@IdentityAccess\Infrastructure\Identity\Password\PasswordManager'

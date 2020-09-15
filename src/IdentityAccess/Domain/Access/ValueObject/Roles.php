@@ -58,4 +58,15 @@ final class Roles
         return false;
     }
 
+    public function contains(Role $role): bool
+    {
+        foreach ($this->values as $role_) {
+            if ($role_->equals($role)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
 }
