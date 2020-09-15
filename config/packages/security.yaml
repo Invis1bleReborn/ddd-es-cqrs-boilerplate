@@ -26,13 +26,6 @@ security:
             stateless: true
             lazy: true
 
-        api_users_create:
-            pattern: ^/api/users$
-            methods: [ POST ]
-            security: false
-            stateless: true
-            lazy: true
-
         api:
             security: true
             stateless: true
@@ -58,4 +51,9 @@ security:
         strategy: unanimous
 
     role_hierarchy:
-        ROLE_SUPER_ADMIN: ROLE_USER
+        ROLE_SUPER_ADMIN:
+            - ROLE_USER
+            - ROLE_ALLOWED_TO_SWITCH
+            # app specific
+            - ROLE_USER_ENABLER
+            - ROLE_USER_DISABLER

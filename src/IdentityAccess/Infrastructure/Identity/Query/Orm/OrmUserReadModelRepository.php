@@ -43,7 +43,7 @@ class OrmUserReadModelRepository extends OrmRepository implements CheckUserByEma
         $qb = $this->repository
             ->createQueryBuilder('user')
             ->where('user.id = :id')
-            ->setParameter('id', $id->toBytes())
+            ->setParameter('id', $id->toString())
         ;
 
         return $this->oneOrException($qb);

@@ -6,7 +6,7 @@ namespace IdentityAccess\Infrastructure\Identity\AuthenticatedUserProvider;
 
 use IdentityAccess\Application\Query\Identity\UserInterface;
 use IdentityAccess\Ui\Identity\AuthenticatedUserProviderInterface;
-use Symfony\Component\Security\Core\Security;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
 /**
  * Class AuthenticatedUserProvider
@@ -15,16 +15,22 @@ use Symfony\Component\Security\Core\Security;
  */
 final class AuthenticatedUserProvider implements AuthenticatedUserProviderInterface
 {
-    private Security $security;
+    private TokenStorageInterface $tokenStorage;
 
-    public function __construct(Security $security)
+    public function __construct(TokenStorageInterface $tokenStorage)
     {
-        $this->security = $security;
+        $this->tokenStorage = $tokenStorage;
     }
 
     public function getUser(): ?UserInterface
     {
-        $user = $this->security->getUser();
+        $token = $this->tokenStorage->getToken();
+
+        if (null === $token) {
+            return null;
+        }
+
+        $user = $token->getUser();
 
         if ($user instanceof UserInterface) {
             return $user;
