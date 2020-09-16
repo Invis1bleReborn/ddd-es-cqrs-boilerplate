@@ -10,6 +10,7 @@ return PhpCsFixer\Config::create()
         '@Symfony' => true,
         'array_syntax' => ['syntax' => 'short'],
         'header_comment' => [
+            'location' => 'after_open',
             'header' => <<<'LICENSE'
 This file is part of invis1ble/ddd-es-cqrs-boilerplate.
 
