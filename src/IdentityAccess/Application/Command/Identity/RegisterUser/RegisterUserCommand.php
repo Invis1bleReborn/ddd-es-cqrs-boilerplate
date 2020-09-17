@@ -40,7 +40,7 @@ class RegisterUserCommand extends UserIdAwareCommand
      *
      * {@inheritdoc}
      *
-     * @param string[]    $roles
+     * @param string[] $roles
      *
      * @throws AssertionFailedException
      */
