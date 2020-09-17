@@ -55,6 +55,7 @@ abstract class OrmRepository
 
     /**
      * @return mixed
+     *
      * @throws NonUniqueResultException
      * @throws NotFoundException
      */

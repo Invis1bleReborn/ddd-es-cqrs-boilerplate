@@ -37,6 +37,7 @@ abstract class UserIdAwareEvent implements Serializable
 
     /**
      * @return static
+     *
      * @throws AssertionFailedException
      */
     public static function deserialize(array $data)

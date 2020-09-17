@@ -31,6 +31,7 @@ abstract class AbstractId implements IdInterface
 
     /**
      * @return static
+     *
      * @throws AssertionFailedException
      */
     public static function fromString(string $value)
