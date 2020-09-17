@@ -1,18 +1,25 @@
 <?php
 
+/*
+ * This file is part of invis1ble/ddd-es-cqrs-boilerplate.
+ *
+ * (c) Invis1ble <opensource.invis1ble@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 declare(strict_types=1);
 
 namespace IdentityAccess\Infrastructure\Access\View;
 
 use ApiPlatform\Core\DataTransformer\DataTransformerInterface;
 use IdentityAccess\Application\Query\Access\TokenInterface;
-use IdentityAccess\Ui\Access\TokenView;
 use IdentityAccess\Ui\Access\TokenTransformer;
+use IdentityAccess\Ui\Access\TokenView;
 
 /**
- * Class TokenTransformerAdapter
- *
- * @package IdentityAccess\Infrastructure\Access\View
+ * Class TokenTransformerAdapter.
  */
 final class TokenTransformerAdapter implements DataTransformerInterface
 {
@@ -34,5 +41,4 @@ final class TokenTransformerAdapter implements DataTransformerInterface
     {
         return TokenView::class === $to && $data instanceof TokenInterface;
     }
-
 }

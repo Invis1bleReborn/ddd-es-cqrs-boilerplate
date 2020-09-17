@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of invis1ble/ddd-es-cqrs-boilerplate.
+ *
+ * (c) Invis1ble <opensource.invis1ble@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 declare(strict_types=1);
 
 namespace IdentityAccess\Infrastructure\Identity\Query;
@@ -9,9 +18,7 @@ use IdentityAccess\Application\Query\Identity\UserProviderInterface;
 use Symfony\Component\Security\Core\User\UserProviderInterface as SecurityUserProviderInterface;
 
 /**
- * Class UserProvider
- *
- * @package IdentityAccess\Infrastructure\Identity\Query
+ * Class UserProvider.
  */
 final class UserProvider implements UserProviderInterface
 {
@@ -36,5 +43,4 @@ final class UserProvider implements UserProviderInterface
 
         return $user;
     }
-
 }

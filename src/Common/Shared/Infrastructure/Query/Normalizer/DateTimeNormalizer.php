@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of invis1ble/ddd-es-cqrs-boilerplate.
+ *
+ * (c) Invis1ble <opensource.invis1ble@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 declare(strict_types=1);
 
 namespace Common\Shared\Infrastructure\Query\Normalizer;
@@ -12,15 +21,10 @@ use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 /**
- * Class DateTImeNormalizer
- *
- * @package Common\Shared\Infrastructure\Query\Normalizer
+ * Class DateTImeNormalizer.
  */
 class DateTimeNormalizer implements NormalizerInterface, DenormalizerInterface, CacheableSupportsMethodInterface
 {
-    /**
-     * @var NativeDateTimeNormalizer
-     */
     private NativeDateTimeNormalizer $nativeDateTimeNormalizer;
 
     public function __construct(NativeDateTimeNormalizer $nativeDateTimeNormalizer)
@@ -35,9 +39,7 @@ class DateTimeNormalizer implements NormalizerInterface, DenormalizerInterface, 
 
     public function denormalize($data, string $type, string $format = null, array $context = [])
     {
-        $dateTime = $this->nativeDateTimeNormalizer->denormalize($data, $type, $format, $context);
-
-        return DateTime::fromString('@' . $dateTime->format('U.u'));
+        return DateTime::fromNative($this->nativeDateTimeNormalizer->denormalize($data, $type, $format, $context));
     }
 
     public function supportsDenormalization($data, string $type, string $format = null)
@@ -59,5 +61,4 @@ class DateTimeNormalizer implements NormalizerInterface, DenormalizerInterface, 
         return $data instanceof DateTime &&
             $this->nativeDateTimeNormalizer->supportsNormalization($data->toNative(), $format);
     }
-
 }

@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of invis1ble/ddd-es-cqrs-boilerplate.
+ *
+ * (c) Invis1ble <opensource.invis1ble@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 declare(strict_types=1);
 
 namespace IdentityAccess\Ui\Identity\RegisterUser;
@@ -9,9 +18,7 @@ use IdentityAccess\Ui\Access\AccessCheckerInterface;
 use IdentityAccess\Ui\Access\AccessDeniedException;
 
 /**
- * Class CheckPermissions
- *
- * @package IdentityAccess\Ui\Identity\RegisterUser
+ * Class CheckPermissions.
  */
 class CheckPermissions extends RegisterUserRequestTransformerDecorator
 {
@@ -20,8 +27,7 @@ class CheckPermissions extends RegisterUserRequestTransformerDecorator
     public function __construct(
         RegisterUserRequestTransformerInterface $transformer,
         AccessCheckerInterface $accessChecker
-    )
-    {
+    ) {
         parent::__construct($transformer);
 
         $this->accessChecker = $accessChecker;
@@ -38,5 +44,4 @@ class CheckPermissions extends RegisterUserRequestTransformerDecorator
 
         return ($this->transformer)($request);
     }
-
 }

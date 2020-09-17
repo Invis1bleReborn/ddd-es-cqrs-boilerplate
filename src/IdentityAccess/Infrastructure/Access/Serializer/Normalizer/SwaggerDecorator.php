@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of invis1ble/ddd-es-cqrs-boilerplate.
+ *
+ * (c) Invis1ble <opensource.invis1ble@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 declare(strict_types=1);
 
 namespace IdentityAccess\Infrastructure\Access\Serializer\Normalizer;
@@ -8,9 +17,7 @@ use ApiPlatform\Core\Documentation\Documentation;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 /**
- * Class SwaggerDecorator
- *
- * @package IdentityAccess\Infrastructure\Access\Serializer\Normalizer
+ * Class SwaggerDecorator.
  */
 class SwaggerDecorator implements NormalizerInterface
 {
@@ -34,5 +41,4 @@ class SwaggerDecorator implements NormalizerInterface
     {
         return $data instanceof Documentation;
     }
-
 }

@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of invis1ble/ddd-es-cqrs-boilerplate.
+ *
+ * (c) Invis1ble <opensource.invis1ble@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 declare(strict_types=1);
 
 namespace IdentityAccess\Ui\Access;
@@ -8,9 +17,7 @@ use IdentityAccess\Application\Query\Identity\UserInterface;
 use IdentityAccess\Infrastructure\Access\Security\AccountDisabledException;
 
 /**
- * Class UserChecker
- *
- * @package IdentityAccess\Infrastructure\Access\Security
+ * Class UserChecker.
  */
 class UserChecker implements UserCheckerInterface
 {
@@ -25,5 +32,4 @@ class UserChecker implements UserCheckerInterface
 
         throw new AccountDisabledException();
     }
-
 }

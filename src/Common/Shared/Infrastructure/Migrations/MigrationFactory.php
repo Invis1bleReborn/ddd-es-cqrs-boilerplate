@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of invis1ble/ddd-es-cqrs-boilerplate.
+ *
+ * (c) Invis1ble <opensource.invis1ble@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 declare(strict_types=1);
 
 namespace Common\Shared\Infrastructure\Migrations;
@@ -10,9 +19,7 @@ use Doctrine\Migrations\Version\MigrationFactory as BaseMigrationFactory;
 use Doctrine\ORM\EntityManagerInterface;
 
 /**
- * Class MigrationFactory
- *
- * @package Common\Shared\Infrastructure\Migrations
+ * Class MigrationFactory.
  */
 class MigrationFactory implements BaseMigrationFactory
 {
@@ -26,8 +33,7 @@ class MigrationFactory implements BaseMigrationFactory
         BaseMigrationFactory $migrationFactory,
         DBALEventStore $eventStore,
         EntityManagerInterface $entityManager
-    )
-    {
+    ) {
         $this->migrationFactory = $migrationFactory;
         $this->eventStore = $eventStore;
         $this->entityManager = $entityManager;
@@ -46,5 +52,4 @@ class MigrationFactory implements BaseMigrationFactory
 
         return $instance;
     }
-
 }

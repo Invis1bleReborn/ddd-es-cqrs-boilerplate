@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of invis1ble/ddd-es-cqrs-boilerplate.
+ *
+ * (c) Invis1ble <opensource.invis1ble@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 declare(strict_types=1);
 
 namespace IdentityAccess\Domain\Access;
@@ -9,9 +18,7 @@ use IdentityAccess\Domain\Access\ValueObject\Roles;
 use PHPUnit\Framework\TestCase;
 
 /**
- * Class RolesTest
- *
- * @package IdentityAccess\Domain\Access
+ * Class RolesTest.
  */
 class RolesTest extends TestCase
 {
@@ -102,8 +109,6 @@ class RolesTest extends TestCase
     /**
      * @test
      * @dataProvider containsRoleDataProvider
-     *
-     * @param string $role
      */
     public function itContainsPreviouslyAddedRole(string $role): void
     {
@@ -115,8 +120,8 @@ class RolesTest extends TestCase
     public function containsRoleDataProvider(): array
     {
         return [
-            [ 'ROLE_SUPER_ADMIN' ],
-            [ 'ROLE_USER' ],
+            ['ROLE_SUPER_ADMIN'],
+            ['ROLE_USER'],
         ];
     }
 
@@ -125,7 +130,6 @@ class RolesTest extends TestCase
      * @dataProvider doesNotContainRoleDataProvider
      *
      * @param string[] $roles
-     * @param string   $role
      */
     public function itDoesNotContainPreviouslyNotAddedRole(array $roles, string $role): void
     {
@@ -137,12 +141,11 @@ class RolesTest extends TestCase
     public function doesNotContainRoleDataProvider(): array
     {
         return [
-            [ [], 'ROLE_SUPER_ADMIN' ],
-            [ [], 'ROLE_USER' ],
-            [ ['ROLE_USER'], 'ROLE_SUPER_ADMIN' ],
-            [ ['ROLE_SUPER_ADMIN'], 'ROLE_USER' ],
-            [ ['ROLE_SUPER_ADMIN', 'ROLE_ALLOWED_TO_SWITCH'], 'ROLE_USER' ],
+            [[], 'ROLE_SUPER_ADMIN'],
+            [[], 'ROLE_USER'],
+            [['ROLE_USER'], 'ROLE_SUPER_ADMIN'],
+            [['ROLE_SUPER_ADMIN'], 'ROLE_USER'],
+            [['ROLE_SUPER_ADMIN', 'ROLE_ALLOWED_TO_SWITCH'], 'ROLE_USER'],
         ];
     }
-
 }

@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of invis1ble/ddd-es-cqrs-boilerplate.
+ *
+ * (c) Invis1ble <opensource.invis1ble@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 declare(strict_types=1);
 
 namespace Common\Shared\Domain\ValueObject;
@@ -7,9 +16,7 @@ namespace Common\Shared\Domain\ValueObject;
 use Common\Shared\Domain\Exception\DateTimeException;
 
 /**
- * Class DateTime
- *
- * @package Common\Shared\Domain\ValueObject
+ * Class DateTime.
  */
 class DateTime
 {
@@ -28,9 +35,6 @@ class DateTime
     }
 
     /**
-     * @param string $dateTime
-     *
-     * @return self
      * @throws DateTimeException
      */
     public static function fromString(string $dateTime): self
@@ -38,12 +42,6 @@ class DateTime
         return self::create($dateTime);
     }
 
-    /**
-     * @param \DateTimeInterface $dateTime
-     *
-     * @return self
-     * @throws DateTimeException
-     */
     public static function fromNative(\DateTimeInterface $dateTime): self
     {
         return self::create('@' . $dateTime->format('U.u'));
@@ -82,9 +80,6 @@ class DateTime
     }
 
     /**
-     * @param string|null $value
-     *
-     * @return self
      * @throws DateTimeException
      */
     private static function create(string $value = null): self
@@ -105,5 +100,4 @@ class DateTime
             throw new DateTimeException($e);
         }
     }
-
 }

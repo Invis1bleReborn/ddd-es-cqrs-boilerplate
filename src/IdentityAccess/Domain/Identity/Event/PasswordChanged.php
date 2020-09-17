@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of invis1ble/ddd-es-cqrs-boilerplate.
+ *
+ * (c) Invis1ble <opensource.invis1ble@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 declare(strict_types=1);
 
 namespace IdentityAccess\Domain\Identity\Event;
@@ -12,9 +21,7 @@ use IdentityAccess\Domain\Identity\ValueObject\HashedPassword;
 use IdentityAccess\Domain\Identity\ValueObject\UserId;
 
 /**
- * Class PasswordChanged
- *
- * @package IdentityAccess\Domain\Identity\Event
+ * Class PasswordChanged.
  */
 final class PasswordChanged extends UserIdAwareEvent
 {
@@ -29,8 +36,7 @@ final class PasswordChanged extends UserIdAwareEvent
         HashedPassword $hashedPassword,
         ?UserId $changedBy,
         DateTime $dateChanged
-    )
-    {
+    ) {
         parent::__construct($id);
 
         $this->hashedPassword = $hashedPassword;
@@ -54,9 +60,6 @@ final class PasswordChanged extends UserIdAwareEvent
     }
 
     /**
-     * @param array $data
-     *
-     * @return self
      * @throws AssertionFailedException
      * @throws DateTimeException
      */
@@ -83,5 +86,4 @@ final class PasswordChanged extends UserIdAwareEvent
             'changedBy' => null === $this->changedBy ? null : $this->changedBy->toString(),
         ];
     }
-
 }

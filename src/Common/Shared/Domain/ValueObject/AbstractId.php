@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of invis1ble/ddd-es-cqrs-boilerplate.
+ *
+ * (c) Invis1ble <opensource.invis1ble@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 declare(strict_types=1);
 
 namespace Common\Shared\Domain\ValueObject;
@@ -9,9 +18,7 @@ use Assert\AssertionFailedException;
 use Ramsey\Uuid\Uuid;
 
 /**
- * Class AbstractId
- *
- * @package Common\Shared\Domain\ValueObject
+ * Class AbstractId.
  */
 abstract class AbstractId implements IdInterface
 {
@@ -23,9 +30,8 @@ abstract class AbstractId implements IdInterface
     }
 
     /**
-     * @param string $value
-     *
      * @return static
+     *
      * @throws AssertionFailedException
      */
     public static function fromString(string $value)
@@ -35,9 +41,6 @@ abstract class AbstractId implements IdInterface
         return new static($value);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function __toString(): string
     {
         return $this->value;
@@ -54,14 +57,8 @@ abstract class AbstractId implements IdInterface
             ->getBytes();
     }
 
-    /**
-     * @param IdInterface $id
-     *
-     * @return bool
-     */
     public function equals(IdInterface $id): bool
     {
         return $this->value === (string)$id && get_class($this) === get_class($id);
     }
-
 }

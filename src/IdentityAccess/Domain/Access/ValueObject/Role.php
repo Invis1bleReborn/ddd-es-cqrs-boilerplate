@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of invis1ble/ddd-es-cqrs-boilerplate.
+ *
+ * (c) Invis1ble <opensource.invis1ble@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 declare(strict_types=1);
 
 namespace IdentityAccess\Domain\Access\ValueObject;
@@ -7,9 +16,7 @@ namespace IdentityAccess\Domain\Access\ValueObject;
 use MyCLabs\Enum\Enum;
 
 /**
- * Class Role
- *
- * @package IdentityAccess\Domain\Access\ValueObject
+ * Class Role.
  */
 class Role extends Enum
 {
@@ -22,5 +29,4 @@ class Role extends Enum
     private const USER_DISABLER = 'ROLE_USER_DISABLER';
 
     private const USER_ENABLER = 'ROLE_USER_ENABLER';
-
 }

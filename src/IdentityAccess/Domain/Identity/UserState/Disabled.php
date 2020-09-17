@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of invis1ble/ddd-es-cqrs-boilerplate.
+ *
+ * (c) Invis1ble <opensource.invis1ble@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 declare(strict_types=1);
 
 namespace IdentityAccess\Domain\Identity\UserState;
@@ -10,9 +19,7 @@ use IdentityAccess\Domain\Identity\Event\UserEnabled;
 use IdentityAccess\Domain\Identity\ValueObject\UserId;
 
 /**
- * Class Disabled
- *
- * @package IdentityAccess\Domain\Identity\UserState
+ * Class Disabled.
  */
 class Disabled extends AbstractState
 {
@@ -43,5 +50,4 @@ class Disabled extends AbstractState
     {
         $this->changeUserState(new Enabled($this->user));
     }
-
 }

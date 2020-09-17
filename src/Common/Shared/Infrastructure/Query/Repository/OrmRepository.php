@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of invis1ble/ddd-es-cqrs-boilerplate.
+ *
+ * (c) Invis1ble <opensource.invis1ble@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 declare(strict_types=1);
 
 namespace Common\Shared\Infrastructure\Query\Repository;
@@ -11,9 +20,7 @@ use Doctrine\ORM\NonUniqueResultException;
 use Doctrine\ORM\QueryBuilder;
 
 /**
- * Class OrmRepository
- *
- * @package Common\Shared\Infrastructure\Query\Repository
+ * Class OrmRepository.
  */
 abstract class OrmRepository
 {
@@ -26,16 +33,11 @@ abstract class OrmRepository
         $this->entityManager = $entityManager;
 
         $objectRepository = $entityManager->getRepository($this->getClass());
-        /** @var EntityRepository $objectRepository */
+        /* @var EntityRepository $objectRepository */
         $this->repository = $objectRepository;
     }
 
-    abstract protected function getClass(): string;
-
-    /**
-     * @param object $model
-     */
-    public function register($model): void
+    public function register(object $model): void
     {
         $this->entityManager->persist($model);
         $this->apply();
@@ -47,9 +49,8 @@ abstract class OrmRepository
     }
 
     /**
-     * @param QueryBuilder $queryBuilder
-     *
      * @return mixed
+     *
      * @throws NonUniqueResultException
      * @throws NotFoundException
      */
@@ -67,4 +68,5 @@ abstract class OrmRepository
         return $model;
     }
 
+    abstract protected function getClass(): string;
 }

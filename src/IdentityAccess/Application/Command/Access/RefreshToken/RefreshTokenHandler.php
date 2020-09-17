@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of invis1ble/ddd-es-cqrs-boilerplate.
+ *
+ * (c) Invis1ble <opensource.invis1ble@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 declare(strict_types=1);
 
 namespace IdentityAccess\Application\Command\Access\RefreshToken;
@@ -13,9 +22,7 @@ use IdentityAccess\Application\Query\Access\TokenInterface;
 use IdentityAccess\Infrastructure\Access\Query\Token;
 
 /**
- * Class RefreshTokenHandler
- *
- * @package IdentityAccess\Application\Command\Access\RefreshToken
+ * Class RefreshTokenHandler.
  */
 final class RefreshTokenHandler implements CommandHandlerInterface
 {
@@ -29,8 +36,7 @@ final class RefreshTokenHandler implements CommandHandlerInterface
         AccessTokenGeneratorInterface $accessTokenGenerator,
         EventBusInterface $eventBus,
         int $refreshTokenTtl
-    )
-    {
+    ) {
         $this->accessTokenGenerator = $accessTokenGenerator;
         $this->refreshTokenTtl = $refreshTokenTtl;
         $this->eventBus = $eventBus;
@@ -55,5 +61,4 @@ final class RefreshTokenHandler implements CommandHandlerInterface
             $refreshTokenDateExpired
         );
     }
-
 }

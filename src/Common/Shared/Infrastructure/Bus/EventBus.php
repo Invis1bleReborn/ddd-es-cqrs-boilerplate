@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of invis1ble/ddd-es-cqrs-boilerplate.
+ *
+ * (c) Invis1ble <opensource.invis1ble@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 declare(strict_types=1);
 
 namespace Common\Shared\Infrastructure\Bus;
@@ -11,9 +20,7 @@ use Symfony\Component\Messenger\Exception\HandlerFailedException;
 use Symfony\Component\Messenger\MessageBusInterface;
 
 /**
- * Class EventBus
- *
- * @package ommon\Shared\Infrastructure\Bus
+ * Class EventBus.
  */
 final class EventBus implements EventBusInterface
 {
@@ -37,5 +44,4 @@ final class EventBus implements EventBusInterface
             $this->throwException($e);
         }
     }
-
 }

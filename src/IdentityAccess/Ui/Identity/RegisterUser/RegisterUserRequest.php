@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of invis1ble/ddd-es-cqrs-boilerplate.
+ *
+ * (c) Invis1ble <opensource.invis1ble@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 declare(strict_types=1);
 
 namespace IdentityAccess\Ui\Identity\RegisterUser;
@@ -9,9 +18,7 @@ use Common\Shared\Ui\RequestInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Class RegisterUserRequest
- *
- * @package IdentityAccess\Ui\Identity\RegisterUser
+ * Class RegisterUserRequest.
  *
  * @UniqueDto(
  *     entityClass="IdentityAccess\Infrastructure\Identity\Query\User",
@@ -54,13 +61,11 @@ final class RegisterUserRequest implements RequestInterface
         ?string $passwordConfirmation = null,
         ?bool $enabled = null,
         ?array $roles = null
-    )
-    {
+    ) {
         $this->email = $email;
         $this->password = $password;
         $this->passwordConfirmation = $passwordConfirmation;
         $this->enabled = $enabled;
         $this->roles = $roles;
     }
-
 }

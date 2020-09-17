@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of invis1ble/ddd-es-cqrs-boilerplate.
+ *
+ * (c) Invis1ble <opensource.invis1ble@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 declare(strict_types=1);
 
 namespace Common\Shared\Application\Bus\Event;
@@ -7,9 +16,7 @@ namespace Common\Shared\Application\Bus\Event;
 use Broadway\Domain\DomainMessage;
 
 /**
- * Class Event
- *
- * @package Common\Shared\Application\Bus\Event
+ * Class Event.
  */
 final class Event implements EventInterface
 {
@@ -24,5 +31,4 @@ final class Event implements EventInterface
     {
         return $this->domainMessage;
     }
-
 }

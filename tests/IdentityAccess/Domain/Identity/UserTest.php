@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of invis1ble/ddd-es-cqrs-boilerplate.
+ *
+ * (c) Invis1ble <opensource.invis1ble@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 declare(strict_types=1);
 
 namespace IdentityAccess\Domain\Identity;
@@ -19,16 +28,12 @@ use PHPUnit\Framework\MockObject\Stub;
 use Symfony\Bridge\PhpUnit\ClockMock;
 
 /**
- * Class UserTest
- *
- * @package IdentityAccess\Domain\Identity
+ * Class UserTest.
  */
 class UserTest extends UuidGeneratorAwareAggregateRootScenarioTestCase
 {
     /**
      * @test
-     *
-     * @return UserRegistered
      */
     public function itCanBeRegistered(): UserRegistered
     {
@@ -90,10 +95,6 @@ class UserTest extends UuidGeneratorAwareAggregateRootScenarioTestCase
     /**
      * @test
      * @depends itCanBeRegistered
-     *
-     * @param UserRegistered $userRegistered
-     *
-     * @return UserDisabled
      */
     public function enabledUserCanBeDisabled(UserRegistered $userRegistered): UserDisabled
     {
@@ -128,17 +129,11 @@ class UserTest extends UuidGeneratorAwareAggregateRootScenarioTestCase
      * @test
      * @depends itCanBeRegistered
      * @depends enabledUserCanBeDisabled
-     *
-     * @param UserRegistered $userRegistered
-     * @param UserDisabled   $userDisabled
-     *
-     * @return UserEnabled
      */
     public function disabledUserCanBeEnabled(
         UserRegistered $userRegistered,
         UserDisabled $userDisabled
-    ): UserEnabled
-    {
+    ): UserEnabled {
         $id = $userRegistered->id();
         $enabledById = $this->generateUserId();
         $dateEnabled = DateTime::now();
@@ -168,8 +163,6 @@ class UserTest extends UuidGeneratorAwareAggregateRootScenarioTestCase
     }
 
     /**
-     * @param bool $isUnique
-     *
      * @return UniqueEmailSpecificationInterface|Stub
      */
     protected function createUniqueEmailSpecificationStub(bool $isUnique): UniqueEmailSpecificationInterface
@@ -191,5 +184,4 @@ class UserTest extends UuidGeneratorAwareAggregateRootScenarioTestCase
     {
         return User::class;
     }
-
 }

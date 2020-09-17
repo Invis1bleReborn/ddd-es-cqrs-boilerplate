@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of invis1ble/ddd-es-cqrs-boilerplate.
+ *
+ * (c) Invis1ble <opensource.invis1ble@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 declare(strict_types=1);
 
 namespace Common\Shared\Infrastructure\Migrations;
@@ -9,9 +18,7 @@ use Doctrine\Migrations\AbstractMigration;
 use Doctrine\ORM\EntityManagerInterface;
 
 /**
- * Class EventStoreAwareMigration
- *
- * @package Common\Shared\Infrastructure\Migrations
+ * Class EventStoreAwareMigration.
  */
 abstract class EventStoreAwareMigration extends AbstractMigration
 {
@@ -32,5 +39,4 @@ abstract class EventStoreAwareMigration extends AbstractMigration
 
         return $this;
     }
-
 }

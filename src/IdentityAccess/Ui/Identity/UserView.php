@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of invis1ble/ddd-es-cqrs-boilerplate.
+ *
+ * (c) Invis1ble <opensource.invis1ble@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 declare(strict_types=1);
 
 namespace IdentityAccess\Ui\Identity;
@@ -7,9 +16,7 @@ namespace IdentityAccess\Ui\Identity;
 use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
- * Class UserView
- *
- * @package IdentityAccess\Ui\Identity
+ * Class UserView.
  */
 final class UserView
 {
@@ -50,8 +57,7 @@ final class UserView
         bool $enabled,
         ?string $registeredById,
         \DateTimeImmutable $dateRegistered
-    )
-    {
+    ) {
         $this->id = $id;
         $this->email = $email;
         $this->roles = $roles;
@@ -59,5 +65,4 @@ final class UserView
         $this->registeredById = $registeredById;
         $this->dateRegistered = $dateRegistered;
     }
-
 }

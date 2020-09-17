@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of invis1ble/ddd-es-cqrs-boilerplate.
+ *
+ * (c) Invis1ble <opensource.invis1ble@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 declare(strict_types=1);
 
 namespace IdentityAccess\Application\Command\Identity\DisableUser;
@@ -10,9 +19,7 @@ use IdentityAccess\Application\Command\Identity\UserIdAwareCommand;
 use IdentityAccess\Domain\Identity\ValueObject\UserId;
 
 /**
- * Class DisableUserCommand
- *
- * @package IdentityAccess\Application\Command\Identity\DisableUser
+ * Class DisableUserCommand.
  */
 class DisableUserCommand extends UserIdAwareCommand implements ChangeUserStatusCommandInterface
 {
@@ -23,18 +30,14 @@ class DisableUserCommand extends UserIdAwareCommand implements ChangeUserStatusC
      *
      * {@inheritdoc}
      *
-     * @param string $disabledById
-     *
      * @throws AssertionFailedException
      */
     public function __construct(
         string $userId,
         string $disabledById
-    )
-    {
+    ) {
         parent::__construct($userId);
 
         $this->disabledById = UserId::fromString($disabledById);
     }
-
 }

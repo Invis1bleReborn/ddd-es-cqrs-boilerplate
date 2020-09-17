@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of invis1ble/ddd-es-cqrs-boilerplate.
+ *
+ * (c) Invis1ble <opensource.invis1ble@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 declare(strict_types=1);
 
 namespace IdentityAccess\Ui\Identity\RegisterUser;
@@ -11,9 +20,7 @@ use IdentityAccess\Ui\Identity\AuthenticatedUserProviderInterface;
 use IdentityAccess\Ui\Identity\ValidatorAwareRequestTransformer;
 
 /**
- * Class RegisterUserRequestTransformer
- *
- * @package IdentityAccess\Ui\Identity
+ * Class RegisterUserRequestTransformer.
  */
 class RegisterUserRequestTransformer extends ValidatorAwareRequestTransformer implements
     RegisterUserRequestTransformerInterface
@@ -24,8 +31,7 @@ class RegisterUserRequestTransformer extends ValidatorAwareRequestTransformer im
         ValidatorInterface $validator,
         UuidGeneratorInterface $uuidGenerator,
         AuthenticatedUserProviderInterface $authenticatedUserProvider
-    )
-    {
+    ) {
         parent::__construct(
             $validator,
             $authenticatedUserProvider
@@ -50,5 +56,4 @@ class RegisterUserRequestTransformer extends ValidatorAwareRequestTransformer im
             $this->getAuthenticatedUserId()
         );
     }
-
 }

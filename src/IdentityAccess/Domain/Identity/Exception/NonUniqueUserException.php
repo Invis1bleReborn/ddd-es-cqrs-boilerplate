@@ -11,11 +11,11 @@
 
 declare(strict_types=1);
 
-namespace IdentityAccess\Ui\Access;
+namespace IdentityAccess\Domain\Identity\Exception;
 
 /**
- * Interface AccountStatusExceptionInterface.
+ * Class NonUniqueUserException.
  */
-interface AccountStatusExceptionInterface extends AuthenticationExceptionInterface
+class NonUniqueUserException extends \Exception
 {
 }

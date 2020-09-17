@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of invis1ble/ddd-es-cqrs-boilerplate.
+ *
+ * (c) Invis1ble <opensource.invis1ble@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 declare(strict_types=1);
 
 namespace IdentityAccess\Ui\Access\RefreshToken;
@@ -13,9 +22,7 @@ use IdentityAccess\Ui\Access\RefreshTokenCheckerInterface;
 use IdentityAccess\Ui\Access\UserCheckerInterface;
 
 /**
- * Class RefreshTokenRequestTransformer
- *
- * @package IdentityAccess\Ui\Access\RefreshToken
+ * Class RefreshTokenRequestTransformer.
  */
 class RefreshTokenRequestTransformer extends ValidatorAwareRequestTransformer implements
     RefreshTokenRequestTransformerInterface
@@ -34,8 +41,7 @@ class RefreshTokenRequestTransformer extends ValidatorAwareRequestTransformer im
         RefreshTokenCheckerInterface $refreshTokenChecker,
         UserProviderInterface $userProvider,
         UserCheckerInterface $userChecker
-    )
-    {
+    ) {
         parent::__construct($validator);
 
         $this->refreshTokenProvider = $refreshTokenProvider;
@@ -64,5 +70,4 @@ class RefreshTokenRequestTransformer extends ValidatorAwareRequestTransformer im
             $request->refreshToken
         );
     }
-
 }

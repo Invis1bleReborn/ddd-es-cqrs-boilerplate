@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of invis1ble/ddd-es-cqrs-boilerplate.
+ *
+ * (c) Invis1ble <opensource.invis1ble@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 declare(strict_types=1);
 
 namespace IdentityAccess\Application\Command\Identity\RegisterUser;
@@ -23,9 +32,7 @@ use PHPUnit\Framework\MockObject\Stub;
 use Symfony\Bridge\PhpUnit\ClockMock;
 
 /**
- * Class RegisterUserHandlerTest
- *
- * @package IdentityAccess\Application\Command\Identity\RegisterUser
+ * Class RegisterUserHandlerTest.
  */
 class RegisterUserHandlerTest extends UuidGeneratorAwareCommandHandlerScenarioTestCase
 {
@@ -38,8 +45,6 @@ class RegisterUserHandlerTest extends UuidGeneratorAwareCommandHandlerScenarioTe
 
     /**
      * @test
-     *
-     * @return UserRegistered
      */
     public function itCanRegisterUser(): UserRegistered
     {
@@ -88,8 +93,7 @@ class RegisterUserHandlerTest extends UuidGeneratorAwareCommandHandlerScenarioTe
     protected function createCommandHandler(
         EventStore $eventStore,
         EventBus $eventBus
-    ): CommandHandler
-    {
+    ): CommandHandler {
         $this->passwordEncoder = new NoopPasswordEncoder();
         $this->uniqueEmailSpecificationStub = $this->createStub(UniqueEmailSpecificationInterface::class);
 
@@ -101,5 +105,4 @@ class RegisterUserHandlerTest extends UuidGeneratorAwareCommandHandlerScenarioTe
             )
         );
     }
-
 }

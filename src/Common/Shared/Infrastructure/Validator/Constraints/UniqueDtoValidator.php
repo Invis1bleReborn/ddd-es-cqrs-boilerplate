@@ -1,31 +1,44 @@
 <?php
 
+/*
+ * This file is part of invis1ble/ddd-es-cqrs-boilerplate.
+ *
+ * (c) Invis1ble <opensource.invis1ble@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 declare(strict_types=1);
 
 namespace Common\Shared\Infrastructure\Validator\Constraints;
 
-//use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\ORM\Mapping\Entity;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\Persistence\Mapping\ClassMetadata;
 use Doctrine\Persistence\ObjectManager;
+use Doctrine\Persistence\ObjectRepository;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
 use Symfony\Component\Validator\Exception\ConstraintDefinitionException;
 use Symfony\Component\Validator\Exception\UnexpectedTypeException;
 
+/**
+ * Class UniqueDtoValidator.
+ */
 class UniqueDtoValidator extends ConstraintValidator
 {
     private ?Constraint $constraint;
 
     private ?ObjectManager $em = null;
 
-    private $entityMeta;
+    private ?ClassMetadata $entityMeta;
 
-    private $registry;
+    private ManagerRegistry $registry;
 
-    private $repository;
+    private ?ObjectRepository $repository;
 
-    private $validationObject;
+    private object $validationObject;
 
     public function __construct(ManagerRegistry $registry)
     {
@@ -36,12 +49,12 @@ class UniqueDtoValidator extends ConstraintValidator
     {
         // Set arguments as class variables
         $this->validationObject = $object;
-        $this->constraint       = $constraint;
+        $this->constraint = $constraint;
         $this->checkTypes();
 
         // Map types to criteria
         $this->entityMeta = $this->getEntityManager()->getClassMetadata($this->constraint->entityClass);
-        $criteria         = $this->getCriteria();
+        $criteria = $this->getCriteria();
         // skip validation if there are no criteria (this can happen when the
         // "ignoreNull" option is enabled and fields to be checked are null
         if (empty($criteria)) {
@@ -58,7 +71,7 @@ class UniqueDtoValidator extends ConstraintValidator
 
         // Property to which to return the violation
         $objectFields = array_keys($this->constraint->fieldMapping);
-        $errorPath    = null !== $this->constraint->errorPath
+        $errorPath = null !== $this->constraint->errorPath
             ? $this->constraint->errorPath
             : $objectFields[0];
 
@@ -106,7 +119,8 @@ class UniqueDtoValidator extends ConstraintValidator
             $this->em = $this->registry->getManager($this->constraint->em);
 
             if (!$this->em) {
-                throw new ConstraintDefinitionException(sprintf('Object manager "%s" does not exist.',
+                throw new ConstraintDefinitionException(sprintf(
+                    'Object manager "%s" does not exist.',
                     $this->constraint->em
                 ));
             }
@@ -130,7 +144,6 @@ class UniqueDtoValidator extends ConstraintValidator
 
         $criteria = [];
         foreach ($this->constraint->fieldMapping as $objectField => $entityField) {
-
             // DTO Property (key) should exist on DataTransferObject
             if (!$validationClass->hasProperty($objectField)) {
                 throw new ConstraintDefinitionException(sprintf(
@@ -241,5 +254,4 @@ class UniqueDtoValidator extends ConstraintValidator
 
         return $this->repository;
     }
-
 }

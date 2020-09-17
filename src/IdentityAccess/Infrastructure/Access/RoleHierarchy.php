@@ -1,17 +1,24 @@
 <?php
 
+/*
+ * This file is part of invis1ble/ddd-es-cqrs-boilerplate.
+ *
+ * (c) Invis1ble <opensource.invis1ble@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 declare(strict_types=1);
 
 namespace IdentityAccess\Infrastructure\Access;
 
+use IdentityAccess\Domain\Access\RoleHierarchyInterface;
 use IdentityAccess\Domain\Access\ValueObject\Role;
 use IdentityAccess\Domain\Access\ValueObject\Roles;
-use IdentityAccess\Domain\Access\RoleHierarchyInterface;
 
 /**
- * Class RolesHierarchy
- *
- * @package IdentityAccess\Infrastructure\Access
+ * Class RolesHierarchy.
  */
 class RoleHierarchy implements RoleHierarchyInterface
 {
@@ -32,5 +39,4 @@ class RoleHierarchy implements RoleHierarchyInterface
         return $this->reachableRoles($roles)
             ->contains($role);
     }
-
 }

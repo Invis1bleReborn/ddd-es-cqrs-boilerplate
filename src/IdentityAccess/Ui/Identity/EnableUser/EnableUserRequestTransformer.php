@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of invis1ble/ddd-es-cqrs-boilerplate.
+ *
+ * (c) Invis1ble <opensource.invis1ble@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 declare(strict_types=1);
 
 namespace IdentityAccess\Ui\Identity\EnableUser;
@@ -10,9 +19,7 @@ use IdentityAccess\Ui\Identity\ChangeUserStatus\ChangeUserStatusRequest;
 use IdentityAccess\Ui\Identity\ValidatorAwareRequestTransformer;
 
 /**
- * Class EnableUserRequestTransformer
- *
- * @package IdentityAccess\Ui\Identity
+ * Class EnableUserRequestTransformer.
  */
 class EnableUserRequestTransformer extends ValidatorAwareRequestTransformer implements
     EnableUserRequestTransformerInterface
@@ -26,5 +33,4 @@ class EnableUserRequestTransformer extends ValidatorAwareRequestTransformer impl
 
         return new EnableUserCommand($user->getId(), $this->getAuthenticatedUserId());
     }
-
 }
