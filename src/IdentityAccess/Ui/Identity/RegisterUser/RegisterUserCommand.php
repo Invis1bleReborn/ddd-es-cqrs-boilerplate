@@ -58,14 +58,27 @@ class RegisterUserCommand extends Command
     {
         $this
             ->setName('app:user:register')
-            ->setDescription('Given a credentials, registers a new user. Reads and interprets stdin content as password in non-interactive mode.')
+            ->setDescription(<<<'DESCRIPTION'
+Given a credentials, registers a new user. Reads and interprets stdin content as password in non-interactive mode.
+DESCRIPTION
+)
             ->addArgument('email', InputArgument::REQUIRED, 'User email')
             ->addArgument('password', InputArgument::OPTIONAL, 'User password')
             ->addOption('uuid', 'id', InputArgument::OPTIONAL, 'User UUID')
-            ->addOption('roles', 'r', InputOption::VALUE_OPTIONAL | InputOption::VALUE_IS_ARRAY, 'User roles', ['ROLE_USER'])
+            ->addOption(
+                'roles',
+                'r',
+                InputOption::VALUE_OPTIONAL | InputOption::VALUE_IS_ARRAY,
+                'User roles', ['ROLE_USER']
+            )
             ->addOption('disabled', 'd', InputOption::VALUE_NONE, 'Disabled user')
             ->addOption('registered-by', 'by', InputOption::VALUE_OPTIONAL, 'Registered by (email)')
-            ->addOption('show-metadata', null, InputOption::VALUE_NONE, 'Output resulting metadata (e.g. generated user id)')
+            ->addOption(
+                'show-metadata',
+                null,
+                InputOption::VALUE_NONE,
+                'Output resulting metadata (e.g. generated user id)'
+            )
         ;
     }
 

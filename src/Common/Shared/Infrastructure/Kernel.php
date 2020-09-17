@@ -60,13 +60,17 @@ class Kernel extends BaseKernel
             'Infrastructure/**/View/*TransformerAdapter',
         ];
 
+        $servicesPattern = '{' . implode(',', $servicePatterns) . '}.php';
+
         foreach ([
             'IdentityAccess\\',
         ] as $namespacePrefix) {
-            $services->load(
-                $namespacePrefix,
-                $projectDir . '/src/' . strtr($namespacePrefix, '\\', '/') . '{' . implode(',', $servicePatterns) . '}.php'
-            )
+            $services->load($namespacePrefix, sprintf(
+                '%s/src/%s%s',
+                $projectDir,
+                strtr($namespacePrefix, '\\', '/'),
+                $servicesPattern
+            ))
                 ->autowire(true)
                 ->autoconfigure(true)
             ;
