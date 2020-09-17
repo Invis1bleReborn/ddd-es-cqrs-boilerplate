@@ -15,7 +15,6 @@ namespace Common\Shared\Domain\Specification;
 
 /**
  * Class AbstractSpecification
- *
  */
 abstract class AbstractSpecification
 {

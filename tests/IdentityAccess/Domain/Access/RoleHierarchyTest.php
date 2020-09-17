@@ -20,7 +20,6 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * Class RoleHierarchyTest
- *
  */
 class RoleHierarchyTest extends TestCase
 {

@@ -33,7 +33,6 @@ use Symfony\Bridge\PhpUnit\ClockMock;
 
 /**
  * Class RegisterUserHandlerTest
- *
  */
 class RegisterUserHandlerTest extends UuidGeneratorAwareCommandHandlerScenarioTestCase
 {

@@ -19,7 +19,6 @@ use IdentityAccess\Domain\Identity\ValueObject\UserId;
 
 /**
  * Class Enabled
- *
  */
 class Enabled extends AbstractState
 {

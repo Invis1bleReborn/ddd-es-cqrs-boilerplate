@@ -15,7 +15,6 @@ namespace IdentityAccess\Domain\Access\ValueObject;
 
 /**
  * Class Roles
- *
  */
 final class Roles
 {

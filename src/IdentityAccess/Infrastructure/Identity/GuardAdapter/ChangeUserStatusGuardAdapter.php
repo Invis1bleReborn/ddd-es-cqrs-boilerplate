@@ -20,7 +20,6 @@ use IdentityAccess\Ui\Access\AccessAttribute;
 
 /**
  * Class ChangeUserStatusGuardAdapter
- *
  */
 class ChangeUserStatusGuardAdapter extends AbstractGuardAdapter
 {

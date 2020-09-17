@@ -20,7 +20,6 @@ use IdentityAccess\Ui\Identity\UserTransformer;
 
 /**
  * Class UserTransformerAdapter
- *
  */
 final class UserTransformerAdapter implements DataTransformerInterface
 {

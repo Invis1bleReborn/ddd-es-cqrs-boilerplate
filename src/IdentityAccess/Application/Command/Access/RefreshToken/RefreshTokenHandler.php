@@ -23,7 +23,6 @@ use IdentityAccess\Infrastructure\Access\Query\Token;
 
 /**
  * Class RefreshTokenHandler
- *
  */
 final class RefreshTokenHandler implements CommandHandlerInterface
 {

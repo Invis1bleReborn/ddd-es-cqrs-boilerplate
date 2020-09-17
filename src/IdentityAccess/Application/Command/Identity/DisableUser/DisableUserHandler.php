@@ -17,7 +17,6 @@ use IdentityAccess\Application\Command\Identity\AbstractCommandHandler;
 
 /**
  * Class DisableUserHandler
- *
  */
 final class DisableUserHandler extends AbstractCommandHandler
 {

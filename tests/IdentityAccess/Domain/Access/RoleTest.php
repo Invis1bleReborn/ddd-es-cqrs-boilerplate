@@ -18,7 +18,6 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * Class RoleTest
- *
  */
 class RoleTest extends TestCase
 {

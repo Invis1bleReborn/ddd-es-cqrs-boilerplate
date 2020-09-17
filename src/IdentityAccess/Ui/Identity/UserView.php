@@ -17,7 +17,6 @@ use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * Class UserView
- *
  */
 final class UserView
 {

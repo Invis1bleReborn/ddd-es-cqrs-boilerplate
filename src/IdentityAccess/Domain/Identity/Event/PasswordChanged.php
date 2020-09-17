@@ -22,7 +22,6 @@ use IdentityAccess\Domain\Identity\ValueObject\UserId;
 
 /**
  * Class PasswordChanged
- *
  */
 final class PasswordChanged extends UserIdAwareEvent
 {

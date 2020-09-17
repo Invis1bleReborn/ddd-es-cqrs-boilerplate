@@ -17,7 +17,6 @@ use Broadway\Domain\DomainMessage;
 
 /**
  * Interface EventPublisherInterface
- *
  */
 interface EventPublisherInterface
 {

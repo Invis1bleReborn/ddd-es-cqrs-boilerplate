@@ -22,7 +22,6 @@ use IdentityAccess\Domain\Identity\ValueObject\UserId;
 
 /**
  * Class RegisterUserCommand
- *
  */
 class RegisterUserCommand extends UserIdAwareCommand
 {

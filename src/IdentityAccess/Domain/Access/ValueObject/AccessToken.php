@@ -18,7 +18,6 @@ use Assert\AssertionFailedException;
 
 /**
  * Class AccessToken
- *
  */
 final class AccessToken
 {

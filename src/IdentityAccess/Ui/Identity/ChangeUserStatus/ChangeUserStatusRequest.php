@@ -18,7 +18,6 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Class ChangeUserStatusRequest
- *
  */
 final class ChangeUserStatusRequest implements RequestInterface
 {

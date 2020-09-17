@@ -19,7 +19,6 @@ use IdentityAccess\Domain\Access\RoleHierarchyInterface;
 
 /**
  * Class RolesHierarchy
- *
  */
 class RoleHierarchy implements RoleHierarchyInterface
 {

@@ -20,7 +20,6 @@ use IdentityAccess\Ui\Identity\ValidatorAwareRequestTransformer;
 
 /**
  * Class DisableUserRequestTransformer
- *
  */
 class DisableUserRequestTransformer extends ValidatorAwareRequestTransformer implements
     DisableUserRequestTransformerInterface

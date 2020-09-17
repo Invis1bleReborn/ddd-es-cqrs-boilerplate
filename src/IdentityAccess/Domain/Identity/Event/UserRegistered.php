@@ -24,7 +24,6 @@ use IdentityAccess\Domain\Identity\ValueObject\UserId;
 
 /**
  * Class UserRegistered
- *
  */
 final class UserRegistered extends UserIdAwareEvent
 {

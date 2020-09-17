@@ -21,7 +21,6 @@ use IdentityAccess\Ui\Identity\DisableUser\DisableUserRequestTransformerInterfac
 
 /**
  * Class DisableUserRequestTransformerAdapter
- *
  */
 class DisableUserRequestTransformerAdapter implements DataTransformerInterface
 {

@@ -17,7 +17,6 @@ use IdentityAccess\Domain\Identity\ValueObject\Email;
 
 /**
  * Interface UniqueEmailSpecificationInterface
- *
  */
 interface UniqueEmailSpecificationInterface
 {

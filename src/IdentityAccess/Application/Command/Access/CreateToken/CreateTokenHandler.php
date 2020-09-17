@@ -26,7 +26,6 @@ use IdentityAccess\Domain\Identity\ValueObject\Username;
 
 /**
  * Class CreateTokenHandler
- *
  */
 final class CreateTokenHandler implements CommandHandlerInterface
 {

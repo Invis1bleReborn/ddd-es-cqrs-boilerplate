@@ -18,7 +18,6 @@ use Assert\AssertionFailedException;
 
 /**
  * Class Email
- *
  */
 final class Email
 {

@@ -17,7 +17,6 @@ use Common\Shared\Domain\ValueObject\AbstractId;
 
 /**
  * Class UserId
- *
  */
 final class UserId extends AbstractId
 {

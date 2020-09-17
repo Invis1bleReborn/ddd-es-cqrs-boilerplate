@@ -15,7 +15,6 @@ namespace Common\Shared\Application\Bus\Command;
 
 /**
  * Interface CommandHandlerInterface
- *
  */
 interface CommandHandlerInterface
 {

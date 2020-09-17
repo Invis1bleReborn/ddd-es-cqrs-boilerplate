@@ -17,7 +17,6 @@ use Symfony\Component\Messenger\Exception\HandlerFailedException;
 
 /**
  * Trait MessageBusExceptionTrait
- *
  */
 trait MessageBusExceptionTrait
 {

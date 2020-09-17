@@ -20,7 +20,6 @@ use IdentityAccess\Domain\Identity\ValueObject\UserId;
 
 /**
  * Class AbstractCommandHandler
- *
  */
 abstract class AbstractCommandHandler implements CommandHandlerInterface
 {

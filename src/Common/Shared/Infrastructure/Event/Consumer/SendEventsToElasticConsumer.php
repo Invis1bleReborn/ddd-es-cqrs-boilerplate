@@ -19,7 +19,6 @@ use Common\Shared\Infrastructure\Event\Query\EventElasticRepository;
 
 /**
  * Class SendEventsToElasticConsumer
- *
  */
 class SendEventsToElasticConsumer implements EventHandlerInterface
 {

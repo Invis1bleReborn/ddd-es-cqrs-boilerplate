@@ -18,7 +18,6 @@ use IdentityAccess\Domain\Identity\ValueObject\UserId;
 
 /**
  * Interface UserRepositoryInterface
- *
  */
 interface UserRepositoryInterface
 {

@@ -17,7 +17,6 @@ use IdentityAccess\Application\Command\Identity\AbstractCommandHandler;
 
 /**
  * Class EnableUserHandler
- *
  */
 final class EnableUserHandler extends AbstractCommandHandler
 {

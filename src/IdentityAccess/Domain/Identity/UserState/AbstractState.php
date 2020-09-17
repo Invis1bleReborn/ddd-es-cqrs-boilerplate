@@ -19,7 +19,6 @@ use IdentityAccess\Domain\Identity\User;
 
 /**
  * Class AbstractState
- *
  */
 abstract class AbstractState extends SimpleEventSourcedEntity implements UserStateInterface
 {

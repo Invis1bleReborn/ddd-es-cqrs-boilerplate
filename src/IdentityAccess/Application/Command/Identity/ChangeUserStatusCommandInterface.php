@@ -17,7 +17,6 @@ use Common\Shared\Application\Bus\Command\CommandInterface;
 
 /**
  * Interface ChangeUserStatusCommandInterface
- *
  */
 interface ChangeUserStatusCommandInterface extends CommandInterface
 {

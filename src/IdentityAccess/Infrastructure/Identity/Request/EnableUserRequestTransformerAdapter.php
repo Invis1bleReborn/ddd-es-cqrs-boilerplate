@@ -21,7 +21,6 @@ use IdentityAccess\Ui\Identity\EnableUser\EnableUserRequestTransformerInterface;
 
 /**
  * Class EnableUserRequestTransformerAdapter
- *
  */
 class EnableUserRequestTransformerAdapter implements DataTransformerInterface
 {

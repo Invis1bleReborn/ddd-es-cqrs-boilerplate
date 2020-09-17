@@ -18,7 +18,6 @@ use IdentityAccess\Domain\Identity\ValueObject\UserId;
 
 /**
  * Class UserStateTransitionException
- *
  */
 class UserStateTransitionException extends StateTransitionException
 {

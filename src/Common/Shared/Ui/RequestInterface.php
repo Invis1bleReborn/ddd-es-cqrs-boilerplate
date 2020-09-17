@@ -15,7 +15,6 @@ namespace Common\Shared\Ui;
 
 /**
  * Interface RequestInterface
- *
  */
 interface RequestInterface
 {

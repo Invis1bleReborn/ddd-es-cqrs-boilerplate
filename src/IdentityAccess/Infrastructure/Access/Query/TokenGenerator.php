@@ -22,7 +22,6 @@ use IdentityAccess\Application\Query\Identity\UserInterface;
 
 /**
  * Class TokenGenerator
- *
  */
 final class TokenGenerator implements TokenGeneratorInterface
 {

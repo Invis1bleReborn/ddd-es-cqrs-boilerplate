@@ -18,7 +18,6 @@ use Assert\AssertionFailedException;
 
 /**
  * Class Username
- *
  */
 final class Username
 {

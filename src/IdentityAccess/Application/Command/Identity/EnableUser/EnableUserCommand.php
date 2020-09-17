@@ -20,7 +20,6 @@ use IdentityAccess\Domain\Identity\ValueObject\UserId;
 
 /**
  * Class EnableUserCommand
- *
  */
 class EnableUserCommand extends UserIdAwareCommand implements ChangeUserStatusCommandInterface
 {

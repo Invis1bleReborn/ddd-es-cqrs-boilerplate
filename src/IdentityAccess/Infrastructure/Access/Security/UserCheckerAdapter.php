@@ -20,7 +20,6 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * Class UserCheckerAdapter
- *
  */
 class UserCheckerAdapter implements UserCheckerInterface
 {

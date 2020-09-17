@@ -23,7 +23,6 @@ use IdentityAccess\Ui\Access\UserCheckerInterface;
 
 /**
  * Class RefreshTokenRequestTransformer
- *
  */
 class RefreshTokenRequestTransformer extends ValidatorAwareRequestTransformer implements
     RefreshTokenRequestTransformerInterface

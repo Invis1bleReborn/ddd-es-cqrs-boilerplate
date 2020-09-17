@@ -19,7 +19,6 @@ use Ramsey\Uuid\Uuid;
 
 /**
  * Class AbstractId
- *
  */
 abstract class AbstractId implements IdInterface
 {

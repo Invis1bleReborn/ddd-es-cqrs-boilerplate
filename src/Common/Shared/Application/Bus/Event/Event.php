@@ -17,7 +17,6 @@ use Broadway\Domain\DomainMessage;
 
 /**
  * Class Event
- *
  */
 final class Event implements EventInterface
 {

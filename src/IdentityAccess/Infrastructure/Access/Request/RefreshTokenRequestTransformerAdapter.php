@@ -21,7 +21,6 @@ use IdentityAccess\Ui\Access\RefreshToken\RefreshTokenRequestTransformerInterfac
 
 /**
  * Class RefreshTokenRequestTransformerAdapter
- *
  */
 class RefreshTokenRequestTransformerAdapter implements DataTransformerInterface
 {

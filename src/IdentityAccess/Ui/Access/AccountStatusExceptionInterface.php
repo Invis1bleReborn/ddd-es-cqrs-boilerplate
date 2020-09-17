@@ -15,7 +15,6 @@ namespace IdentityAccess\Ui\Access;
 
 /**
  * Interface AccountStatusExceptionInterface
- *
  */
 interface AccountStatusExceptionInterface extends AuthenticationExceptionInterface
 {

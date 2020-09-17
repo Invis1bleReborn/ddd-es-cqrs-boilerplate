@@ -21,7 +21,6 @@ use Doctrine\ORM\QueryBuilder;
 
 /**
  * Class OrmRepository
- *
  */
 abstract class OrmRepository
 {

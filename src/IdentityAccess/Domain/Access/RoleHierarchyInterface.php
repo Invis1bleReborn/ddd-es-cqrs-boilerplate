@@ -18,7 +18,6 @@ use IdentityAccess\Domain\Access\ValueObject\Roles;
 
 /**
  * Interface RoleHierarchyInterface
- *
  */
 interface RoleHierarchyInterface
 {

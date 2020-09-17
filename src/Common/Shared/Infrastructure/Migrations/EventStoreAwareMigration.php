@@ -19,7 +19,6 @@ use Doctrine\ORM\EntityManagerInterface;
 
 /**
  * Class EventStoreAwareMigration
- *
  */
 abstract class EventStoreAwareMigration extends AbstractMigration
 {

@@ -22,7 +22,6 @@ use IdentityAccess\Domain\Identity\ValueObject\Email;
 
 /**
  * Class UniqueEmailSpecification
- *
  */
 final class UniqueEmailSpecification extends AbstractSpecification implements UniqueEmailSpecificationInterface
 {

@@ -20,7 +20,6 @@ use IdentityAccess\Domain\Identity\ValueObject\PlainPassword;
 
 /**
  * Class CreateTokenCommand
- *
  */
 class CreateTokenCommand implements CommandInterface
 {

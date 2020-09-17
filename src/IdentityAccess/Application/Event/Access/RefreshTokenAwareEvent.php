@@ -23,7 +23,6 @@ use IdentityAccess\Domain\Access\ValueObject\RefreshToken;
 
 /**
  * Class RefreshTokenAwareEvent
- *
  */
 abstract class RefreshTokenAwareEvent implements EventInterface, Serializable
 {

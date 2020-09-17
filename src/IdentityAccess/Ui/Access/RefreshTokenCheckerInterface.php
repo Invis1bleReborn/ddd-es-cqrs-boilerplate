@@ -17,7 +17,6 @@ use IdentityAccess\Application\Query\Access\RefreshTokenInterface;
 
 /**
  * Interface RefreshTokenCheckerInterface
- *
  */
 interface RefreshTokenCheckerInterface
 {

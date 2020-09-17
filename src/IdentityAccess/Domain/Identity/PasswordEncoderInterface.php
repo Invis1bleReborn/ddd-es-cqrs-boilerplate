@@ -18,7 +18,6 @@ use IdentityAccess\Domain\Identity\ValueObject\PlainPassword;
 
 /**
  * Interface PasswordEncoderInterface
- *
  */
 interface PasswordEncoderInterface
 {

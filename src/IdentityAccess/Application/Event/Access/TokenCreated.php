@@ -20,7 +20,6 @@ use IdentityAccess\Domain\Identity\ValueObject\Username;
 
 /**
  * Class TokenCreated
- *
  */
 final class TokenCreated extends RefreshTokenAwareEvent
 {

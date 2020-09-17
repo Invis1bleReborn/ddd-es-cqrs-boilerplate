@@ -15,7 +15,6 @@ namespace IdentityAccess\Ui\Access;
 
 /**
  * Interface AuthenticationExceptionInterface
- *
  */
 interface AuthenticationExceptionInterface extends \Throwable
 {

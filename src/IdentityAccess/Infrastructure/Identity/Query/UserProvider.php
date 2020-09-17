@@ -19,7 +19,6 @@ use Symfony\Component\Security\Core\User\UserProviderInterface as SecurityUserPr
 
 /**
  * Class UserProvider
- *
  */
 final class UserProvider implements UserProviderInterface
 {

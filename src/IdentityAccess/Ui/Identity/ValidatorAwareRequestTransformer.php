@@ -18,7 +18,6 @@ use Common\Shared\Ui\ValidatorAwareRequestTransformer as BaseValidatorAwareReque
 
 /**
  * Class ValidatorAwareRequestTransformer
- *
  */
 abstract class ValidatorAwareRequestTransformer extends BaseValidatorAwareRequestTransformer
 {

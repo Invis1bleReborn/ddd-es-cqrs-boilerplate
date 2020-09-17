@@ -21,7 +21,6 @@ use IdentityAccess\Domain\Identity\User;
 
 /**
  * Class RegisterUserHandler
- *
  */
 final class RegisterUserHandler extends AbstractCommandHandler
 {

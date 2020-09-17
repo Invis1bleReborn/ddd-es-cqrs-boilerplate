@@ -20,7 +20,6 @@ use Lexik\Bundle\JWTAuthenticationBundle\Services\JWTTokenManagerInterface;
 
 /**
  * Class AccessTokenGenerator
- *
  */
 final class AccessTokenGenerator implements AccessTokenGeneratorInterface
 {

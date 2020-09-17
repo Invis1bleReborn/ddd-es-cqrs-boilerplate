@@ -15,7 +15,6 @@ namespace IdentityAccess\Application\Query\Identity;
 
 /**
  * Interface EnableableUserInterface
- *
  */
 interface EnableableUserInterface
 {

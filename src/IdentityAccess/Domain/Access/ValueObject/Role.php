@@ -17,7 +17,6 @@ use MyCLabs\Enum\Enum;
 
 /**
  * Class Role
- *
  */
 class Role extends Enum
 {

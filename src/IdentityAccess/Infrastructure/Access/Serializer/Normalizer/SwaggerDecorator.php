@@ -18,7 +18,6 @@ use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 /**
  * Class SwaggerDecorator
- *
  */
 class SwaggerDecorator implements NormalizerInterface
 {

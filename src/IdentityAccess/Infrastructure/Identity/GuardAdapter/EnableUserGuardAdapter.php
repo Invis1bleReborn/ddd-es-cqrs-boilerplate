@@ -20,7 +20,6 @@ use IdentityAccess\Ui\Identity\EnableUser\EnableUserGuard;
 
 /**
  * Class EnableUserGuardAdapter
- *
  */
 class EnableUserGuardAdapter extends AbstractGuardAdapter
 {

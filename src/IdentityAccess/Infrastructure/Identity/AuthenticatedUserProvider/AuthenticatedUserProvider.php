@@ -19,7 +19,6 @@ use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInt
 
 /**
  * Class AuthenticatedUserProvider
- *
  */
 final class AuthenticatedUserProvider implements AuthenticatedUserProviderInterface
 {

@@ -20,7 +20,6 @@ use IdentityAccess\Domain\Access\ValueObject\Roles;
 
 /**
  * Class RolesType
- *
  */
 class RolesType extends JsonType
 {

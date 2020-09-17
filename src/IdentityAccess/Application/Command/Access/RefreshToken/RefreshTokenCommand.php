@@ -20,7 +20,6 @@ use IdentityAccess\Domain\Access\ValueObject\RefreshToken;
 
 /**
  * Class RefreshTokenCommand
- *
  */
 class RefreshTokenCommand implements CommandInterface
 {

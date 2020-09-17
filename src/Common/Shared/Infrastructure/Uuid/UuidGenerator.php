@@ -17,7 +17,6 @@ use Common\Shared\Domain\ValueObject\UuidGeneratorInterface;
 
 /**
  * Class UuidGenerator
- *
  */
 class UuidGenerator implements UuidGeneratorInterface
 {

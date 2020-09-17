@@ -20,7 +20,6 @@ use IdentityAccess\Domain\Identity\ValueObject\UserId;
 
 /**
  * Class UserIdAwareEvent
- *
  */
 abstract class UserIdAwareEvent implements Serializable
 {

@@ -25,7 +25,6 @@ use IdentityAccess\Infrastructure\Identity\Query\User;
 
 /**
  * Class OrmUserReadModelRepository
- *
  */
 class OrmUserReadModelRepository extends OrmRepository implements CheckUserByEmailInterface
 {

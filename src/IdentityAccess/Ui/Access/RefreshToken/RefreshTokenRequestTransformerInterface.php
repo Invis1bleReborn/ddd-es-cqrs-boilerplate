@@ -20,7 +20,6 @@ use IdentityAccess\Ui\Access\AuthenticationExceptionInterface;
 
 /**
  * Class RefreshTokenRequestTransformer
- *
  */
 interface RefreshTokenRequestTransformerInterface
 {

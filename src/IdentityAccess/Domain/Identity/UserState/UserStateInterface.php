@@ -19,7 +19,6 @@ use IdentityAccess\Domain\Identity\ValueObject\UserId;
 
 /**
  * Interface UserStateInterface
- *
  */
 interface UserStateInterface
 {

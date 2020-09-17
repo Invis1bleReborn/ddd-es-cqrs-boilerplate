@@ -20,7 +20,6 @@ use IdentityAccess\Ui\Access\AccessDeniedException;
 
 /**
  * Interface RegisterUserRequestTransformerInterface
- *
  */
 interface RegisterUserRequestTransformerInterface
 {

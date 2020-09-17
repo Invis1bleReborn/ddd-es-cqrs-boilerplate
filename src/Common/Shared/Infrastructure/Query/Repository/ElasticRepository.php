@@ -20,7 +20,6 @@ use Psr\Log\LoggerInterface;
 
 /**
  * Class ElasticRepository
- *
  */
 abstract class ElasticRepository
 {

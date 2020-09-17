@@ -21,7 +21,6 @@ use Symfony\Component\Messenger\MessageBusInterface;
 
 /**
  * Class EventBus
- *
  */
 final class EventBus implements EventBusInterface
 {

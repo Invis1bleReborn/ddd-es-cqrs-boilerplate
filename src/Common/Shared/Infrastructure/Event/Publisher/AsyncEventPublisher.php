@@ -23,7 +23,6 @@ use Symfony\Component\HttpKernel\KernelEvents;
 
 /**
  * Class AsyncEventPublisher
- *
  */
 class AsyncEventPublisher implements EventPublisherInterface, EventSubscriberInterface, EventListener
 {

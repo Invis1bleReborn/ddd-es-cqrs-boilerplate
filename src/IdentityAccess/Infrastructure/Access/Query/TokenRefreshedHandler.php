@@ -19,7 +19,6 @@ use IdentityAccess\Application\Event\Access\TokenRefreshed;
 
 /**
  * Class TokenRefreshedHandler
- *
  */
 class TokenRefreshedHandler implements EventHandlerInterface
 {

@@ -19,7 +19,6 @@ use IdentityAccess\Domain\Identity\ValueObject\UserId;
 
 /**
  * Class UserIdAwareCommand
- *
  */
 abstract class UserIdAwareCommand implements CommandInterface
 {

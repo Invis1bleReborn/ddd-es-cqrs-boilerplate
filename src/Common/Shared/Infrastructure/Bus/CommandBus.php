@@ -21,7 +21,6 @@ use Symfony\Component\Messenger\MessageBusInterface;
 
 /**
  * Class CommandBus
- *
  */
 final class CommandBus implements CommandBusInterface
 {

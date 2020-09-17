@@ -20,7 +20,6 @@ use IdentityAccess\Domain\Identity\ValueObject\UserId;
 
 /**
  * Class Uninitialized
- *
  */
 class Uninitialized extends AbstractState
 {

@@ -28,7 +28,6 @@ use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
 
 /**
  * Class RegisterUserCommand
- *
  */
 class RegisterUserCommand extends Command
 {

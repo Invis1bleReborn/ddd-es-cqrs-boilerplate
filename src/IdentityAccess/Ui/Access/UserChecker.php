@@ -18,7 +18,6 @@ use IdentityAccess\Infrastructure\Access\Security\AccountDisabledException;
 
 /**
  * Class UserChecker
- *
  */
 class UserChecker implements UserCheckerInterface
 {

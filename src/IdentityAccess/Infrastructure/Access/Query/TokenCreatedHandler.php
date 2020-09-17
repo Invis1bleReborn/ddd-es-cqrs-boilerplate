@@ -19,7 +19,6 @@ use IdentityAccess\Application\Event\Access\TokenCreated;
  
 /**
  * Class TokenCreatedHandler
- *
  */
 class TokenCreatedHandler implements EventHandlerInterface
 {

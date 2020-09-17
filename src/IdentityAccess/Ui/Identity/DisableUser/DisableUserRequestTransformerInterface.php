@@ -22,7 +22,6 @@ use IdentityAccess\Ui\Identity\ChangeUserStatus\ChangeUserStatusRequest;
 
 /**
  * Class DisableUserRequestTransformer
- *
  */
 interface DisableUserRequestTransformerInterface
 {

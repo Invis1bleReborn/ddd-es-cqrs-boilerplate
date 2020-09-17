@@ -19,7 +19,6 @@ use Broadway\Domain\DomainMessage;
 
 /**
  * Class EventElasticRepository
- *
  */
 class EventElasticRepository extends ElasticRepository implements EventRepositoryInterface
 {

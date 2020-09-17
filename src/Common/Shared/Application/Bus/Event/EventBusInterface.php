@@ -15,7 +15,6 @@ namespace Common\Shared\Application\Bus\Event;
 
 /**
  * Interface EventBusInterface
- *
  */
 interface EventBusInterface
 {

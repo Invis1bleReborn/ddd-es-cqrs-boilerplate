@@ -15,7 +15,6 @@ namespace IdentityAccess\Ui\Identity\EnableUser;
 
 /**
  * Class EnableUserRequestTransformerDecorator
- *
  */
 abstract class EnableUserRequestTransformerDecorator implements EnableUserRequestTransformerInterface
 {

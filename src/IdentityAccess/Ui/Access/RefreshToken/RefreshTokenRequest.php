@@ -18,7 +18,6 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Class RefreshTokenRequest
- *
  */
 final class RefreshTokenRequest implements RequestInterface
 {

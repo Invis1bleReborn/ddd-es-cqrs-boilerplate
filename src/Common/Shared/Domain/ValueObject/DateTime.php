@@ -17,7 +17,6 @@ use Common\Shared\Domain\Exception\DateTimeException;
 
 /**
  * Class DateTime
- *
  */
 class DateTime
 {

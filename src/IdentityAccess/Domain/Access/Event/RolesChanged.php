@@ -23,7 +23,6 @@ use IdentityAccess\Domain\Identity\ValueObject\UserId;
 
 /**
  * Class RolesChanged
- *
  */
 final class RolesChanged extends UserIdAwareEvent
 {

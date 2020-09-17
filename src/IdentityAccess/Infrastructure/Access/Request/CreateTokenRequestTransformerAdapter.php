@@ -21,7 +21,6 @@ use IdentityAccess\Ui\Access\CreateToken\CreateTokenRequestTransformerInterface;
 
 /**
  * Class CreateTokenRequestTransformerAdapter
- *
  */
 class CreateTokenRequestTransformerAdapter implements DataTransformerInterface
 {

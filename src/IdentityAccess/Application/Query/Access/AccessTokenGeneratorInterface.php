@@ -18,7 +18,6 @@ use IdentityAccess\Domain\Access\ValueObject\AccessToken;
 
 /**
  * Interface AccessTokenGeneratorInterface
- *
  */
 interface AccessTokenGeneratorInterface
 {

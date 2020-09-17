@@ -18,7 +18,6 @@ use IdentityAccess\Ui\Access\GuardInterface;
 
 /**
  * Class RegisterUserGuard
- *
  */
 class RegisterUserGuard implements GuardInterface
 {

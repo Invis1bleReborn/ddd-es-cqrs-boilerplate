@@ -20,7 +20,6 @@ use IdentityAccess\Domain\Access\ValueObject\Roles;
 
 /**
  * Class RoleHierarchyAwareGuard
- *
  */
 abstract class RoleHierarchyAwareGuard implements GuardInterface
 {

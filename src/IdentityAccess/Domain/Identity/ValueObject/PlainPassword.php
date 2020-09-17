@@ -18,7 +18,6 @@ use Assert\AssertionFailedException;
 
 /**
  * Class PlainPassword
- *
  */
 final class PlainPassword
 {

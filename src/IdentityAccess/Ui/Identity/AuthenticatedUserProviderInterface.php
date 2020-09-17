@@ -17,7 +17,6 @@ use IdentityAccess\Application\Query\Identity\UserInterface;
 
 /**
  * Interface AuthenticatedUserProviderInterface
- *
  */
 interface AuthenticatedUserProviderInterface
 {
