@@ -72,11 +72,11 @@ class Kernel extends BaseKernel
 
     protected function configureRoutes(RoutingConfigurator $routes): void
     {
-        $confDir = $this->getProjectDir().'/config';
+        $confDir = $this->getProjectDir() . '/config';
 
-        $routes->import($confDir.'/{routes}/'.$this->environment.'/*'.self::CONFIG_EXTS);
-        $routes->import($confDir.'/{routes}/*'.self::CONFIG_EXTS);
-        $routes->import($confDir.'/{routes}'.self::CONFIG_EXTS);
+        $routes->import($confDir . '/{routes}/' . $this->environment . '/*' . self::CONFIG_EXTS);
+        $routes->import($confDir . '/{routes}/*' . self::CONFIG_EXTS);
+        $routes->import($confDir . '/{routes}' . self::CONFIG_EXTS);
     }
 
     protected function build(ContainerBuilder $container)
