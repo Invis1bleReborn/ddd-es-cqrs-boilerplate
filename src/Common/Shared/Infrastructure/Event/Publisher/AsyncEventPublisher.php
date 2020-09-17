@@ -13,10 +13,10 @@ declare(strict_types=1);
 
 namespace Common\Shared\Infrastructure\Event\Publisher;
 
-use Common\Shared\Application\Bus\Event\Event;
-use Common\Shared\Application\Bus\Event\EventBusInterface;
 use Broadway\Domain\DomainMessage;
 use Broadway\EventHandling\EventListener;
+use Common\Shared\Application\Bus\Event\Event;
+use Common\Shared\Application\Bus\Event\EventBusInterface;
 use Symfony\Component\Console\ConsoleEvents;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpKernel\KernelEvents;

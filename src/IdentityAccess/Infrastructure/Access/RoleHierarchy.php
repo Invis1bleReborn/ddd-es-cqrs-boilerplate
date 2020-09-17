@@ -13,9 +13,9 @@ declare(strict_types=1);
 
 namespace IdentityAccess\Infrastructure\Access;
 
+use IdentityAccess\Domain\Access\RoleHierarchyInterface;
 use IdentityAccess\Domain\Access\ValueObject\Role;
 use IdentityAccess\Domain\Access\ValueObject\Roles;
-use IdentityAccess\Domain\Access\RoleHierarchyInterface;
 
 /**
  * Class RolesHierarchy.

@@ -15,8 +15,8 @@ namespace IdentityAccess\Infrastructure\Access\View;
 
 use ApiPlatform\Core\DataTransformer\DataTransformerInterface;
 use IdentityAccess\Application\Query\Access\TokenInterface;
-use IdentityAccess\Ui\Access\TokenView;
 use IdentityAccess\Ui\Access\TokenTransformer;
+use IdentityAccess\Ui\Access\TokenView;
 
 /**
  * Class TokenTransformerAdapter.

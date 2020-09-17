@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace IdentityAccess\Infrastructure\Access\Security;
 
-use IdentityAccess\Ui\Access\UserChecker;
 use IdentityAccess\Ui\Access\AccountStatusExceptionInterface;
+use IdentityAccess\Ui\Access\UserChecker;
 use Symfony\Component\Security\Core\User\UserCheckerInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 

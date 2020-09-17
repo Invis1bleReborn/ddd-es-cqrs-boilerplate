@@ -15,8 +15,8 @@ namespace IdentityAccess\Infrastructure\Identity\View;
 
 use ApiPlatform\Core\DataTransformer\DataTransformerInterface;
 use IdentityAccess\Application\Query\Identity\UserInterface;
-use IdentityAccess\Ui\Identity\UserView;
 use IdentityAccess\Ui\Identity\UserTransformer;
+use IdentityAccess\Ui\Identity\UserView;
 
 /**
  * Class UserTransformerAdapter.

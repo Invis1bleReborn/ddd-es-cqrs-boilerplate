@@ -13,9 +13,9 @@ declare(strict_types=1);
 
 namespace Common\Shared\Infrastructure\Event\Query;
 
+use Broadway\Domain\DomainMessage;
 use Common\Shared\Domain\Repository\EventRepositoryInterface;
 use Common\Shared\Infrastructure\Query\Repository\ElasticRepository;
-use Broadway\Domain\DomainMessage;
 
 /**
  * Class EventElasticRepository.
