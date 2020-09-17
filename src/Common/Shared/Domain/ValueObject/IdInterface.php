@@ -18,8 +18,5 @@ namespace Common\Shared\Domain\ValueObject;
  */
 interface IdInterface
 {
-    /**
-     * @return string
-     */
     public function __toString(): string;
 }

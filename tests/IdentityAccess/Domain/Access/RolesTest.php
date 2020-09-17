@@ -109,8 +109,6 @@ class RolesTest extends TestCase
     /**
      * @test
      * @dataProvider containsRoleDataProvider
-     *
-     * @param string $role
      */
     public function itContainsPreviouslyAddedRole(string $role): void
     {
@@ -132,7 +130,6 @@ class RolesTest extends TestCase
      * @dataProvider doesNotContainRoleDataProvider
      *
      * @param string[] $roles
-     * @param string   $role
      */
     public function itDoesNotContainPreviouslyNotAddedRole(array $roles, string $role): void
     {

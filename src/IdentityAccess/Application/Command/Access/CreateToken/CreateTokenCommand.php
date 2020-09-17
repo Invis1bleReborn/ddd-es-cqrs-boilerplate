@@ -30,8 +30,6 @@ class CreateTokenCommand implements CommandInterface
     /**
      * CreateTokenCommand constructor.
      *
-     * @param UserInterface $user
-     * @param string        $plainPassword
      *
      * @throws AssertionFailedException
      */

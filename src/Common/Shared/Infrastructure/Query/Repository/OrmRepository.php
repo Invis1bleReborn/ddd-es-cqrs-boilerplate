@@ -54,8 +54,6 @@ abstract class OrmRepository
     }
 
     /**
-     * @param QueryBuilder $queryBuilder
-     *
      * @return mixed
      * @throws NonUniqueResultException
      * @throws NotFoundException

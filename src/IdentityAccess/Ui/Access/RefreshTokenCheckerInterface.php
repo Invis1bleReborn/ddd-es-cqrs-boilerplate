@@ -21,8 +21,6 @@ use IdentityAccess\Application\Query\Access\RefreshTokenInterface;
 interface RefreshTokenCheckerInterface
 {
     /**
-     * @param RefreshTokenInterface|null $refreshToken
-     *
      * @throws AuthenticationExceptionInterface
      */
     public function __invoke(?RefreshTokenInterface $refreshToken): void;

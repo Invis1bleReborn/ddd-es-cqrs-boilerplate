@@ -19,8 +19,6 @@ namespace Common\Shared\Application\Bus\Event;
 interface EventBusInterface
 {
     /**
-     * @param EventInterface $event
-     *
      * @throws \Throwable
      */
     public function handle(EventInterface $event): void;

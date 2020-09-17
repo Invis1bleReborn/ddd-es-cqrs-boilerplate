@@ -24,8 +24,6 @@ class RoleTest extends TestCase
     /**
      * @test
      * @dataProvider invalidRoleProvider
-     *
-     * @param string $role
      */
     public function itThrowsExceptionOnInvalidRole(string $role): void
     {

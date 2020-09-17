@@ -29,9 +29,6 @@ final class HashedPassword
     }
 
     /**
-     * @param string $value
-     *
-     * @return self
      * @throws AssertionFailedException
      */
     public static function fromString(string $value): self

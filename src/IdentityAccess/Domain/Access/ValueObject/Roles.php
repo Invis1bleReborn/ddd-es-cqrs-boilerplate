@@ -30,8 +30,6 @@ final class Roles
 
     /**
      * @param string[] $roles
-     *
-     * @return self
      */
     public static function fromArray(array $roles): self
     {

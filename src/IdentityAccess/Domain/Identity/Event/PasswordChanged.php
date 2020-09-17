@@ -61,9 +61,6 @@ final class PasswordChanged extends UserIdAwareEvent
     }
 
     /**
-     * @param array $data
-     *
-     * @return self
      * @throws AssertionFailedException
      * @throws DateTimeException
      */

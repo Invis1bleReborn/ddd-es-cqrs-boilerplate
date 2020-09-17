@@ -21,8 +21,6 @@ use IdentityAccess\Application\Query\Identity\UserInterface;
 interface UserCheckerInterface
 {
     /**
-     * @param UserInterface $user
-     *
      * @throws AccountStatusExceptionInterface
      */
     public function __invoke(UserInterface $user): void;

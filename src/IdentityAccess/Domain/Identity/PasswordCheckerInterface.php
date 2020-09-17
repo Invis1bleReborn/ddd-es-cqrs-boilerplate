@@ -22,10 +22,6 @@ use IdentityAccess\Domain\Identity\ValueObject\PlainPassword;
 interface PasswordCheckerInterface
 {
     /**
-     * @param HashedPassword $hashedPassword
-     * @param PlainPassword  $plainPassword
-     * @param string|null    $salt
-     *
      * @throws \RuntimeException
      */
     public function check(HashedPassword $hashedPassword, PlainPassword $plainPassword, ?string $salt): void;

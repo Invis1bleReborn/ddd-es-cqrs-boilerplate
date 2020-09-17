@@ -43,8 +43,6 @@ final class TokenCreated extends RefreshTokenAwareEvent
 
     /**
      * {@inheritdoc}
-     *
-     * @return self
      */
     public static function deserialize(array $data): self
     {

@@ -45,9 +45,6 @@ class PasswordManager implements PasswordEncoderInterface, PasswordCheckerInterf
     }
 
     /**
-     * @param PlainPassword $plainPassword
-     *
-     * @return HashedPassword
      * @throws AssertionFailedException
      */
     public function encode(PlainPassword $plainPassword): HashedPassword

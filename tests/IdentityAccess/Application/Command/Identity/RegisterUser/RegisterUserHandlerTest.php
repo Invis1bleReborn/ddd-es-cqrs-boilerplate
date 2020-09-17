@@ -45,8 +45,6 @@ class RegisterUserHandlerTest extends UuidGeneratorAwareCommandHandlerScenarioTe
 
     /**
      * @test
-     *
-     * @return UserRegistered
      */
     public function itCanRegisterUser(): UserRegistered
     {

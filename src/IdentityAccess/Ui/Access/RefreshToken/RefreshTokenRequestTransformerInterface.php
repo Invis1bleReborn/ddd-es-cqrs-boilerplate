@@ -24,9 +24,6 @@ use IdentityAccess\Ui\Access\AuthenticationExceptionInterface;
 interface RefreshTokenRequestTransformerInterface
 {
     /**
-     * @param RefreshTokenRequest $request
-     *
-     * @return RefreshTokenCommand
      * @throws ValidationException
      * @throws AuthenticationExceptionInterface
      * @throws AssertionFailedException

@@ -50,8 +50,6 @@ abstract class RefreshTokenAwareEvent implements EventInterface, Serializable
     }
 
     /**
-     * @param array $data
-     *
      * @return $this
      * @throws AssertionFailedException
      * @throws DateTimeException

@@ -21,8 +21,6 @@ use Symfony\Component\Messenger\Exception\HandlerFailedException;
 trait MessageBusExceptionTrait
 {
     /**
-     * @param HandlerFailedException $exception
-     *
      * @throws \Throwable
      */
     public function throwException(HandlerFailedException $exception): void

@@ -24,9 +24,6 @@ use IdentityAccess\Ui\Access\AccessDeniedException;
 interface RegisterUserRequestTransformerInterface
 {
     /**
-     * @param RegisterUserRequest $request
-     *
-     * @return RegisterUserCommand
      * @throws AccessDeniedException
      * @throws ValidationException
      * @throws AssertionFailedException

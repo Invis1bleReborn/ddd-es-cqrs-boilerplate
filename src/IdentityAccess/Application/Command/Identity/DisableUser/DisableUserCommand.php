@@ -30,7 +30,6 @@ class DisableUserCommand extends UserIdAwareCommand implements ChangeUserStatusC
      *
      * {@inheritdoc}
      *
-     * @param string $disabledById
      *
      * @throws AssertionFailedException
      */

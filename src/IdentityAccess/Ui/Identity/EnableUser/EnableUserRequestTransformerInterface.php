@@ -26,10 +26,6 @@ use IdentityAccess\Ui\Identity\ChangeUserStatus\ChangeUserStatusRequest;
 interface EnableUserRequestTransformerInterface
 {
     /**
-     * @param ChangeUserStatusRequest $request
-     * @param UserInterface           $user
-     *
-     * @return EnableUserCommand
      * @throws AccessDeniedException
      * @throws ValidationException
      * @throws AssertionFailedException

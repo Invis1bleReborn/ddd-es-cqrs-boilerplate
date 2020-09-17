@@ -30,8 +30,6 @@ abstract class AbstractId implements IdInterface
     }
 
     /**
-     * @param string $value
-     *
      * @return static
      * @throws AssertionFailedException
      */
@@ -61,11 +59,6 @@ abstract class AbstractId implements IdInterface
             ->getBytes();
     }
 
-    /**
-     * @param IdInterface $id
-     *
-     * @return bool
-     */
     public function equals(IdInterface $id): bool
     {
         return $this->value === (string)$id && get_class($this) === get_class($id);

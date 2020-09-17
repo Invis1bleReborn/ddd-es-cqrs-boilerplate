@@ -34,8 +34,6 @@ class UserTest extends UuidGeneratorAwareAggregateRootScenarioTestCase
 {
     /**
      * @test
-     *
-     * @return UserRegistered
      */
     public function itCanBeRegistered(): UserRegistered
     {
@@ -98,9 +96,6 @@ class UserTest extends UuidGeneratorAwareAggregateRootScenarioTestCase
      * @test
      * @depends itCanBeRegistered
      *
-     * @param UserRegistered $userRegistered
-     *
-     * @return UserDisabled
      */
     public function enabledUserCanBeDisabled(UserRegistered $userRegistered): UserDisabled
     {
@@ -136,10 +131,6 @@ class UserTest extends UuidGeneratorAwareAggregateRootScenarioTestCase
      * @depends itCanBeRegistered
      * @depends enabledUserCanBeDisabled
      *
-     * @param UserRegistered $userRegistered
-     * @param UserDisabled   $userDisabled
-     *
-     * @return UserEnabled
      */
     public function disabledUserCanBeEnabled(
         UserRegistered $userRegistered,
@@ -175,8 +166,6 @@ class UserTest extends UuidGeneratorAwareAggregateRootScenarioTestCase
     }
 
     /**
-     * @param bool $isUnique
-     *
      * @return UniqueEmailSpecificationInterface|Stub
      */
     protected function createUniqueEmailSpecificationStub(bool $isUnique): UniqueEmailSpecificationInterface

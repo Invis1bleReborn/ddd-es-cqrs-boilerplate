@@ -35,9 +35,6 @@ class DateTime
     }
 
     /**
-     * @param string $dateTime
-     *
-     * @return self
      * @throws DateTimeException
      */
     public static function fromString(string $dateTime): self
@@ -46,9 +43,6 @@ class DateTime
     }
 
     /**
-     * @param \DateTimeInterface $dateTime
-     *
-     * @return self
      * @throws DateTimeException
      */
     public static function fromNative(\DateTimeInterface $dateTime): self
@@ -89,9 +83,6 @@ class DateTime
     }
 
     /**
-     * @param string|null $value
-     *
-     * @return self
      * @throws DateTimeException
      */
     private static function create(string $value = null): self

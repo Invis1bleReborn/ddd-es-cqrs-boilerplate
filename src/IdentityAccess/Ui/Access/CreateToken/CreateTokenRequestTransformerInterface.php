@@ -23,9 +23,6 @@ use IdentityAccess\Application\Command\Access\CreateToken\CreateTokenCommand;
 interface CreateTokenRequestTransformerInterface
 {
     /**
-     * @param CreateTokenRequest $request
-     *
-     * @return CreateTokenCommand
      * @throws ValidationException
      * @throws \IdentityAccess\Ui\Access\AccountStatusExceptionInterface
      * @throws AssertionFailedException

@@ -25,9 +25,6 @@ use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
  */
 class DateTimeNormalizer implements NormalizerInterface, DenormalizerInterface, CacheableSupportsMethodInterface
 {
-    /**
-     * @var NativeDateTimeNormalizer
-     */
     private NativeDateTimeNormalizer $nativeDateTimeNormalizer;
 
     public function __construct(NativeDateTimeNormalizer $nativeDateTimeNormalizer)

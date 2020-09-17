@@ -29,9 +29,6 @@ abstract class ValidatorAwareRequestTransformer
     }
 
     /**
-     * @param RequestInterface $request
-     * @param array            $context
-     *
      * @throws ValidationException
      */
     protected function validate(RequestInterface $request, array $context = []): void

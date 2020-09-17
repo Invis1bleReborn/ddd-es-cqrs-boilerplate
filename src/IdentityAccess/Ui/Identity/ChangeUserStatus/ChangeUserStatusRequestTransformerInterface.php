@@ -25,10 +25,6 @@ use IdentityAccess\Ui\Access\AccessDeniedException;
 interface ChangeUserStatusRequestTransformerInterface
 {
     /**
-     * @param ChangeUserStatusRequest $request
-     * @param UserInterface           $user
-     *
-     * @return ChangeUserStatusCommandInterface
      * @throws AccessDeniedException
      * @throws ValidationException
      * @throws AssertionFailedException

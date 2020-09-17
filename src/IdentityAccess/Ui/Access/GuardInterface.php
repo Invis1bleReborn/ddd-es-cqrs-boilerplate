@@ -21,10 +21,6 @@ use IdentityAccess\Application\Query\Identity\UserInterface;
 interface GuardInterface
 {
     /**
-     * @param UserInterface $user
-     * @param object|null   $subject
-     *
-     * @return bool
      * @throws \InvalidArgumentException
      */
     public function isGranted(UserInterface $user, object $subject = null): bool;

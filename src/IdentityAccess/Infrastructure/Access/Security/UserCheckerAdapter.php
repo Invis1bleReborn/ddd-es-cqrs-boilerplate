@@ -31,8 +31,6 @@ class UserCheckerAdapter implements UserCheckerInterface
     }
 
     /**
-     * @param UserInterface $user
-     *
      * @throws AccountStatusExceptionInterface
      * @throws \UnexpectedValueException
      */

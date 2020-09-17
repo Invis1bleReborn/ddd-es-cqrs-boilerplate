@@ -50,17 +50,6 @@ final class User extends EventSourcedAggregateRoot
 
     private function __construct() {}
 
-    /**
-     * @param UserId                            $id
-     * @param Email                             $email
-     * @param HashedPassword                    $hashedPassword
-     * @param Roles                             $roles
-     * @param bool                              $enabled
-     * @param UserId|null                       $registeredBy
-     * @param UniqueEmailSpecificationInterface $uniqueEmailSpecification
-     *
-     * @return self
-     */
     public static function register(
         UserId $id,
         Email $email,
@@ -89,11 +78,6 @@ final class User extends EventSourcedAggregateRoot
     }
 
     /**
-     * @param Email                             $email
-     * @param UserId|null                       $changedBy
-     * @param DateTime                          $dateChanged
-     * @param UniqueEmailSpecificationInterface $uniqueEmailSpecification
-     *
      * @throws EmailAlreadyExistsException
      */
     public function changeEmail(
@@ -118,11 +102,6 @@ final class User extends EventSourcedAggregateRoot
         ));
     }
 
-    /**
-     * @param HashedPassword $hashedPassword
-     * @param UserId|null    $changedBy
-     * @param DateTime       $dateChanged
-     */
     public function changePassword(
         HashedPassword $hashedPassword,
         ?UserId $changedBy,
@@ -141,11 +120,6 @@ final class User extends EventSourcedAggregateRoot
         ));
     }
 
-    /**
-     * @param Roles       $roles
-     * @param UserId|null $changedBy
-     * @param DateTime    $dateChanged
-     */
     public function changeRoles(
         Roles $roles,
         ?UserId $changedBy,
@@ -165,17 +139,11 @@ final class User extends EventSourcedAggregateRoot
         ));
     }
 
-    /**
-     * @param UserId|null $disabledBy
-     */
     public function disable(?UserId $disabledBy): void
     {
         $this->state->setDisabled($disabledBy, DateTime::now());
     }
 
-    /**
-     * @param UserId|null $enabledBy
-     */
     public function enable(?UserId $enabledBy): void
     {
         $this->state->setEnabled($enabledBy, DateTime::now());
@@ -200,9 +168,6 @@ final class User extends EventSourcedAggregateRoot
     }
 
     /**
-     * @param Email                             $email
-     * @param UniqueEmailSpecificationInterface $uniqueEmailSpecification
-     *
      * @throws EmailAlreadyExistsException
      */
     public function assertUniqueEmail(

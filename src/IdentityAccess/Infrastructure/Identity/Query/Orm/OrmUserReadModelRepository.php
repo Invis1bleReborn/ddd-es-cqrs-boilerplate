@@ -39,9 +39,6 @@ class OrmUserReadModelRepository extends OrmRepository implements CheckUserByEma
     }
 
     /**
-     * @param UserId $id
-     *
-     * @return User
      * @throws NonUniqueResultException
      * @throws NotFoundException
      */

@@ -30,8 +30,6 @@ class RefreshTokenCommand implements CommandInterface
     /**
      * RefreshTokenCommand constructor.
      *
-     * @param UserInterface $user
-     * @param string        $refreshToken
      *
      * @throws AssertionFailedException
      */
