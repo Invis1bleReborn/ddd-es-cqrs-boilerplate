@@ -78,4 +78,3 @@ class DateTimeType extends DateTimeImmutableType
         return $dateTime;
     }
 }
-
