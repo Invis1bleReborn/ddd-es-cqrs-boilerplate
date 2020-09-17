@@ -1,14 +1,33 @@
 <?php
 
 $finder = PhpCsFixer\Finder::create()
-    ->in(__DIR__)
-    ->exclude('var')
+    ->in(['src', 'tests'])
+    ->notName('bootstrap.php')
 ;
 
 return PhpCsFixer\Config::create()
     ->setRules([
         '@Symfony' => true,
         'array_syntax' => ['syntax' => 'short'],
+        'single_line_throw' => false,
+        'concat_space' => [
+            'spacing' => 'one',
+        ],
+        'cast_spaces' => [
+            'space' => 'none',
+        ],
+        'class_definition' => false,
+        'header_comment' => [
+            'location' => 'after_open',
+            'header' => <<<'LICENSE'
+This file is part of invis1ble/ddd-es-cqrs-boilerplate.
+
+(c) Invis1ble <opensource.invis1ble@gmail.com>
+
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.
+LICENSE,
+        ],
     ])
     ->setFinder($finder)
 ;

@@ -1,21 +1,28 @@
 <?php
 
+/*
+ * This file is part of invis1ble/ddd-es-cqrs-boilerplate.
+ *
+ * (c) Invis1ble <opensource.invis1ble@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 declare(strict_types=1);
 
 namespace Common\Shared\Infrastructure\Event\Publisher;
 
-use Common\Shared\Application\Bus\Event\Event;
-use Common\Shared\Application\Bus\Event\EventBusInterface;
 use Broadway\Domain\DomainMessage;
 use Broadway\EventHandling\EventListener;
+use Common\Shared\Application\Bus\Event\Event;
+use Common\Shared\Application\Bus\Event\EventBusInterface;
 use Symfony\Component\Console\ConsoleEvents;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpKernel\KernelEvents;
 
 /**
- * Class AsyncEventPublisher
- *
- * @package Common\Shared\Infrastructure\Event\Publisher
+ * Class AsyncEventPublisher.
  */
 class AsyncEventPublisher implements EventPublisherInterface, EventSubscriberInterface, EventListener
 {
@@ -57,5 +64,4 @@ class AsyncEventPublisher implements EventPublisherInterface, EventSubscriberInt
             $this->bus->handle(new Event($event));
         }
     }
-
 }

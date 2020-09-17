@@ -1,13 +1,20 @@
 <?php
 
+/*
+ * This file is part of invis1ble/ddd-es-cqrs-boilerplate.
+ *
+ * (c) Invis1ble <opensource.invis1ble@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 declare(strict_types=1);
 
 namespace IdentityAccess\Domain\Access\ValueObject;
 
 /**
- * Class Roles
- *
- * @package IdentityAccess\Domain\Access\ValueObject
+ * Class Roles.
  */
 final class Roles
 {
@@ -23,8 +30,6 @@ final class Roles
 
     /**
      * @param string[] $roles
-     *
-     * @return self
      */
     public static function fromArray(array $roles): self
     {
@@ -42,7 +47,7 @@ final class Roles
      */
     public function toArray(): array
     {
-        return array_map(fn(Role $role) => $role->getValue(), $this->values);
+        return array_map(fn (Role $role) => $role->getValue(), $this->values);
     }
 
     public function equals(self $roles): bool
@@ -60,13 +65,12 @@ final class Roles
 
     public function contains(Role $role): bool
     {
-        foreach ($this->values as $role_) {
-            if ($role_->equals($role)) {
+        foreach ($this->values as $existingRole) {
+            if ($existingRole->equals($role)) {
                 return true;
             }
         }
 
         return false;
     }
-
 }

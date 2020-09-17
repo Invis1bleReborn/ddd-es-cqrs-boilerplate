@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of invis1ble/ddd-es-cqrs-boilerplate.
+ *
+ * (c) Invis1ble <opensource.invis1ble@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 declare(strict_types=1);
 
 namespace IdentityAccess\Application\Event\Access;
@@ -10,9 +19,7 @@ use IdentityAccess\Domain\Access\ValueObject\RefreshToken;
 use IdentityAccess\Domain\Identity\ValueObject\Username;
 
 /**
- * Class TokenCreated
- *
- * @package IdentityAccess\Application\Event\Access
+ * Class TokenCreated.
  */
 final class TokenCreated extends RefreshTokenAwareEvent
 {
@@ -22,8 +29,7 @@ final class TokenCreated extends RefreshTokenAwareEvent
         RefreshToken $refreshToken,
         Username $username,
         DateTime $refreshTokenDateExpired
-    )
-    {
+    ) {
         parent::__construct($refreshToken, $refreshTokenDateExpired);
 
         $this->username = $username;
@@ -36,8 +42,6 @@ final class TokenCreated extends RefreshTokenAwareEvent
 
     /**
      * {@inheritdoc}
-     *
-     * @return self
      */
     public static function deserialize(array $data): self
     {
@@ -58,5 +62,4 @@ final class TokenCreated extends RefreshTokenAwareEvent
             'username' => $this->username->toString(),
         ];
     }
-
 }

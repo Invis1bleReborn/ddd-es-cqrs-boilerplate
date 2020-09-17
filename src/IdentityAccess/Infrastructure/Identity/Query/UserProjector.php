@@ -1,10 +1,21 @@
 <?php
 
+/*
+ * This file is part of invis1ble/ddd-es-cqrs-boilerplate.
+ *
+ * (c) Invis1ble <opensource.invis1ble@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 declare(strict_types=1);
 
 namespace IdentityAccess\Infrastructure\Identity\Query;
 
 use Broadway\ReadModel\Projector;
+use Common\Shared\Domain\Query\Exception\NotFoundException;
+use Doctrine\ORM\NonUniqueResultException;
 use IdentityAccess\Domain\Identity\Event\UserDisabled;
 use IdentityAccess\Domain\Identity\Event\UserEnabled;
 use IdentityAccess\Domain\Identity\Event\UserRegistered;
@@ -12,9 +23,7 @@ use IdentityAccess\Domain\Identity\ValueObject\UserId;
 use IdentityAccess\Infrastructure\Identity\Query\Orm\OrmUserReadModelRepository;
 
 /**
- * Class UserProjector
- *
- * @package IdentityAccess\Infrastructure\Identity\Query
+ * Class UserProjector.
  */
 class UserProjector extends Projector
 {
@@ -40,6 +49,10 @@ class UserProjector extends Projector
         $this->saveUser($user);
     }
 
+    /**
+     * @throws NotFoundException
+     * @throws NonUniqueResultException
+     */
     protected function applyUserEnabled(UserEnabled $event): void
     {
         $user = $this->getUser($event->id());
@@ -49,6 +62,10 @@ class UserProjector extends Projector
         $this->saveUser($user);
     }
 
+    /**
+     * @throws NotFoundException
+     * @throws NonUniqueResultException
+     */
     protected function applyUserDisabled(UserDisabled $event): void
     {
         $user = $this->getUser($event->id());
@@ -58,6 +75,10 @@ class UserProjector extends Projector
         $this->saveUser($user);
     }
 
+    /**
+     * @throws NotFoundException
+     * @throws NonUniqueResultException
+     */
     protected function getUser(UserId $userId): User
     {
         return $this->repository->oneById($userId);
@@ -67,5 +88,4 @@ class UserProjector extends Projector
     {
         $this->repository->add($user);
     }
-
 }

@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of invis1ble/ddd-es-cqrs-boilerplate.
+ *
+ * (c) Invis1ble <opensource.invis1ble@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 declare(strict_types=1);
 
 namespace IdentityAccess\Infrastructure\Identity\Query\Orm;
@@ -9,32 +18,23 @@ use Common\Shared\Infrastructure\Query\Repository\OrmRepository;
 use Doctrine\ORM\NonUniqueResultException;
 use Doctrine\ORM\NoResultException;
 use Doctrine\ORM\QueryBuilder;
+use IdentityAccess\Domain\Identity\Exception\NonUniqueUserException;
 use IdentityAccess\Domain\Identity\Repository\CheckUserByEmailInterface;
 use IdentityAccess\Domain\Identity\ValueObject\Email;
 use IdentityAccess\Domain\Identity\ValueObject\UserId;
 use IdentityAccess\Infrastructure\Identity\Query\User;
 
 /**
- * Class OrmUserReadModelRepository
- *
- * @package IdentityAccess\Infrastructure\Identity\Query\Orm
+ * Class OrmUserReadModelRepository.
  */
 class OrmUserReadModelRepository extends OrmRepository implements CheckUserByEmailInterface
 {
-    protected function getClass(): string
-    {
-        return User::class;
-    }
-
     public function add(User $user): void
     {
         $this->register($user);
     }
 
     /**
-     * @param UserId $id
-     *
-     * @return User
      * @throws NonUniqueResultException
      * @throws NotFoundException
      */
@@ -49,6 +49,9 @@ class OrmUserReadModelRepository extends OrmRepository implements CheckUserByEma
         return $this->oneOrException($qb);
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function existsEmail(Email $email): ?UserId
     {
         $builder = $this->getUserByEmailQueryBuilder($email);
@@ -59,9 +62,19 @@ class OrmUserReadModelRepository extends OrmRepository implements CheckUserByEma
 
         try {
             return $query->getSingleScalarResult();
-        } catch (NoResultException $exception) {}
+        } catch (NoResultException $exception) {
+            return null;
+        } catch (NonUniqueResultException $exception) {
+            throw new NonUniqueUserException(sprintf(
+                'Non-unique user with email %s exists.',
+                $email->toString()
+            ));
+        }
+    }
 
-        return null;
+    protected function getClass(): string
+    {
+        return User::class;
     }
 
     private function getUserByEmailQueryBuilder(Email $email): QueryBuilder
@@ -74,5 +87,4 @@ class OrmUserReadModelRepository extends OrmRepository implements CheckUserByEma
             ->setParameter('email', $email->toString())
         ;
     }
-
 }

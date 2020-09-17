@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of invis1ble/ddd-es-cqrs-boilerplate.
+ *
+ * (c) Invis1ble <opensource.invis1ble@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 declare(strict_types=1);
 
 namespace IdentityAccess\Domain\Access\Event;
@@ -13,9 +22,7 @@ use IdentityAccess\Domain\Identity\Event\UserIdAwareEvent;
 use IdentityAccess\Domain\Identity\ValueObject\UserId;
 
 /**
- * Class RolesChanged
- *
- * @package IdentityAccess\Domain\Access\Event
+ * Class RolesChanged.
  */
 final class RolesChanged extends UserIdAwareEvent
 {
@@ -33,10 +40,9 @@ final class RolesChanged extends UserIdAwareEvent
         Roles $previousRoles,
         ?UserId $changedBy,
         DateTime $dateChanged
-    )
-    {
+    ) {
         parent::__construct($id);
-        
+
         $this->roles = $roles;
         $this->previousRoles = $previousRoles;
         $this->changedBy = $changedBy;
@@ -64,9 +70,6 @@ final class RolesChanged extends UserIdAwareEvent
     }
 
     /**
-     * @param array $data
-     *
-     * @return self
      * @throws AssertionFailedException
      * @throws DateTimeException
      */
@@ -96,5 +99,4 @@ final class RolesChanged extends UserIdAwareEvent
             'changedBy' => null === $this->changedBy ? null : $this->changedBy->toString(),
         ];
     }
-
 }

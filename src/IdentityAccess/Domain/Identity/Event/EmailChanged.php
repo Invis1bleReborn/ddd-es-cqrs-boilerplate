@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of invis1ble/ddd-es-cqrs-boilerplate.
+ *
+ * (c) Invis1ble <opensource.invis1ble@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 declare(strict_types=1);
 
 namespace IdentityAccess\Domain\Identity\Event;
@@ -12,9 +21,7 @@ use IdentityAccess\Domain\Identity\ValueObject\Email;
 use IdentityAccess\Domain\Identity\ValueObject\UserId;
 
 /**
- * Class EmailChanged
- *
- * @package IdentityAccess\Domain\Identity\Event
+ * Class EmailChanged.
  */
 final class EmailChanged extends UserIdAwareEvent
 {
@@ -32,8 +39,7 @@ final class EmailChanged extends UserIdAwareEvent
         Email $previousEmail,
         ?UserId $changedBy,
         DateTime $dateChanged
-    )
-    {
+    ) {
         parent::__construct($id);
 
         $this->email = $email;
@@ -63,9 +69,6 @@ final class EmailChanged extends UserIdAwareEvent
     }
 
     /**
-     * @param array $data
-     *
-     * @return self
      * @throws AssertionFailedException
      * @throws DateTimeException
      */
@@ -95,5 +98,4 @@ final class EmailChanged extends UserIdAwareEvent
             'changedBy' => null === $this->changedBy ? null : $this->changedBy->toString(),
         ];
     }
-
 }

@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of invis1ble/ddd-es-cqrs-boilerplate.
+ *
+ * (c) Invis1ble <opensource.invis1ble@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 declare(strict_types=1);
 
 namespace IdentityAccess\Infrastructure\Access\Query;
@@ -12,9 +21,7 @@ use IdentityAccess\Application\Query\Access\TokenInterface;
 use IdentityAccess\Application\Query\Identity\UserInterface;
 
 /**
- * Class TokenGenerator
- *
- * @package IdentityAccess\Infrastructure\Access\Query
+ * Class TokenGenerator.
  */
 final class TokenGenerator implements TokenGeneratorInterface
 {
@@ -28,8 +35,7 @@ final class TokenGenerator implements TokenGeneratorInterface
         AccessTokenGeneratorInterface $accessTokenGenerator,
         RefreshTokenManagerInterface $refreshTokenManager,
         int $refreshTokenTtl
-    )
-    {
+    ) {
         $this->accessTokenGenerator = $accessTokenGenerator;
         $this->refreshTokenManager = $refreshTokenManager;
         $this->refreshTokenTtl = $refreshTokenTtl;
@@ -51,5 +57,4 @@ final class TokenGenerator implements TokenGeneratorInterface
             DateTime::fromNative($refreshTokenDateExpired)
         );
     }
-
 }

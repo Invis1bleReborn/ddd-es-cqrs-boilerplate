@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of invis1ble/ddd-es-cqrs-boilerplate.
+ *
+ * (c) Invis1ble <opensource.invis1ble@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 declare(strict_types=1);
 
 namespace IdentityAccess\Domain\Identity;
@@ -21,9 +30,7 @@ use IdentityAccess\Domain\Identity\ValueObject\HashedPassword;
 use IdentityAccess\Domain\Identity\ValueObject\UserId;
 
 /**
- * Class User
- *
- * @package IdentityAccess\Domain\Identity
+ * Class User.
  */
 final class User extends EventSourcedAggregateRoot
 {
@@ -41,19 +48,10 @@ final class User extends EventSourcedAggregateRoot
 
     private ?DateTime $dateRegistered;
 
-    private function __construct() {}
+    private function __construct()
+    {
+    }
 
-    /**
-     * @param UserId                            $id
-     * @param Email                             $email
-     * @param HashedPassword                    $hashedPassword
-     * @param Roles                             $roles
-     * @param bool                              $enabled
-     * @param UserId|null                       $registeredBy
-     * @param UniqueEmailSpecificationInterface $uniqueEmailSpecification
-     *
-     * @return self
-     */
     public static function register(
         UserId $id,
         Email $email,
@@ -62,8 +60,7 @@ final class User extends EventSourcedAggregateRoot
         bool $enabled,
         ?UserId $registeredBy,
         UniqueEmailSpecificationInterface $uniqueEmailSpecification
-    ): self
-    {
+    ): self {
         $user = new self();
 
         $user->assertUniqueEmail($email, $uniqueEmailSpecification);
@@ -82,11 +79,6 @@ final class User extends EventSourcedAggregateRoot
     }
 
     /**
-     * @param Email                             $email
-     * @param UserId|null                       $changedBy
-     * @param DateTime                          $dateChanged
-     * @param UniqueEmailSpecificationInterface $uniqueEmailSpecification
-     *
      * @throws EmailAlreadyExistsException
      */
     public function changeEmail(
@@ -94,8 +86,7 @@ final class User extends EventSourcedAggregateRoot
         ?UserId $changedBy,
         DateTime $dateChanged,
         UniqueEmailSpecificationInterface $uniqueEmailSpecification
-    ): void
-    {
+    ): void {
         if ($this->email->equals($email)) {
             return;
         }
@@ -111,17 +102,11 @@ final class User extends EventSourcedAggregateRoot
         ));
     }
 
-    /**
-     * @param HashedPassword $hashedPassword
-     * @param UserId|null    $changedBy
-     * @param DateTime       $dateChanged
-     */
     public function changePassword(
         HashedPassword $hashedPassword,
         ?UserId $changedBy,
         DateTime $dateChanged
-    ): void
-    {
+    ): void {
         if ($this->hashedPassword->equals($hashedPassword)) {
             return;
         }
@@ -134,17 +119,11 @@ final class User extends EventSourcedAggregateRoot
         ));
     }
 
-    /**
-     * @param Roles       $roles
-     * @param UserId|null $changedBy
-     * @param DateTime    $dateChanged
-     */
     public function changeRoles(
         Roles $roles,
         ?UserId $changedBy,
         DateTime $dateChanged
-    ): void
-    {
+    ): void {
         if ($this->roles->equals($roles)) {
             return;
         }
@@ -158,17 +137,11 @@ final class User extends EventSourcedAggregateRoot
         ));
     }
 
-    /**
-     * @param UserId|null $disabledBy
-     */
     public function disable(?UserId $disabledBy): void
     {
         $this->state->setDisabled($disabledBy, DateTime::now());
     }
 
-    /**
-     * @param UserId|null $enabledBy
-     */
     public function enable(?UserId $enabledBy): void
     {
         $this->state->setEnabled($enabledBy, DateTime::now());
@@ -193,16 +166,12 @@ final class User extends EventSourcedAggregateRoot
     }
 
     /**
-     * @param Email                             $email
-     * @param UniqueEmailSpecificationInterface $uniqueEmailSpecification
-     *
      * @throws EmailAlreadyExistsException
      */
     public function assertUniqueEmail(
         Email $email,
         UniqueEmailSpecificationInterface $uniqueEmailSpecification
-    ): void
-    {
+    ): void {
         $result = $uniqueEmailSpecification->isUnique($email);
 
         if ($result) {
@@ -215,13 +184,6 @@ final class User extends EventSourcedAggregateRoot
     public function getAggregateRootId(): string
     {
         return $this->id->toString();
-    }
-
-    protected function getChildEntities(): array
-    {
-        return [
-            $this->state,
-        ];
     }
 
     public function changeState(UserStateInterface $state): void
@@ -255,4 +217,10 @@ final class User extends EventSourcedAggregateRoot
         $this->roles = $event->roles();
     }
 
+    protected function getChildEntities(): array
+    {
+        return [
+            $this->state,
+        ];
+    }
 }

@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of invis1ble/ddd-es-cqrs-boilerplate.
+ *
+ * (c) Invis1ble <opensource.invis1ble@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 declare(strict_types=1);
 
 namespace IdentityAccess\Infrastructure\Access\Query;
@@ -15,7 +24,7 @@ use IdentityAccess\Ui\Access\TokenView;
 use Symfony\Component\Serializer\Annotation\Ignore;
 
 /**
- * Token
+ * Token.
  *
  * @see http://schema.org/accessCode Documentation on Schema.org
  *
@@ -56,8 +65,7 @@ class Token implements TokenInterface
         string $accessToken,
         string $refreshToken,
         DateTime $refreshTokenDateExpired
-    )
-    {
+    ) {
         $this->accessToken = $accessToken;
         $this->refreshToken = $refreshToken;
         $this->refreshTokenDateExpired = $refreshTokenDateExpired;
@@ -98,5 +106,4 @@ class Token implements TokenInterface
     {
         return md5($this->accessToken);
     }
-
 }

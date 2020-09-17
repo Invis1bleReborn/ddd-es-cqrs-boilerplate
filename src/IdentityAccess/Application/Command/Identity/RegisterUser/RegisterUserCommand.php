@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of invis1ble/ddd-es-cqrs-boilerplate.
+ *
+ * (c) Invis1ble <opensource.invis1ble@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 declare(strict_types=1);
 
 namespace IdentityAccess\Application\Command\Identity\RegisterUser;
@@ -12,9 +21,7 @@ use IdentityAccess\Domain\Identity\ValueObject\PlainPassword;
 use IdentityAccess\Domain\Identity\ValueObject\UserId;
 
 /**
- * Class RegisterUserCommand
- *
- * @package IdentityAccess\Application\Command\Identity\RegisterUser
+ * Class RegisterUserCommand.
  */
 class RegisterUserCommand extends UserIdAwareCommand
 {
@@ -33,11 +40,7 @@ class RegisterUserCommand extends UserIdAwareCommand
      *
      * {@inheritdoc}
      *
-     * @param string      $email
-     * @param string      $plainPassword
-     * @param bool        $enabled
-     * @param string[]    $roles
-     * @param string|null $registeredById
+     * @param string[] $roles
      *
      * @throws AssertionFailedException
      */
@@ -48,8 +51,7 @@ class RegisterUserCommand extends UserIdAwareCommand
         bool $enabled,
         array $roles,
         ?string $registeredById
-    )
-    {
+    ) {
         parent::__construct($userId);
 
         $this->email = Email::fromString($email);
@@ -58,5 +60,4 @@ class RegisterUserCommand extends UserIdAwareCommand
         $this->roles = Roles::fromArray($roles);
         $this->registeredById = null === $registeredById ? null : UserId::fromString($registeredById);
     }
-
 }

@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of invis1ble/ddd-es-cqrs-boilerplate.
+ *
+ * (c) Invis1ble <opensource.invis1ble@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 declare(strict_types=1);
 
 namespace IdentityAccess\Ui\Identity\RegisterUser;
@@ -18,9 +27,7 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
 
 /**
- * Class RegisterUserCommand
- *
- * @package IdentityAccess\Ui\Identity\RegisterUser
+ * Class RegisterUserCommand.
  */
 class RegisterUserCommand extends Command
 {
@@ -38,8 +45,7 @@ class RegisterUserCommand extends Command
         UserProviderInterface $userProvider,
         CommandBusInterface $commandBus,
         string $name = null
-    )
-    {
+    ) {
         parent::__construct($name);
 
         $this->validator = $validator;
@@ -66,8 +72,7 @@ class RegisterUserCommand extends Command
     protected function execute(
         InputInterface $input,
         OutputInterface $output
-    ): int
-    {
+    ): int {
         $io = new SymfonyStyle($input, $output);
 
         $io->title('User registration');
@@ -97,7 +102,6 @@ class RegisterUserCommand extends Command
             !$input->getOption('disabled'),
             $input->getOption('roles')
         );
-
 
         $this->validator->validate($request);
 
@@ -143,5 +147,4 @@ class RegisterUserCommand extends Command
 
         return 0;
     }
-
 }

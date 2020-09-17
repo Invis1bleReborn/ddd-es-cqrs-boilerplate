@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of invis1ble/ddd-es-cqrs-boilerplate.
+ *
+ * (c) Invis1ble <opensource.invis1ble@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 declare(strict_types=1);
 
 namespace IdentityAccess\Infrastructure\Identity\AuthenticatedUserProvider;
@@ -9,9 +18,7 @@ use IdentityAccess\Ui\Identity\AuthenticatedUserProviderInterface;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
 /**
- * Class AuthenticatedUserProvider
- *
- * @package IdentityAccess\Infrastructure\Identity\AuthenticatedUserProvider
+ * Class AuthenticatedUserProvider.
  */
 final class AuthenticatedUserProvider implements AuthenticatedUserProviderInterface
 {
@@ -38,5 +45,4 @@ final class AuthenticatedUserProvider implements AuthenticatedUserProviderInterf
 
         return null;
     }
-
 }

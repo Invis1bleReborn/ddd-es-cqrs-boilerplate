@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of invis1ble/ddd-es-cqrs-boilerplate.
+ *
+ * (c) Invis1ble <opensource.invis1ble@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 declare(strict_types=1);
 
 namespace IdentityAccess\Infrastructure\Identity\Repository;
@@ -13,9 +22,7 @@ use IdentityAccess\Domain\Identity\User;
 use IdentityAccess\Domain\Identity\ValueObject\UserId;
 
 /**
- * Class UserStore
- *
- * @package IdentityAccess\Infrastructure\Identity\Repository
+ * Class UserStore.
  */
 final class UserStore extends EventSourcingRepository implements UserRepositoryInterface
 {
@@ -23,8 +30,7 @@ final class UserStore extends EventSourcingRepository implements UserRepositoryI
         EventStore $eventStore,
         EventBus $eventBus,
         array $eventStreamDecorators = []
-    )
-    {
+    ) {
         parent::__construct(
             $eventStore,
             $eventBus,
@@ -46,5 +52,4 @@ final class UserStore extends EventSourcingRepository implements UserRepositoryI
     {
         $this->save($user);
     }
-
 }
