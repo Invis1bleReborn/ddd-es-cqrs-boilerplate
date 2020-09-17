@@ -95,7 +95,6 @@ class UserTest extends UuidGeneratorAwareAggregateRootScenarioTestCase
     /**
      * @test
      * @depends itCanBeRegistered
-     *
      */
     public function enabledUserCanBeDisabled(UserRegistered $userRegistered): UserDisabled
     {
@@ -130,7 +129,6 @@ class UserTest extends UuidGeneratorAwareAggregateRootScenarioTestCase
      * @test
      * @depends itCanBeRegistered
      * @depends enabledUserCanBeDisabled
-     *
      */
     public function disabledUserCanBeEnabled(
         UserRegistered $userRegistered,
