@@ -30,7 +30,6 @@ class RefreshTokenCommand implements CommandInterface
     /**
      * RefreshTokenCommand constructor.
      *
-     *
      * @throws AssertionFailedException
      */
     public function __construct(

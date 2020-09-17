@@ -30,7 +30,6 @@ class DisableUserCommand extends UserIdAwareCommand implements ChangeUserStatusC
      *
      * {@inheritdoc}
      *
-     *
      * @throws AssertionFailedException
      */
     public function __construct(

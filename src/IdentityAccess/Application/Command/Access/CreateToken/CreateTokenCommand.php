@@ -30,7 +30,6 @@ class CreateTokenCommand implements CommandInterface
     /**
      * CreateTokenCommand constructor.
      *
-     *
      * @throws AssertionFailedException
      */
     public function __construct(

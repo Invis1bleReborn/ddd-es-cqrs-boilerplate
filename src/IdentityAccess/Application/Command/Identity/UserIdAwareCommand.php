@@ -27,7 +27,6 @@ abstract class UserIdAwareCommand implements CommandInterface
     /**
      * UserIdAwareCommand constructor.
      *
-     *
      * @throws AssertionFailedException
      */
     public function __construct(string $userId)

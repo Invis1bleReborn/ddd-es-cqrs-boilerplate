@@ -20,7 +20,6 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * Class RegisterUserRequest.
  *
- *
  * @UniqueDto(
  *     entityClass="IdentityAccess\Infrastructure\Identity\Query\User",
  *     fieldMapping={"email": "email.value"}

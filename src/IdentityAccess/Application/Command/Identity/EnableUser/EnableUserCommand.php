@@ -30,7 +30,6 @@ class EnableUserCommand extends UserIdAwareCommand implements ChangeUserStatusCo
      *
      * {@inheritdoc}
      *
-     *
      * @throws AssertionFailedException
      */
     public function __construct(
