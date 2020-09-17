@@ -20,7 +20,6 @@ use IdentityAccess\Application\Command\Identity\RegisterUser\RegisterUserHandler
 /**
  * Class RegisterUserHandlerAdapter
  *
- * @package IdentityAccess\Infrastructure\Identity\Command\RegisterUser
  */
 class RegisterUserHandlerAdapter extends SimpleCommandHandler
 {

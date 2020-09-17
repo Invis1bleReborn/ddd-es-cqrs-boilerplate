@@ -20,7 +20,6 @@ use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 /**
  * Class AccessCheckerAdapter
  *
- * @package IdentityAccess\Infrastructure\Access\Security
  */
 class AccessCheckerAdapter implements AccessCheckerInterface
 {

@@ -20,7 +20,6 @@ use IdentityAccess\Ui\Identity\RegisterUser\RegisterUserGuard;
 /**
  * Class RegisterUserGuardAdapter
  *
- * @package IdentityAccess\Infrastructure\Identity\GuardAdapter
  */
 class RegisterUserGuardAdapter extends AbstractGuardAdapter
 {

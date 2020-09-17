@@ -18,7 +18,6 @@ use IdentityAccess\Application\Query\Identity\UserInterface;
 /**
  * Interface UserCheckerInterface
  *
- * @package IdentityAccess\Ui\Access
  */
 interface UserCheckerInterface
 {

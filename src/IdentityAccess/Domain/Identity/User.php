@@ -32,7 +32,6 @@ use IdentityAccess\Domain\Identity\ValueObject\UserId;
 /**
  * Class User
  *
- * @package IdentityAccess\Domain\Identity
  */
 final class User extends EventSourcedAggregateRoot
 {

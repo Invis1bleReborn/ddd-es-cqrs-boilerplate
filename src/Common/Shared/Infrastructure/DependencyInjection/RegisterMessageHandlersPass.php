@@ -22,7 +22,6 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 /**
  * Class RegisterMessageHandlersPass
  *
- * @package Common\Shared\Infrastructure\DependencyInjection
  */
 class RegisterMessageHandlersPass implements CompilerPassInterface
 {

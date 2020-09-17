@@ -19,7 +19,6 @@ use Assert\AssertionFailedException;
 /**
  * Class RefreshToken
  *
- * @package IdentityAccess\Domain\Access\ValueObject
  */
 final class RefreshToken
 {

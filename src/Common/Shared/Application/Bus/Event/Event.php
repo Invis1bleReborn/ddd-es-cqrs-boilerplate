@@ -18,7 +18,6 @@ use Broadway\Domain\DomainMessage;
 /**
  * Class Event
  *
- * @package Common\Shared\Application\Bus\Event
  */
 final class Event implements EventInterface
 {

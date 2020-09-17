@@ -17,7 +17,6 @@ namespace Common\Shared\Application\Bus\Command;
 /**
  * Class CommandBus
  *
- * @package Common\Shared\Application\Bus\Command
  */
 interface CommandBusInterface
 {

@@ -23,7 +23,6 @@ use IdentityAccess\Domain\Identity\ValueObject\UserId;
 /**
  * Class RegisterUserCommand
  *
- * @package IdentityAccess\Application\Command\Identity\RegisterUser
  */
 class RegisterUserCommand extends UserIdAwareCommand
 {

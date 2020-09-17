@@ -21,7 +21,6 @@ use IdentityAccess\Domain\Access\ValueObject\RefreshToken;
 /**
  * Class RefreshTokenCommand
  *
- * @package IdentityAccess\Application\Command\Access\RefreshToken
  */
 class RefreshTokenCommand implements CommandInterface
 {

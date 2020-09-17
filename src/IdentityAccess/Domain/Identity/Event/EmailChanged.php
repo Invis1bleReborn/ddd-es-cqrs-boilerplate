@@ -23,7 +23,6 @@ use IdentityAccess\Domain\Identity\ValueObject\UserId;
 /**
  * Class EmailChanged
  *
- * @package IdentityAccess\Domain\Identity\Event
  */
 final class EmailChanged extends UserIdAwareEvent
 {

@@ -24,7 +24,6 @@ use IdentityAccess\Infrastructure\Access\Query\Token;
 /**
  * Class RefreshTokenHandler
  *
- * @package IdentityAccess\Application\Command\Access\RefreshToken
  */
 final class RefreshTokenHandler implements CommandHandlerInterface
 {

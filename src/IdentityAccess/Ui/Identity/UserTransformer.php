@@ -18,7 +18,6 @@ use IdentityAccess\Application\Query\Identity\UserInterface;
 /**
  * Class UserTransformer
  *
- * @package IdentityAccess\Ui\Identity
  */
 class UserTransformer
 {

@@ -21,7 +21,6 @@ use IdentityAccess\Domain\Identity\ValueObject\UserId;
 /**
  * Class UserIdAwareEvent
  *
- * @package IdentityAccess\Domain\Identity\Event
  */
 abstract class UserIdAwareEvent implements Serializable
 {

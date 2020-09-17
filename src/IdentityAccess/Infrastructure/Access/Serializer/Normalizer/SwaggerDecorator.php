@@ -19,7 +19,6 @@ use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 /**
  * Class SwaggerDecorator
  *
- * @package IdentityAccess\Infrastructure\Access\Serializer\Normalizer
  */
 class SwaggerDecorator implements NormalizerInterface
 {

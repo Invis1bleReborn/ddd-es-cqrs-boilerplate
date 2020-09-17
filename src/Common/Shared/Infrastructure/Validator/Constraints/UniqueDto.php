@@ -18,7 +18,6 @@ use Symfony\Component\Validator\Constraint;
 /**
  * Class UniqueDto
  *
- * @package Common\Shared\Infrastructure\Validator\Constraints
  *
  * @Annotation
  * @Target({"CLASS", "ANNOTATION"})

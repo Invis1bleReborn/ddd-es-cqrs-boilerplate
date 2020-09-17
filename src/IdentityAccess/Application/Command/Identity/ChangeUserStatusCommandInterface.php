@@ -18,7 +18,6 @@ use Common\Shared\Application\Bus\Command\CommandInterface;
 /**
  * Interface ChangeUserStatusCommandInterface
  *
- * @package IdentityAccess\Application\Command\Identity
  */
 interface ChangeUserStatusCommandInterface extends CommandInterface
 {

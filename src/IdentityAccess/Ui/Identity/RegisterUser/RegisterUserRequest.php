@@ -20,7 +20,6 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * Class RegisterUserRequest
  *
- * @package IdentityAccess\Ui\Identity\RegisterUser
  *
  * @UniqueDto(
  *     entityClass="IdentityAccess\Infrastructure\Identity\Query\User",

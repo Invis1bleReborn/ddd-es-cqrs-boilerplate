@@ -23,7 +23,6 @@ use IdentityAccess\Application\Query\Identity\UserInterface;
 /**
  * Class TokenGenerator
  *
- * @package IdentityAccess\Infrastructure\Access\Query
  */
 final class TokenGenerator implements TokenGeneratorInterface
 {

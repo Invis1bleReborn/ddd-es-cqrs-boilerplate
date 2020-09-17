@@ -26,7 +26,6 @@ use Symfony\Component\Security\Core\Exception\BadCredentialsException;
 /**
  * Class PasswordManager
  *
- * @package IdentityAccess\Infrastructure\Identity\Password
  */
 class PasswordManager implements PasswordEncoderInterface, PasswordCheckerInterface
 {

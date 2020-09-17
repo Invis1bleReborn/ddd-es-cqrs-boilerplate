@@ -18,7 +18,6 @@ use IdentityAccess\Application\Query\Access\TokenInterface;
 /**
  * Class TokenTransformer
  *
- * @package IdentityAccess\Ui\Access
  */
 class TokenTransformer
 {

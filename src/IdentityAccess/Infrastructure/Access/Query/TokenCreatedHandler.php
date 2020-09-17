@@ -20,7 +20,6 @@ use IdentityAccess\Application\Event\Access\TokenCreated;
 /**
  * Class TokenCreatedHandler
  *
- * @package IdentityAccess\Infrastructure\Access\Query
  */
 class TokenCreatedHandler implements EventHandlerInterface
 {

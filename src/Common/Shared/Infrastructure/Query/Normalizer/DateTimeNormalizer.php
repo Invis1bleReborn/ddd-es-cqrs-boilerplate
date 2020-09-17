@@ -23,7 +23,6 @@ use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 /**
  * Class DateTImeNormalizer
  *
- * @package Common\Shared\Infrastructure\Query\Normalizer
  */
 class DateTimeNormalizer implements NormalizerInterface, DenormalizerInterface, CacheableSupportsMethodInterface
 {

@@ -18,7 +18,6 @@ use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * Class UserView
  *
- * @package IdentityAccess\Ui\Identity
  */
 final class UserView
 {

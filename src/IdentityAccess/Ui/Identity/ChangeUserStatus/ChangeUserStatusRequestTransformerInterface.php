@@ -22,7 +22,6 @@ use IdentityAccess\Ui\Access\AccessDeniedException;
 /**
  * Class ChangeUserStatusRequestTransformer
  *
- * @package IdentityAccess\Ui\Identity
  */
 interface ChangeUserStatusRequestTransformerInterface
 {

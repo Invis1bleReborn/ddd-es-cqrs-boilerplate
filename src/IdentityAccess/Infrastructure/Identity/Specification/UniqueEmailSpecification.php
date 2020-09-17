@@ -23,7 +23,6 @@ use IdentityAccess\Domain\Identity\ValueObject\Email;
 /**
  * Class UniqueEmailSpecification
  *
- * @package IdentityAccess\Infrastructure\Identity\Specification
  */
 final class UniqueEmailSpecification extends AbstractSpecification implements UniqueEmailSpecificationInterface
 {

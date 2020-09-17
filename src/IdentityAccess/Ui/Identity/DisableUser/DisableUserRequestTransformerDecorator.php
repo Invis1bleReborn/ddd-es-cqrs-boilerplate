@@ -16,7 +16,6 @@ namespace IdentityAccess\Ui\Identity\DisableUser;
 /**
  * Class DisableUserRequestTransformerDecorator
  *
- * @package IdentityAccess\Ui\Identity\DisableUser
  */
 abstract class DisableUserRequestTransformerDecorator implements DisableUserRequestTransformerInterface
 {

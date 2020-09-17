@@ -18,7 +18,6 @@ use IdentityAccess\Domain\Identity\ValueObject\Email;
 /**
  * Class EmailAlreadyExistsException
  *
- * @package IdentityAccess\Domain\Identity\Exception
  */
 class EmailAlreadyExistsException extends \InvalidArgumentException
 {

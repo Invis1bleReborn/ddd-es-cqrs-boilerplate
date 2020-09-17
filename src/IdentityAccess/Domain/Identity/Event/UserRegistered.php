@@ -25,7 +25,6 @@ use IdentityAccess\Domain\Identity\ValueObject\UserId;
 /**
  * Class UserRegistered
  *
- * @package IdentityAccess\Domain\Identity\Event
  */
 final class UserRegistered extends UserIdAwareEvent
 {

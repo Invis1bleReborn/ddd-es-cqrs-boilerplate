@@ -20,7 +20,6 @@ use Symfony\Component\Security\Guard\Authenticator\GuardBridgeAuthenticator;
 /**
  * Class JwtAuthenticator
  *
- * @package IdentityAccess\Infrastructure\Access\Security
  */
 final class JwtAuthenticator extends GuardBridgeAuthenticator
 {

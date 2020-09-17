@@ -22,7 +22,6 @@ use Symfony\Component\Security\Core\Authorization\Voter\Voter;
 /**
  * Class AbstractGuardAdapter
  *
- * @package IdentityAccess\Infrastructure\Access\Security
  */
 abstract class AbstractGuardAdapter extends Voter
 {

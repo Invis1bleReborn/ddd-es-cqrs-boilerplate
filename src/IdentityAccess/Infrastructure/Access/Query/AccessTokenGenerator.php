@@ -21,7 +21,6 @@ use Lexik\Bundle\JWTAuthenticationBundle\Services\JWTTokenManagerInterface;
 /**
  * Class AccessTokenGenerator
  *
- * @package IdentityAccess\Infrastructure\Access\Query
  */
 final class AccessTokenGenerator implements AccessTokenGeneratorInterface
 {

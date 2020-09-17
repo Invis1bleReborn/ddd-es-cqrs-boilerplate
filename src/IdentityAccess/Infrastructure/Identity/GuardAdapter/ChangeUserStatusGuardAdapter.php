@@ -21,7 +21,6 @@ use IdentityAccess\Ui\Access\AccessAttribute;
 /**
  * Class ChangeUserStatusGuardAdapter
  *
- * @package IdentityAccess\Infrastructure\Identity\GuardAdapter
  */
 class ChangeUserStatusGuardAdapter extends AbstractGuardAdapter
 {

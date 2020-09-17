@@ -21,7 +21,6 @@ use IdentityAccess\Domain\Access\ValueObject\Roles;
 /**
  * Class RoleHierarchyAwareGuard
  *
- * @package IdentityAccess\Ui\Access
  */
 abstract class RoleHierarchyAwareGuard implements GuardInterface
 {

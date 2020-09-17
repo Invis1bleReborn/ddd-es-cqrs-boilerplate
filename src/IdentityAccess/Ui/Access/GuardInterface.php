@@ -18,7 +18,6 @@ use IdentityAccess\Application\Query\Identity\UserInterface;
 /**
  * Interface GuardInterface
  *
- * @package IdentityAccess\Ui\Access
  */
 interface GuardInterface
 {

@@ -20,7 +20,6 @@ use IdentityAccess\Domain\Identity\ValueObject\PlainPassword;
 /**
  * Class NoopPasswordEncoder
  *
- * @package IdentityAccess\Infrastructure\Identity\Password
  */
 class NoopPasswordEncoder implements PasswordEncoderInterface
 {

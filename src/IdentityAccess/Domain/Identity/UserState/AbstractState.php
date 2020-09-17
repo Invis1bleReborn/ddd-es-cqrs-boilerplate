@@ -20,7 +20,6 @@ use IdentityAccess\Domain\Identity\User;
 /**
  * Class AbstractState
  *
- * @package IdentityAccess\Domain\Identity\UserState
  */
 abstract class AbstractState extends SimpleEventSourcedEntity implements UserStateInterface
 {

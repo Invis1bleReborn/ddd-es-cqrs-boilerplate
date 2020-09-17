@@ -21,7 +21,6 @@ use Psr\Log\LoggerInterface;
 /**
  * Class ElasticRepository
  *
- * @package Common\Shared\Infrastructure\Query\Repository
  */
 abstract class ElasticRepository
 {

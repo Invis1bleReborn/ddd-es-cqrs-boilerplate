@@ -16,7 +16,6 @@ namespace Common\Shared\Domain\Exception;
 /**
  * Class DateTimeException
  *
- * @package Common\Shared\Domain\Exception
  */
 class DateTimeException extends \Exception
 {

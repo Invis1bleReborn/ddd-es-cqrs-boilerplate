@@ -27,7 +27,6 @@ use IdentityAccess\Domain\Identity\ValueObject\Username;
 /**
  * Class CreateTokenHandler
  *
- * @package IdentityAccess\Application\Command\Access\CreateToken
  */
 final class CreateTokenHandler implements CommandHandlerInterface
 {

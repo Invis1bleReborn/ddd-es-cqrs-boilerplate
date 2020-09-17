@@ -19,7 +19,6 @@ use IdentityAccess\Domain\Identity\ValueObject\UserId;
 /**
  * Interface CheckUserByEmailInterface
  *
- * @package IdentityAccess\Domain\Identity\Repository
  */
 interface CheckUserByEmailInterface
 {

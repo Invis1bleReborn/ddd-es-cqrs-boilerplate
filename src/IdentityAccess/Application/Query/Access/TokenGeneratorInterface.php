@@ -18,7 +18,6 @@ use IdentityAccess\Application\Query\Identity\UserInterface;
 /**
  * Interface TokenGeneratorInterface
  *
- * @package IdentityAccess\Application\Query\Access
  */
 interface TokenGeneratorInterface
 {

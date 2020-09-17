@@ -16,7 +16,6 @@ namespace IdentityAccess\Application\Query\Access;
 /**
  * Interface RefreshTokenProviderInterface
  *
- * @package IdentityAccess\Application\Query\Access
  */
 interface RefreshTokenProviderInterface
 {

@@ -24,7 +24,6 @@ use Symfony\Component\HttpKernel\KernelEvents;
 /**
  * Class AsyncEventPublisher
  *
- * @package Common\Shared\Infrastructure\Event\Publisher
  */
 class AsyncEventPublisher implements EventPublisherInterface, EventSubscriberInterface, EventListener
 {

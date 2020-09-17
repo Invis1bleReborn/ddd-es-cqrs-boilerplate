@@ -20,7 +20,6 @@ use PHPUnit\Framework\TestCase;
 /**
  * Class RolesTest
  *
- * @package IdentityAccess\Domain\Access
  */
 class RolesTest extends TestCase
 {

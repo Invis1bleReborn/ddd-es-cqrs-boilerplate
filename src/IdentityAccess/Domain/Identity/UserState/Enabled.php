@@ -20,7 +20,6 @@ use IdentityAccess\Domain\Identity\ValueObject\UserId;
 /**
  * Class Enabled
  *
- * @package IdentityAccess\Domain\Identity\UserState
  */
 class Enabled extends AbstractState
 {

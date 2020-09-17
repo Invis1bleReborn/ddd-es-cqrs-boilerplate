@@ -20,7 +20,6 @@ use Broadway\Domain\DomainMessage;
 /**
  * Class EventElasticRepository
  *
- * @package Common\Shared\Infrastructure\Shared\Event\Query
  */
 class EventElasticRepository extends ElasticRepository implements EventRepositoryInterface
 {

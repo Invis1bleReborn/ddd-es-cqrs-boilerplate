@@ -16,7 +16,6 @@ namespace IdentityAccess\Ui\Access;
 /**
  * Class TokenView
  *
- * @package IdentityAccess\Ui\Access
  */
 final class TokenView
 {

@@ -16,7 +16,6 @@ namespace IdentityAccess\Ui\Access;
 /**
  * Interface AccessCheckerInterface
  *
- * @package IdentityAccess\Ui\Access
  */
 interface AccessCheckerInterface
 {

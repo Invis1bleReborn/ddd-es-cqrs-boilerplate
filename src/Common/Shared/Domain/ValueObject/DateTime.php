@@ -18,7 +18,6 @@ use Common\Shared\Domain\Exception\DateTimeException;
 /**
  * Class DateTime
  *
- * @package Common\Shared\Domain\ValueObject
  */
 class DateTime
 {

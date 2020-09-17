@@ -21,7 +21,6 @@ use Doctrine\ORM\EntityManagerInterface;
 /**
  * Class MigrationFactory
  *
- * @package Common\Shared\Infrastructure\Migrations
  */
 class MigrationFactory implements BaseMigrationFactory
 {

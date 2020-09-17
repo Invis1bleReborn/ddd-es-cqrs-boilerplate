@@ -22,7 +22,6 @@ use Doctrine\DBAL\Types\DateTimeImmutableType;
 /**
  * Class DateTimeType
  *
- * @package Common\Shared\Infrastructure\Doctrine
  */
 class DateTimeType extends DateTimeImmutableType
 {

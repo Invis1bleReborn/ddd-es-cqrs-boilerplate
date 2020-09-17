@@ -16,7 +16,6 @@ namespace IdentityAccess\Domain\Access\ValueObject;
 /**
  * Class Roles
  *
- * @package IdentityAccess\Domain\Access\ValueObject
  */
 final class Roles
 {

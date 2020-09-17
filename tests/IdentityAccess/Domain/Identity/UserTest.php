@@ -30,7 +30,6 @@ use Symfony\Bridge\PhpUnit\ClockMock;
 /**
  * Class UserTest
  *
- * @package IdentityAccess\Domain\Identity
  */
 class UserTest extends UuidGeneratorAwareAggregateRootScenarioTestCase
 {

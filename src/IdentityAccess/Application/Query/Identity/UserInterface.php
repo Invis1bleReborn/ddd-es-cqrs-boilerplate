@@ -16,7 +16,6 @@ namespace IdentityAccess\Application\Query\Identity;
 /**
  * Interface UserInterface
  *
- * @package IdentityAccess\Application\Query\Identity
  */
 interface UserInterface
 {

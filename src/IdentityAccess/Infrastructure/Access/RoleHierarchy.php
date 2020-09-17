@@ -20,7 +20,6 @@ use IdentityAccess\Domain\Access\RoleHierarchyInterface;
 /**
  * Class RolesHierarchy
  *
- * @package IdentityAccess\Infrastructure\Access
  */
 class RoleHierarchy implements RoleHierarchyInterface
 {

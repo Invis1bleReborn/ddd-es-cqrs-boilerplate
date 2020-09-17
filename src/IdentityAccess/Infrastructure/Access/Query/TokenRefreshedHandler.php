@@ -20,7 +20,6 @@ use IdentityAccess\Application\Event\Access\TokenRefreshed;
 /**
  * Class TokenRefreshedHandler
  *
- * @package IdentityAccess\Infrastructure\Access\Query
  */
 class TokenRefreshedHandler implements EventHandlerInterface
 {

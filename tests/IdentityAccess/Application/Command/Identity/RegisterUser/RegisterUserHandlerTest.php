@@ -34,7 +34,6 @@ use Symfony\Bridge\PhpUnit\ClockMock;
 /**
  * Class RegisterUserHandlerTest
  *
- * @package IdentityAccess\Application\Command\Identity\RegisterUser
  */
 class RegisterUserHandlerTest extends UuidGeneratorAwareCommandHandlerScenarioTestCase
 {

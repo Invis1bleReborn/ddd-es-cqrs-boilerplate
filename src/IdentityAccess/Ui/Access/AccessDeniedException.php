@@ -16,7 +16,6 @@ namespace IdentityAccess\Ui\Access;
 /**
  * Class AccessDeniedException
  *
- * @package IdentityAccess\Ui\Access
  */
 class AccessDeniedException extends \UnexpectedValueException
 {

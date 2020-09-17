@@ -21,7 +21,6 @@ use PHPUnit\Framework\TestCase;
 /**
  * Class RoleHierarchyTest
  *
- * @package IdentityAccess\Domain\Access
  */
 class RoleHierarchyTest extends TestCase
 {

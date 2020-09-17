@@ -19,7 +19,6 @@ use IdentityAccess\Ui\Access\GuardInterface;
 /**
  * Class RegisterUserGuard
  *
- * @package IdentityAccess\Ui\Identity\RegisterUser
  */
 class RegisterUserGuard implements GuardInterface
 {

@@ -16,7 +16,6 @@ namespace IdentityAccess\Application\Query\Access;
 /**
  * Interface TokenInterface
  *
- * @package IdentityAccess\Application\Query\Access
  */
 interface TokenInterface
 {

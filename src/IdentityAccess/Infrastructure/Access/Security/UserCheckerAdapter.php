@@ -21,7 +21,6 @@ use Symfony\Component\Security\Core\User\UserInterface;
 /**
  * Class UserCheckerAdapter
  *
- * @package IdentityAccess\Infrastructure\Access\Security
  */
 class UserCheckerAdapter implements UserCheckerInterface
 {

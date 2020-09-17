@@ -18,7 +18,6 @@ use MyCLabs\Enum\Enum;
 /**
  * Class Role
  *
- * @package IdentityAccess\Domain\Access\ValueObject
  */
 class Role extends Enum
 {

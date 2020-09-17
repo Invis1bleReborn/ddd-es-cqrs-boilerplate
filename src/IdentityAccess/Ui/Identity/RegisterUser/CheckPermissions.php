@@ -20,7 +20,6 @@ use IdentityAccess\Ui\Access\AccessDeniedException;
 /**
  * Class CheckPermissions
  *
- * @package IdentityAccess\Ui\Identity\RegisterUser
  */
 class CheckPermissions extends RegisterUserRequestTransformerDecorator
 {

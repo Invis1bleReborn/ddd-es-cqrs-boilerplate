@@ -19,7 +19,6 @@ use IdentityAccess\Domain\Identity\ValueObject\PlainPassword;
 /**
  * Interface PasswordCheckerInterface
  *
- * @package IdentityAccess\Domain\Identity
  */
 interface PasswordCheckerInterface
 {

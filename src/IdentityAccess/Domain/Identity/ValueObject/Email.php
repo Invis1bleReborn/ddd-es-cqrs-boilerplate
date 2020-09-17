@@ -19,7 +19,6 @@ use Assert\AssertionFailedException;
 /**
  * Class Email
  *
- * @package IdentityAccess\Domain\Identity\ValueObject
  */
 final class Email
 {

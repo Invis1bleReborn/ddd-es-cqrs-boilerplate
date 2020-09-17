@@ -18,7 +18,6 @@ use IdentityAccess\Domain\Identity\ValueObject\Email;
 /**
  * Interface UniqueEmailSpecificationInterface
  *
- * @package IdentityAccess\Domain\Identity\Specification
  */
 interface UniqueEmailSpecificationInterface
 {

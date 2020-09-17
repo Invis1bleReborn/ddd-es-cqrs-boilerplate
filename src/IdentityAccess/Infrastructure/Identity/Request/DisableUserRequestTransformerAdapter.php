@@ -22,7 +22,6 @@ use IdentityAccess\Ui\Identity\DisableUser\DisableUserRequestTransformerInterfac
 /**
  * Class DisableUserRequestTransformerAdapter
  *
- * @package IdentityAccess\Infrastructure\Identity\Request
  */
 class DisableUserRequestTransformerAdapter implements DataTransformerInterface
 {

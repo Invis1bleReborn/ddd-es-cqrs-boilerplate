@@ -20,7 +20,6 @@ use Ramsey\Uuid\Uuid;
 /**
  * Class AbstractId
  *
- * @package Common\Shared\Domain\ValueObject
  */
 abstract class AbstractId implements IdInterface
 {

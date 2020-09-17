@@ -24,7 +24,6 @@ use IdentityAccess\Domain\Identity\ValueObject\UserId;
 /**
  * Class UserStore
  *
- * @package IdentityAccess\Infrastructure\Identity\Repository
  */
 final class UserStore extends EventSourcingRepository implements UserRepositoryInterface
 {

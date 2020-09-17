@@ -19,7 +19,6 @@ use IdentityAccess\Domain\Identity\ValueObject\UserId;
 /**
  * Interface UserRepositoryInterface
  *
- * @package IdentityAccess\Domain\Identity\Repository
  */
 interface UserRepositoryInterface
 {

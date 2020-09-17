@@ -24,7 +24,6 @@ use IdentityAccess\Domain\Identity\ValueObject\UserId;
 /**
  * Class RolesChanged
  *
- * @package IdentityAccess\Domain\Access\Event
  */
 final class RolesChanged extends UserIdAwareEvent
 {

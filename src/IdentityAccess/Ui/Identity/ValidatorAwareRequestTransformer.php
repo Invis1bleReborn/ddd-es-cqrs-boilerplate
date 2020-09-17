@@ -19,7 +19,6 @@ use Common\Shared\Ui\ValidatorAwareRequestTransformer as BaseValidatorAwareReque
 /**
  * Class ValidatorAwareRequestTransformer
  *
- * @package IdentityAccess\Ui\Identity
  */
 abstract class ValidatorAwareRequestTransformer extends BaseValidatorAwareRequestTransformer
 {

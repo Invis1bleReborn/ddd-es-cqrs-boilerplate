@@ -22,7 +22,6 @@ use Symfony\Component\Messenger\MessageBusInterface;
 /**
  * Class CommandBus
  *
- * @package Common\Shared\Application\Bus\Command
  */
 final class CommandBus implements CommandBusInterface
 {

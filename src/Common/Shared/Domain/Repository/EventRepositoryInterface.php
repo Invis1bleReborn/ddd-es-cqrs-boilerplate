@@ -16,7 +16,6 @@ namespace Common\Shared\Domain\Repository;
 /**
  * Interface EventRepositoryInterface
  *
- * @package Common\Shared\Domain\Repository
  */
 interface EventRepositoryInterface
 {

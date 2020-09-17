@@ -19,7 +19,6 @@ use IdentityAccess\Domain\Identity\ValueObject\UserId;
 /**
  * Class UserStateTransitionException
  *
- * @package IdentityAccess\Domain\Identity\Exception
  */
 class UserStateTransitionException extends StateTransitionException
 {

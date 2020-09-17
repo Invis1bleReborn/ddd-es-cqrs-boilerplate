@@ -19,7 +19,6 @@ use IdentityAccess\Domain\Access\ValueObject\AccessToken;
 /**
  * Interface AccessTokenGeneratorInterface
  *
- * @package IdentityAccess\Application\Query\Access
  */
 interface AccessTokenGeneratorInterface
 {

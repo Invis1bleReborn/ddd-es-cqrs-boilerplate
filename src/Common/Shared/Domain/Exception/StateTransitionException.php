@@ -16,7 +16,6 @@ namespace Common\Shared\Domain\Exception;
 /**
  * Class StateTransitionException
  *
- * @package Common\Shared\Domain\Exception
  */
 class StateTransitionException extends \DomainException
 {

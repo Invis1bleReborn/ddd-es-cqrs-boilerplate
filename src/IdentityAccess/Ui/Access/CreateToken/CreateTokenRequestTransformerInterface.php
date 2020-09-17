@@ -20,7 +20,6 @@ use IdentityAccess\Application\Command\Access\CreateToken\CreateTokenCommand;
 /**
  * Class CreateTokenRequestTransformer
  *
- * @package IdentityAccess\Ui\Access\CreateToken
  */
 interface CreateTokenRequestTransformerInterface
 {

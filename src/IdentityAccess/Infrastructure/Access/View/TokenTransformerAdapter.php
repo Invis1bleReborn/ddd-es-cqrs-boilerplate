@@ -21,7 +21,6 @@ use IdentityAccess\Ui\Access\TokenTransformer;
 /**
  * Class TokenTransformerAdapter
  *
- * @package IdentityAccess\Infrastructure\Access\View
  */
 final class TokenTransformerAdapter implements DataTransformerInterface
 {

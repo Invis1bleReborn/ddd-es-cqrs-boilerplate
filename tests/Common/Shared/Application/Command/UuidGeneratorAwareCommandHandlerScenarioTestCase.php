@@ -23,7 +23,6 @@ use Symfony\Bridge\PhpUnit\ClockMock;
 /**
  * Class UuidGeneratorAwareCommandHandlerScenarioTestCase
  *
- * @package Common\Shared\Application\Command
  */
 abstract class UuidGeneratorAwareCommandHandlerScenarioTestCase extends CommandHandlerScenarioTestCase
 {

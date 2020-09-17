@@ -19,7 +19,6 @@ use IdentityAccess\Domain\Identity\ValueObject\PlainPassword;
 /**
  * Interface PasswordEncoderInterface
  *
- * @package IdentityAccess\Domain\Identity
  */
 interface PasswordEncoderInterface
 {

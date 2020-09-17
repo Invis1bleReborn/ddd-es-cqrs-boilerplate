@@ -18,7 +18,6 @@ use Common\Shared\Domain\ValueObject\AbstractId;
 /**
  * Class UserId
  *
- * @package IdentityAccess\Domain\Identity\ValueObject
  */
 final class UserId extends AbstractId
 {

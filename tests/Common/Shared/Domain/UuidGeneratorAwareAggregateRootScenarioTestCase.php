@@ -25,7 +25,6 @@ use Symfony\Bridge\PhpUnit\ClockMock;
 /**
  * Class UuidGeneratorAwareAggregateRootScenarioTestCase
  *
- * @package Common\Shared\Domain
  */
 abstract class UuidGeneratorAwareAggregateRootScenarioTestCase extends AggregateRootScenarioTestCase
 {

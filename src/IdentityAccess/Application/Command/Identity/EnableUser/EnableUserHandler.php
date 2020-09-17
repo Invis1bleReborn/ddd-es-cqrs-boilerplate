@@ -18,7 +18,6 @@ use IdentityAccess\Application\Command\Identity\AbstractCommandHandler;
 /**
  * Class EnableUserHandler
  *
- * @package IdentityAccess\Application\Command\Identity\EnableUser
  */
 final class EnableUserHandler extends AbstractCommandHandler
 {

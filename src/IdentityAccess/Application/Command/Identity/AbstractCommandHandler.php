@@ -21,7 +21,6 @@ use IdentityAccess\Domain\Identity\ValueObject\UserId;
 /**
  * Class AbstractCommandHandler
  *
- * @package IdentityAccess\Application\Command\Identity
  */
 abstract class AbstractCommandHandler implements CommandHandlerInterface
 {

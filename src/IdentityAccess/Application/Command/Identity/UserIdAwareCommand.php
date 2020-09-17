@@ -20,7 +20,6 @@ use IdentityAccess\Domain\Identity\ValueObject\UserId;
 /**
  * Class UserIdAwareCommand
  *
- * @package IdentityAccess\Application\Command\Identity
  */
 abstract class UserIdAwareCommand implements CommandInterface
 {

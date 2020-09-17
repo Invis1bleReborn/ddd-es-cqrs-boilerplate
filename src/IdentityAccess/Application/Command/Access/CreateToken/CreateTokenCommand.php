@@ -21,7 +21,6 @@ use IdentityAccess\Domain\Identity\ValueObject\PlainPassword;
 /**
  * Class CreateTokenCommand
  *
- * @package IdentityAccess\Application\Command\Access\CreateToken
  */
 class CreateTokenCommand implements CommandInterface
 {

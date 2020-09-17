@@ -20,7 +20,6 @@ use IdentityAccess\Domain\Identity\ValueObject\UserId;
 /**
  * Interface UserStateInterface
  *
- * @package IdentityAccess\Domain\Identity\UserState
  */
 interface UserStateInterface
 {

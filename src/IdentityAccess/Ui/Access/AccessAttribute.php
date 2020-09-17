@@ -16,7 +16,6 @@ namespace IdentityAccess\Ui\Access;
 /**
  * Class AccessAttribute
  *
- * @package IdentityAccess\Ui\Access
  */
 final class AccessAttribute
 {

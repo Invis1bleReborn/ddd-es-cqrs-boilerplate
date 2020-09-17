@@ -23,7 +23,6 @@ use IdentityAccess\Domain\Identity\ValueObject\UserId;
 /**
  * Class PasswordChanged
  *
- * @package IdentityAccess\Domain\Identity\Event
  */
 final class PasswordChanged extends UserIdAwareEvent
 {

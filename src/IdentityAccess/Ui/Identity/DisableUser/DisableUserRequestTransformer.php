@@ -21,7 +21,6 @@ use IdentityAccess\Ui\Identity\ValidatorAwareRequestTransformer;
 /**
  * Class DisableUserRequestTransformer
  *
- * @package IdentityAccess\Ui\Identity
  */
 class DisableUserRequestTransformer extends ValidatorAwareRequestTransformer implements
     DisableUserRequestTransformerInterface

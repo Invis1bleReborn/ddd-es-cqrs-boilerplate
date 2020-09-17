@@ -21,7 +21,6 @@ use IdentityAccess\Ui\Access\AuthenticationExceptionInterface;
 /**
  * Class RefreshTokenRequestTransformer
  *
- * @package IdentityAccess\Ui\Access\RefreshToken
  */
 interface RefreshTokenRequestTransformerInterface
 {

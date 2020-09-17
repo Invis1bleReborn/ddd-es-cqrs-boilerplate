@@ -19,7 +19,6 @@ use Assert\AssertionFailedException;
 /**
  * Class HashedPassword
  *
- * @package IdentityAccess\Domain\Identity\ValueObject
  */
 final class HashedPassword
 {

@@ -19,7 +19,6 @@ use Assert\AssertionFailedException;
 /**
  * Class AccessToken
  *
- * @package IdentityAccess\Domain\Access\ValueObject
  */
 final class AccessToken
 {

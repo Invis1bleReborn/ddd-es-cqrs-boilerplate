@@ -21,7 +21,6 @@ use IdentityAccess\Domain\Access\ValueObject\Roles;
 /**
  * Class RolesType
  *
- * @package IdentityAccess\Infrastructure\Access\Doctrine
  */
 class RolesType extends JsonType
 {

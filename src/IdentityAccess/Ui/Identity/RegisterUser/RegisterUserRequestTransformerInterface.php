@@ -21,7 +21,6 @@ use IdentityAccess\Ui\Access\AccessDeniedException;
 /**
  * Interface RegisterUserRequestTransformerInterface
  *
- * @package IdentityAccess\Ui\Identity\RegisterUser
  */
 interface RegisterUserRequestTransformerInterface
 {

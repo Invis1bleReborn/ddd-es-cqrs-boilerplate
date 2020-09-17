@@ -16,7 +16,6 @@ namespace Common\Shared\Domain\ValueObject;
 /**
  * Interface IdInterface
  *
- * @package Common\Shared\Domain\ValueObject
  */
 interface IdInterface
 {

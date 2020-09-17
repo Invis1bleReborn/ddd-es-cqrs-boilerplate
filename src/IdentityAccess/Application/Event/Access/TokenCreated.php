@@ -21,7 +21,6 @@ use IdentityAccess\Domain\Identity\ValueObject\Username;
 /**
  * Class TokenCreated
  *
- * @package IdentityAccess\Application\Event\Access
  */
 final class TokenCreated extends RefreshTokenAwareEvent
 {

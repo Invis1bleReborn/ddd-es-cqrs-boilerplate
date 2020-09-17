@@ -22,7 +22,6 @@ use IdentityAccess\Ui\Access\UserCheckerInterface;
 /**
  * Class CreateTokenRequestTransformer
  *
- * @package IdentityAccess\Ui\Access\CreateToken
  */
 class CreateTokenRequestTransformer extends ValidatorAwareRequestTransformer implements
     CreateTokenRequestTransformerInterface

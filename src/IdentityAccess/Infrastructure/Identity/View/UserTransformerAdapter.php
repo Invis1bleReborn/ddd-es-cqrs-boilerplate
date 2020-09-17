@@ -21,7 +21,6 @@ use IdentityAccess\Ui\Identity\UserTransformer;
 /**
  * Class UserTransformerAdapter
  *
- * @package IdentityAccess\Infrastructure\Identity\View
  */
 final class UserTransformerAdapter implements DataTransformerInterface
 {

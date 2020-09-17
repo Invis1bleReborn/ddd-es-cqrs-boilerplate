@@ -21,7 +21,6 @@ use IdentityAccess\Domain\Identity\ValueObject\UserId;
 /**
  * Class Disabled
  *
- * @package IdentityAccess\Domain\Identity\UserState
  */
 class Disabled extends AbstractState
 {

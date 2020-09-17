@@ -19,7 +19,6 @@ use Symfony\Component\Security\Core\Exception\CustomUserMessageAccountStatusExce
 /**
  * Class AccountDisabledException
  *
- * @package IdentityAccess\Infrastructure\Access\Security
  */
 class AccountDisabledException extends CustomUserMessageAccountStatusException implements
     AccountStatusExceptionInterface

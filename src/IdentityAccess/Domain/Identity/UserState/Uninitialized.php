@@ -21,7 +21,6 @@ use IdentityAccess\Domain\Identity\ValueObject\UserId;
 /**
  * Class Uninitialized
  *
- * @package IdentityAccess\Domain\Identity\UserState
  */
 class Uninitialized extends AbstractState
 {

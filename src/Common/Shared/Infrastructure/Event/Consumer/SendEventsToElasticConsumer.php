@@ -20,7 +20,6 @@ use Common\Shared\Infrastructure\Event\Query\EventElasticRepository;
 /**
  * Class SendEventsToElasticConsumer
  *
- * @package Common\Shared\Infrastructure\Event\Consumer
  */
 class SendEventsToElasticConsumer implements EventHandlerInterface
 {

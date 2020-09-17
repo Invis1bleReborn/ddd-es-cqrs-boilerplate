@@ -16,7 +16,6 @@ namespace Common\Shared\Domain\ValueObject;
 /**
  * Interface UuidGeneratorInterface
  *
- * @package Common\Shared\Domain\ValueObject
  */
 interface UuidGeneratorInterface
 {

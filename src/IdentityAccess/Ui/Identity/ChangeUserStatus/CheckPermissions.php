@@ -21,7 +21,6 @@ use IdentityAccess\Ui\Access\AccessDeniedException;
 /**
  * Class CheckPermissions
  *
- * @package IdentityAccess\Ui\Identity\ChangeUserStatus
  */
 class CheckPermissions extends ChangeUserStatusRequestTransformerDecorator
 {

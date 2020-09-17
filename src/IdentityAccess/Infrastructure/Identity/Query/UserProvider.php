@@ -20,7 +20,6 @@ use Symfony\Component\Security\Core\User\UserProviderInterface as SecurityUserPr
 /**
  * Class UserProvider
  *
- * @package IdentityAccess\Infrastructure\Identity\Query
  */
 final class UserProvider implements UserProviderInterface
 {

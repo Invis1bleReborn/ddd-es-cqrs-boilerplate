@@ -18,7 +18,6 @@ use IdentityAccess\Application\Query\Identity\UserInterface;
 /**
  * Interface AuthenticatedUserProviderInterface
  *
- * @package IIdentityAccess\Ui\Access
  */
 interface AuthenticatedUserProviderInterface
 {

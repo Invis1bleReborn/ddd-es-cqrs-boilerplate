@@ -16,7 +16,6 @@ namespace IdentityAccess\Ui\Identity\RegisterUser;
 /**
  * Class RegisterUserRequestTransformerDecorator
  *
- * @package IdentityAccess\Ui\Identity\RegisterUser
  */
 abstract class RegisterUserRequestTransformerDecorator implements RegisterUserRequestTransformerInterface
 {

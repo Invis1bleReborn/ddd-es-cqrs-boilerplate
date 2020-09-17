@@ -16,7 +16,6 @@ namespace Common\Shared\Domain\Query\Exception;
 /**
  * Class NotFoundException
  *
- * @package Common\Shared\Domain\Query\Exception
  */
 class NotFoundException extends \Exception
 {

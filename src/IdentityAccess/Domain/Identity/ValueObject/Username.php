@@ -19,7 +19,6 @@ use Assert\AssertionFailedException;
 /**
  * Class Username
  *
- * @package IdentityAccess\Domain\Identity\ValueObject
  */
 final class Username
 {

@@ -21,7 +21,6 @@ use IdentityAccess\Ui\Identity\EnableUser\EnableUserGuard;
 /**
  * Class EnableUserGuardAdapter
  *
- * @package IdentityAccess\Infrastructure\Identity\GuardAdapter
  */
 class EnableUserGuardAdapter extends AbstractGuardAdapter
 {

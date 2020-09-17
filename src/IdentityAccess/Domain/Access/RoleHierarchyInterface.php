@@ -19,7 +19,6 @@ use IdentityAccess\Domain\Access\ValueObject\Roles;
 /**
  * Interface RoleHierarchyInterface
  *
- * @package IdentityAccess\Domain\Access
  */
 interface RoleHierarchyInterface
 {

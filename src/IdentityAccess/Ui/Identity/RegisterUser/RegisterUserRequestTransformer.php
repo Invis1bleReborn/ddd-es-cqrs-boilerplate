@@ -22,7 +22,6 @@ use IdentityAccess\Ui\Identity\ValidatorAwareRequestTransformer;
 /**
  * Class RegisterUserRequestTransformer
  *
- * @package IdentityAccess\Ui\Identity
  */
 class RegisterUserRequestTransformer extends ValidatorAwareRequestTransformer implements
     RegisterUserRequestTransformerInterface

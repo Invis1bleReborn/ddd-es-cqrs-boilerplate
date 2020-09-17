@@ -19,7 +19,6 @@ use Assert\AssertionFailedException;
 /**
  * Class PlainPassword
  *
- * @package IdentityAccess\Domain\Identity\ValueObject
  */
 final class PlainPassword
 {

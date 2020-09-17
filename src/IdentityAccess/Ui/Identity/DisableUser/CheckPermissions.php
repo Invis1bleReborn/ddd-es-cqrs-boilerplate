@@ -22,7 +22,6 @@ use IdentityAccess\Ui\Identity\ChangeUserStatus\ChangeUserStatusRequest;
 /**
  * Class CheckPermissions
  *
- * @package IdentityAccess\Ui\Identity\DisableUser
  */
 class CheckPermissions extends DisableUserRequestTransformerDecorator
 {

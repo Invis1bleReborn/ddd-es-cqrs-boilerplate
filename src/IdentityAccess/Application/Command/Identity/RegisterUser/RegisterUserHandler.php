@@ -22,7 +22,6 @@ use IdentityAccess\Domain\Identity\User;
 /**
  * Class RegisterUserHandler
  *
- * @package IdentityAccess\Application\Command\Identity\RegisterUser
  */
 final class RegisterUserHandler extends AbstractCommandHandler
 {

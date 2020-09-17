@@ -20,7 +20,6 @@ use IdentityAccess\Ui\Access\RoleHierarchyAwareGuard;
 /**
  * Class DisableUserGuard
  *
- * @package IdentityAccess\Ui\Identity\DisableUser
  */
 class DisableUserGuard extends RoleHierarchyAwareGuard
 {

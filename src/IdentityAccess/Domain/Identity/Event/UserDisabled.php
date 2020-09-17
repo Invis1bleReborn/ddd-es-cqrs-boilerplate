@@ -22,7 +22,6 @@ use IdentityAccess\Domain\Identity\ValueObject\UserId;
 /**
  * Class UserDisabled
  *
- * @package IdentityAccess\Domain\Identity\Event
  */
 final class UserDisabled extends UserIdAwareEvent
 {
