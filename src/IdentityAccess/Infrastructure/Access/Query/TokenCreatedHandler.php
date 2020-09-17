@@ -16,7 +16,7 @@ namespace IdentityAccess\Infrastructure\Access\Query;
 use Common\Shared\Application\Bus\Event\EventHandlerInterface;
 use Gesdinet\JWTRefreshTokenBundle\Model\RefreshTokenManagerInterface;
 use IdentityAccess\Application\Event\Access\TokenCreated;
- 
+
 /**
  * Class TokenCreatedHandler.
  */
