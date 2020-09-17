@@ -16,6 +16,7 @@ return PhpCsFixer\Config::create()
         'cast_spaces' => [
             'space' => 'none',
         ],
+        'class_definition' => false,
         'header_comment' => [
             'location' => 'after_open',
             'header' => <<<'LICENSE'
