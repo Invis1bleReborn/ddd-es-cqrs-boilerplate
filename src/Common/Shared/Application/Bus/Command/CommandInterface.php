@@ -18,6 +18,4 @@ namespace Common\Shared\Application\Bus\Command;
  */
 interface CommandInterface
 {
-
-
 }

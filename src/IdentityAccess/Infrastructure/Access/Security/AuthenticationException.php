@@ -21,6 +21,4 @@ use IdentityAccess\Ui\Access\AuthenticationExceptionInterface;
 class AuthenticationException extends \Symfony\Component\Security\Core\Exception\AuthenticationException implements
     AuthenticationExceptionInterface
 {
-
-
 }

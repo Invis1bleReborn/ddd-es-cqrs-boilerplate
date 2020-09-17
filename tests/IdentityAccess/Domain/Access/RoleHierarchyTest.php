@@ -53,8 +53,7 @@ class RoleHierarchyTest extends TestCase
         array $roles,
         array $expectedReachableRoles,
         array $expectedNotReachableRoles
-    ): void
-    {
+    ): void {
         $roleHierarchy = new RoleHierarchy(new \Symfony\Component\Security\Core\Role\RoleHierarchy($roleHierarchy));
         $roles = Roles::fromArray($roles);
 
@@ -65,7 +64,6 @@ class RoleHierarchyTest extends TestCase
         foreach ($expectedNotReachableRoles as $expectedNotReachableRole) {
             $this->assertFalse($roleHierarchy->roleReachable($roles, new Role($expectedNotReachableRole)));
         }
-
     }
 
     /**

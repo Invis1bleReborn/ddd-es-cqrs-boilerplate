@@ -25,8 +25,7 @@ final class TokenView
     public function __construct(
         string $accessToken,
         string $refreshToken
-    )
-    {
+    ) {
         $this->accessToken = $accessToken;
         $this->refreshToken = $refreshToken;
     }

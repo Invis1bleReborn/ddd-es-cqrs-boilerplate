@@ -47,8 +47,7 @@ final class UserRegistered extends UserIdAwareEvent
         bool $enabled,
         ?UserId $registeredBy,
         DateTime $dateRegistered
-    )
-    {
+    ) {
         parent::__construct($id);
 
         $this->email = $email;

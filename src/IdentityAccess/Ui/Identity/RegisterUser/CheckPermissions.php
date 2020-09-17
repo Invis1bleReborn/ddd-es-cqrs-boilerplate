@@ -27,8 +27,7 @@ class CheckPermissions extends RegisterUserRequestTransformerDecorator
     public function __construct(
         RegisterUserRequestTransformerInterface $transformer,
         AccessCheckerInterface $accessChecker
-    )
-    {
+    ) {
         parent::__construct($transformer);
 
         $this->accessChecker = $accessChecker;

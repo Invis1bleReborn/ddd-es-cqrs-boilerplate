@@ -48,7 +48,9 @@ final class User extends EventSourcedAggregateRoot
 
     private ?DateTime $dateRegistered;
 
-    private function __construct() {}
+    private function __construct()
+    {
+    }
 
     public static function register(
         UserId $id,
@@ -58,8 +60,7 @@ final class User extends EventSourcedAggregateRoot
         bool $enabled,
         ?UserId $registeredBy,
         UniqueEmailSpecificationInterface $uniqueEmailSpecification
-    ): self
-    {
+    ): self {
         $user = new self();
 
         $user->assertUniqueEmail($email, $uniqueEmailSpecification);
@@ -85,8 +86,7 @@ final class User extends EventSourcedAggregateRoot
         ?UserId $changedBy,
         DateTime $dateChanged,
         UniqueEmailSpecificationInterface $uniqueEmailSpecification
-    ): void
-    {
+    ): void {
         if ($this->email->equals($email)) {
             return;
         }
@@ -106,8 +106,7 @@ final class User extends EventSourcedAggregateRoot
         HashedPassword $hashedPassword,
         ?UserId $changedBy,
         DateTime $dateChanged
-    ): void
-    {
+    ): void {
         if ($this->hashedPassword->equals($hashedPassword)) {
             return;
         }
@@ -124,8 +123,7 @@ final class User extends EventSourcedAggregateRoot
         Roles $roles,
         ?UserId $changedBy,
         DateTime $dateChanged
-    ): void
-    {
+    ): void {
         if ($this->roles->equals($roles)) {
             return;
         }
@@ -173,8 +171,7 @@ final class User extends EventSourcedAggregateRoot
     public function assertUniqueEmail(
         Email $email,
         UniqueEmailSpecificationInterface $uniqueEmailSpecification
-    ): void
-    {
+    ): void {
         $result = $uniqueEmailSpecification->isUnique($email);
 
         if ($result) {

@@ -36,8 +36,7 @@ class AccessCheckerAdapter implements AccessCheckerInterface
         string $attribute,
         $subject,
         string $field = null
-    ): bool
-    {
+    ): bool {
         return $this->authorizationChecker->isGranted(new AccessAttribute($attribute, $field), $subject);
     }
 }

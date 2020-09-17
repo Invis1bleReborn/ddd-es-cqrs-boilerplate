@@ -18,6 +18,4 @@ namespace IdentityAccess\Application\Event\Access;
  */
 final class TokenRefreshed extends RefreshTokenAwareEvent
 {
-
-
 }

@@ -36,8 +36,7 @@ class RefreshTokenCommand implements CommandInterface
     public function __construct(
         UserInterface $user,
         string $refreshToken
-    )
-    {
+    ) {
         $this->user = $user;
         $this->refreshToken = RefreshToken::fromString($refreshToken);
     }

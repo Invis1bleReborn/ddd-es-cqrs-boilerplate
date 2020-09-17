@@ -32,8 +32,7 @@ final class UserEnabled extends UserIdAwareEvent
         UserId $id,
         ?UserId $enabledBy,
         DateTime $dateEnabled
-    )
-    {
+    ) {
         parent::__construct($id);
 
         $this->enabledBy = $enabledBy;

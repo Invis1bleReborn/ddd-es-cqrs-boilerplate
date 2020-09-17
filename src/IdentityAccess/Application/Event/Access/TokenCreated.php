@@ -29,8 +29,7 @@ final class TokenCreated extends RefreshTokenAwareEvent
         RefreshToken $refreshToken,
         Username $username,
         DateTime $refreshTokenDateExpired
-    )
-    {
+    ) {
         parent::__construct($refreshToken, $refreshTokenDateExpired);
 
         $this->username = $username;

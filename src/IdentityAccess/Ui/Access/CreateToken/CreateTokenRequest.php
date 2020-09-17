@@ -34,8 +34,7 @@ final class CreateTokenRequest implements RequestInterface
     public function __construct(
         ?string $username = null,
         ?string $password = null
-    )
-    {
+    ) {
         $this->username = $username;
         $this->password = $password;
     }

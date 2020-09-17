@@ -33,8 +33,7 @@ class CreateTokenRequestTransformer extends ValidatorAwareRequestTransformer imp
         ValidatorInterface $validator,
         UserProviderInterface $userProvider,
         UserCheckerInterface $userChecker
-    )
-    {
+    ) {
         parent::__construct($validator);
 
         $this->userProvider = $userProvider;

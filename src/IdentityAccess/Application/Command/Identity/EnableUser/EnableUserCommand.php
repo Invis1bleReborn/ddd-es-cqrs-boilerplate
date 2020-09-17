@@ -36,8 +36,7 @@ class EnableUserCommand extends UserIdAwareCommand implements ChangeUserStatusCo
     public function __construct(
         string $userId,
         string $enabledById
-    )
-    {
+    ) {
         parent::__construct($userId);
 
         $this->enabledById = UserId::fromString($enabledById);

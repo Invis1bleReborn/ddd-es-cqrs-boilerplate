@@ -27,8 +27,7 @@ class UserStateTransitionException extends StateTransitionException
         string $transition,
         int $code = 0,
         \Throwable $previous = null
-    )
-    {
+    ) {
         parent::__construct(
             sprintf('Invalid transition %s for state %s of user %s.', $userId->toString(), $state, $transition),
             $code,

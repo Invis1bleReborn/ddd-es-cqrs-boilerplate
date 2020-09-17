@@ -88,8 +88,7 @@ class User implements UserInterface, EnableableUserInterface, SecurityUserInterf
         bool $enabled,
         ?UserId $registeredById,
         DateTime $dateRegistered
-    )
-    {
+    ) {
         $this->id = Uuid::fromString($id->toString());
         $this->email = $email;
         $this->hashedPassword = $hashedPassword;

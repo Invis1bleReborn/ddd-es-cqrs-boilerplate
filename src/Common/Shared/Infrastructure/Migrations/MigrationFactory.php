@@ -33,8 +33,7 @@ class MigrationFactory implements BaseMigrationFactory
         BaseMigrationFactory $migrationFactory,
         DBALEventStore $eventStore,
         EntityManagerInterface $entityManager
-    )
-    {
+    ) {
         $this->migrationFactory = $migrationFactory;
         $this->eventStore = $eventStore;
         $this->entityManager = $entityManager;

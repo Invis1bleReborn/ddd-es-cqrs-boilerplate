@@ -30,8 +30,7 @@ final class UserStore extends EventSourcingRepository implements UserRepositoryI
         EventStore $eventStore,
         EventBus $eventBus,
         array $eventStreamDecorators = []
-    )
-    {
+    ) {
         parent::__construct(
             $eventStore,
             $eventBus,

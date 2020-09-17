@@ -65,8 +65,7 @@ class Token implements TokenInterface
         string $accessToken,
         string $refreshToken,
         DateTime $refreshTokenDateExpired
-    )
-    {
+    ) {
         $this->accessToken = $accessToken;
         $this->refreshToken = $refreshToken;
         $this->refreshTokenDateExpired = $refreshTokenDateExpired;

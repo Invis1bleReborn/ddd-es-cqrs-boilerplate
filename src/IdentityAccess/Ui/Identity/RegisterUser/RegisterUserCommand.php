@@ -45,8 +45,7 @@ class RegisterUserCommand extends Command
         UserProviderInterface $userProvider,
         CommandBusInterface $commandBus,
         string $name = null
-    )
-    {
+    ) {
         parent::__construct($name);
 
         $this->validator = $validator;
@@ -73,8 +72,7 @@ class RegisterUserCommand extends Command
     protected function execute(
         InputInterface $input,
         OutputInterface $output
-    ): int
-    {
+    ): int {
         $io = new SymfonyStyle($input, $output);
 
         $io->title('User registration');

@@ -39,8 +39,7 @@ final class CreateTokenHandler implements CommandHandlerInterface
         PasswordCheckerInterface $passwordChecker,
         TokenGeneratorInterface $tokenGenerator,
         EventBusInterface $eventBus
-    )
-    {
+    ) {
         $this->passwordChecker = $passwordChecker;
         $this->tokenGenerator = $tokenGenerator;
         $this->eventBus = $eventBus;

@@ -40,8 +40,7 @@ final class RolesChanged extends UserIdAwareEvent
         Roles $previousRoles,
         ?UserId $changedBy,
         DateTime $dateChanged
-    )
-    {
+    ) {
         parent::__construct($id);
         
         $this->roles = $roles;

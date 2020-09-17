@@ -18,6 +18,4 @@ namespace IdentityAccess\Ui\Access;
  */
 interface AccountStatusExceptionInterface extends AuthenticationExceptionInterface
 {
-
-
 }

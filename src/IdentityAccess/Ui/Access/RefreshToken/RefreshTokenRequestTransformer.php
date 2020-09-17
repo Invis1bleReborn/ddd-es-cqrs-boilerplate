@@ -41,8 +41,7 @@ class RefreshTokenRequestTransformer extends ValidatorAwareRequestTransformer im
         RefreshTokenCheckerInterface $refreshTokenChecker,
         UserProviderInterface $userProvider,
         UserCheckerInterface $userChecker
-    )
-    {
+    ) {
         parent::__construct($validator);
 
         $this->refreshTokenProvider = $refreshTokenProvider;

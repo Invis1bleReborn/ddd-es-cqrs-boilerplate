@@ -36,8 +36,7 @@ final class RefreshTokenHandler implements CommandHandlerInterface
         AccessTokenGeneratorInterface $accessTokenGenerator,
         EventBusInterface $eventBus,
         int $refreshTokenTtl
-    )
-    {
+    ) {
         $this->accessTokenGenerator = $accessTokenGenerator;
         $this->refreshTokenTtl = $refreshTokenTtl;
         $this->eventBus = $eventBus;

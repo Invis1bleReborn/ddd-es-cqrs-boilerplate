@@ -18,6 +18,4 @@ namespace Common\Shared\Application\Bus\Event;
  */
 interface EventHandlerInterface
 {
-
-
 }

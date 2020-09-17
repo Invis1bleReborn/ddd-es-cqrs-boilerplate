@@ -35,8 +35,7 @@ final class TokenGenerator implements TokenGeneratorInterface
         AccessTokenGeneratorInterface $accessTokenGenerator,
         RefreshTokenManagerInterface $refreshTokenManager,
         int $refreshTokenTtl
-    )
-    {
+    ) {
         $this->accessTokenGenerator = $accessTokenGenerator;
         $this->refreshTokenManager = $refreshTokenManager;
         $this->refreshTokenTtl = $refreshTokenTtl;

@@ -63,7 +63,8 @@ class OrmUserReadModelRepository extends OrmRepository implements CheckUserByEma
 
         try {
             return $query->getSingleScalarResult();
-        } catch (NoResultException $exception) {}
+        } catch (NoResultException $exception) {
+        }
 
         return null;
     }

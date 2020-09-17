@@ -51,8 +51,7 @@ class RegisterUserCommand extends UserIdAwareCommand
         bool $enabled,
         array $roles,
         ?string $registeredById
-    )
-    {
+    ) {
         parent::__construct($userId);
 
         $this->email = Email::fromString($email);

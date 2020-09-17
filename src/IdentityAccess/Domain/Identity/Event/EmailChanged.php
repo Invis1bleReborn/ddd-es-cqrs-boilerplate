@@ -39,8 +39,7 @@ final class EmailChanged extends UserIdAwareEvent
         Email $previousEmail,
         ?UserId $changedBy,
         DateTime $dateChanged
-    )
-    {
+    ) {
         parent::__construct($id);
 
         $this->email = $email;

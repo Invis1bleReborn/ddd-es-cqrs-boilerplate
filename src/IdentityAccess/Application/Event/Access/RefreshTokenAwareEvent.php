@@ -33,8 +33,7 @@ abstract class RefreshTokenAwareEvent implements EventInterface, Serializable
     public function __construct(
         RefreshToken $refreshToken,
         DateTime $refreshTokenDateExpired
-    )
-    {
+    ) {
         $this->refreshToken = $refreshToken;
         $this->refreshTokenDateExpired = $refreshTokenDateExpired;
     }

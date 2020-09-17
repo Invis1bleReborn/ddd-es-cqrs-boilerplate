@@ -31,8 +31,7 @@ class RegisterUserRequestTransformer extends ValidatorAwareRequestTransformer im
         ValidatorInterface $validator,
         UuidGeneratorInterface $uuidGenerator,
         AuthenticatedUserProviderInterface $authenticatedUserProvider
-    )
-    {
+    ) {
         parent::__construct(
             $validator,
             $authenticatedUserProvider

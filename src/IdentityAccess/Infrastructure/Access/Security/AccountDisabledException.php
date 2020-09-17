@@ -27,8 +27,7 @@ class AccountDisabledException extends CustomUserMessageAccountStatusException i
         array $messageData = [],
         int $code = 0,
         \Throwable $previous = null
-    )
-    {
+    ) {
         parent::__construct(
             $message ?? 'Account is disabled.',
             $messageData,

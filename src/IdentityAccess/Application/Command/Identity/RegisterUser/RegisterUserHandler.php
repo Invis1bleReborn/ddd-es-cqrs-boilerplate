@@ -32,8 +32,7 @@ final class RegisterUserHandler extends AbstractCommandHandler
         UserRepositoryInterface $userRepository,
         PasswordEncoderInterface $passwordEncoder,
         UniqueEmailSpecificationInterface $uniqueEmailSpecification
-    )
-    {
+    ) {
         parent::__construct($userRepository);
 
         $this->passwordEncoder = $passwordEncoder;

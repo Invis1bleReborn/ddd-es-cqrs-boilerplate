@@ -93,8 +93,7 @@ class RegisterUserHandlerTest extends UuidGeneratorAwareCommandHandlerScenarioTe
     protected function createCommandHandler(
         EventStore $eventStore,
         EventBus $eventBus
-    ): CommandHandler
-    {
+    ): CommandHandler {
         $this->passwordEncoder = new NoopPasswordEncoder();
         $this->uniqueEmailSpecificationStub = $this->createStub(UniqueEmailSpecificationInterface::class);
 

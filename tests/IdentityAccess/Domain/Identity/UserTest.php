@@ -135,8 +135,7 @@ class UserTest extends UuidGeneratorAwareAggregateRootScenarioTestCase
     public function disabledUserCanBeEnabled(
         UserRegistered $userRegistered,
         UserDisabled $userDisabled
-    ): UserEnabled
-    {
+    ): UserEnabled {
         $id = $userRegistered->id();
         $enabledById = $this->generateUserId();
         $dateEnabled = DateTime::now();

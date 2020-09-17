@@ -20,6 +20,4 @@ use Common\Shared\Application\Bus\Command\CommandInterface;
  */
 interface ChangeUserStatusCommandInterface extends CommandInterface
 {
-
-
 }

@@ -57,8 +57,7 @@ final class UserView
         bool $enabled,
         ?string $registeredById,
         \DateTimeImmutable $dateRegistered
-    )
-    {
+    ) {
         $this->id = $id;
         $this->email = $email;
         $this->roles = $roles;

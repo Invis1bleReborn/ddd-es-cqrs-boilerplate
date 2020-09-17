@@ -62,8 +62,7 @@ final class RegisterUserRequest implements RequestInterface
         ?string $passwordConfirmation = null,
         ?bool $enabled = null,
         ?array $roles = null
-    )
-    {
+    ) {
         $this->email = $email;
         $this->password = $password;
         $this->passwordConfirmation = $passwordConfirmation;

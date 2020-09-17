@@ -26,8 +26,7 @@ abstract class ValidatorAwareRequestTransformer extends BaseValidatorAwareReques
     public function __construct(
         ValidatorInterface $validator,
         AuthenticatedUserProviderInterface $authenticatedUserProvider
-    )
-    {
+    ) {
         parent::__construct($validator);
 
         $this->authenticatedUserProvider = $authenticatedUserProvider;

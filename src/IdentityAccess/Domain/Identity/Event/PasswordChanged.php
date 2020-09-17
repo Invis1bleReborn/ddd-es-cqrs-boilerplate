@@ -36,8 +36,7 @@ final class PasswordChanged extends UserIdAwareEvent
         HashedPassword $hashedPassword,
         ?UserId $changedBy,
         DateTime $dateChanged
-    )
-    {
+    ) {
         parent::__construct($id);
 
         $this->hashedPassword = $hashedPassword;

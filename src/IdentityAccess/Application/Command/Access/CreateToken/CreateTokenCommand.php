@@ -36,8 +36,7 @@ class CreateTokenCommand implements CommandInterface
     public function __construct(
         UserInterface $user,
         string $plainPassword
-    )
-    {
+    ) {
         $this->user = $user;
         $this->plainPassword = PlainPassword::fromString($plainPassword);
     }

@@ -37,8 +37,7 @@ class RegisterMessageHandlersPass implements CompilerPassInterface
         string $fqin,
         string $bus = null,
         string $tag = 'messenger.message_handler'
-    ): void
-    {
+    ): void {
         $tagAttributes = [];
 
         if (null !== $bus) {
