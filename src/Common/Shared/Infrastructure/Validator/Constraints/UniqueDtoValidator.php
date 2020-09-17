@@ -45,12 +45,12 @@ class UniqueDtoValidator extends ConstraintValidator
     {
         // Set arguments as class variables
         $this->validationObject = $object;
-        $this->constraint       = $constraint;
+        $this->constraint = $constraint;
         $this->checkTypes();
 
         // Map types to criteria
         $this->entityMeta = $this->getEntityManager()->getClassMetadata($this->constraint->entityClass);
-        $criteria         = $this->getCriteria();
+        $criteria = $this->getCriteria();
         // skip validation if there are no criteria (this can happen when the
         // "ignoreNull" option is enabled and fields to be checked are null
         if (empty($criteria)) {
@@ -67,7 +67,7 @@ class UniqueDtoValidator extends ConstraintValidator
 
         // Property to which to return the violation
         $objectFields = array_keys($this->constraint->fieldMapping);
-        $errorPath    = null !== $this->constraint->errorPath
+        $errorPath = null !== $this->constraint->errorPath
             ? $this->constraint->errorPath
             : $objectFields[0];
 
