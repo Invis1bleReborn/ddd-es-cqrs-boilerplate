@@ -10,6 +10,9 @@ return PhpCsFixer\Config::create()
         '@Symfony' => true,
         'array_syntax' => ['syntax' => 'short'],
         'single_line_throw' => false,
+        'concat_space' => [
+            'spacing' => 'one',
+        ],
         'header_comment' => [
             'location' => 'after_open',
             'header' => <<<'LICENSE'
