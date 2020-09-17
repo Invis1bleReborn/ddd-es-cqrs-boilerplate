@@ -43,5 +43,4 @@ class SwaggerDecorator implements NormalizerInterface
     {
         return $data instanceof Documentation;
     }
-
 }

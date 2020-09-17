@@ -33,5 +33,4 @@ interface UserInterface
     public function getRegisteredById(): ?string;
 
     public function getDateRegistered(): \DateTimeImmutable;
-
 }

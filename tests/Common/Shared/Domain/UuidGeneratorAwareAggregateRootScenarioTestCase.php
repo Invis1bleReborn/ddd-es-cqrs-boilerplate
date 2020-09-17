@@ -54,5 +54,4 @@ abstract class UuidGeneratorAwareAggregateRootScenarioTestCase extends Aggregate
     {
         return new ReflectionAggregateFactory();
     }
-
 }

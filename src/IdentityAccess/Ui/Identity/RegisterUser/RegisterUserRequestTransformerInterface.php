@@ -34,5 +34,4 @@ interface RegisterUserRequestTransformerInterface
      * @throws AssertionFailedException
      */
     public function __invoke(RegisterUserRequest $request): RegisterUserCommand;
-
 }

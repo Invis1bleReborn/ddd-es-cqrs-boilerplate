@@ -25,5 +25,4 @@ interface EventPublisherInterface
     public function handle(DomainMessage $message): void;
 
     public function publish(): void;
-
 }

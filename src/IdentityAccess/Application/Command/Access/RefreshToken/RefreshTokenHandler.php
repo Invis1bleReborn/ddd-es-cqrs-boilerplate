@@ -64,5 +64,4 @@ final class RefreshTokenHandler implements CommandHandlerInterface
             $refreshTokenDateExpired
         );
     }
-
 }

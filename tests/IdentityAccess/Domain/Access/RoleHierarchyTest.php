@@ -123,5 +123,4 @@ class RoleHierarchyTest extends TestCase
             ],
         ];
     }
-
 }

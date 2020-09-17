@@ -29,5 +29,4 @@ class TokenTransformer
             $token->getRefreshToken()
         );
     }
-
 }

@@ -27,5 +27,4 @@ interface RefreshTokenProviderInterface
      * @throws \UnexpectedValueException
      */
     public function loadRefreshTokenByValue(string $refreshToken): ?RefreshTokenInterface;
-
 }

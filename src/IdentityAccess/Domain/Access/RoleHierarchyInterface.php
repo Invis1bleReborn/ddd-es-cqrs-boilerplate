@@ -26,5 +26,4 @@ interface RoleHierarchyInterface
     public function reachableRoles(Roles $roles): Roles;
 
     public function roleReachable(Roles $roles, Role $role): bool;
-
 }

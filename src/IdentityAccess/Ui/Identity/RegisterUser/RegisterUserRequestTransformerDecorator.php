@@ -26,5 +26,4 @@ abstract class RegisterUserRequestTransformerDecorator implements RegisterUserRe
     {
         $this->transformer = $transformer;
     }
-
 }

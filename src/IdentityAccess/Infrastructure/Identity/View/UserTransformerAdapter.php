@@ -43,5 +43,4 @@ final class UserTransformerAdapter implements DataTransformerInterface
     {
         return UserView::class === $to && $data instanceof UserInterface;
     }
-
 }

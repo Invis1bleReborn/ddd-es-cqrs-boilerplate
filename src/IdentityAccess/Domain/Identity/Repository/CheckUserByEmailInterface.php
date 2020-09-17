@@ -24,5 +24,4 @@ use IdentityAccess\Domain\Identity\ValueObject\UserId;
 interface CheckUserByEmailInterface
 {
     public function existsEmail(Email $email): ?UserId;
-
 }

@@ -48,5 +48,4 @@ class CheckPermissions extends ChangeUserStatusRequestTransformerDecorator
 
         return ($this->transformer)($request, $user);
     }
-
 }

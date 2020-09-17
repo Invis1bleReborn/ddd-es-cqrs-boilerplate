@@ -33,5 +33,4 @@ class UserTransformer
             $user->getDateRegistered(),
         );
     }
-
 }

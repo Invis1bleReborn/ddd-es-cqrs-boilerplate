@@ -26,5 +26,4 @@ abstract class DisableUserRequestTransformerDecorator implements DisableUserRequ
     {
         $this->transformer = $transformer;
     }
-
 }

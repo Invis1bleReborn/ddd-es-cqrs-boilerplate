@@ -60,5 +60,4 @@ final class TokenGenerator implements TokenGeneratorInterface
             DateTime::fromNative($refreshTokenDateExpired)
         );
     }
-
 }

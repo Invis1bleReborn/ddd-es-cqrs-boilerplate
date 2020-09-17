@@ -43,5 +43,4 @@ final class TokenTransformerAdapter implements DataTransformerInterface
     {
         return TokenView::class === $to && $data instanceof TokenInterface;
     }
-
 }

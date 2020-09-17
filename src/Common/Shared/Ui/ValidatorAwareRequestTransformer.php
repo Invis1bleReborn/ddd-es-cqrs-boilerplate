@@ -40,5 +40,4 @@ abstract class ValidatorAwareRequestTransformer
     {
         $this->validator->validate($request, $context);
     }
-
 }

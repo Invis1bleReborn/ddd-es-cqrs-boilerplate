@@ -49,5 +49,4 @@ class CheckPermissions extends DisableUserRequestTransformerDecorator
 
         return ($this->transformer)($request, $user);
     }
-
 }

@@ -30,5 +30,4 @@ final class EnableUserHandler extends AbstractCommandHandler
 
         $this->storeUser($user);
     }
-
 }

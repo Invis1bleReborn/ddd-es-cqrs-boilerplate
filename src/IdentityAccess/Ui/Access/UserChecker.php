@@ -34,5 +34,4 @@ class UserChecker implements UserCheckerInterface
 
         throw new AccountDisabledException();
     }
-
 }

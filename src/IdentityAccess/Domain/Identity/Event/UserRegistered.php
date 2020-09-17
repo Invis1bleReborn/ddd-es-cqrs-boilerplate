@@ -130,5 +130,4 @@ final class UserRegistered extends UserIdAwareEvent
             'registeredBy' => null === $this->registeredBy ? null : $this->registeredBy->toString(),
         ];
     }
-
 }

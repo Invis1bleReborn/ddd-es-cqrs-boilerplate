@@ -21,5 +21,4 @@ namespace Common\Shared\Domain\Specification;
 abstract class AbstractSpecification
 {
     abstract public function isSatisfiedBy($value): bool;
-
 }

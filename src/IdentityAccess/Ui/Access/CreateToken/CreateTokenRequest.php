@@ -41,5 +41,4 @@ final class CreateTokenRequest implements RequestInterface
         $this->username = $username;
         $this->password = $password;
     }
-
 }

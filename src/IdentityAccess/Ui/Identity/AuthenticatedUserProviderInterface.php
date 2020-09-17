@@ -23,5 +23,4 @@ use IdentityAccess\Application\Query\Identity\UserInterface;
 interface AuthenticatedUserProviderInterface
 {
     public function getUser(): ?UserInterface;
-
 }

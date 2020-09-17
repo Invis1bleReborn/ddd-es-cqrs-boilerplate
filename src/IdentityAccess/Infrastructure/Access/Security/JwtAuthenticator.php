@@ -31,5 +31,4 @@ final class JwtAuthenticator extends GuardBridgeAuthenticator
     {
         parent::__construct($jwtGuardAuthenticator, $userProvider);
     }
-
 }

@@ -34,5 +34,4 @@ interface RefreshTokenRequestTransformerInterface
      * @throws AssertionFailedException
      */
     public function __invoke(RefreshTokenRequest $request): RefreshTokenCommand;
-
 }

@@ -107,5 +107,4 @@ class Token implements TokenInterface
     {
         return md5($this->accessToken);
     }
-
 }

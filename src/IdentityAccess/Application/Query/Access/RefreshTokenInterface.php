@@ -29,5 +29,4 @@ interface RefreshTokenInterface
     public function getUsername();
 
     public function isValid();
-
 }

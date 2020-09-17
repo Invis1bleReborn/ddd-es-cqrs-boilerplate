@@ -59,5 +59,4 @@ class RegisterUserRequestTransformer extends ValidatorAwareRequestTransformer im
             $this->getAuthenticatedUserId()
         );
     }
-
 }

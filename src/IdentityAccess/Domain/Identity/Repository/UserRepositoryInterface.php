@@ -26,5 +26,4 @@ interface UserRepositoryInterface
     public function get(UserId $id): User;
 
     public function store(User $user): void;
-
 }

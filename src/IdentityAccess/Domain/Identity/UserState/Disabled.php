@@ -52,5 +52,4 @@ class Disabled extends AbstractState
     {
         $this->changeUserState(new Enabled($this->user));
     }
-
 }

@@ -67,5 +67,4 @@ class RegisterUserCommand extends UserIdAwareCommand
         $this->roles = Roles::fromArray($roles);
         $this->registeredById = null === $registeredById ? null : UserId::fromString($registeredById);
     }
-
 }

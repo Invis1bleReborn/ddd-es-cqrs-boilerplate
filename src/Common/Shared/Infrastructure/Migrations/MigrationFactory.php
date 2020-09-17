@@ -55,5 +55,4 @@ class MigrationFactory implements BaseMigrationFactory
 
         return $instance;
     }
-
 }

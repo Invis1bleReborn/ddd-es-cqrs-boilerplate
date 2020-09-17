@@ -75,5 +75,4 @@ abstract class OrmRepository
 
         return $model;
     }
-
 }

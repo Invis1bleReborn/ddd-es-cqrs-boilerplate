@@ -28,5 +28,4 @@ class NoopPasswordEncoder implements PasswordEncoderInterface
     {
         return HashedPassword::fromString($plainPassword->toString());
     }
-
 }

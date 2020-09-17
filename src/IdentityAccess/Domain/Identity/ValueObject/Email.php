@@ -57,5 +57,4 @@ final class Email
     {
         return $email->value === $this->value;
     }
-
 }

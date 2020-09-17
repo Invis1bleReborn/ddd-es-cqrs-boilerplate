@@ -40,5 +40,4 @@ class RegisterUserGuardAdapter extends AbstractGuardAdapter
             && null === $attribute->field
         ;
     }
-
 }

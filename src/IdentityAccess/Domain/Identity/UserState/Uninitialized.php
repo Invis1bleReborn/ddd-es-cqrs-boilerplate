@@ -54,5 +54,4 @@ class Uninitialized extends AbstractState
 
         $this->changeUserState($state);
     }
-
 }

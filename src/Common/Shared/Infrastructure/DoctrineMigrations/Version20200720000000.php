@@ -36,5 +36,4 @@ class Version20200720000000 extends EventStoreAwareMigration
 
         $this->entityManager->flush();
     }
-
 }

@@ -57,5 +57,4 @@ final class PlainPassword
     {
         return $this->value;
     }
-
 }

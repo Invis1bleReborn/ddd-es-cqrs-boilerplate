@@ -26,5 +26,4 @@ abstract class ChangeUserStatusRequestTransformerDecorator implements ChangeUser
     {
         $this->transformer = $transformer;
     }
-
 }

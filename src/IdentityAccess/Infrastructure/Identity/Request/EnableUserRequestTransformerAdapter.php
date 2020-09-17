@@ -51,5 +51,4 @@ class EnableUserRequestTransformerAdapter implements DataTransformerInterface
             is_array($data) && isset($data['enabled']) && true === $data['enabled']
         ;
     }
-
 }

@@ -200,5 +200,4 @@ class UserTest extends UuidGeneratorAwareAggregateRootScenarioTestCase
     {
         return User::class;
     }
-
 }

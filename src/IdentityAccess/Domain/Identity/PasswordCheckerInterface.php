@@ -31,5 +31,4 @@ interface PasswordCheckerInterface
      * @throws \RuntimeException
      */
     public function check(HashedPassword $hashedPassword, PlainPassword $plainPassword, ?string $salt): void;
-
 }

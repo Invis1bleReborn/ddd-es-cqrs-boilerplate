@@ -24,5 +24,4 @@ interface UuidGeneratorInterface
      * @return string
      */
     public function __invoke(): string;
-
 }

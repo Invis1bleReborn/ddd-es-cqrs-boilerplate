@@ -28,5 +28,4 @@ class DisableUserGuard extends RoleHierarchyAwareGuard
     {
         return $this->isRoleReachable($user, new Role('ROLE_USER_DISABLER'));
     }
-
 }

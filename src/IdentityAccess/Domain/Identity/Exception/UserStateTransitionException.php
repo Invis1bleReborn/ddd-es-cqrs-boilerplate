@@ -37,5 +37,4 @@ class UserStateTransitionException extends StateTransitionException
             $previous
         );
     }
-
 }

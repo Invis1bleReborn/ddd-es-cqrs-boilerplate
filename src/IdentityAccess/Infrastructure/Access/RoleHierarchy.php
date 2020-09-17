@@ -41,5 +41,4 @@ class RoleHierarchy implements RoleHierarchyInterface
         return $this->reachableRoles($roles)
             ->contains($role);
     }
-
 }

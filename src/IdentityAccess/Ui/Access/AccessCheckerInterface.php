@@ -32,5 +32,4 @@ interface AccessCheckerInterface
         $subject,
         string $field = null
     ): bool;
-
 }

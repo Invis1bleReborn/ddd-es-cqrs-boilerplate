@@ -36,5 +36,4 @@ class UuidGenerator implements UuidGeneratorInterface
     {
         return $this->uuidGenerator->generate();
     }
-
 }

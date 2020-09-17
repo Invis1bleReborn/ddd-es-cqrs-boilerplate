@@ -39,5 +39,4 @@ abstract class RoleHierarchyAwareGuard implements GuardInterface
             $role
         );
     }
-
 }

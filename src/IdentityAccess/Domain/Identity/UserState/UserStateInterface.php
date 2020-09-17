@@ -34,5 +34,4 @@ interface UserStateInterface
      * @throws AssertionFailedException
      */
     public function assertEnabled(): void;
-
 }

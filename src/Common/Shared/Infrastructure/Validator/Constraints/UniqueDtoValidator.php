@@ -250,5 +250,4 @@ class UniqueDtoValidator extends ConstraintValidator
 
         return $this->repository;
     }
-
 }

@@ -45,5 +45,4 @@ abstract class ValidatorAwareRequestTransformer extends BaseValidatorAwareReques
 
         return $user->getId();
     }
-
 }

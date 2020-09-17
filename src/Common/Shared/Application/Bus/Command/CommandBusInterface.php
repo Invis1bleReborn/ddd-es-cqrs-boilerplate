@@ -27,5 +27,4 @@ interface CommandBusInterface
      * @throws \Throwable
      */
     public function handle(CommandInterface $command): void;
-
 }

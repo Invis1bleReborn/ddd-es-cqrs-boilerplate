@@ -263,5 +263,4 @@ final class User extends EventSourcedAggregateRoot
     {
         $this->roles = $event->roles();
     }
-
 }

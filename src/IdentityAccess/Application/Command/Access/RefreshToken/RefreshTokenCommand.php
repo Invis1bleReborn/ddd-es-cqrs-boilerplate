@@ -45,5 +45,4 @@ class RefreshTokenCommand implements CommandInterface
         $this->user = $user;
         $this->refreshToken = RefreshToken::fromString($refreshToken);
     }
-
 }

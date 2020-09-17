@@ -29,5 +29,4 @@ final class AccessAttribute
         $this->attribute = $attribute;
         $this->field = $field;
     }
-
 }

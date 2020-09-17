@@ -202,5 +202,4 @@ class User implements UserInterface, EnableableUserInterface, SecurityUserInterf
             'dateRegistered' => $this->dateRegistered->toString(),
         ];
     }
-
 }

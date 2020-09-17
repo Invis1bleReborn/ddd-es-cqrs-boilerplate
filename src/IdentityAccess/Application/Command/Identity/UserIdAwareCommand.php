@@ -37,5 +37,4 @@ abstract class UserIdAwareCommand implements CommandInterface
     {
         $this->userId = UserId::fromString($userId);
     }
-
 }

@@ -48,5 +48,4 @@ final class CommandBus implements CommandBusInterface
             $this->throwException($e);
         }
     }
-
 }

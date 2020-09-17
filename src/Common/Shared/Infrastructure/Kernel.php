@@ -83,5 +83,4 @@ class Kernel extends BaseKernel
     {
         $container->addCompilerPass(new RegisterMessageHandlersPass(), PassConfig::TYPE_BEFORE_OPTIMIZATION, 99999);
     }
-
 }

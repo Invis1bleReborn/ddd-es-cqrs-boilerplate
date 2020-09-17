@@ -47,5 +47,4 @@ final class AuthenticatedUserProvider implements AuthenticatedUserProviderInterf
 
         return null;
     }
-
 }

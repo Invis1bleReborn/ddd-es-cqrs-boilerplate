@@ -24,5 +24,4 @@ use IdentityAccess\Domain\Access\ValueObject\AccessToken;
 interface AccessTokenGeneratorInterface
 {
     public function __invoke(UserInterface $user): AccessToken;
-
 }

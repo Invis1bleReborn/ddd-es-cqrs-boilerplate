@@ -55,5 +55,4 @@ final class UserStore extends EventSourcingRepository implements UserRepositoryI
     {
         $this->save($user);
     }
-
 }

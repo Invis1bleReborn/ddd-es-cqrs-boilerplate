@@ -76,5 +76,4 @@ class UserProjector extends Projector
     {
         $this->repository->add($user);
     }
-
 }

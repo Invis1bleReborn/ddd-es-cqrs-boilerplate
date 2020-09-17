@@ -152,5 +152,4 @@ class RegisterUserCommand extends Command
 
         return 0;
     }
-
 }

@@ -49,5 +49,4 @@ final class RefreshTokenProvider implements RefreshTokenProviderInterface
 
         return $refreshToken_;
     }
-
 }

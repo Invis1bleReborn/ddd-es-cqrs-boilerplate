@@ -73,5 +73,4 @@ class RefreshTokenRequestTransformer extends ValidatorAwareRequestTransformer im
             $request->refreshToken
         );
     }
-
 }

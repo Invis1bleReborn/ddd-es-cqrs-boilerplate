@@ -44,5 +44,4 @@ abstract class AbstractState extends SimpleEventSourcedEntity implements UserSta
             $transition
         );
     }
-
 }

@@ -110,5 +110,4 @@ class RegisterUserHandlerTest extends UuidGeneratorAwareCommandHandlerScenarioTe
             )
         );
     }
-
 }

@@ -47,5 +47,4 @@ abstract class UuidGeneratorAwareCommandHandlerScenarioTestCase extends CommandH
     {
         return ($this->uuidGenerator)();
     }
-
 }

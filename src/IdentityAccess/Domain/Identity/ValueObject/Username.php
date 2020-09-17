@@ -64,5 +64,4 @@ final class Username
     {
         return $username->value === $this->value;
     }
-
 }

@@ -67,5 +67,4 @@ final class TokenCreated extends RefreshTokenAwareEvent
             'username' => $this->username->toString(),
         ];
     }
-
 }

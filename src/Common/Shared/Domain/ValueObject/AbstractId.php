@@ -72,5 +72,4 @@ abstract class AbstractId implements IdInterface
     {
         return $this->value === (string)$id && get_class($this) === get_class($id);
     }
-
 }

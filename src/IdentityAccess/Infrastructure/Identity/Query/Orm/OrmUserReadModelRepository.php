@@ -83,5 +83,4 @@ class OrmUserReadModelRepository extends OrmRepository implements CheckUserByEma
             ->setParameter('email', $email->toString())
         ;
     }
-
 }

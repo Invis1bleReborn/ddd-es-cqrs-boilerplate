@@ -41,5 +41,4 @@ class ChangeUserStatusGuardAdapter extends AbstractGuardAdapter
             && 'status' === $attribute->field
         ;
     }
-
 }

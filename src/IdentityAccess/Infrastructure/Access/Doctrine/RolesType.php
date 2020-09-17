@@ -81,7 +81,6 @@ class RolesType extends JsonType
     {
         return 'roles';
     }
-
 }
 
 

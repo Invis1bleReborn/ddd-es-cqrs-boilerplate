@@ -24,5 +24,4 @@ class NotFoundException extends \Exception
     {
         parent::__construct('Resource not found');
     }
-
 }

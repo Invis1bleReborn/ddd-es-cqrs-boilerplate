@@ -35,5 +35,4 @@ class DisableUserRequestTransformer extends ValidatorAwareRequestTransformer imp
 
         return new DisableUserCommand($user->getId(), $this->getAuthenticatedUserId());
     }
-
 }

@@ -41,5 +41,4 @@ abstract class EventStoreAwareMigration extends AbstractMigration
 
         return $this;
     }
-
 }

@@ -92,5 +92,4 @@ final class PasswordChanged extends UserIdAwareEvent
             'changedBy' => null === $this->changedBy ? null : $this->changedBy->toString(),
         ];
     }
-
 }

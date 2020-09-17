@@ -79,5 +79,4 @@ final class UserEnabled extends UserIdAwareEvent
             'enabledBy' => null === $this->enabledBy ? null : $this->enabledBy->toString(),
         ];
     }
-
 }

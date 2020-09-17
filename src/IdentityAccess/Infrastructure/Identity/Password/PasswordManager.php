@@ -65,5 +65,4 @@ class PasswordManager implements PasswordEncoderInterface, PasswordCheckerInterf
             throw new BadCredentialsException('The presented password is invalid.');
         }
     }
-
 }

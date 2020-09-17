@@ -24,5 +24,4 @@ class StateTransitionException extends \DomainException
     {
         parent::__construct($message ?? 'Invalid state transition.', $code, $previous);
     }
-
 }

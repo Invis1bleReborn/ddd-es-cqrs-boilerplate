@@ -57,5 +57,4 @@ final class HashedPassword
     {
         return $hashedPassword->value === $this->value;
     }
-
 }

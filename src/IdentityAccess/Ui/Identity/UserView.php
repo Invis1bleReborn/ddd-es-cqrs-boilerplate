@@ -68,5 +68,4 @@ final class UserView
         $this->registeredById = $registeredById;
         $this->dateRegistered = $dateRegistered;
     }
-
 }

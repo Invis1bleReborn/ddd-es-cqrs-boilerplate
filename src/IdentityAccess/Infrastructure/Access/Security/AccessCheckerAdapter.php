@@ -42,5 +42,4 @@ class AccessCheckerAdapter implements AccessCheckerInterface
     {
         return $this->authorizationChecker->isGranted(new AccessAttribute($attribute, $field), $subject);
     }
-
 }

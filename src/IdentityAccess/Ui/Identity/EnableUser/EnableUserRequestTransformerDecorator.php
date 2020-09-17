@@ -26,5 +26,4 @@ abstract class EnableUserRequestTransformerDecorator implements EnableUserReques
     {
         $this->transformer = $transformer;
     }
-
 }

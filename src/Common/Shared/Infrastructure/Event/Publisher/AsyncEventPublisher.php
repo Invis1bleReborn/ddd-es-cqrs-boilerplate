@@ -66,5 +66,4 @@ class AsyncEventPublisher implements EventPublisherInterface, EventSubscriberInt
             $this->bus->handle(new Event($event));
         }
     }
-
 }

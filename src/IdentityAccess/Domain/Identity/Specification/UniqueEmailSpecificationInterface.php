@@ -23,5 +23,4 @@ use IdentityAccess\Domain\Identity\ValueObject\Email;
 interface UniqueEmailSpecificationInterface
 {
     public function isUnique(Email $email): bool;
-
 }

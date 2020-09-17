@@ -59,5 +59,4 @@ class CreateTokenRequestTransformer extends ValidatorAwareRequestTransformer imp
             $request->password
         );
     }
-
 }

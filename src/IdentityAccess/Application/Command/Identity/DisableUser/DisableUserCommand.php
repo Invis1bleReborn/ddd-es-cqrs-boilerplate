@@ -45,5 +45,4 @@ class DisableUserCommand extends UserIdAwareCommand implements ChangeUserStatusC
 
         $this->disabledById = UserId::fromString($disabledById);
     }
-
 }

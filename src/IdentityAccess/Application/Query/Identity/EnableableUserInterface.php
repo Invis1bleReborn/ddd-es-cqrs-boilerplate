@@ -21,5 +21,4 @@ namespace IdentityAccess\Application\Query\Identity;
 interface EnableableUserInterface
 {
     public function isEnabled(): bool;
-
 }

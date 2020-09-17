@@ -30,5 +30,4 @@ class RegisterUserGuard implements GuardInterface
     {
         return true;
     }
-
 }

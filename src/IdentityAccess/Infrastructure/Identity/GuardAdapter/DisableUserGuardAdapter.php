@@ -41,5 +41,4 @@ class DisableUserGuardAdapter extends AbstractGuardAdapter
             && null === $attribute->field
         ;
     }
-
 }

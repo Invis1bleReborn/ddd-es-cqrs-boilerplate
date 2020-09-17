@@ -24,5 +24,4 @@ class DateTimeException extends \Exception
     {
         parent::__construct('Datetime Malformed or not valid', 500, $e);
     }
-
 }

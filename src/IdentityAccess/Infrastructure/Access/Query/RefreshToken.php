@@ -30,5 +30,4 @@ class RefreshToken extends Entity\RefreshToken implements RefreshTokenInterface
     {
         return $this->getRefreshToken();
     }
-
 }

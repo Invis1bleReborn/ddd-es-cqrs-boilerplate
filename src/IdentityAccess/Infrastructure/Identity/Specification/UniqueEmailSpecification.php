@@ -51,5 +51,4 @@ final class UniqueEmailSpecification extends AbstractSpecification implements Un
     {
         return $this->isSatisfiedBy($email);
     }
-
 }

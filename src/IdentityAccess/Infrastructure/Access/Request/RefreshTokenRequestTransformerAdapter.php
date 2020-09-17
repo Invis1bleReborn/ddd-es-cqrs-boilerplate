@@ -40,7 +40,6 @@ class RefreshTokenRequestTransformerAdapter implements DataTransformerInterface
         return ($this->refreshTokenRequestTransformer)($data);
     }
 
-
     public function supportsTransformation($data, string $to, array $context = []): bool
     {
         if ($data instanceof RefreshTokenCommand) {
@@ -51,5 +50,4 @@ class RefreshTokenRequestTransformerAdapter implements DataTransformerInterface
             isset($context['input']['class']) && RefreshTokenRequest::class === $context['input']['class']
         ;
     }
-
 }

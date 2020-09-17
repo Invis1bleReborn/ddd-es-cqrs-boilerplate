@@ -66,5 +66,4 @@ final class CreateTokenHandler implements CommandHandlerInterface
 
         return $token;
     }
-
 }

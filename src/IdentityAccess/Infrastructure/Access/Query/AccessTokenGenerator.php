@@ -44,5 +44,4 @@ final class AccessTokenGenerator implements AccessTokenGeneratorInterface
 
         return AccessToken::fromString($this->tokenManager->create($user));
     }
-
 }

@@ -32,5 +32,4 @@ final class RefreshTokenRequest implements RequestInterface
     {
         $this->refreshToken = $refreshToken;
     }
-
 }

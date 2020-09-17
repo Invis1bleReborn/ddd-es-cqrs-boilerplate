@@ -42,5 +42,4 @@ class TokenRefreshedHandler implements EventHandlerInterface
 
         $this->refreshTokenManager->save($refreshToken);
     }
-
 }

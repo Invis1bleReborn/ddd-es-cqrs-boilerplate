@@ -35,5 +35,4 @@ class RegisterUserHandlerAdapter extends SimpleCommandHandler
     {
         ($this->handler)($command);
     }
-
 }

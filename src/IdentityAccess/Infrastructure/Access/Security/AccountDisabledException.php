@@ -38,5 +38,4 @@ class AccountDisabledException extends CustomUserMessageAccountStatusException i
             $previous
         );
     }
-
 }

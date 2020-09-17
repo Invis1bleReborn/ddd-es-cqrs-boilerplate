@@ -40,7 +40,6 @@ class CreateTokenRequestTransformerAdapter implements DataTransformerInterface
         return ($this->createTokenRequestTransformer)($data);
     }
 
-
     public function supportsTransformation($data, string $to, array $context = []): bool
     {
         if ($data instanceof CreateTokenCommand) {
@@ -51,5 +50,4 @@ class CreateTokenRequestTransformerAdapter implements DataTransformerInterface
             isset($context['input']['class']) && CreateTokenRequest::class === $context['input']['class']
         ;
     }
-
 }

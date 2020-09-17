@@ -28,5 +28,4 @@ interface UserCheckerInterface
      * @throws AccountStatusExceptionInterface
      */
     public function __invoke(UserInterface $user): void;
-
 }

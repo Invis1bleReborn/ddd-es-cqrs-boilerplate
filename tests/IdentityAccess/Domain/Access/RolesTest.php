@@ -153,5 +153,4 @@ class RolesTest extends TestCase
             [ ['ROLE_SUPER_ADMIN', 'ROLE_ALLOWED_TO_SWITCH'], 'ROLE_USER' ],
         ];
     }
-
 }

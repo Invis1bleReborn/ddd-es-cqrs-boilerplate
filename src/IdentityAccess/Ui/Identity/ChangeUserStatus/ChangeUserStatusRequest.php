@@ -32,5 +32,4 @@ final class ChangeUserStatusRequest implements RequestInterface
     {
         $this->enabled = $enabled;
     }
-
 }

@@ -30,5 +30,4 @@ interface GuardInterface
      * @throws \InvalidArgumentException
      */
     public function isGranted(UserInterface $user, object $subject = null): bool;
-
 }

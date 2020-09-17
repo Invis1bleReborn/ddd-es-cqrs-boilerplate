@@ -36,5 +36,4 @@ trait MessageBusExceptionTrait
 
         throw $exception;
     }
-
 }

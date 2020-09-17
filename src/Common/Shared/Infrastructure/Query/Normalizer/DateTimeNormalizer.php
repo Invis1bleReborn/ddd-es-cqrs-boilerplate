@@ -68,5 +68,4 @@ class DateTimeNormalizer implements NormalizerInterface, DenormalizerInterface, 
         return $data instanceof DateTime &&
             $this->nativeDateTimeNormalizer->supportsNormalization($data->toNative(), $format);
     }
-
 }

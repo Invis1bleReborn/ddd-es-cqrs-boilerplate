@@ -24,5 +24,4 @@ use IdentityAccess\Domain\Identity\ValueObject\PlainPassword;
 interface PasswordEncoderInterface
 {
     public function encode(PlainPassword $plainPassword): HashedPassword;
-
 }

@@ -52,5 +52,4 @@ class RegisterMessageHandlersPass implements CompilerPassInterface
             ->addTag($tag, $tagAttributes)
         ;
     }
-
 }

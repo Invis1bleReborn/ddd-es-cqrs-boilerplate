@@ -46,5 +46,4 @@ final class EventBus implements EventBusInterface
             $this->throwException($e);
         }
     }
-
 }

@@ -29,5 +29,4 @@ class EmailAlreadyExistsException extends \InvalidArgumentException
             $email->toString())
         );
     }
-
 }

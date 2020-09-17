@@ -47,5 +47,4 @@ abstract class AbstractGuardAdapter extends Voter
 
         return $this->guard->isGranted($user);
     }
-
 }

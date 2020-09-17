@@ -26,5 +26,4 @@ interface EventBusInterface
      * @throws \Throwable
      */
     public function handle(EventInterface $event): void;
-
 }

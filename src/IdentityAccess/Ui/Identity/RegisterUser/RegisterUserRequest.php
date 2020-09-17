@@ -71,5 +71,4 @@ final class RegisterUserRequest implements RequestInterface
         $this->enabled = $enabled;
         $this->roles = $roles;
     }
-
 }

@@ -36,5 +36,4 @@ class RefreshTokenChecker implements RefreshTokenCheckerInterface
             throw new AuthenticationException(sprintf('Refresh token "%s" is invalid.', $refreshToken));
         }
     }
-
 }

@@ -41,5 +41,4 @@ abstract class AbstractCommandHandler implements CommandHandlerInterface
     {
         $this->userRepository->store($user);
     }
-
 }

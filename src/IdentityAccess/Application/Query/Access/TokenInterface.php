@@ -25,5 +25,4 @@ interface TokenInterface
     public function getRefreshToken(): string;
 
     public function getRefreshTokenDateExpired(): \DateTimeImmutable;
-
 }

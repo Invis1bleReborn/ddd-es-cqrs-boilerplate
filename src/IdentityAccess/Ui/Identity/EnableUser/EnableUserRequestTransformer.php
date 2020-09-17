@@ -35,5 +35,4 @@ class EnableUserRequestTransformer extends ValidatorAwareRequestTransformer impl
 
         return new EnableUserCommand($user->getId(), $this->getAuthenticatedUserId());
     }
-
 }

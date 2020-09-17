@@ -32,5 +32,4 @@ final class TokenView
         $this->accessToken = $accessToken;
         $this->refreshToken = $refreshToken;
     }
-
 }

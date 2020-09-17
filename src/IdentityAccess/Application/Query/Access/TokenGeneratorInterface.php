@@ -23,5 +23,4 @@ use IdentityAccess\Application\Query\Identity\UserInterface;
 interface TokenGeneratorInterface
 {
     public function __invoke(UserInterface $user): TokenInterface;
-
 }

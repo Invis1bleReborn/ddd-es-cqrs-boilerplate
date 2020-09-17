@@ -37,5 +37,4 @@ class SendEventsToElasticConsumer implements EventHandlerInterface
             $event->getDomainMessage()
         );
     }
-
 }

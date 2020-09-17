@@ -27,5 +27,4 @@ interface UserProviderInterface
      * @throws \RuntimeException
      */
     public function loadUserByUsername(string $username): UserInterface;
-
 }

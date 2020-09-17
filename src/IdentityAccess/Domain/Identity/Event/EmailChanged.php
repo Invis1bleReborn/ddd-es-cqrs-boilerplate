@@ -104,5 +104,4 @@ final class EmailChanged extends UserIdAwareEvent
             'changedBy' => null === $this->changedBy ? null : $this->changedBy->toString(),
         ];
     }
-
 }

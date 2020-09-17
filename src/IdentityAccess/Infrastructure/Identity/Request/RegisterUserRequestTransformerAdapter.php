@@ -50,5 +50,4 @@ class RegisterUserRequestTransformerAdapter implements DataTransformerInterface
             isset($context['input']['class']) && RegisterUserRequest::class === $context['input']['class']
         ;
     }
-
 }

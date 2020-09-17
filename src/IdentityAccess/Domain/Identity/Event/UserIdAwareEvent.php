@@ -58,5 +58,4 @@ abstract class UserIdAwareEvent implements Serializable
             'id' => $this->id->toString(),
         ];
     }
-
 }

@@ -45,5 +45,4 @@ final class UserProvider implements UserProviderInterface
 
         return $user;
     }
-
 }

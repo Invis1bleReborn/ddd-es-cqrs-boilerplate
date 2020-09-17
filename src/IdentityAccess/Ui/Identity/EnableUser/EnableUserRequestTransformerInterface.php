@@ -37,5 +37,4 @@ interface EnableUserRequestTransformerInterface
      * @throws AssertionFailedException
      */
     public function __invoke(ChangeUserStatusRequest $request, UserInterface $user): EnableUserCommand;
-
 }

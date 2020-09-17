@@ -28,5 +28,4 @@ interface RefreshTokenCheckerInterface
      * @throws AuthenticationExceptionInterface
      */
     public function __invoke(?RefreshTokenInterface $refreshToken): void;
-
 }

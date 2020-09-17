@@ -76,5 +76,4 @@ abstract class RefreshTokenAwareEvent implements EventInterface, Serializable
             'refreshTokenDateExpired' => $this->refreshTokenDateExpired->toString(),
         ];
     }
-
 }

@@ -33,5 +33,4 @@ interface CreateTokenRequestTransformerInterface
      * @throws AssertionFailedException
      */
     public function __invoke(CreateTokenRequest $request): CreateTokenCommand;
-
 }

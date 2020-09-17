@@ -56,5 +56,4 @@ final class RegisterUserHandler extends AbstractCommandHandler
 
         $this->storeUser($user);
     }
-
 }

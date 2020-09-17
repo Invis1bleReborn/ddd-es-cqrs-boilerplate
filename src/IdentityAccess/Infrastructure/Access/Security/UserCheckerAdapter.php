@@ -55,5 +55,4 @@ class UserCheckerAdapter implements UserCheckerInterface
     {
         // no op
     }
-
 }

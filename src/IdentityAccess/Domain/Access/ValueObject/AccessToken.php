@@ -57,5 +57,4 @@ final class AccessToken
     {
         return $this->value;
     }
-
 }
