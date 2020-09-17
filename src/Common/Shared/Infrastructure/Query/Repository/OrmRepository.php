@@ -33,7 +33,7 @@ abstract class OrmRepository
         $this->entityManager = $entityManager;
 
         $objectRepository = $entityManager->getRepository($this->getClass());
-        /** @var EntityRepository $objectRepository */
+        /* @var EntityRepository $objectRepository */
         $this->repository = $objectRepository;
     }
 
