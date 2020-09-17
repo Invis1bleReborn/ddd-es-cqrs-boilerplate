@@ -18,6 +18,7 @@ use Common\Shared\Infrastructure\Query\Repository\OrmRepository;
 use Doctrine\ORM\NonUniqueResultException;
 use Doctrine\ORM\NoResultException;
 use Doctrine\ORM\QueryBuilder;
+use IdentityAccess\Domain\Identity\Exception\NonUniqueUserException;
 use IdentityAccess\Domain\Identity\Repository\CheckUserByEmailInterface;
 use IdentityAccess\Domain\Identity\ValueObject\Email;
 use IdentityAccess\Domain\Identity\ValueObject\UserId;
@@ -64,6 +65,10 @@ class OrmUserReadModelRepository extends OrmRepository implements CheckUserByEma
         try {
             return $query->getSingleScalarResult();
         } catch (NoResultException $exception) {
+        } catch (NonUniqueResultException $exception) {
+            throw new NonUniqueUserException(sprintf('Non-unique user with email %s exists.',
+                $email->toString()
+            ));
         }
 
         return null;

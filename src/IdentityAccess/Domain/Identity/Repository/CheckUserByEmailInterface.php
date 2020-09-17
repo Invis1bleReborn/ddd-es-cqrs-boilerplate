@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace IdentityAccess\Domain\Identity\Repository;
 
+use IdentityAccess\Domain\Identity\Exception\NonUniqueUserException;
 use IdentityAccess\Domain\Identity\ValueObject\Email;
 use IdentityAccess\Domain\Identity\ValueObject\UserId;
 
@@ -21,5 +22,8 @@ use IdentityAccess\Domain\Identity\ValueObject\UserId;
  */
 interface CheckUserByEmailInterface
 {
+    /**
+     * @throws NonUniqueUserException
+     */
     public function existsEmail(Email $email): ?UserId;
 }

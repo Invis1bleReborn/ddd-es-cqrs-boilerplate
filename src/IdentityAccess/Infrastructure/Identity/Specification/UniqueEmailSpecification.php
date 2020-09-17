@@ -14,8 +14,8 @@ declare(strict_types=1);
 namespace IdentityAccess\Infrastructure\Identity\Specification;
 
 use Common\Shared\Domain\Specification\AbstractSpecification;
-use Doctrine\ORM\NonUniqueResultException;
 use IdentityAccess\Domain\Identity\Exception\EmailAlreadyExistsException;
+use IdentityAccess\Domain\Identity\Exception\NonUniqueUserException;
 use IdentityAccess\Domain\Identity\Repository\CheckUserByEmailInterface;
 use IdentityAccess\Domain\Identity\Specification\UniqueEmailSpecificationInterface;
 use IdentityAccess\Domain\Identity\ValueObject\Email;
@@ -38,7 +38,7 @@ final class UniqueEmailSpecification extends AbstractSpecification implements Un
             if ($this->checkUserByEmail->existsEmail($value)) {
                 throw new EmailAlreadyExistsException($value);
             }
-        } catch (NonUniqueResultException $e) {
+        } catch (NonUniqueUserException $e) {
             throw new EmailAlreadyExistsException($value);
         }
 
