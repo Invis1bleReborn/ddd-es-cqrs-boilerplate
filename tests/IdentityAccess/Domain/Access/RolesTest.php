@@ -120,8 +120,8 @@ class RolesTest extends TestCase
     public function containsRoleDataProvider(): array
     {
         return [
-            [ 'ROLE_SUPER_ADMIN' ],
-            [ 'ROLE_USER' ],
+            ['ROLE_SUPER_ADMIN'],
+            ['ROLE_USER'],
         ];
     }
 
@@ -141,11 +141,11 @@ class RolesTest extends TestCase
     public function doesNotContainRoleDataProvider(): array
     {
         return [
-            [ [], 'ROLE_SUPER_ADMIN' ],
-            [ [], 'ROLE_USER' ],
-            [ ['ROLE_USER'], 'ROLE_SUPER_ADMIN' ],
-            [ ['ROLE_SUPER_ADMIN'], 'ROLE_USER' ],
-            [ ['ROLE_SUPER_ADMIN', 'ROLE_ALLOWED_TO_SWITCH'], 'ROLE_USER' ],
+            [[], 'ROLE_SUPER_ADMIN'],
+            [[], 'ROLE_USER'],
+            [['ROLE_USER'], 'ROLE_SUPER_ADMIN'],
+            [['ROLE_SUPER_ADMIN'], 'ROLE_USER'],
+            [['ROLE_SUPER_ADMIN', 'ROLE_ALLOWED_TO_SWITCH'], 'ROLE_USER'],
         ];
     }
 }

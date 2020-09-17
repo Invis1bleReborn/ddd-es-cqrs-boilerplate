@@ -35,8 +35,8 @@ class RoleTest extends TestCase
     public function invalidRoleProvider(): array
     {
         return [
-            [ 'ROLE_INVALID_ROLE' ],
-            [ '' ],
+            ['ROLE_INVALID_ROLE'],
+            [''],
         ];
     }
 }
