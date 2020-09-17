@@ -69,7 +69,8 @@ DESCRIPTION
                 'roles',
                 'r',
                 InputOption::VALUE_OPTIONAL | InputOption::VALUE_IS_ARRAY,
-                'User roles', ['ROLE_USER']
+                'User roles',
+                ['ROLE_USER']
             )
             ->addOption('disabled', 'd', InputOption::VALUE_NONE, 'Disabled user')
             ->addOption('registered-by', 'by', InputOption::VALUE_OPTIONAL, 'Registered by (email)')
