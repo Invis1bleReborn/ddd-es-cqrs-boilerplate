@@ -16,7 +16,6 @@ namespace IdentityAccess\Infrastructure\Identity\GuardAdapter;
 use IdentityAccess\Application\Query\Identity\UserInterface;
 use IdentityAccess\Infrastructure\Access\Security\AbstractGuardAdapter;
 use IdentityAccess\Ui\Access\AccessAttribute;
-//use IdentityAccess\Ui\Identity\ChangeUserStatus\ChangeUserStatus;
 
 /**
  * Class ChangeUserStatusGuardAdapter.
