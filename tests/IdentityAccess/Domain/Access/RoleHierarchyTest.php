@@ -19,7 +19,7 @@ use IdentityAccess\Infrastructure\Access\RoleHierarchy;
 use PHPUnit\Framework\TestCase;
 
 /**
- * Class RoleHierarchyTest
+ * Class RoleHierarchyTest.
  */
 class RoleHierarchyTest extends TestCase
 {

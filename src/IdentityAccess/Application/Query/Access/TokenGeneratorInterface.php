@@ -16,7 +16,7 @@ namespace IdentityAccess\Application\Query\Access;
 use IdentityAccess\Application\Query\Identity\UserInterface;
 
 /**
- * Interface TokenGeneratorInterface
+ * Interface TokenGeneratorInterface.
  */
 interface TokenGeneratorInterface
 {

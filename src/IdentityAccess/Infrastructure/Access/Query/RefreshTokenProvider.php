@@ -18,7 +18,7 @@ use IdentityAccess\Application\Query\Access\RefreshTokenInterface;
 use IdentityAccess\Application\Query\Access\RefreshTokenProviderInterface;
 
 /**
- * Class RefreshTokenProvider
+ * Class RefreshTokenProvider.
  */
 final class RefreshTokenProvider implements RefreshTokenProviderInterface
 {

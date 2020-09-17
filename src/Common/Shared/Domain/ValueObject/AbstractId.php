@@ -18,7 +18,7 @@ use Assert\AssertionFailedException;
 use Ramsey\Uuid\Uuid;
 
 /**
- * Class AbstractId
+ * Class AbstractId.
  */
 abstract class AbstractId implements IdInterface
 {

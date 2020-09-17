@@ -19,7 +19,7 @@ use IdentityAccess\Application\Command\Identity\UserIdAwareCommand;
 use IdentityAccess\Domain\Identity\ValueObject\UserId;
 
 /**
- * Class DisableUserCommand
+ * Class DisableUserCommand.
  */
 class DisableUserCommand extends UserIdAwareCommand implements ChangeUserStatusCommandInterface
 {

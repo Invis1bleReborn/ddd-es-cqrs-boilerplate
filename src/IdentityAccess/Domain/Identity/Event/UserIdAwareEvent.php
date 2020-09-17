@@ -19,7 +19,7 @@ use Broadway\Serializer\Serializable;
 use IdentityAccess\Domain\Identity\ValueObject\UserId;
 
 /**
- * Class UserIdAwareEvent
+ * Class UserIdAwareEvent.
  */
 abstract class UserIdAwareEvent implements Serializable
 {

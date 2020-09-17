@@ -17,7 +17,7 @@ use Assert\Assertion;
 use Assert\AssertionFailedException;
 
 /**
- * Class Email
+ * Class Email.
  */
 final class Email
 {

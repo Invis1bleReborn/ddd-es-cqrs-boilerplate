@@ -21,7 +21,7 @@ use IdentityAccess\Domain\Identity\ValueObject\UserId;
 use IdentityAccess\Infrastructure\Identity\Query\Orm\OrmUserReadModelRepository;
 
 /**
- * Class UserProjector
+ * Class UserProjector.
  */
 class UserProjector extends Projector
 {

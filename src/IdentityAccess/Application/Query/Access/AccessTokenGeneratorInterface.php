@@ -17,7 +17,7 @@ use IdentityAccess\Application\Query\Identity\UserInterface;
 use IdentityAccess\Domain\Access\ValueObject\AccessToken;
 
 /**
- * Interface AccessTokenGeneratorInterface
+ * Interface AccessTokenGeneratorInterface.
  */
 interface AccessTokenGeneratorInterface
 {

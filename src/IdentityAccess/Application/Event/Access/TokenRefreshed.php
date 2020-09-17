@@ -14,7 +14,7 @@ declare(strict_types=1);
 namespace IdentityAccess\Application\Event\Access;
 
 /**
- * Class TokenRefreshed
+ * Class TokenRefreshed.
  */
 final class TokenRefreshed extends RefreshTokenAwareEvent
 {

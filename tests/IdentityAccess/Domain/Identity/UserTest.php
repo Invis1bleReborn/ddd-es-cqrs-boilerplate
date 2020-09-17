@@ -28,7 +28,7 @@ use PHPUnit\Framework\MockObject\Stub;
 use Symfony\Bridge\PhpUnit\ClockMock;
 
 /**
- * Class UserTest
+ * Class UserTest.
  */
 class UserTest extends UuidGeneratorAwareAggregateRootScenarioTestCase
 {

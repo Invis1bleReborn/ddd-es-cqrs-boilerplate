@@ -14,7 +14,7 @@ declare(strict_types=1);
 namespace Common\Shared\Domain\ValueObject;
 
 /**
- * Interface UuidGeneratorInterface
+ * Interface UuidGeneratorInterface.
  */
 interface UuidGeneratorInterface
 {

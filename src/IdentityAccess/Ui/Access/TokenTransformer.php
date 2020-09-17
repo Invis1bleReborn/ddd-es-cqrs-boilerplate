@@ -16,7 +16,7 @@ namespace IdentityAccess\Ui\Access;
 use IdentityAccess\Application\Query\Access\TokenInterface;
 
 /**
- * Class TokenTransformer
+ * Class TokenTransformer.
  */
 class TokenTransformer
 {

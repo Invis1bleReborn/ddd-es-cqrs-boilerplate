@@ -14,7 +14,7 @@ declare(strict_types=1);
 namespace Common\Shared\Domain\Query\Exception;
 
 /**
- * Class NotFoundException
+ * Class NotFoundException.
  */
 class NotFoundException extends \Exception
 {

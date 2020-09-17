@@ -20,7 +20,7 @@ use IdentityAccess\Application\Query\Identity\UserProviderInterface;
 use IdentityAccess\Ui\Access\UserCheckerInterface;
 
 /**
- * Class CreateTokenRequestTransformer
+ * Class CreateTokenRequestTransformer.
  */
 class CreateTokenRequestTransformer extends ValidatorAwareRequestTransformer implements
     CreateTokenRequestTransformerInterface

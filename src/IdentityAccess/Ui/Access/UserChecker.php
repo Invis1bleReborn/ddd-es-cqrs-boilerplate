@@ -17,7 +17,7 @@ use IdentityAccess\Application\Query\Identity\UserInterface;
 use IdentityAccess\Infrastructure\Access\Security\AccountDisabledException;
 
 /**
- * Class UserChecker
+ * Class UserChecker.
  */
 class UserChecker implements UserCheckerInterface
 {

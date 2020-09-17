@@ -14,7 +14,7 @@ declare(strict_types=1);
 namespace IdentityAccess\Ui\Access;
 
 /**
- * Class AccessDeniedException
+ * Class AccessDeniedException.
  */
 class AccessDeniedException extends \UnexpectedValueException
 {

@@ -18,7 +18,7 @@ use Symfony\Component\Security\Core\User\UserProviderInterface;
 use Symfony\Component\Security\Guard\Authenticator\GuardBridgeAuthenticator;
 
 /**
- * Class JwtAuthenticator
+ * Class JwtAuthenticator.
  */
 final class JwtAuthenticator extends GuardBridgeAuthenticator
 {

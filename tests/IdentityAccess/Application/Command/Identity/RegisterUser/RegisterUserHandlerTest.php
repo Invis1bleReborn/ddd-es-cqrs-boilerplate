@@ -32,7 +32,7 @@ use PHPUnit\Framework\MockObject\Stub;
 use Symfony\Bridge\PhpUnit\ClockMock;
 
 /**
- * Class RegisterUserHandlerTest
+ * Class RegisterUserHandlerTest.
  */
 class RegisterUserHandlerTest extends UuidGeneratorAwareCommandHandlerScenarioTestCase
 {

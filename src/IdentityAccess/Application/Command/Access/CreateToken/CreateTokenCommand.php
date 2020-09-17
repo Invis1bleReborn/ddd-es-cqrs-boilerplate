@@ -19,7 +19,7 @@ use IdentityAccess\Application\Query\Identity\UserInterface;
 use IdentityAccess\Domain\Identity\ValueObject\PlainPassword;
 
 /**
- * Class CreateTokenCommand
+ * Class CreateTokenCommand.
  */
 class CreateTokenCommand implements CommandInterface
 {

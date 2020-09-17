@@ -18,7 +18,7 @@ use IdentityAccess\Domain\Identity\Exception\UserStateTransitionException;
 use IdentityAccess\Domain\Identity\User;
 
 /**
- * Class AbstractState
+ * Class AbstractState.
  */
 abstract class AbstractState extends SimpleEventSourcedEntity implements UserStateInterface
 {

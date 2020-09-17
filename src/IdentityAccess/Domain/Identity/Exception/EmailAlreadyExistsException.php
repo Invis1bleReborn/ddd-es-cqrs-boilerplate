@@ -16,7 +16,7 @@ namespace IdentityAccess\Domain\Identity\Exception;
 use IdentityAccess\Domain\Identity\ValueObject\Email;
 
 /**
- * Class EmailAlreadyExistsException
+ * Class EmailAlreadyExistsException.
  */
 class EmailAlreadyExistsException extends \InvalidArgumentException
 {

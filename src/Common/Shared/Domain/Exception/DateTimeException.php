@@ -14,7 +14,7 @@ declare(strict_types=1);
 namespace Common\Shared\Domain\Exception;
 
 /**
- * Class DateTimeException
+ * Class DateTimeException.
  */
 class DateTimeException extends \Exception
 {

@@ -16,7 +16,7 @@ namespace IdentityAccess\Ui\Access;
 use IdentityAccess\Application\Query\Access\RefreshTokenInterface;
 
 /**
- * Interface RefreshTokenCheckerInterface
+ * Interface RefreshTokenCheckerInterface.
  */
 interface RefreshTokenCheckerInterface
 {

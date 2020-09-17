@@ -14,7 +14,7 @@ declare(strict_types=1);
 namespace IdentityAccess\Ui\Access;
 
 /**
- * Interface AuthenticationExceptionInterface
+ * Interface AuthenticationExceptionInterface.
  */
 interface AuthenticationExceptionInterface extends \Throwable
 {

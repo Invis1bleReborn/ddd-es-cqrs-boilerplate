@@ -21,7 +21,7 @@ use IdentityAccess\Ui\Access\AccessDeniedException;
 use IdentityAccess\Ui\Identity\ChangeUserStatus\ChangeUserStatusRequest;
 
 /**
- * Class EnableUserRequestTransformer
+ * Class EnableUserRequestTransformer.
  */
 interface EnableUserRequestTransformerInterface
 {

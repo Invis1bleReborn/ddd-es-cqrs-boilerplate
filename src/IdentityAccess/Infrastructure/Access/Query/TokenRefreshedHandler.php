@@ -18,7 +18,7 @@ use Gesdinet\JWTRefreshTokenBundle\Model\RefreshTokenManagerInterface;
 use IdentityAccess\Application\Event\Access\TokenRefreshed;
 
 /**
- * Class TokenRefreshedHandler
+ * Class TokenRefreshedHandler.
  */
 class TokenRefreshedHandler implements EventHandlerInterface
 {

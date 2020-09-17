@@ -21,7 +21,7 @@ use IdentityAccess\Domain\Identity\ValueObject\Email;
 use IdentityAccess\Domain\Identity\ValueObject\UserId;
 
 /**
- * Class EmailChanged
+ * Class EmailChanged.
  */
 final class EmailChanged extends UserIdAwareEvent
 {

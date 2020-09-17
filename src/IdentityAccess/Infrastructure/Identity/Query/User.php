@@ -31,7 +31,7 @@ use Ramsey\Uuid\UuidInterface;
 use Symfony\Component\Security\Core\User\UserInterface as SecurityUserInterface;
 
 /**
- * User
+ * User.
  *
  * @see http://schema.org/Person Documentation on Schema.org
  *

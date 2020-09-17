@@ -18,7 +18,7 @@ use IdentityAccess\Domain\Access\ValueObject\Role;
 use IdentityAccess\Ui\Access\RoleHierarchyAwareGuard;
 
 /**
- * Class DisableUserGuard
+ * Class DisableUserGuard.
  */
 class DisableUserGuard extends RoleHierarchyAwareGuard
 {

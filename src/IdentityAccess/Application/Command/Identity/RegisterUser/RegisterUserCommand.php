@@ -21,7 +21,7 @@ use IdentityAccess\Domain\Identity\ValueObject\PlainPassword;
 use IdentityAccess\Domain\Identity\ValueObject\UserId;
 
 /**
- * Class RegisterUserCommand
+ * Class RegisterUserCommand.
  */
 class RegisterUserCommand extends UserIdAwareCommand
 {

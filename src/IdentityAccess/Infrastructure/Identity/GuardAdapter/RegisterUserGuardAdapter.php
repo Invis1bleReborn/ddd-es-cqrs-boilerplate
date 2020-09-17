@@ -18,7 +18,7 @@ use IdentityAccess\Ui\Access\AccessAttribute;
 use IdentityAccess\Ui\Identity\RegisterUser\RegisterUserGuard;
 
 /**
- * Class RegisterUserGuardAdapter
+ * Class RegisterUserGuardAdapter.
  */
 class RegisterUserGuardAdapter extends AbstractGuardAdapter
 {

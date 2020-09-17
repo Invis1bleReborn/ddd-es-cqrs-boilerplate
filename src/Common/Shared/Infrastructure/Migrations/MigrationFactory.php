@@ -19,7 +19,7 @@ use Doctrine\Migrations\Version\MigrationFactory as BaseMigrationFactory;
 use Doctrine\ORM\EntityManagerInterface;
 
 /**
- * Class MigrationFactory
+ * Class MigrationFactory.
  */
 class MigrationFactory implements BaseMigrationFactory
 {

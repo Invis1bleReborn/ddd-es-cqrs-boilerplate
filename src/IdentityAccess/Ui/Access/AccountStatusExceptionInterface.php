@@ -14,7 +14,7 @@ declare(strict_types=1);
 namespace IdentityAccess\Ui\Access;
 
 /**
- * Interface AccountStatusExceptionInterface
+ * Interface AccountStatusExceptionInterface.
  */
 interface AccountStatusExceptionInterface extends AuthenticationExceptionInterface
 {

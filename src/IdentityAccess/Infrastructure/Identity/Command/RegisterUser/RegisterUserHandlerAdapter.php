@@ -18,7 +18,7 @@ use IdentityAccess\Application\Command\Identity\RegisterUser\RegisterUserCommand
 use IdentityAccess\Application\Command\Identity\RegisterUser\RegisterUserHandler;
 
 /**
- * Class RegisterUserHandlerAdapter
+ * Class RegisterUserHandlerAdapter.
  */
 class RegisterUserHandlerAdapter extends SimpleCommandHandler
 {

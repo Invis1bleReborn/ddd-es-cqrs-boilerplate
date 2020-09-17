@@ -17,7 +17,7 @@ use ApiPlatform\Core\Validator\ValidatorInterface;
 use Common\Shared\Ui\ValidatorAwareRequestTransformer as BaseValidatorAwareRequestTransformer;
 
 /**
- * Class ValidatorAwareRequestTransformer
+ * Class ValidatorAwareRequestTransformer.
  */
 abstract class ValidatorAwareRequestTransformer extends BaseValidatorAwareRequestTransformer
 {

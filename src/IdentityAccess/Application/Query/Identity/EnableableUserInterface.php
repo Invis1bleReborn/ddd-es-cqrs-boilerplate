@@ -14,7 +14,7 @@ declare(strict_types=1);
 namespace IdentityAccess\Application\Query\Identity;
 
 /**
- * Interface EnableableUserInterface
+ * Interface EnableableUserInterface.
  */
 interface EnableableUserInterface
 {

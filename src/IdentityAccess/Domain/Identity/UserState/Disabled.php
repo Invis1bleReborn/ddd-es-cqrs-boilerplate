@@ -19,7 +19,7 @@ use IdentityAccess\Domain\Identity\Event\UserEnabled;
 use IdentityAccess\Domain\Identity\ValueObject\UserId;
 
 /**
- * Class Disabled
+ * Class Disabled.
  */
 class Disabled extends AbstractState
 {

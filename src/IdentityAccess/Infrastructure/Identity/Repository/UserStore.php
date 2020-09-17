@@ -22,7 +22,7 @@ use IdentityAccess\Domain\Identity\User;
 use IdentityAccess\Domain\Identity\ValueObject\UserId;
 
 /**
- * Class UserStore
+ * Class UserStore.
  */
 final class UserStore extends EventSourcingRepository implements UserRepositoryInterface
 {

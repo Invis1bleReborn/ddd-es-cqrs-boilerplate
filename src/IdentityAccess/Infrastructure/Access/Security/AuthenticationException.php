@@ -16,7 +16,7 @@ namespace IdentityAccess\Infrastructure\Access\Security;
 use IdentityAccess\Ui\Access\AuthenticationExceptionInterface;
 
 /**
- * Class AuthenticationException
+ * Class AuthenticationException.
  */
 class AuthenticationException extends \Symfony\Component\Security\Core\Exception\AuthenticationException implements
     AuthenticationExceptionInterface

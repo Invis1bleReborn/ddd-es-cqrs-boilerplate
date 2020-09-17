@@ -19,7 +19,7 @@ use IdentityAccess\Ui\Identity\ChangeUserStatus\ChangeUserStatusRequest;
 use IdentityAccess\Ui\Identity\ValidatorAwareRequestTransformer;
 
 /**
- * Class DisableUserRequestTransformer
+ * Class DisableUserRequestTransformer.
  */
 class DisableUserRequestTransformer extends ValidatorAwareRequestTransformer implements
     DisableUserRequestTransformerInterface

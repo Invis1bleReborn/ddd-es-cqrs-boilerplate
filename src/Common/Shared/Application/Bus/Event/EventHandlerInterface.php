@@ -14,7 +14,7 @@ declare(strict_types=1);
 namespace Common\Shared\Application\Bus\Event;
 
 /**
- * Interface EventHandlerInterface
+ * Interface EventHandlerInterface.
  */
 interface EventHandlerInterface
 {

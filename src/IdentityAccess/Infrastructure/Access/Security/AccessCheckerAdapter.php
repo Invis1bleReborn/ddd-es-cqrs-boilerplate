@@ -18,7 +18,7 @@ use IdentityAccess\Ui\Access\AccessCheckerInterface;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 
 /**
- * Class AccessCheckerAdapter
+ * Class AccessCheckerAdapter.
  */
 class AccessCheckerAdapter implements AccessCheckerInterface
 {

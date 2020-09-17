@@ -16,7 +16,7 @@ namespace Common\Shared\Application\Bus;
 use Symfony\Component\Messenger\Exception\HandlerFailedException;
 
 /**
- * Trait MessageBusExceptionTrait
+ * Trait MessageBusExceptionTrait.
  */
 trait MessageBusExceptionTrait
 {

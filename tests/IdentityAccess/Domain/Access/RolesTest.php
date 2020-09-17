@@ -18,7 +18,7 @@ use IdentityAccess\Domain\Access\ValueObject\Roles;
 use PHPUnit\Framework\TestCase;
 
 /**
- * Class RolesTest
+ * Class RolesTest.
  */
 class RolesTest extends TestCase
 {

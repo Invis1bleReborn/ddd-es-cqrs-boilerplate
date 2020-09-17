@@ -23,7 +23,7 @@ use IdentityAccess\Domain\Identity\ValueObject\HashedPassword;
 use IdentityAccess\Domain\Identity\ValueObject\UserId;
 
 /**
- * Class UserRegistered
+ * Class UserRegistered.
  */
 final class UserRegistered extends UserIdAwareEvent
 {

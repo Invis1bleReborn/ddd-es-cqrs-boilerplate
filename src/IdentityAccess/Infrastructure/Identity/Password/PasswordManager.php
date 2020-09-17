@@ -24,7 +24,7 @@ use Symfony\Component\Security\Core\Encoder\SelfSaltingEncoderInterface;
 use Symfony\Component\Security\Core\Exception\BadCredentialsException;
 
 /**
- * Class PasswordManager
+ * Class PasswordManager.
  */
 class PasswordManager implements PasswordEncoderInterface, PasswordCheckerInterface
 {

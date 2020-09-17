@@ -20,7 +20,7 @@ use IdentityAccess\Ui\Access\RefreshToken\RefreshTokenRequest;
 use IdentityAccess\Ui\Access\RefreshToken\RefreshTokenRequestTransformerInterface;
 
 /**
- * Class RefreshTokenRequestTransformerAdapter
+ * Class RefreshTokenRequestTransformerAdapter.
  */
 class RefreshTokenRequestTransformerAdapter implements DataTransformerInterface
 {

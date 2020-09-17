@@ -17,7 +17,7 @@ use IdentityAccess\Domain\Identity\ValueObject\Email;
 use IdentityAccess\Domain\Identity\ValueObject\UserId;
 
 /**
- * Interface CheckUserByEmailInterface
+ * Interface CheckUserByEmailInterface.
  */
 interface CheckUserByEmailInterface
 {

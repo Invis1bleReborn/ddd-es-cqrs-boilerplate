@@ -16,7 +16,7 @@ namespace IdentityAccess\Ui\Access;
 use IdentityAccess\Application\Query\Identity\UserInterface;
 
 /**
- * Interface UserCheckerInterface
+ * Interface UserCheckerInterface.
  */
 interface UserCheckerInterface
 {

@@ -14,7 +14,7 @@ declare(strict_types=1);
 namespace IdentityAccess\Application\Query\Access;
 
 /**
- * Interface TokenInterface
+ * Interface TokenInterface.
  */
 interface TokenInterface
 {

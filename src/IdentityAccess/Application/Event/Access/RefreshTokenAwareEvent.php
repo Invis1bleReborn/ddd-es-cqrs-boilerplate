@@ -22,7 +22,7 @@ use Common\Shared\Domain\ValueObject\DateTime;
 use IdentityAccess\Domain\Access\ValueObject\RefreshToken;
 
 /**
- * Class RefreshTokenAwareEvent
+ * Class RefreshTokenAwareEvent.
  */
 abstract class RefreshTokenAwareEvent implements EventInterface, Serializable
 {

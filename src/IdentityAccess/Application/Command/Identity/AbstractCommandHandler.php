@@ -19,7 +19,7 @@ use IdentityAccess\Domain\Identity\User;
 use IdentityAccess\Domain\Identity\ValueObject\UserId;
 
 /**
- * Class AbstractCommandHandler
+ * Class AbstractCommandHandler.
  */
 abstract class AbstractCommandHandler implements CommandHandlerInterface
 {

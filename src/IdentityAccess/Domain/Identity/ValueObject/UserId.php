@@ -16,7 +16,7 @@ namespace IdentityAccess\Domain\Identity\ValueObject;
 use Common\Shared\Domain\ValueObject\AbstractId;
 
 /**
- * Class UserId
+ * Class UserId.
  */
 final class UserId extends AbstractId
 {

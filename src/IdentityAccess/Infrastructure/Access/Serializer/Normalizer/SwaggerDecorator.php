@@ -17,7 +17,7 @@ use ApiPlatform\Core\Documentation\Documentation;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 /**
- * Class SwaggerDecorator
+ * Class SwaggerDecorator.
  */
 class SwaggerDecorator implements NormalizerInterface
 {

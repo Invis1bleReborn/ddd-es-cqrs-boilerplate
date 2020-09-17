@@ -20,7 +20,7 @@ use Symfony\Component\Messenger\Exception\HandlerFailedException;
 use Symfony\Component\Messenger\MessageBusInterface;
 
 /**
- * Class CommandBus
+ * Class CommandBus.
  */
 final class CommandBus implements CommandBusInterface
 {

@@ -14,7 +14,7 @@ declare(strict_types=1);
 namespace IdentityAccess\Ui\Identity\RegisterUser;
 
 /**
- * Class RegisterUserRequestTransformerDecorator
+ * Class RegisterUserRequestTransformerDecorator.
  */
 abstract class RegisterUserRequestTransformerDecorator implements RegisterUserRequestTransformerInterface
 {

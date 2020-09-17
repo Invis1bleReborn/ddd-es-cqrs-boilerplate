@@ -16,7 +16,7 @@ namespace Common\Shared\Infrastructure\Uuid;
 use Common\Shared\Domain\ValueObject\UuidGeneratorInterface;
 
 /**
- * Class UuidGenerator
+ * Class UuidGenerator.
  */
 class UuidGenerator implements UuidGeneratorInterface
 {

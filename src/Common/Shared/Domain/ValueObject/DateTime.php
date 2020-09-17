@@ -16,7 +16,7 @@ namespace Common\Shared\Domain\ValueObject;
 use Common\Shared\Domain\Exception\DateTimeException;
 
 /**
- * Class DateTime
+ * Class DateTime.
  */
 class DateTime
 {

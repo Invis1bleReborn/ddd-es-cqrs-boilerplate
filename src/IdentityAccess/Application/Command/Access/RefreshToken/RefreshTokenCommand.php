@@ -19,7 +19,7 @@ use IdentityAccess\Application\Query\Identity\UserInterface;
 use IdentityAccess\Domain\Access\ValueObject\RefreshToken;
 
 /**
- * Class RefreshTokenCommand
+ * Class RefreshTokenCommand.
  */
 class RefreshTokenCommand implements CommandInterface
 {

@@ -19,7 +19,7 @@ use Symfony\Component\Security\Core\User\UserCheckerInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
- * Class UserCheckerAdapter
+ * Class UserCheckerAdapter.
  */
 class UserCheckerAdapter implements UserCheckerInterface
 {

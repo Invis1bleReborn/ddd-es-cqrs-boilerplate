@@ -30,7 +30,7 @@ use IdentityAccess\Domain\Identity\ValueObject\HashedPassword;
 use IdentityAccess\Domain\Identity\ValueObject\UserId;
 
 /**
- * Class User
+ * Class User.
  */
 final class User extends EventSourcedAggregateRoot
 {

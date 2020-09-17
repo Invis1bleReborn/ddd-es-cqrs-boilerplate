@@ -17,7 +17,7 @@ use Common\Shared\Infrastructure\Migrations\EventStoreAwareMigration;
 use Doctrine\DBAL\Schema\Schema;
 
 /**
- * Class Version20200720000000
+ * Class Version20200720000000.
  */
 class Version20200720000000 extends EventStoreAwareMigration
 {

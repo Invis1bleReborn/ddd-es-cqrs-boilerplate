@@ -20,7 +20,7 @@ use IdentityAccess\Ui\Identity\ChangeUserStatus\ChangeUserStatusRequest;
 use IdentityAccess\Ui\Identity\EnableUser\EnableUserRequestTransformerInterface;
 
 /**
- * Class EnableUserRequestTransformerAdapter
+ * Class EnableUserRequestTransformerAdapter.
  */
 class EnableUserRequestTransformerAdapter implements DataTransformerInterface
 {

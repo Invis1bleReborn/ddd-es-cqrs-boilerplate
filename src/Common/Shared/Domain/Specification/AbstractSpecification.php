@@ -14,7 +14,7 @@ declare(strict_types=1);
 namespace Common\Shared\Domain\Specification;
 
 /**
- * Class AbstractSpecification
+ * Class AbstractSpecification.
  */
 abstract class AbstractSpecification
 {

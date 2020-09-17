@@ -14,7 +14,7 @@ declare(strict_types=1);
 namespace IdentityAccess\Ui\Identity\ChangeUserStatus;
 
 /**
- * Class ChangeUserStatusRequestTransformerDecorator
+ * Class ChangeUserStatusRequestTransformerDecorator.
  */
 abstract class ChangeUserStatusRequestTransformerDecorator implements ChangeUserStatusRequestTransformerInterface
 {

@@ -19,7 +19,7 @@ use Elasticsearch\ClientBuilder;
 use Psr\Log\LoggerInterface;
 
 /**
- * Class ElasticRepository
+ * Class ElasticRepository.
  */
 abstract class ElasticRepository
 {

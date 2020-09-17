@@ -19,7 +19,7 @@ use IdentityAccess\Domain\Access\ValueObject\Role;
 use IdentityAccess\Domain\Access\ValueObject\Roles;
 
 /**
- * Class RoleHierarchyAwareGuard
+ * Class RoleHierarchyAwareGuard.
  */
 abstract class RoleHierarchyAwareGuard implements GuardInterface
 {

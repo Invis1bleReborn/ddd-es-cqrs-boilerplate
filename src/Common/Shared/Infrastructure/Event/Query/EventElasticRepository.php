@@ -18,7 +18,7 @@ use Common\Shared\Infrastructure\Query\Repository\ElasticRepository;
 use Broadway\Domain\DomainMessage;
 
 /**
- * Class EventElasticRepository
+ * Class EventElasticRepository.
  */
 class EventElasticRepository extends ElasticRepository implements EventRepositoryInterface
 {

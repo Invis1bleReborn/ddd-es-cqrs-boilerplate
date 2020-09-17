@@ -20,7 +20,7 @@ use IdentityAccess\Ui\Identity\ChangeUserStatus\ChangeUserStatusRequest;
 use IdentityAccess\Ui\Identity\DisableUser\DisableUserRequestTransformerInterface;
 
 /**
- * Class DisableUserRequestTransformerAdapter
+ * Class DisableUserRequestTransformerAdapter.
  */
 class DisableUserRequestTransformerAdapter implements DataTransformerInterface
 {

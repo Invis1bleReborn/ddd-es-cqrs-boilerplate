@@ -19,7 +19,7 @@ use IdentityAccess\Domain\Access\ValueObject\RefreshToken;
 use IdentityAccess\Domain\Identity\ValueObject\Username;
 
 /**
- * Class TokenCreated
+ * Class TokenCreated.
  */
 final class TokenCreated extends RefreshTokenAwareEvent
 {

@@ -14,7 +14,7 @@ declare(strict_types=1);
 namespace Common\Shared\Ui;
 
 /**
- * Interface RequestInterface
+ * Interface RequestInterface.
  */
 interface RequestInterface
 {

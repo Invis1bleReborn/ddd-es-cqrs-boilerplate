@@ -17,7 +17,7 @@ use Common\Shared\Domain\Exception\StateTransitionException;
 use IdentityAccess\Domain\Identity\ValueObject\UserId;
 
 /**
- * Class UserStateTransitionException
+ * Class UserStateTransitionException.
  */
 class UserStateTransitionException extends StateTransitionException
 {

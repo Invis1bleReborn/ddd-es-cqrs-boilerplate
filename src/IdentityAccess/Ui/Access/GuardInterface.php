@@ -16,7 +16,7 @@ namespace IdentityAccess\Ui\Access;
 use IdentityAccess\Application\Query\Identity\UserInterface;
 
 /**
- * Interface GuardInterface
+ * Interface GuardInterface.
  */
 interface GuardInterface
 {

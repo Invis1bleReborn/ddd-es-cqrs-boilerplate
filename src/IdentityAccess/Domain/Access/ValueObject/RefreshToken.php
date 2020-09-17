@@ -17,7 +17,7 @@ use Assert\Assertion;
 use Assert\AssertionFailedException;
 
 /**
- * Class RefreshToken
+ * Class RefreshToken.
  */
 final class RefreshToken
 {

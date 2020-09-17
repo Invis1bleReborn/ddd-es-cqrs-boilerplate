@@ -17,7 +17,7 @@ use IdentityAccess\Domain\Identity\ValueObject\HashedPassword;
 use IdentityAccess\Domain\Identity\ValueObject\PlainPassword;
 
 /**
- * Interface PasswordEncoderInterface
+ * Interface PasswordEncoderInterface.
  */
 interface PasswordEncoderInterface
 {

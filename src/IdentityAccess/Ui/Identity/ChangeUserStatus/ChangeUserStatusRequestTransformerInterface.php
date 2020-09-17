@@ -20,7 +20,7 @@ use IdentityAccess\Application\Query\Identity\UserInterface;
 use IdentityAccess\Ui\Access\AccessDeniedException;
 
 /**
- * Class ChangeUserStatusRequestTransformer
+ * Class ChangeUserStatusRequestTransformer.
  */
 interface ChangeUserStatusRequestTransformerInterface
 {

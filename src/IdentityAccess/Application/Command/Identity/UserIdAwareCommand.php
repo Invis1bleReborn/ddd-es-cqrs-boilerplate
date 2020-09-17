@@ -18,7 +18,7 @@ use Common\Shared\Application\Bus\Command\CommandInterface;
 use IdentityAccess\Domain\Identity\ValueObject\UserId;
 
 /**
- * Class UserIdAwareCommand
+ * Class UserIdAwareCommand.
  */
 abstract class UserIdAwareCommand implements CommandInterface
 {

@@ -17,7 +17,7 @@ use Assert\Assertion;
 use Assert\AssertionFailedException;
 
 /**
- * Class HashedPassword
+ * Class HashedPassword.
  */
 final class HashedPassword
 {

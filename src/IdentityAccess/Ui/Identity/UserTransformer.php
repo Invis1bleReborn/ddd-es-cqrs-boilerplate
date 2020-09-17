@@ -16,7 +16,7 @@ namespace IdentityAccess\Ui\Identity;
 use IdentityAccess\Application\Query\Identity\UserInterface;
 
 /**
- * Class UserTransformer
+ * Class UserTransformer.
  */
 class UserTransformer
 {

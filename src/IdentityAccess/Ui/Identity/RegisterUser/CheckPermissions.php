@@ -18,7 +18,7 @@ use IdentityAccess\Ui\Access\AccessCheckerInterface;
 use IdentityAccess\Ui\Access\AccessDeniedException;
 
 /**
- * Class CheckPermissions
+ * Class CheckPermissions.
  */
 class CheckPermissions extends RegisterUserRequestTransformerDecorator
 {

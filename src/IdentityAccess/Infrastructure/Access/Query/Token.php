@@ -24,7 +24,7 @@ use IdentityAccess\Ui\Access\TokenView;
 use Symfony\Component\Serializer\Annotation\Ignore;
 
 /**
- * Token
+ * Token.
  *
  * @see http://schema.org/accessCode Documentation on Schema.org
  *

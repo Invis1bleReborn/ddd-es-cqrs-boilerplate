@@ -20,7 +20,7 @@ use Doctrine\ORM\NonUniqueResultException;
 use Doctrine\ORM\QueryBuilder;
 
 /**
- * Class OrmRepository
+ * Class OrmRepository.
  */
 abstract class OrmRepository
 {

@@ -17,7 +17,7 @@ use ApiPlatform\Core\Bridge\Symfony\Validator\Exception\ValidationException;
 use ApiPlatform\Core\Validator\ValidatorInterface;
 
 /**
- * Class ValidatorAwareRequestTransformer
+ * Class ValidatorAwareRequestTransformer.
  */
 abstract class ValidatorAwareRequestTransformer
 {

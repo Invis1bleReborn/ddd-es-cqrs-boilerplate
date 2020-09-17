@@ -20,7 +20,7 @@ use Symfony\Component\Messenger\Exception\HandlerFailedException;
 use Symfony\Component\Messenger\MessageBusInterface;
 
 /**
- * Class EventBus
+ * Class EventBus.
  */
 final class EventBus implements EventBusInterface
 {

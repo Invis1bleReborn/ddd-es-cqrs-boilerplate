@@ -19,7 +19,7 @@ use IdentityAccess\Application\Command\Identity\RegisterUser\RegisterUserCommand
 use IdentityAccess\Ui\Access\AccessDeniedException;
 
 /**
- * Interface RegisterUserRequestTransformerInterface
+ * Interface RegisterUserRequestTransformerInterface.
  */
 interface RegisterUserRequestTransformerInterface
 {

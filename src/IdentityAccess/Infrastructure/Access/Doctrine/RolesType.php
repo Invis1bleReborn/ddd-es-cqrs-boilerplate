@@ -19,7 +19,7 @@ use Doctrine\DBAL\Types\JsonType;
 use IdentityAccess\Domain\Access\ValueObject\Roles;
 
 /**
- * Class RolesType
+ * Class RolesType.
  */
 class RolesType extends JsonType
 {

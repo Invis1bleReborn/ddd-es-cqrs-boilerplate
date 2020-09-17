@@ -16,7 +16,7 @@ namespace Common\Shared\Infrastructure\Validator\Constraints;
 use Symfony\Component\Validator\Constraint;
 
 /**
- * Class UniqueDto
+ * Class UniqueDto.
  *
  *
  * @Annotation

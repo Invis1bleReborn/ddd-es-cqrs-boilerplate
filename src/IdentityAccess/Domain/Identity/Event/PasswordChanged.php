@@ -21,7 +21,7 @@ use IdentityAccess\Domain\Identity\ValueObject\HashedPassword;
 use IdentityAccess\Domain\Identity\ValueObject\UserId;
 
 /**
- * Class PasswordChanged
+ * Class PasswordChanged.
  */
 final class PasswordChanged extends UserIdAwareEvent
 {

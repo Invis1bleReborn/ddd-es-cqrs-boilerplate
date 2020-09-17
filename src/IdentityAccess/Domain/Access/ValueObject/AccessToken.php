@@ -17,7 +17,7 @@ use Assert\Assertion;
 use Assert\AssertionFailedException;
 
 /**
- * Class AccessToken
+ * Class AccessToken.
  */
 final class AccessToken
 {

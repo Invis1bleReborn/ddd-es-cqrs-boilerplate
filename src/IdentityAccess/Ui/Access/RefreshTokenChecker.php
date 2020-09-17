@@ -17,7 +17,7 @@ use IdentityAccess\Application\Query\Access\RefreshTokenInterface;
 use IdentityAccess\Infrastructure\Access\Security\AuthenticationException;
 
 /**
- * Class RefreshTokenChecker
+ * Class RefreshTokenChecker.
  */
 class RefreshTokenChecker implements RefreshTokenCheckerInterface
 {

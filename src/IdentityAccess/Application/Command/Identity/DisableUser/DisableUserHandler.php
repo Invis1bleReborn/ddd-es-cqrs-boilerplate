@@ -16,7 +16,7 @@ namespace IdentityAccess\Application\Command\Identity\DisableUser;
 use IdentityAccess\Application\Command\Identity\AbstractCommandHandler;
 
 /**
- * Class DisableUserHandler
+ * Class DisableUserHandler.
  */
 final class DisableUserHandler extends AbstractCommandHandler
 {

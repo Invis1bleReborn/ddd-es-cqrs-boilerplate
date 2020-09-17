@@ -16,7 +16,7 @@ namespace IdentityAccess\Domain\Identity\Specification;
 use IdentityAccess\Domain\Identity\ValueObject\Email;
 
 /**
- * Interface UniqueEmailSpecificationInterface
+ * Interface UniqueEmailSpecificationInterface.
  */
 interface UniqueEmailSpecificationInterface
 {

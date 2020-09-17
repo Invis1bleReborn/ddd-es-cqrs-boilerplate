@@ -14,7 +14,7 @@ declare(strict_types=1);
 namespace IdentityAccess\Domain\Access\ValueObject;
 
 /**
- * Class Roles
+ * Class Roles.
  */
 final class Roles
 {

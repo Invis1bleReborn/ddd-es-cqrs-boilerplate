@@ -20,7 +20,7 @@ use Doctrine\DBAL\Types\ConversionException;
 use Doctrine\DBAL\Types\DateTimeImmutableType;
 
 /**
- * Class DateTimeType
+ * Class DateTimeType.
  */
 class DateTimeType extends DateTimeImmutableType
 {

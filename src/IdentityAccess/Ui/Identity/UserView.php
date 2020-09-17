@@ -16,7 +16,7 @@ namespace IdentityAccess\Ui\Identity;
 use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
- * Class UserView
+ * Class UserView.
  */
 final class UserView
 {

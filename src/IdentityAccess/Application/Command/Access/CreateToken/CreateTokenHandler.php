@@ -25,7 +25,7 @@ use IdentityAccess\Domain\Identity\ValueObject\HashedPassword;
 use IdentityAccess\Domain\Identity\ValueObject\Username;
 
 /**
- * Class CreateTokenHandler
+ * Class CreateTokenHandler.
  */
 final class CreateTokenHandler implements CommandHandlerInterface
 {

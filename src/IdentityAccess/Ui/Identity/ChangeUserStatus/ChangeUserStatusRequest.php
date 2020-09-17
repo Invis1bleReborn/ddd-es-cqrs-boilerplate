@@ -17,7 +17,7 @@ use Common\Shared\Ui\RequestInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Class ChangeUserStatusRequest
+ * Class ChangeUserStatusRequest.
  */
 final class ChangeUserStatusRequest implements RequestInterface
 {

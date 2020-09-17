@@ -18,7 +18,7 @@ use Common\Shared\Application\Bus\Event\EventHandlerInterface;
 use Common\Shared\Infrastructure\Event\Query\EventElasticRepository;
 
 /**
- * Class SendEventsToElasticConsumer
+ * Class SendEventsToElasticConsumer.
  */
 class SendEventsToElasticConsumer implements EventHandlerInterface
 {

@@ -19,7 +19,7 @@ use IdentityAccess\Domain\Identity\Event\UserRegistered;
 use IdentityAccess\Domain\Identity\ValueObject\UserId;
 
 /**
- * Class Uninitialized
+ * Class Uninitialized.
  */
 class Uninitialized extends AbstractState
 {

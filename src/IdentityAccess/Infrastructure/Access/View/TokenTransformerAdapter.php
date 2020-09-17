@@ -19,7 +19,7 @@ use IdentityAccess\Ui\Access\TokenView;
 use IdentityAccess\Ui\Access\TokenTransformer;
 
 /**
- * Class TokenTransformerAdapter
+ * Class TokenTransformerAdapter.
  */
 final class TokenTransformerAdapter implements DataTransformerInterface
 {

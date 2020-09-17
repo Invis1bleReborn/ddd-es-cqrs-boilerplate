@@ -16,7 +16,7 @@ namespace IdentityAccess\Domain\Access\ValueObject;
 use MyCLabs\Enum\Enum;
 
 /**
- * Class Role
+ * Class Role.
  */
 class Role extends Enum
 {

@@ -18,7 +18,7 @@ use IdentityAccess\Ui\Identity\AuthenticatedUserProviderInterface;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
 /**
- * Class AuthenticatedUserProvider
+ * Class AuthenticatedUserProvider.
  */
 final class AuthenticatedUserProvider implements AuthenticatedUserProviderInterface
 {

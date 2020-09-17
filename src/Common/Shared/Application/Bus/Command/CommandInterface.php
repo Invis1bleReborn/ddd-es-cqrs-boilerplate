@@ -14,7 +14,7 @@ declare(strict_types=1);
 namespace Common\Shared\Application\Bus\Command;
 
 /**
- * Interface CommandInterface
+ * Interface CommandInterface.
  */
 interface CommandInterface
 {

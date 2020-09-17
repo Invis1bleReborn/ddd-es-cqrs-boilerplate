@@ -18,7 +18,7 @@ use Common\Shared\Domain\ValueObject\DateTime;
 use IdentityAccess\Domain\Identity\ValueObject\UserId;
 
 /**
- * Interface UserStateInterface
+ * Interface UserStateInterface.
  */
 interface UserStateInterface
 {

@@ -18,7 +18,7 @@ use Assert\AssertionFailedException;
 use IdentityAccess\Application\Command\Access\CreateToken\CreateTokenCommand;
 
 /**
- * Class CreateTokenRequestTransformer
+ * Class CreateTokenRequestTransformer.
  */
 interface CreateTokenRequestTransformerInterface
 {

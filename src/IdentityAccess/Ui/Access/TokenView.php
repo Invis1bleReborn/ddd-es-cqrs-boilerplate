@@ -14,7 +14,7 @@ declare(strict_types=1);
 namespace IdentityAccess\Ui\Access;
 
 /**
- * Class TokenView
+ * Class TokenView.
  */
 final class TokenView
 {

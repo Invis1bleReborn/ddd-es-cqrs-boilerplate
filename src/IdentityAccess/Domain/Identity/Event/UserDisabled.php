@@ -20,7 +20,7 @@ use Common\Shared\Domain\ValueObject\DateTime;
 use IdentityAccess\Domain\Identity\ValueObject\UserId;
 
 /**
- * Class UserDisabled
+ * Class UserDisabled.
  */
 final class UserDisabled extends UserIdAwareEvent
 {

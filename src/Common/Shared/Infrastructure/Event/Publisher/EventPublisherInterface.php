@@ -16,7 +16,7 @@ namespace Common\Shared\Infrastructure\Event\Publisher;
 use Broadway\Domain\DomainMessage;
 
 /**
- * Interface EventPublisherInterface
+ * Interface EventPublisherInterface.
  */
 interface EventPublisherInterface
 {

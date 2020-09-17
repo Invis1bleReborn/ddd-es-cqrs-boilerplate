@@ -16,7 +16,7 @@ namespace IdentityAccess\Application\Command\Identity\EnableUser;
 use IdentityAccess\Application\Command\Identity\AbstractCommandHandler;
 
 /**
- * Class EnableUserHandler
+ * Class EnableUserHandler.
  */
 final class EnableUserHandler extends AbstractCommandHandler
 {

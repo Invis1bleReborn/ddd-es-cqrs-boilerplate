@@ -18,7 +18,7 @@ use Common\Shared\Ui\RequestInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Class RegisterUserRequest
+ * Class RegisterUserRequest.
  *
  *
  * @UniqueDto(

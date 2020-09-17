@@ -19,7 +19,7 @@ use IdentityAccess\Domain\Access\ValueObject\AccessToken;
 use Lexik\Bundle\JWTAuthenticationBundle\Services\JWTTokenManagerInterface;
 
 /**
- * Class AccessTokenGenerator
+ * Class AccessTokenGenerator.
  */
 final class AccessTokenGenerator implements AccessTokenGeneratorInterface
 {

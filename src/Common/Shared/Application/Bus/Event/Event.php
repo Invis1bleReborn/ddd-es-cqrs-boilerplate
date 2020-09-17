@@ -16,7 +16,7 @@ namespace Common\Shared\Application\Bus\Event;
 use Broadway\Domain\DomainMessage;
 
 /**
- * Class Event
+ * Class Event.
  */
 final class Event implements EventInterface
 {

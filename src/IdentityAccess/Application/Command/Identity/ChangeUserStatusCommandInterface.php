@@ -16,7 +16,7 @@ namespace IdentityAccess\Application\Command\Identity;
 use Common\Shared\Application\Bus\Command\CommandInterface;
 
 /**
- * Interface ChangeUserStatusCommandInterface
+ * Interface ChangeUserStatusCommandInterface.
  */
 interface ChangeUserStatusCommandInterface extends CommandInterface
 {

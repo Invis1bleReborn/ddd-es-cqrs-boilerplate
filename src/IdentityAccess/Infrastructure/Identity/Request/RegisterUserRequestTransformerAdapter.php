@@ -20,7 +20,7 @@ use IdentityAccess\Ui\Identity\RegisterUser\RegisterUserRequest;
 use IdentityAccess\Ui\Identity\RegisterUser\RegisterUserRequestTransformerInterface;
 
 /**
- * Class RegisterUserRequestTransformerAdapter
+ * Class RegisterUserRequestTransformerAdapter.
  */
 class RegisterUserRequestTransformerAdapter implements DataTransformerInterface
 {

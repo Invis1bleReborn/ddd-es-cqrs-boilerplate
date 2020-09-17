@@ -19,7 +19,7 @@ use IdentityAccess\Ui\Access\AccessAttribute;
 use IdentityAccess\Ui\Identity\DisableUser\DisableUserGuard;
 
 /**
- * Class DisableUserGuardAdapter
+ * Class DisableUserGuardAdapter.
  */
 class DisableUserGuardAdapter extends AbstractGuardAdapter
 {

@@ -20,7 +20,7 @@ use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 /**
- * Class RegisterMessageHandlersPass
+ * Class RegisterMessageHandlersPass.
  */
 class RegisterMessageHandlersPass implements CompilerPassInterface
 {

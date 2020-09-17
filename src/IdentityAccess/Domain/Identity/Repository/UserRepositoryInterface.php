@@ -17,7 +17,7 @@ use IdentityAccess\Domain\Identity\User;
 use IdentityAccess\Domain\Identity\ValueObject\UserId;
 
 /**
- * Interface UserRepositoryInterface
+ * Interface UserRepositoryInterface.
  */
 interface UserRepositoryInterface
 {

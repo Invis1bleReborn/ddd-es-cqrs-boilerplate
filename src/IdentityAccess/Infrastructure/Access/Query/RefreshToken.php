@@ -17,7 +17,7 @@ use Gesdinet\JWTRefreshTokenBundle\Entity;
 use IdentityAccess\Application\Query\Access\RefreshTokenInterface;
 
 /**
- * RefreshToken
+ * RefreshToken.
  */
 class RefreshToken extends Entity\RefreshToken implements RefreshTokenInterface
 {

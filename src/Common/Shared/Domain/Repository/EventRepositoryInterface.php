@@ -14,7 +14,7 @@ declare(strict_types=1);
 namespace Common\Shared\Domain\Repository;
 
 /**
- * Interface EventRepositoryInterface
+ * Interface EventRepositoryInterface.
  */
 interface EventRepositoryInterface
 {

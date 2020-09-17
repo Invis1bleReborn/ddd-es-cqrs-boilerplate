@@ -18,7 +18,7 @@ use IdentityAccess\Application\Query\Identity\UserProviderInterface;
 use Symfony\Component\Security\Core\User\UserProviderInterface as SecurityUserProviderInterface;
 
 /**
- * Class UserProvider
+ * Class UserProvider.
  */
 final class UserProvider implements UserProviderInterface
 {
