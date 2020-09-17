@@ -29,11 +29,6 @@ use IdentityAccess\Infrastructure\Identity\Query\User;
  */
 class OrmUserReadModelRepository extends OrmRepository implements CheckUserByEmailInterface
 {
-    protected function getClass(): string
-    {
-        return User::class;
-    }
-
     public function add(User $user): void
     {
         $this->register($user);
@@ -54,6 +49,9 @@ class OrmUserReadModelRepository extends OrmRepository implements CheckUserByEma
         return $this->oneOrException($qb);
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function existsEmail(Email $email): ?UserId
     {
         $builder = $this->getUserByEmailQueryBuilder($email);
@@ -65,13 +63,18 @@ class OrmUserReadModelRepository extends OrmRepository implements CheckUserByEma
         try {
             return $query->getSingleScalarResult();
         } catch (NoResultException $exception) {
+            return null;
         } catch (NonUniqueResultException $exception) {
-            throw new NonUniqueUserException(sprintf('Non-unique user with email %s exists.',
+            throw new NonUniqueUserException(sprintf(
+                'Non-unique user with email %s exists.',
                 $email->toString()
             ));
         }
+    }
 
-        return null;
+    protected function getClass(): string
+    {
+        return User::class;
     }
 
     private function getUserByEmailQueryBuilder(Email $email): QueryBuilder

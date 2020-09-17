@@ -29,22 +29,22 @@ final class RefreshTokenProvider implements RefreshTokenProviderInterface
         $this->refreshTokenManager = $refreshTokenManager;
     }
 
-    public function loadRefreshTokenByValue(string $refreshToken): ?RefreshTokenInterface
+    public function loadRefreshTokenByValue(string $value): ?RefreshTokenInterface
     {
-        $refreshToken_ = $this->refreshTokenManager->get($refreshToken);
+        $refreshToken = $this->refreshTokenManager->get($value);
 
-        if (null === $refreshToken_) {
+        if (null === $refreshToken) {
             return null;
         }
 
-        if (!$refreshToken_ instanceof RefreshTokenInterface) {
+        if (!$refreshToken instanceof RefreshTokenInterface) {
             throw new \UnexpectedValueException(sprintf(
                 'Refresh Token should be an instance of %s, %s loaded.',
                 RefreshTokenInterface::class,
-                get_class($refreshToken_)
+                get_class($refreshToken)
             ));
         }
 
-        return $refreshToken_;
+        return $refreshToken;
     }
 }

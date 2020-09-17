@@ -27,9 +27,6 @@ class UuidGenerator implements UuidGeneratorInterface
         $this->uuidGenerator = $uuidGenerator;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function __invoke(): string
     {
         return $this->uuidGenerator->generate();

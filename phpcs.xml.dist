@@ -11,7 +11,14 @@
     <config name="installed_paths" value="vendor/escapestudios/symfony2-coding-standard" />
 
     <rule ref="Symfony">
+        <exclude name="Generic.Formatting.SpaceAfterCast.NoSpace" />
+        <exclude name="Squiz.Strings.ConcatenationSpacing.PaddingFound" />
+        <exclude name="Symfony.Commenting.Annotations.Invalid" />
         <exclude name="Symfony.Commenting.FunctionComment.Missing" />
+        <exclude name="Symfony.Commenting.FunctionComment.MissingParamTag" />
+        <exclude name="Symfony.Commenting.FunctionComment.MissingReturn" />
+        <exclude name="Symfony.NamingConventions.ValidClassName.InvalidAbstractName" />
+        <exclude name="Symfony.Functions.Arguments.Invalid" />
     </rule>
 
     <file>bin/</file>

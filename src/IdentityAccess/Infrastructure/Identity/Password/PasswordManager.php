@@ -35,7 +35,8 @@ class PasswordManager implements PasswordEncoderInterface, PasswordCheckerInterf
         $encoder = $encoderFactory->getEncoder(User::class);
 
         if (!$encoder instanceof SelfSaltingEncoderInterface) {
-            throw new \RuntimeException(sprintf('Expected self-salting (%s) encoder, instance of %s given.',
+            throw new \RuntimeException(sprintf(
+                'Expected self-salting (%s) encoder, instance of %s given.',
                 SelfSaltingEncoderInterface::class,
                 get_class($encoder)
             ));

@@ -15,7 +15,9 @@ namespace IdentityAccess\Infrastructure\Identity\Query;
 
 use ApiPlatform\Core\Annotation\ApiProperty;
 use ApiPlatform\Core\Annotation\ApiResource;
+use Assert\AssertionFailedException;
 use Broadway\ReadModel\SerializableReadModel;
+use Common\Shared\Domain\Exception\DateTimeException;
 use Common\Shared\Domain\ValueObject\DateTime;
 use IdentityAccess\Application\Query\Identity\EnableableUserInterface;
 use IdentityAccess\Application\Query\Identity\UserInterface;
@@ -176,6 +178,10 @@ class User implements UserInterface, EnableableUserInterface, SecurityUserInterf
         // no op
     }
 
+    /**
+     * @throws AssertionFailedException
+     * @throws DateTimeException
+     */
     public static function deserialize(array $data)
     {
         return new self(

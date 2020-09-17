@@ -15,25 +15,30 @@ namespace Common\Shared\Infrastructure\Validator\Constraints;
 
 use Doctrine\ORM\Mapping\Entity;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\Persistence\Mapping\ClassMetadata;
 use Doctrine\Persistence\ObjectManager;
+use Doctrine\Persistence\ObjectRepository;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
 use Symfony\Component\Validator\Exception\ConstraintDefinitionException;
 use Symfony\Component\Validator\Exception\UnexpectedTypeException;
 
+/**
+ * Class UniqueDtoValidator.
+ */
 class UniqueDtoValidator extends ConstraintValidator
 {
     private ?Constraint $constraint;
 
     private ?ObjectManager $em = null;
 
-    private $entityMeta;
+    private ?ClassMetadata $entityMeta;
 
-    private $registry;
+    private ManagerRegistry $registry;
 
-    private $repository;
+    private ?ObjectRepository $repository;
 
-    private $validationObject;
+    private object $validationObject;
 
     public function __construct(ManagerRegistry $registry)
     {
@@ -114,7 +119,8 @@ class UniqueDtoValidator extends ConstraintValidator
             $this->em = $this->registry->getManager($this->constraint->em);
 
             if (!$this->em) {
-                throw new ConstraintDefinitionException(sprintf('Object manager "%s" does not exist.',
+                throw new ConstraintDefinitionException(sprintf(
+                    'Object manager "%s" does not exist.',
                     $this->constraint->em
                 ));
             }

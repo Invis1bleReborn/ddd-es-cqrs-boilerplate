@@ -19,6 +19,9 @@ use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigura
 use Symfony\Component\HttpKernel\Kernel as BaseKernel;
 use Symfony\Component\Routing\Loader\Configurator\RoutingConfigurator;
 
+/**
+ * Class Kernel.
+ */
 class Kernel extends BaseKernel
 {
     use MicroKernelTrait;

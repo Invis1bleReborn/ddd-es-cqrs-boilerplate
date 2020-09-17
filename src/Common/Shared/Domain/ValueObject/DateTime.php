@@ -42,9 +42,6 @@ class DateTime
         return self::create($dateTime);
     }
 
-    /**
-     * @throws DateTimeException
-     */
     public static function fromNative(\DateTimeInterface $dateTime): self
     {
         return self::create('@' . $dateTime->format('U.u'));

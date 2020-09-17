@@ -22,11 +22,6 @@ use Common\Shared\Infrastructure\Query\Repository\ElasticRepository;
  */
 class EventElasticRepository extends ElasticRepository implements EventRepositoryInterface
 {
-    protected function index(): string
-    {
-        return 'events';
-    }
-
     public function store(DomainMessage $message): void
     {
         $document = [
@@ -36,5 +31,10 @@ class EventElasticRepository extends ElasticRepository implements EventRepositor
         ];
 
         $this->add($document);
+    }
+
+    protected function index(): string
+    {
+        return 'events';
     }
 }

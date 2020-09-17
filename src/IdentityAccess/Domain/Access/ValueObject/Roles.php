@@ -65,8 +65,8 @@ final class Roles
 
     public function contains(Role $role): bool
     {
-        foreach ($this->values as $role_) {
-            if ($role_->equals($role)) {
+        foreach ($this->values as $existingRole) {
+            if ($existingRole->equals($role)) {
                 return true;
             }
         }

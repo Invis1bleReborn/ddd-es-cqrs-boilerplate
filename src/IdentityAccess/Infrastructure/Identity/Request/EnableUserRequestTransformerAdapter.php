@@ -14,8 +14,11 @@ declare(strict_types=1);
 namespace IdentityAccess\Infrastructure\Identity\Request;
 
 use ApiPlatform\Core\DataTransformer\DataTransformerInterface;
+use ApiPlatform\Core\Validator\Exception\ValidationException;
+use Assert\AssertionFailedException;
 use IdentityAccess\Application\Command\Identity\EnableUser\EnableUserCommand;
 use IdentityAccess\Infrastructure\Identity\Query\User;
+use IdentityAccess\Ui\Access\AccessDeniedException;
 use IdentityAccess\Ui\Identity\ChangeUserStatus\ChangeUserStatusRequest;
 use IdentityAccess\Ui\Identity\EnableUser\EnableUserRequestTransformerInterface;
 
@@ -31,6 +34,13 @@ class EnableUserRequestTransformerAdapter implements DataTransformerInterface
         $this->enableUserRequestTransformer = $enableUserRequestTransformer;
     }
 
+    /**
+     * {@inheritdoc}
+     *
+     * @throws AccessDeniedException
+     * @throws ValidationException
+     * @throws AssertionFailedException
+     */
     public function transform($data, string $to, array $context = [])
     {
         /* @var $data ChangeUserStatusRequest */

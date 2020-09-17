@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace IdentityAccess\Infrastructure\Identity\Password;
 
+use Assert\AssertionFailedException;
 use IdentityAccess\Domain\Identity\PasswordEncoderInterface;
 use IdentityAccess\Domain\Identity\ValueObject\HashedPassword;
 use IdentityAccess\Domain\Identity\ValueObject\PlainPassword;
@@ -22,6 +23,9 @@ use IdentityAccess\Domain\Identity\ValueObject\PlainPassword;
  */
 class NoopPasswordEncoder implements PasswordEncoderInterface
 {
+    /**
+     * @throws AssertionFailedException
+     */
     public function encode(PlainPassword $plainPassword): HashedPassword
     {
         return HashedPassword::fromString($plainPassword->toString());

@@ -14,6 +14,8 @@ declare(strict_types=1);
 namespace IdentityAccess\Infrastructure\Identity\Query;
 
 use Broadway\ReadModel\Projector;
+use Common\Shared\Domain\Query\Exception\NotFoundException;
+use Doctrine\ORM\NonUniqueResultException;
 use IdentityAccess\Domain\Identity\Event\UserDisabled;
 use IdentityAccess\Domain\Identity\Event\UserEnabled;
 use IdentityAccess\Domain\Identity\Event\UserRegistered;
@@ -47,6 +49,10 @@ class UserProjector extends Projector
         $this->saveUser($user);
     }
 
+    /**
+     * @throws NotFoundException
+     * @throws NonUniqueResultException
+     */
     protected function applyUserEnabled(UserEnabled $event): void
     {
         $user = $this->getUser($event->id());
@@ -56,6 +62,10 @@ class UserProjector extends Projector
         $this->saveUser($user);
     }
 
+    /**
+     * @throws NotFoundException
+     * @throws NonUniqueResultException
+     */
     protected function applyUserDisabled(UserDisabled $event): void
     {
         $user = $this->getUser($event->id());
@@ -65,6 +75,10 @@ class UserProjector extends Projector
         $this->saveUser($user);
     }
 
+    /**
+     * @throws NotFoundException
+     * @throws NonUniqueResultException
+     */
     protected function getUser(UserId $userId): User
     {
         return $this->repository->oneById($userId);

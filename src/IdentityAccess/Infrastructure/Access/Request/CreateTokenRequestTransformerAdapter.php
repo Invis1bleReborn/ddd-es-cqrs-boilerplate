@@ -14,8 +14,11 @@ declare(strict_types=1);
 namespace IdentityAccess\Infrastructure\Access\Request;
 
 use ApiPlatform\Core\DataTransformer\DataTransformerInterface;
+use ApiPlatform\Core\Validator\Exception\ValidationException;
+use Assert\AssertionFailedException;
 use IdentityAccess\Application\Command\Access\CreateToken\CreateTokenCommand;
 use IdentityAccess\Infrastructure\Access\Query\Token;
+use IdentityAccess\Ui\Access\AccountStatusExceptionInterface;
 use IdentityAccess\Ui\Access\CreateToken\CreateTokenRequest;
 use IdentityAccess\Ui\Access\CreateToken\CreateTokenRequestTransformerInterface;
 
@@ -31,6 +34,13 @@ class CreateTokenRequestTransformerAdapter implements DataTransformerInterface
         $this->createTokenRequestTransformer = $createTokenRequestTransformer;
     }
 
+    /**
+     * {@inheritdoc}
+     *
+     * @throws ValidationException
+     * @throws AccountStatusExceptionInterface
+     * @throws AssertionFailedException
+     */
     public function transform($data, string $to, array $context = [])
     {
         /* @var $data CreateTokenRequest */

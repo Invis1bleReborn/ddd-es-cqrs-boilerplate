@@ -39,9 +39,7 @@ class DateTimeNormalizer implements NormalizerInterface, DenormalizerInterface, 
 
     public function denormalize($data, string $type, string $format = null, array $context = [])
     {
-        $dateTime = $this->nativeDateTimeNormalizer->denormalize($data, $type, $format, $context);
-
-        return DateTime::fromString('@' . $dateTime->format('U.u'));
+        return DateTime::fromNative($this->nativeDateTimeNormalizer->denormalize($data, $type, $format, $context));
     }
 
     public function supportsDenormalization($data, string $type, string $format = null)

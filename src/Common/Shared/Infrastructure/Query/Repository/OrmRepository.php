@@ -37,12 +37,7 @@ abstract class OrmRepository
         $this->repository = $objectRepository;
     }
 
-    abstract protected function getClass(): string;
-
-    /**
-     * @param object $model
-     */
-    public function register($model): void
+    public function register(object $model): void
     {
         $this->entityManager->persist($model);
         $this->apply();
@@ -72,4 +67,6 @@ abstract class OrmRepository
 
         return $model;
     }
+
+    abstract protected function getClass(): string;
 }

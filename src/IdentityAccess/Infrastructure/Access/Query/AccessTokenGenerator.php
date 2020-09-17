@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace IdentityAccess\Infrastructure\Access\Query;
 
+use Assert\AssertionFailedException;
 use IdentityAccess\Application\Query\Access\AccessTokenGeneratorInterface;
 use IdentityAccess\Application\Query\Identity\UserInterface;
 use IdentityAccess\Domain\Access\ValueObject\AccessToken;
@@ -30,6 +31,9 @@ final class AccessTokenGenerator implements AccessTokenGeneratorInterface
         $this->tokenManager = $tokenManager;
     }
 
+    /**
+     * @throws AssertionFailedException
+     */
     public function __invoke(UserInterface $user): AccessToken
     {
         if (!$user instanceof \Symfony\Component\Security\Core\User\UserInterface) {

@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Common\Shared\Infrastructure\Query\Repository;
 
 use Assert\Assertion;
+use Assert\AssertionFailedException;
 use Elasticsearch\Client;
 use Elasticsearch\ClientBuilder;
 use Psr\Log\LoggerInterface;
@@ -36,8 +37,6 @@ abstract class ElasticRepository
 
         $this->client = ClientBuilder::fromConfig(\array_replace($defaultConfig, $elasticConfig), true);
     }
-
-    abstract protected function index(): string;
 
     public function search(array $query): array
     {
@@ -76,17 +75,9 @@ abstract class ElasticRepository
         }
     }
 
-    protected function add(array $document): array
-    {
-        $query = [];
-
-        $query['index'] = $this->index();
-        $query['id'] = $document['id'] ?? null;
-        $query['body'] = $document;
-
-        return $this->client->index($query);
-    }
-
+    /**
+     * @throws AssertionFailedException
+     */
     public function page(int $page = 1, int $limit = 50): array
     {
         Assertion::greaterThan($page, 0, 'Pagination need to be > 0');
@@ -104,4 +95,17 @@ abstract class ElasticRepository
             'total' => $response['hits']['total'],
         ];
     }
+
+    protected function add(array $document): array
+    {
+        $query = [];
+
+        $query['index'] = $this->index();
+        $query['id'] = $document['id'] ?? null;
+        $query['body'] = $document;
+
+        return $this->client->index($query);
+    }
+
+    abstract protected function index(): string;
 }

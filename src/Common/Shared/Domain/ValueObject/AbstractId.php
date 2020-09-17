@@ -41,9 +41,6 @@ abstract class AbstractId implements IdInterface
         return new static($value);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function __toString(): string
     {
         return $this->value;

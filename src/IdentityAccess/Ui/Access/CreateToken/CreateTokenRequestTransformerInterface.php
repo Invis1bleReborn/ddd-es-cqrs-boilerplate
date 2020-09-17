@@ -16,6 +16,7 @@ namespace IdentityAccess\Ui\Access\CreateToken;
 use ApiPlatform\Core\Validator\Exception\ValidationException;
 use Assert\AssertionFailedException;
 use IdentityAccess\Application\Command\Access\CreateToken\CreateTokenCommand;
+use IdentityAccess\Ui\Access\AccountStatusExceptionInterface;
 
 /**
  * Class CreateTokenRequestTransformer.
@@ -24,7 +25,7 @@ interface CreateTokenRequestTransformerInterface
 {
     /**
      * @throws ValidationException
-     * @throws \IdentityAccess\Ui\Access\AccountStatusExceptionInterface
+     * @throws AccountStatusExceptionInterface
      * @throws AssertionFailedException
      */
     public function __invoke(CreateTokenRequest $request): CreateTokenCommand;

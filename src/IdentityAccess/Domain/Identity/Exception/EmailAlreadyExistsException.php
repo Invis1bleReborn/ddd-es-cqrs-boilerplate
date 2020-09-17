@@ -24,7 +24,7 @@ class EmailAlreadyExistsException extends \InvalidArgumentException
     {
         parent::__construct(sprintf(
             'Email "%s" already registered.',
-            $email->toString())
-        );
+            $email->toString()
+        ));
     }
 }

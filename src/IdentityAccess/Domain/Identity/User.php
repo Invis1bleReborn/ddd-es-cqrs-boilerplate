@@ -186,13 +186,6 @@ final class User extends EventSourcedAggregateRoot
         return $this->id->toString();
     }
 
-    protected function getChildEntities(): array
-    {
-        return [
-            $this->state,
-        ];
-    }
-
     public function changeState(UserStateInterface $state): void
     {
         $this->state = $state;
@@ -222,5 +215,12 @@ final class User extends EventSourcedAggregateRoot
     protected function applyRolesChanged(RolesChanged $event): void
     {
         $this->roles = $event->roles();
+    }
+
+    protected function getChildEntities(): array
+    {
+        return [
+            $this->state,
+        ];
     }
 }
