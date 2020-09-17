@@ -58,10 +58,11 @@ class RegisterUserCommand extends Command
     {
         $this
             ->setName('app:user:register')
-            ->setDescription(<<<'DESCRIPTION'
+            ->setDescription(
+<<<'DESCRIPTION'
 Given a credentials, registers a new user. Reads and interprets stdin content as password in non-interactive mode.
 DESCRIPTION
-)
+            )
             ->addArgument('email', InputArgument::REQUIRED, 'User email')
             ->addArgument('password', InputArgument::OPTIONAL, 'User password')
             ->addOption('uuid', 'id', InputArgument::OPTIONAL, 'User UUID')
