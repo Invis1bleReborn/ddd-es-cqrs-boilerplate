@@ -13,7 +13,6 @@ declare(strict_types=1);
 
 namespace Common\Shared\Infrastructure\Validator\Constraints;
 
-//use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\ORM\Mapping\Entity;
 use Doctrine\Persistence\ManagerRegistry;
 use Doctrine\Persistence\ObjectManager;
@@ -139,7 +138,6 @@ class UniqueDtoValidator extends ConstraintValidator
 
         $criteria = [];
         foreach ($this->constraint->fieldMapping as $objectField => $entityField) {
-
             // DTO Property (key) should exist on DataTransferObject
             if (!$validationClass->hasProperty($objectField)) {
                 throw new ConstraintDefinitionException(sprintf(
