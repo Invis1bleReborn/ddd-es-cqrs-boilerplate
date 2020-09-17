@@ -47,7 +47,7 @@ final class Roles
      */
     public function toArray(): array
     {
-        return array_map(fn(Role $role) => $role->getValue(), $this->values);
+        return array_map(fn (Role $role) => $role->getValue(), $this->values);
     }
 
     public function equals(self $roles): bool
