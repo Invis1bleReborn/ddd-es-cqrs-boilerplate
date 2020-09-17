@@ -1,0 +1,16 @@
+version: "2"
+
+plugins:
+    markdownlint:
+        enabled: true
+    phpmd:
+        enabled: true
+        config:
+            rulesets: "codesize,design"
+    shellcheck:
+        enabled: true
+    sonar-php:
+        enabled: true
+    phpcodesniffer:
+        enabled: true
+        standard: "phpcs.xml"
