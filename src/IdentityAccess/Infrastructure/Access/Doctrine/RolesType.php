@@ -81,4 +81,3 @@ class RolesType extends JsonType
     }
 }
 
-

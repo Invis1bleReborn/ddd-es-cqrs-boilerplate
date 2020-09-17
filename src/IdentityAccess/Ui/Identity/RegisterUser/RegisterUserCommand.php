@@ -103,7 +103,6 @@ class RegisterUserCommand extends Command
             $input->getOption('roles')
         );
 
-
         $this->validator->validate($request);
 
         $userId = $input->getOption('uuid') ?? ($this->uuidGenerator)();
