@@ -13,4 +13,4 @@ plugins:
         enabled: true
     phpcodesniffer:
         enabled: true
-        standard: "phpcs.xml"
+        standard: "phpcs.xml.dist"
