@@ -14,24 +14,22 @@ declare(strict_types=1);
 namespace IdentityAccess\Infrastructure\Identity\Query;
 
 use Broadway\ReadModel\Projector;
-use Common\Shared\Domain\Query\Exception\NotFoundException;
-use Doctrine\ORM\NonUniqueResultException;
+use Broadway\ReadModel\Repository;
 use IdentityAccess\Domain\Identity\Event\UserDisabled;
 use IdentityAccess\Domain\Identity\Event\UserEnabled;
 use IdentityAccess\Domain\Identity\Event\UserRegistered;
 use IdentityAccess\Domain\Identity\ValueObject\UserId;
-use IdentityAccess\Infrastructure\Identity\Query\Orm\OrmUserReadModelRepository;
 
 /**
  * Class UserProjector.
  */
 class UserProjector extends Projector
 {
-    private OrmUserReadModelRepository $repository;
+    private Repository $userRepository;
 
-    public function __construct(OrmUserReadModelRepository $repository)
+    public function __construct(Repository $userRepository)
     {
-        $this->repository = $repository;
+        $this->userRepository = $userRepository;
     }
 
     protected function applyUserRegistered(UserRegistered $event): void
@@ -49,10 +47,6 @@ class UserProjector extends Projector
         $this->saveUser($user);
     }
 
-    /**
-     * @throws NotFoundException
-     * @throws NonUniqueResultException
-     */
     protected function applyUserEnabled(UserEnabled $event): void
     {
         $user = $this->getUser($event->id());
@@ -62,10 +56,6 @@ class UserProjector extends Projector
         $this->saveUser($user);
     }
 
-    /**
-     * @throws NotFoundException
-     * @throws NonUniqueResultException
-     */
     protected function applyUserDisabled(UserDisabled $event): void
     {
         $user = $this->getUser($event->id());
@@ -75,17 +65,16 @@ class UserProjector extends Projector
         $this->saveUser($user);
     }
 
-    /**
-     * @throws NotFoundException
-     * @throws NonUniqueResultException
-     */
-    protected function getUser(UserId $userId): User
+    protected function getUser(UserId $userId): ?User
     {
-        return $this->repository->oneById($userId);
+        $user = $this->userRepository->find($userId->toString());
+        /* @var $user User|null */
+
+        return $user;
     }
 
     protected function saveUser(User $user): void
     {
-        $this->repository->add($user);
+        $this->userRepository->save($user);
     }
 }
