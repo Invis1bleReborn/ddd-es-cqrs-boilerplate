@@ -30,8 +30,7 @@ class Kernel extends BaseKernel
 
     protected function configureContainer(ContainerConfigurator $container): void
     {
-        $projectDir = $this->getProjectDir();
-        $confDir = $projectDir . '/config';
+        $confDir = $this->getProjectDir() . '/config';
 
         $container->parameters()
             ->set('container.dumper.inline_class_loader', \PHP_VERSION_ID < 70400 || $this->debug)
@@ -44,6 +43,11 @@ class Kernel extends BaseKernel
         $container->import($confDir . '/{services}_' . $this->environment . self::CONFIG_EXTS);
 
         // TODO: refactor services registering
+        $this->registerServicesWithWellKnownNames($container);
+    }
+
+    protected function registerServicesWithWellKnownNames(ContainerConfigurator $container): void
+    {
         $services = $container->services();
 
         $servicePatterns = [
@@ -60,13 +64,17 @@ class Kernel extends BaseKernel
             'Infrastructure/**/View/*TransformerAdapter',
         ];
 
+        $servicesPattern = '{' . implode(',', $servicePatterns) . '}.php';
+
         foreach ([
             'IdentityAccess\\',
         ] as $namespacePrefix) {
-            $services->load(
-                $namespacePrefix,
-                $projectDir . '/src/' . strtr($namespacePrefix, '\\', '/') . '{' . implode(',', $servicePatterns) . '}.php'
-            )
+            $services->load($namespacePrefix, sprintf(
+                '%s/src/%s%s',
+                $this->getProjectDir(),
+                strtr($namespacePrefix, '\\', '/'),
+                $servicesPattern
+            ))
                 ->autowire(true)
                 ->autoconfigure(true)
             ;
