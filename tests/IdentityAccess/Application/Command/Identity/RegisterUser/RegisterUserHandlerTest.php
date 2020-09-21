@@ -56,16 +56,6 @@ class RegisterUserHandlerTest extends UuidGeneratorAwareCommandHandlerScenarioTe
         $registeredById = $this->generateUserId();
         $dateRegistered = DateTime::now();
 
-        $userRegistered = new UserRegistered(
-            UserId::fromString($id),
-            Email::fromString($email),
-            $this->passwordEncoder->encode(PlainPassword::fromString($plainPassword)),
-            Roles::fromArray($roles),
-            $enabled,
-            UserId::fromString($registeredById),
-            $dateRegistered
-        );
-
         $this->uniqueEmailSpecificationStub->method('isUnique')
             ->willReturn(true);
 
@@ -80,7 +70,17 @@ class RegisterUserHandlerTest extends UuidGeneratorAwareCommandHandlerScenarioTe
                 $roles,
                 $registeredById
             ))
-            ->then([$userRegistered]);
+            ->then([
+                new UserRegistered(
+                    UserId::fromString($id),
+                    Email::fromString($email),
+                    $this->passwordEncoder->encode(PlainPassword::fromString($plainPassword)),
+                    Roles::fromArray($roles),
+                    $enabled,
+                    UserId::fromString($registeredById),
+                    $dateRegistered
+                ),
+            ]);
     }
 
     protected function generateUserId(): string
