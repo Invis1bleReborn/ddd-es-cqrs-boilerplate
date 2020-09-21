@@ -16,8 +16,8 @@ namespace IdentityAccess\Application\Command\Identity\RegisterUser;
 use Broadway\CommandHandling\CommandHandler;
 use Broadway\EventHandling\EventBus;
 use Broadway\EventStore\EventStore;
-use Common\Shared\Application\Command\UuidGeneratorAwareCommandHandlerScenarioTestCase;
 use Common\Shared\Domain\ValueObject\DateTime;
+use IdentityAccess\Application\Command\Identity\UserHandlerTestCase;
 use IdentityAccess\Domain\Access\ValueObject\Roles;
 use IdentityAccess\Domain\Identity\Event\UserRegistered;
 use IdentityAccess\Domain\Identity\PasswordEncoderInterface;
@@ -34,7 +34,7 @@ use Symfony\Bridge\PhpUnit\ClockMock;
 /**
  * Class RegisterUserHandlerTest.
  */
-class RegisterUserHandlerTest extends UuidGeneratorAwareCommandHandlerScenarioTestCase
+class RegisterUserHandlerTest extends UserHandlerTestCase
 {
     private ?PasswordEncoderInterface $passwordEncoder;
 
