@@ -36,7 +36,7 @@ class UniqueDtoValidator extends ConstraintValidator
 
     private ManagerRegistry $registry;
 
-    private ?ObjectRepository $repository;
+    private ?ObjectRepository $repository = null;
 
     private object $validationObject;
 
