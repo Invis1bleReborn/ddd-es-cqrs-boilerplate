@@ -13,7 +13,6 @@ declare(strict_types=1);
 
 namespace IdentityAccess\Infrastructure\Identity\Query\Orm;
 
-use Common\Shared\Domain\Query\Exception\NotFoundException;
 use Common\Shared\Infrastructure\Query\Repository\OrmRepository;
 use Doctrine\ORM\NonUniqueResultException;
 use Doctrine\ORM\NoResultException;
@@ -29,26 +28,6 @@ use IdentityAccess\Infrastructure\Identity\Query\User;
  */
 class OrmUserReadModelRepository extends OrmRepository implements CheckUserByEmailInterface
 {
-    public function add(User $user): void
-    {
-        $this->register($user);
-    }
-
-    /**
-     * @throws NonUniqueResultException
-     * @throws NotFoundException
-     */
-    public function oneById(UserId $id): User
-    {
-        $qb = $this->repository
-            ->createQueryBuilder('user')
-            ->where('user.id = :id')
-            ->setParameter('id', $id->toString())
-        ;
-
-        return $this->oneOrException($qb);
-    }
-
     /**
      * {@inheritdoc}
      */

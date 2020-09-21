@@ -13,16 +13,15 @@ declare(strict_types=1);
 
 namespace Common\Shared\Infrastructure\Query\Repository;
 
-use Common\Shared\Domain\Query\Exception\NotFoundException;
+use Broadway\ReadModel\Identifiable;
+use Broadway\ReadModel\Repository;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\EntityRepository;
-use Doctrine\ORM\NonUniqueResultException;
-use Doctrine\ORM\QueryBuilder;
 
 /**
  * Class OrmRepository.
  */
-abstract class OrmRepository
+abstract class OrmRepository implements Repository
 {
     protected EntityRepository $repository;
 
@@ -37,35 +36,40 @@ abstract class OrmRepository
         $this->repository = $objectRepository;
     }
 
-    public function register(object $model): void
+    public function save(Identifiable $data): void
     {
-        $this->entityManager->persist($model);
-        $this->apply();
-    }
-
-    public function apply(): void
-    {
+        $this->entityManager->persist($data);
         $this->entityManager->flush();
     }
 
-    /**
-     * @return mixed
-     *
-     * @throws NonUniqueResultException
-     * @throws NotFoundException
-     */
-    protected function oneOrException(QueryBuilder $queryBuilder)
+    public function find($id): ?Identifiable
     {
-        $model = $queryBuilder
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-
-        if (null === $model) {
-            throw new NotFoundException();
-        }
+        $model = $this->repository->find((string)$id);
+        /* @var $model Identifiable */
 
         return $model;
+    }
+
+    public function findBy(array $fields): array
+    {
+        return $this->repository->findBy($fields);
+    }
+
+    public function findAll(): array
+    {
+        return $this->repository->findAll();
+    }
+
+    public function remove($id): void
+    {
+        $model = $this->find($id);
+
+        if (null === $model) {
+            return;
+        }
+
+        $this->entityManager->remove($model);
+        $this->entityManager->flush();
     }
 
     abstract protected function getClass(): string;
