@@ -75,7 +75,7 @@ class UserProjectorTest extends UuidGeneratorAwareProjectorScenarioTestCase
             $user,
         ];
     }
-    
+
     /**
      * @test
      * @depends itCreatesReadModelWhenUserRegistered

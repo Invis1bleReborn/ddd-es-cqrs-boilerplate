@@ -38,5 +38,4 @@ abstract class UserHandlerTestCase extends UuidGeneratorAwareCommandHandlerScena
     {
         return $this->generateUuid();
     }
-
 }
