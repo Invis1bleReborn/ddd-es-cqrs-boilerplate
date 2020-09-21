@@ -46,7 +46,7 @@ class RegisterUserHandlerTest extends UuidGeneratorAwareCommandHandlerScenarioTe
     /**
      * @test
      */
-    public function itCanRegisterUser(): UserRegistered
+    public function itCanRegisterUser(): void
     {
         $id = $this->generateUserId();
         $email = 'alice@acme.com';
@@ -81,8 +81,6 @@ class RegisterUserHandlerTest extends UuidGeneratorAwareCommandHandlerScenarioTe
                 $registeredById
             ))
             ->then([$userRegistered]);
-
-        return $userRegistered;
     }
 
     protected function generateUserId(): string
