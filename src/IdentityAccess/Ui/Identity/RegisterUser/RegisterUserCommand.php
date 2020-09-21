@@ -59,7 +59,7 @@ class RegisterUserCommand extends Command
         $this
             ->setName('app:user:register')
             ->setDescription(
-<<<'DESCRIPTION'
+                <<<'DESCRIPTION'
 Given a credentials, registers a new user. Reads and interprets stdin content as password in non-interactive mode.
 DESCRIPTION
             )
