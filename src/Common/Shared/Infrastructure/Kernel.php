@@ -11,11 +11,14 @@
 
 namespace Common\Shared\Infrastructure;
 
+use Broadway\ReadModel\Repository;
 use Common\Shared\Infrastructure\DependencyInjection\RegisterMessageHandlersPass;
+use IdentityAccess\Infrastructure\Identity\Query\Orm\OrmUserReadModelRepository;
 use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
 use Symfony\Component\DependencyInjection\Compiler\PassConfig;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+use Symfony\Component\DependencyInjection\TypedReference;
 use Symfony\Component\HttpKernel\Kernel as BaseKernel;
 use Symfony\Component\Routing\Loader\Configurator\RoutingConfigurator;
 
@@ -49,6 +52,12 @@ class Kernel extends BaseKernel
     protected function registerServicesWithWellKnownNames(ContainerConfigurator $container): void
     {
         $services = $container->services();
+
+        $services->defaults()
+            ->bind(
+                Repository::class . ' $userRepository',
+                new TypedReference(OrmUserReadModelRepository::class, OrmUserReadModelRepository::class)
+            );
 
         $servicePatterns = [
             'Ui/**/*Command',
