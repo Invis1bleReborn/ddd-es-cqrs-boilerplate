@@ -59,10 +59,8 @@ class EnableUserHandlerTest extends UserHandlerTestCase
             ->then([]);
     }
 
-    protected function createCommandHandler(
-        EventStore $eventStore,
-        EventBus $eventBus
-    ): CommandHandler {
+    protected function createCommandHandler(EventStore $eventStore, EventBus $eventBus): CommandHandler
+    {
         return new EnableUserHandlerAdapter(
             new EnableUserHandler(
                 new UserStore($eventStore, $eventBus)
