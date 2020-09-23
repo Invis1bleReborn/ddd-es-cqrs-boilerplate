@@ -28,7 +28,7 @@ use IdentityAccess\Domain\Identity\ValueObject\UserId;
 use IdentityAccess\Infrastructure\Identity\Command\RegisterUser\RegisterUserHandlerAdapter;
 use IdentityAccess\Infrastructure\Identity\Password\NoopPasswordEncoder;
 use IdentityAccess\Infrastructure\Identity\Repository\UserStore;
-use PHPUnit\Framework\MockObject\Stub;
+use PHPUnit\Framework\MockObject\Builder\InvocationMocker;
 use Symfony\Bridge\PhpUnit\ClockMock;
 
 /**
@@ -39,7 +39,7 @@ class RegisterUserHandlerTest extends UserHandlerTestCase
     private ?PasswordEncoderInterface $passwordEncoder;
 
     /**
-     * @var UniqueEmailSpecificationInterface|Stub|null
+     * @var UniqueEmailSpecificationInterface|InvocationMocker|null
      */
     private ?UniqueEmailSpecificationInterface $uniqueEmailSpecificationStub;
 
@@ -88,10 +88,8 @@ class RegisterUserHandlerTest extends UserHandlerTestCase
         return $this->generateUuid();
     }
 
-    protected function createCommandHandler(
-        EventStore $eventStore,
-        EventBus $eventBus
-    ): CommandHandler {
+    protected function createCommandHandler(EventStore $eventStore, EventBus $eventBus): CommandHandler
+    {
         $this->passwordEncoder = new NoopPasswordEncoder();
         $this->uniqueEmailSpecificationStub = $this->createStub(UniqueEmailSpecificationInterface::class);
 
