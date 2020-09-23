@@ -30,6 +30,8 @@ class Scenario
 
     private CommandHandlerInterface $commandHandler;
 
+    private ?object $commandHandlerResult;
+
     public function __construct(
         TestCase $testCase,
         TraceableEventBus $eventBus,
@@ -60,7 +62,7 @@ class Scenario
     {
         $this->eventBus->trace();
 
-        ($this->commandHandler)($command);
+        $this->commandHandlerResult = ($this->commandHandler)($command);
 
         return $this;
     }
@@ -68,9 +70,10 @@ class Scenario
     /**
      * @param EventInterface[] $events
      */
-    public function then(array $events)
+    public function then(array $events, object $result = null)
     {
         $this->testCase->assertEquals($events, $this->eventBus->getRecordedEvents());
+        $this->testCase->assertEquals($result, $this->commandHandlerResult);
 
         return $this;
     }
