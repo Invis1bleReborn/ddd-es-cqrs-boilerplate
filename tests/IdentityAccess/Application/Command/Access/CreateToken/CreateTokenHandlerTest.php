@@ -77,13 +77,16 @@ class CreateTokenHandlerTest extends EventPublishingCommandHandlerScenarioTestCa
                 ),
                 'some password'
             ))
-            ->then([
-                new TokenCreated(
-                    RefreshToken::fromString($this->tokenMock->getRefreshToken()),
-                    Username::fromString($username),
-                    DateTime::fromNative($this->tokenMock->getRefreshTokenDateExpired())
-                ),
-            ]);
+            ->then(
+                [
+                    new TokenCreated(
+                        RefreshToken::fromString($this->tokenMock->getRefreshToken()),
+                        Username::fromString($username),
+                        DateTime::fromNative($this->tokenMock->getRefreshTokenDateExpired())
+                    ),
+                ],
+                $this->tokenMock
+            );
     }
 
     /**
