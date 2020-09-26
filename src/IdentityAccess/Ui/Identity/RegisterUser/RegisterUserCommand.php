@@ -154,7 +154,7 @@ DESCRIPTION
         $this->commandBus->handle($command);
 
         if ($input->getOption('show-metadata')) {
-            $io->text(sprintf('[metadata]%s[/metadata]', json_encode($metadata)));
+            $io->text(sprintf('<metadata>%s</metadata>', json_encode($metadata)));
             $io->newLine();
         }
 
