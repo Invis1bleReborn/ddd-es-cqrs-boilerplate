@@ -52,7 +52,7 @@ class RegisterUserRequestTransformer extends ValidatorAwareRequestTransformer im
             $request->email,
             $request->password,
             $request->enabled,
-            array_merge(array_intersect($request->roles, ['ROLE_USER']), ['ROLE_USER']),
+            array_merge(array_intersect($request->roles ?? [], ['ROLE_USER']), ['ROLE_USER']),
             $this->getAuthenticatedUserId()
         );
     }
