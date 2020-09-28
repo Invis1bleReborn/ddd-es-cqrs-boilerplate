@@ -11,12 +11,17 @@
 
 declare(strict_types=1);
 
-namespace IdentityAccess\Application\Query\Identity;
+namespace Common\Shared\Ui;
+
+use Broadway\ReadModel\Identifiable;
 
 /**
- * Interface EnableableUserInterface.
+ * Class IdentifiableObjectTransformer.
  */
-interface EnableableUserInterface
+class IdentifiableObjectTransformer
 {
-    public function isEnabled(): ?bool;
+    public function __invoke(Identifiable $identifiable): IdAwareView
+    {
+        return new IdAwareView($identifiable->getId());
+    }
 }

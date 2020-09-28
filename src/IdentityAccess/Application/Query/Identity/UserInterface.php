@@ -20,15 +20,15 @@ interface UserInterface
 {
     public function getId(): string;
 
-    public function getEmail(): string;
+    public function getEmail(): ?string;
 
-    public function getHashedPassword(): string;
+    public function getHashedPassword(): ?string;
 
-    public function getRoles(): array;
+    public function getRoles(): ?array;
 
-    public function isEnabled(): bool;
+    public function isEnabled(): ?bool;
 
     public function getRegisteredById(): ?string;
 
-    public function getDateRegistered(): \DateTimeImmutable;
+    public function getDateRegistered(): ?\DateTimeImmutable;
 }
