@@ -30,11 +30,14 @@ final class UserTransformerAdapter implements DataTransformerInterface
         $this->userTransformer = $userTransformer;
     }
 
-    public function transform($data, string $to, array $context = [])
+    /**
+     * {@inheritdoc}
+     *
+     * @param UserInterface $object
+     */
+    public function transform($object, string $to, array $context = [])
     {
-        /* @var $data UserInterface */
-
-        return ($this->userTransformer)($data);
+        return ($this->userTransformer)($object);
     }
 
     public function supportsTransformation($data, string $to, array $context = []): bool
