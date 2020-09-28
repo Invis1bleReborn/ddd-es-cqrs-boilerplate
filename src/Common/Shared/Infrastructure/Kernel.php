@@ -77,6 +77,7 @@ class Kernel extends BaseKernel
 
         foreach ([
             'IdentityAccess\\',
+            'Common\\Shared\\',
         ] as $namespacePrefix) {
             $services->load($namespacePrefix, sprintf(
                 '%s/src/%s%s',
