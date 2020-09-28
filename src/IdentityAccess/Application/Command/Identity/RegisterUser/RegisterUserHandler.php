@@ -39,7 +39,7 @@ final class RegisterUserHandler extends AbstractCommandHandler
         $this->uniqueEmailSpecification = $uniqueEmailSpecification;
     }
 
-    public function __invoke(RegisterUserCommand $command): void
+    public function __invoke(RegisterUserCommand $command): \IdentityAccess\Infrastructure\Identity\Query\User
     {
         $user = User::register(
             $command->userId,
@@ -52,5 +52,7 @@ final class RegisterUserHandler extends AbstractCommandHandler
         );
 
         $this->storeUser($user);
+
+        return new \IdentityAccess\Infrastructure\Identity\Query\User($user->id());
     }
 }

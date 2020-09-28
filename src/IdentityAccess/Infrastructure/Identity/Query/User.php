@@ -19,6 +19,7 @@ use Assert\AssertionFailedException;
 use Broadway\ReadModel\SerializableReadModel;
 use Common\Shared\Domain\Exception\DateTimeException;
 use Common\Shared\Domain\ValueObject\DateTime;
+use Common\Shared\Ui\IdAwareView;
 use IdentityAccess\Application\Query\Identity\EnableableUserInterface;
 use IdentityAccess\Application\Query\Identity\UserInterface;
 use IdentityAccess\Domain\Access\ValueObject\Roles;
@@ -46,11 +47,11 @@ use Symfony\Component\Security\Core\User\UserInterface as SecurityUserInterface;
  *         "get"={
  *             "normalization_context"={"groups"={"list"}},
  *         },
- *         "create"={
+ *         "register"={
  *             "method"="POST",
  *             "status"=201,
  *             "input"=RegisterUserRequest::class,
- *             "output"=false,
+ *             "output"=IdAwareView::class,
  *         },
  *     },
  *     itemOperations={
@@ -59,7 +60,7 @@ use Symfony\Component\Security\Core\User\UserInterface as SecurityUserInterface;
  *         },
  *         "changeStatus"={
  *             "method"="PUT",
- *             "path"="/user/{id}/status",
+ *             "path"="/users/{id}/status",
  *             "input"=ChangeUserStatusRequest::class,
  *             "output"=false,
  *         },
@@ -70,26 +71,26 @@ class User implements UserInterface, EnableableUserInterface, SecurityUserInterf
 {
     private UuidInterface $id;
 
-    private Email $email;
+    private ?Email $email;
 
-    private HashedPassword $hashedPassword;
+    private ?HashedPassword $hashedPassword;
 
-    private Roles $roles;
+    private ?Roles $roles;
 
-    private bool $enabled;
+    private ?bool $enabled;
 
     private ?UuidInterface $registeredById;
 
-    private DateTime $dateRegistered;
+    private ?DateTime $dateRegistered;
 
     public function __construct(
         UserId $id,
-        Email $email,
-        HashedPassword $hashedPassword,
-        Roles $roles,
-        bool $enabled,
-        ?UserId $registeredById,
-        DateTime $dateRegistered
+        ?Email $email = null,
+        ?HashedPassword $hashedPassword = null,
+        ?Roles $roles = null,
+        ?bool $enabled = null,
+        ?UserId $registeredById = null,
+        ?DateTime $dateRegistered = null
     ) {
         $this->id = Uuid::fromString($id->toString());
         $this->email = $email;
@@ -115,25 +116,25 @@ class User implements UserInterface, EnableableUserInterface, SecurityUserInterf
     /**
      * @ApiProperty(iri="http://schema.org/email")
      */
-    public function getEmail(): string
+    public function getEmail(): ?string
     {
-        return $this->email->toString();
+        return null === $this->email ? null : $this->email->toString();
     }
 
     /**
      * @ApiProperty(iri="http://schema.org/accessCode")
      */
-    public function getHashedPassword(): string
+    public function getHashedPassword(): ?string
     {
-        return $this->hashedPassword->toString();
+        return null === $this->hashedPassword ? null : $this->hashedPassword->toString();
     }
 
-    public function getRoles(): array
+    public function getRoles(): ?array
     {
-        return $this->roles->toArray();
+        return null === $this->roles ? null : $this->roles->toArray();
     }
 
-    public function isEnabled(): bool
+    public function isEnabled(): ?bool
     {
         return $this->enabled;
     }
@@ -150,17 +151,21 @@ class User implements UserInterface, EnableableUserInterface, SecurityUserInterf
         return null === $this->registeredById ? null : $this->registeredById->toString();
     }
 
-    public function getDateRegistered(): \DateTimeImmutable
+    public function getDateRegistered(): ?\DateTimeImmutable
     {
+        if (null === $this->dateRegistered) {
+            return null;
+        }
+
         $dateRegistered = $this->dateRegistered->toNative();
         /* @var $dateRegistered \DateTimeImmutable */
 
         return $dateRegistered;
     }
 
-    public function getPassword(): string
+    public function getPassword(): ?string
     {
-        return $this->hashedPassword->toString();
+        return $this->getHashedPassword();
     }
 
     public function getSalt(): ?string
@@ -168,9 +173,9 @@ class User implements UserInterface, EnableableUserInterface, SecurityUserInterf
         return null;
     }
 
-    public function getUsername(): string
+    public function getUsername(): ?string
     {
-        return $this->email->toString();
+        return $this->getEmail();
     }
 
     public function eraseCredentials(): void
@@ -186,12 +191,12 @@ class User implements UserInterface, EnableableUserInterface, SecurityUserInterf
     {
         return new self(
             UserId::fromString($data['id']),
-            Email::fromString($data['email']),
-            HashedPassword::fromString($data['hashedPassword']),
-            Roles::fromArray($data['roles']),
-            $data['enabled'],
+            isset($data['email']) ? Email::fromString($data['email']) : null,
+            isset($data['hashedPassword']) ? HashedPassword::fromString($data['hashedPassword']) : null,
+            isset($data['roles']) ? Roles::fromArray($data['roles']) : null,
+            $data['enabled'] ?? null,
             $data['registeredById'] ?? null,
-            DateTime::fromString($data['dateRegistered'])
+            isset($data['dateRegistered']) ? DateTime::fromString($data['dateRegistered']) : null
         );
     }
 
@@ -199,12 +204,12 @@ class User implements UserInterface, EnableableUserInterface, SecurityUserInterf
     {
         return [
             'id' => $this->id->toString(),
-            'email' => $this->email->toString(),
-            'hashedPassword' => $this->hashedPassword->toString(),
-            'roles' => $this->roles->toArray(),
+            'email' => null === $this->email ? null : $this->email->toString(),
+            'hashedPassword' => null === $this->hashedPassword ? null : $this->hashedPassword->toString(),
+            'roles' => null === $this->roles ? null : $this->roles->toArray(),
             'enabled' => $this->enabled,
             'registeredById' => null === $this->registeredById ? null : $this->registeredById->toString(),
-            'dateRegistered' => $this->dateRegistered->toString(),
+            'dateRegistered' => null === $this->dateRegistered ? null : $this->dateRegistered->toString(),
         ];
     }
 }

@@ -11,12 +11,22 @@
 
 declare(strict_types=1);
 
-namespace IdentityAccess\Application\Query\Identity;
+namespace Common\Shared\Ui;
 
 /**
- * Interface EnableableUserInterface.
+ * Class IdAwareView.
  */
-interface EnableableUserInterface
+final class IdAwareView
 {
-    public function isEnabled(): ?bool;
+    private string $id;
+
+    public function __construct(string $id)
+    {
+        $this->id = $id;
+    }
+
+    public function getId(): string
+    {
+        return $this->id;
+    }
 }
