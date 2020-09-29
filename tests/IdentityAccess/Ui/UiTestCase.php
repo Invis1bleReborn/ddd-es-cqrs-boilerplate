@@ -13,6 +13,8 @@ declare(strict_types=1);
 
 namespace IdentityAccess\Ui;
 
+use ApiPlatform\Core\Bridge\Symfony\Bundle\Test\Client;
+use ApiPlatform\Core\Bridge\Symfony\Bundle\Test\Response;
 use Common\Shared\Ui\UiTestCase as BaseUiTestCase;
 use Symfony\Component\Console\Output\OutputInterface;
 
@@ -23,8 +25,13 @@ abstract class UiTestCase extends BaseUiTestCase
 {
     protected function registerRootUser(?string $uuid, string $username, string $password): array
     {
+        return $this->registerUser($uuid, $username, $password, ['ROLE_SUPER_ADMIN']);
+    }
+
+    protected function registerUser(?string $uuid, string $username, string $password, array $roles = []): array
+    {
         $options = [
-            'roles' => 'ROLE_SUPER_ADMIN',
+            'roles' => $roles,
         ];
 
         if (null !== $uuid) {
@@ -34,18 +41,64 @@ abstract class UiTestCase extends BaseUiTestCase
         $pairs = [];
 
         foreach ($options as $name => $value) {
-            $pairs[] = sprintf('--%s=%s', $name, $value);
+            if (!is_array($value)) {
+                $value = [$value];
+            }
+
+            $pairs = array_merge(
+                $pairs,
+                array_map(fn (string $v): string => sprintf('--%s=%s', $name, $v), $value)
+            );
         }
 
-        $output = $this->executeCommand(sprintf(
-            'app:user:register %s %s %s',
-            $username,
-            $password,
-            implode(' ', $pairs)
-        ), OutputInterface::VERBOSITY_VERBOSE);
+        return json_decode(
+            $this->executeCommand(sprintf(
+                'app:user:register %s %s %s --output=data',
+                $username,
+                $password,
+                implode(' ', $pairs)
+            ), OutputInterface::VERBOSITY_VERBOSE),
+            true
+        );
+    }
 
-        preg_match('#<metadata>(.+)</metadata>#su', $output, $matches);
+    protected function createAuthenticatedClient(string $username, string $password): Client
+    {
+        $client = $this->createClient();
 
-        return json_decode($matches[1], true);
+        $this->authenticateClient($client, $username, $password);
+
+        return $client;
+    }
+
+    protected function authenticateClient(Client $client, string $username, string $password): void
+    {
+        $this->setTokenToClient(
+            $client,
+            $this->requestToken($client, $username, $password)->toArray()['accessToken']
+        );
+    }
+
+    protected function resetClientAuthentication(Client $client): void
+    {
+        $this->removeTokenFromClient($client);
+    }
+
+    protected function setTokenToClient(Client $client, string $token): void
+    {
+        $client->setDefaultOptions(['auth_bearer' => $token]);
+    }
+
+    protected function removeTokenFromClient(Client $client): void
+    {
+        $client->setDefaultOptions(['auth_bearer' => null]);
+    }
+
+    protected function requestToken(Client $client, string $username, string $password): Response
+    {
+        return $this->createResource($client, '/tokens', [
+            'username' => $username,
+            'password' => $password,
+        ]);
     }
 }

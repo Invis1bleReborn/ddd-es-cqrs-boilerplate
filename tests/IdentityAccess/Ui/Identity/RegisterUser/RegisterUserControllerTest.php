@@ -24,9 +24,8 @@ class RegisterUserControllerTest extends UiTestCase
     {
         $anonymous = $this->createClient();
 
-        $email = 'alice@acme.com';
+        $username = 'alice@acme.com';
         $password = '111111';
-
 
         $response = $this->createResource($anonymous, '/users', [
             'password' => $password,
@@ -36,7 +35,7 @@ class RegisterUserControllerTest extends UiTestCase
         $this->assertValidationFailed($response);
 
         $this->createResource($anonymous, '/users', [
-            'email' => $email,
+            'email' => $username,
             'password' => $password,
             'passwordConfirmation' => $password,
             'enabled' => true,
