@@ -26,6 +26,10 @@
         <env name="CORS_ALLOW_ORIGIN" value="^https?://localhost:?[0-9]*$" />
         <!-- ###- nelmio/cors-bundle ### -->
 
+        <!-- ###+ symfony/messenger ### -->
+        <env name="MESSENGER_TRANSPORT_DSN" value="sync://" />
+        <!-- ###- symfony/messenger ### -->
+
         <!-- ###+ symfony/mercure-bundle ### -->
         <env name="MERCURE_PUBLISH_URL" value="http://localhost:3010/.well-known/mercure" />
         <env name="MERCURE_JWT_TOKEN" value="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtZXJjdXJlIjp7InB1Ymxpc2giOltdfX0.Oo0yg7y4yMa1vr_bziltxuTCqb8JVHKxp-f_FwwOim0" />
