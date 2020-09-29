@@ -13,9 +13,11 @@ declare(strict_types=1);
 
 namespace IdentityAccess\Ui\Identity\RegisterUser;
 
+use ApiPlatform\Core\Validator\Exception\ValidationException;
 use ApiPlatform\Core\Validator\ValidatorInterface;
 use Common\Shared\Application\Bus\Command\CommandBusInterface;
 use Common\Shared\Domain\ValueObject\UuidGeneratorInterface;
+use IdentityAccess\Application\Query\Identity\UserInterface;
 use IdentityAccess\Application\Query\Identity\UserProviderInterface;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
@@ -31,6 +33,11 @@ use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
  */
 class RegisterUserCommand extends Command
 {
+    public const OUTPUT_MODE = [
+        'UI' => 'ui',
+        'DATA' => 'data',
+    ];
+
     private ValidatorInterface $validator;
 
     private UserProviderInterface $userProvider;
@@ -38,6 +45,12 @@ class RegisterUserCommand extends Command
     private UuidGeneratorInterface $uuidGenerator;
 
     private CommandBusInterface $commandBus;
+
+    private SymfonyStyle $io;
+
+    private bool $outputUi;
+
+    private bool $outputData;
 
     public function __construct(
         ValidatorInterface $validator,
@@ -63,7 +76,7 @@ class RegisterUserCommand extends Command
 Given a credentials, registers a new user. Reads and interprets stdin content as password in non-interactive mode.
 DESCRIPTION
             )
-            ->addArgument('email', InputArgument::REQUIRED, 'User email')
+            ->addArgument('username', InputArgument::REQUIRED, 'Username')
             ->addArgument('password', InputArgument::OPTIONAL, 'User password')
             ->addOption('uuid', 'id', InputArgument::OPTIONAL, 'User UUID')
             ->addOption(
@@ -74,12 +87,16 @@ DESCRIPTION
                 ['ROLE_USER']
             )
             ->addOption('disabled', 'd', InputOption::VALUE_NONE, 'Disabled user')
-            ->addOption('registered-by', 'by', InputOption::VALUE_OPTIONAL, 'Registered by (email)')
+            ->addOption('registered-by', 'by', InputOption::VALUE_OPTIONAL, 'Registered by (username)')
             ->addOption(
-                'show-metadata',
-                null,
-                InputOption::VALUE_NONE,
-                'Output resulting metadata (e.g. generated user id)'
+                'output',
+                'o',
+                InputOption::VALUE_OPTIONAL | InputOption::VALUE_IS_ARRAY,
+                sprintf(
+                    'Output mode (available modes are %s)',
+                    implode(', ', array_map(fn (string $mode): string => '"' . $mode . '"', self::OUTPUT_MODE))
+                ),
+                [self::OUTPUT_MODE['UI']]
             )
         ;
     }
@@ -88,9 +105,15 @@ DESCRIPTION
         InputInterface $input,
         OutputInterface $output
     ): int {
-        $io = new SymfonyStyle($input, $output);
+        $this->io = new SymfonyStyle($input, $output);
 
-        $io->title('User registration');
+        $outputMode = $input->getOption('output');
+        $this->outputUi = in_array(self::OUTPUT_MODE['UI'], $outputMode);
+        $this->outputData = in_array(self::OUTPUT_MODE['DATA'], $outputMode);
+
+        if ($this->outputUi) {
+            $this->io->title('User registration');
+        }
 
         $password = $input->getArgument('password');
 
@@ -108,17 +131,21 @@ DESCRIPTION
             }
         }
 
-        $io->newLine();
-
         $request = new RegisterUserRequest(
-            $input->getArgument('email'),
+            $input->getArgument('username'),
             $password,
             $password,
             !$input->getOption('disabled'),
             $input->getOption('roles')
         );
 
-        $this->validator->validate($request);
+        try {
+            $this->wrap(function () use ($request) {
+                $this->validator->validate($request);
+            });
+        } catch (ValidationException $exception) {
+            return 1;
+        }
 
         $userId = $input->getOption('uuid') ?? ($this->uuidGenerator)();
 
@@ -130,10 +157,10 @@ DESCRIPTION
 
         if (null !== $registeredBy) {
             try {
-                $registeredBy = $this->userProvider->loadUserByUsername($registeredBy);
+                $registeredBy = $this->wrap(
+                    fn (): UserInterface => $this->userProvider->loadUserByUsername($registeredBy)
+                );
             } catch (UsernameNotFoundException $exception) {
-                $io->error($exception->getMessage());
-
                 return 1;
             }
 
@@ -151,15 +178,45 @@ DESCRIPTION
             $registeredBy
         );
 
-        $this->commandBus->handle($command);
-
-        if ($input->getOption('show-metadata')) {
-            $io->text(sprintf('<metadata>%s</metadata>', json_encode($metadata)));
-            $io->newLine();
+        try {
+            $this->wrap(function () use ($command) {
+                $this->commandBus->handle($command);
+            });
+        } catch (\Throwable $exception) {
+            return 1;
         }
 
-        $io->success(sprintf('User "%s" successfully registered.', $request->email));
+        if ($this->outputData) {
+            $this->io->writeln(json_encode($metadata));
+
+            if ($this->outputUi) {
+                $this->io->newLine();
+            }
+        }
+
+        if ($this->outputUi) {
+            $this->io->success(sprintf('User "%s" successfully registered.', $request->email));
+        }
 
         return 0;
+    }
+
+    protected function wrap(callable $codeBlock)
+    {
+        try {
+            return $codeBlock();
+        } catch (\Throwable $exception) {
+            $errorText = $exception->getMessage();
+
+            if ($this->outputData) {
+                $this->io->writeln(json_encode(['error' => $errorText]));
+            }
+
+            if ($this->outputUi) {
+                $this->io->error($errorText);
+            }
+
+            throw $exception;
+        }
     }
 }
