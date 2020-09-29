@@ -29,8 +29,14 @@ abstract class UiTestCase extends ApiTestCase
     public static function assertCreated(string $contentType = 'application/ld+json; charset=utf-8'): void
     {
         static::assertResponseStatusCodeSame(201);
-        static::assertContentType($contentType);
+        static::assertContentTypeSame($contentType);
         static::assertContainsLocation();
+    }
+
+    public static function assertNoContent(Response $response): void
+    {
+        static::assertResponseStatusCodeSame(204);
+        static::assertSame('', $response->getContent(false), 'Response is not empty.');
     }
 
     public static function assertValidationFailed(
@@ -58,21 +64,39 @@ abstract class UiTestCase extends ApiTestCase
         static::assertJsonContains($subset);
     }
 
-    public static function assertUnauthorized(string $contentType = 'application/ld+json; charset=utf-8'): void
-    {
+    public static function assertUnauthorized(
+        Response $response,
+        string $contentType = 'application/problem+json; charset=utf-8'
+    ): void {
         static::assertResponseStatusCodeSame(401);
-        static::assertContentType($contentType);
+        static::assertJsonResponse($response, $contentType);
+    }
+
+    public static function assertForbidden(
+        Response $response,
+        string $contentType = 'application/ld+json; charset=utf-8'
+    ): void {
+        static::assertResponseStatusCodeSame(403);
+        static::assertJsonResponse($response, $contentType);
+    }
+
+    public static function assertNotFound(
+        Response $response,
+        string $contentType = 'application/ld+json; charset=utf-8'
+    ): void {
+        static::assertResponseStatusCodeSame(404);
+        static::assertJsonResponse($response, $contentType);
     }
 
     public static function assertJsonResponse(
         Response $response,
         string $contentType = 'application/ld+json; charset=utf-8'
     ): void {
-        static::assertContentType($contentType);
+        static::assertContentTypeSame($contentType);
         static::assertJson($response->getContent(false), 'Response content is not a valid JSON document.');
     }
 
-    public static function assertContentType(string $type, string $message = ''): void
+    public static function assertContentTypeSame(string $type, string $message = ''): void
     {
         static::assertResponseHeaderSame('Content-Type', $type, $message);
     }
@@ -94,7 +118,7 @@ abstract class UiTestCase extends ApiTestCase
     protected function createResource(
         Client $client,
         string $uri,
-        array $content = null,
+        array $content = [],
         array $options = [],
         bool $useApiUriPrefix = true
     ): Response {
@@ -104,7 +128,7 @@ abstract class UiTestCase extends ApiTestCase
     protected function updateResource(
         Client $client,
         string $uri,
-        array $content = null,
+        array $content = [],
         array $options = [],
         bool $useApiUriPrefix = true
     ): Response {
@@ -125,7 +149,7 @@ abstract class UiTestCase extends ApiTestCase
         string $method,
         string $uri,
         array $options = [],
-        array $content = null,
+        array $content = [],
         bool $useApiUriPrefix = true
     ): Response {
         if (null !== $content) {
@@ -137,7 +161,6 @@ abstract class UiTestCase extends ApiTestCase
             ($useApiUriPrefix ? $this->getApiUriPrefix() : '') . $uri,
             $options + [
                 'headers' => [
-                    'Accept' => 'application/ld+json',
                     'Content-Type' => 'application/ld+json',
                 ],
             ]
