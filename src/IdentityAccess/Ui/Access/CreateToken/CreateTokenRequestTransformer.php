@@ -16,8 +16,8 @@ namespace IdentityAccess\Ui\Access\CreateToken;
 use ApiPlatform\Core\Validator\ValidatorInterface;
 use Common\Shared\Ui\ValidatorAwareRequestTransformer;
 use IdentityAccess\Application\Command\Access\CreateToken\CreateTokenCommand;
-use IdentityAccess\Application\Query\Identity\UserProviderInterface;
 use IdentityAccess\Ui\Access\UserCheckerInterface;
+use IdentityAccess\Ui\Access\UserProviderInterface;
 
 /**
  * Class CreateTokenRequestTransformer.
@@ -47,7 +47,7 @@ class CreateTokenRequestTransformer extends ValidatorAwareRequestTransformer imp
     {
         $this->validate($request);
 
-        $user = $this->userProvider->loadUserByUsername($request->username);
+        $user = $this->userProvider->load($request->username);
 
         ($this->userChecker)($user);
 
