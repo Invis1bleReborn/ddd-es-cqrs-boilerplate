@@ -45,7 +45,7 @@ install:
 
 before_script:
     - mkdir config/jwt
-    - openssl genrsa -passout pass:1111 -out config/jwt/private.pem -aes256 4096
+    - openssl genrsa -passout pass:'!ChangeMe!' -out config/jwt/private.pem -aes256 4096
     - openssl rsa -passin pass:1111 -pubout -in config/jwt/private.pem -out config/jwt/public.pem
     - bin/console doctrine:database:create --env=test
     - bin/console doctrine:migrations:migrate --no-interaction --env=test
