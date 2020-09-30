@@ -26,7 +26,9 @@ use Symfony\Component\Console\Output\OutputInterface;
  */
 abstract class UiTestCase extends ApiTestCase
 {
-    public static function assertCreated(string $contentType = 'application/ld+json; charset=utf-8'): void
+    public const DEFAULT_EXPECTED_RESPONSE_CONTENT_TYPE = 'application/ld+json; charset=utf-8';
+
+    public static function assertCreated(string $contentType = self::DEFAULT_EXPECTED_RESPONSE_CONTENT_TYPE): void
     {
         static::assertResponseStatusCodeSame(201);
         static::assertContentTypeSame($contentType);
@@ -64,17 +66,53 @@ abstract class UiTestCase extends ApiTestCase
         static::assertJsonContains($subset);
     }
 
-    public static function assertUnauthorized(
+    public static function assertAuthenticationRequired(
         Response $response,
         string $contentType = 'application/problem+json; charset=utf-8'
     ): void {
+        static::assertUnauthorized(
+            $response,
+            'Full authentication is required to access this resource.',
+            'detail',
+            $contentType
+        );
+    }
+
+    public static function assertAccountDisabled(
+        Response $response,
+        string $contentType = self::DEFAULT_EXPECTED_RESPONSE_CONTENT_TYPE
+    ): void {
+        static::assertUnauthorized($response, 'Account is disabled.', null, $contentType);
+    }
+
+    public static function assertBadCredentials(
+        Response $response,
+        string $contentType = self::DEFAULT_EXPECTED_RESPONSE_CONTENT_TYPE
+    ): void {
+        static::assertUnauthorized($response, 'Invalid credentials.', null, $contentType);
+    }
+
+    public static function assertUnauthorized(
+        Response $response,
+        string $expectedMessage,
+        string $expectedMessageKey = null,
+        string $contentType = self::DEFAULT_EXPECTED_RESPONSE_CONTENT_TYPE
+    ): void {
         static::assertResponseStatusCodeSame(401);
         static::assertJsonResponse($response, $contentType);
+
+        if (null === $expectedMessageKey) {
+            $expectedMessageKey = 'hydra:description';
+        }
+
+        static::assertJsonContains([
+            $expectedMessageKey => $expectedMessage,
+        ]);
     }
 
     public static function assertForbidden(
         Response $response,
-        string $contentType = 'application/ld+json; charset=utf-8'
+        string $contentType = self::DEFAULT_EXPECTED_RESPONSE_CONTENT_TYPE
     ): void {
         static::assertResponseStatusCodeSame(403);
         static::assertJsonResponse($response, $contentType);
@@ -82,7 +120,7 @@ abstract class UiTestCase extends ApiTestCase
 
     public static function assertNotFound(
         Response $response,
-        string $contentType = 'application/ld+json; charset=utf-8'
+        string $contentType = self::DEFAULT_EXPECTED_RESPONSE_CONTENT_TYPE
     ): void {
         static::assertResponseStatusCodeSame(404);
         static::assertJsonResponse($response, $contentType);
@@ -90,7 +128,7 @@ abstract class UiTestCase extends ApiTestCase
 
     public static function assertJsonResponse(
         Response $response,
-        string $contentType = 'application/ld+json; charset=utf-8'
+        string $contentType = self::DEFAULT_EXPECTED_RESPONSE_CONTENT_TYPE
     ): void {
         static::assertContentTypeSame($contentType);
         static::assertJson($response->getContent(false), 'Response content is not a valid JSON document.');
