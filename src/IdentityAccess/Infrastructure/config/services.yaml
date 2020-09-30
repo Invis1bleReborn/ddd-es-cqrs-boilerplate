@@ -46,6 +46,7 @@ services:
     IdentityAccess\Domain\Identity\Repository\CheckUserByEmailInterface: '@IdentityAccess\Infrastructure\Identity\Query\Orm\OrmUserReadModelRepository'
     IdentityAccess\Application\Query\Access\TokenGeneratorInterface: '@IdentityAccess\Infrastructure\Access\Query\TokenGenerator'
     IdentityAccess\Application\Query\Identity\UserProviderInterface: '@IdentityAccess\Infrastructure\Identity\Query\UserProvider'
+    IdentityAccess\Ui\Access\UserProviderInterface: '@IdentityAccess\Ui\Access\UserProvider'
     IdentityAccess\Ui\Identity\AuthenticatedUserProviderInterface: '@IdentityAccess\Infrastructure\Identity\AuthenticatedUserProvider\AuthenticatedUserProvider'
     IdentityAccess\Ui\Access\AccessCheckerInterface: '@IdentityAccess\Infrastructure\Access\Security\AccessCheckerAdapter'
     IdentityAccess\Ui\Access\UserCheckerInterface: '@IdentityAccess\Ui\Access\UserChecker'
