@@ -31,7 +31,7 @@
         <!-- ###- symfony/messenger ### -->
 
         <!-- ###+ symfony/mercure-bundle ### -->
-        <env name="MERCURE_PUBLISH_URL" value="http://localhost:3010/.well-known/mercure" />
+        <env name="MERCURE_PUBLISH_URL" value="http://localhost:3000/.well-known/mercure" />
         <env name="MERCURE_JWT_TOKEN" value="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtZXJjdXJlIjp7InB1Ymxpc2giOltdfX0.Oo0yg7y4yMa1vr_bziltxuTCqb8JVHKxp-f_FwwOim0" />
         <!-- ###- symfony/mercure-bundle ### -->
 
@@ -39,7 +39,7 @@
         <!-- Key paths should be relative to the project directory -->
         <env name="JWT_SECRET_KEY" value="config/jwt/private.pem" />
         <env name="JWT_PUBLIC_KEY" value="config/jwt/public.pem" />
-        <env name="JWT_PASSPHRASE" value="bbb5aa1d9dd78186013ffc1aa1d968ec" />
+        <env name="JWT_PASSPHRASE" value="!ChangeMe!" />
         <!-- ###- lexik/jwt-authentication-bundle ### -->
     </php>
 

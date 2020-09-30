@@ -28,8 +28,13 @@ abstract class UiTestCase extends BaseUiTestCase
         return $this->registerUser($uuid, $username, $password, ['ROLE_SUPER_ADMIN']);
     }
 
-    protected function registerUser(?string $uuid, string $username, string $password, array $roles = []): array
-    {
+    protected function registerUser(
+        ?string $uuid,
+        string $username,
+        string $password,
+        array $roles = [],
+        bool $enabled = true
+    ): array {
         $options = [
             'roles' => $roles,
         ];
@@ -51,13 +56,19 @@ abstract class UiTestCase extends BaseUiTestCase
             );
         }
 
+        $command = sprintf(
+            'app:user:register %s %s %s --output=data',
+            $username,
+            $password,
+            implode(' ', $pairs)
+        );
+
+        if (!$enabled) {
+            $command .= ' --disabled';
+        }
+
         return json_decode(
-            $this->executeCommand(sprintf(
-                'app:user:register %s %s %s --output=data',
-                $username,
-                $password,
-                implode(' ', $pairs)
-            ), OutputInterface::VERBOSITY_VERBOSE),
+            $this->executeCommand($command, OutputInterface::VERBOSITY_VERBOSE),
             true
         );
     }

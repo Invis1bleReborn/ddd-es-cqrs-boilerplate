@@ -34,6 +34,9 @@ jobs:
 
 before_install:
     - if [[ $COVERAGE != true ]]; then phpenv config-rm xdebug.ini || true; fi
+    - mkdir mercure
+    - curl -L https://github.com/dunglas/mercure/releases/download/v0.10.4/mercure_0.10.4_Linux_x86_64.tar.gz | tar xz -C mercure
+    - nohup ./mercure/mercure --jwt-key='!ChangeMe!' --addr=':3000' --debug --allow-anonymous --cors-allowed-origins='*' --publish-allowed-origins='*' >> /dev/null 2>&1 &
 
 install:
     - yes autodetect | pecl install amqp
@@ -42,8 +45,8 @@ install:
 
 before_script:
     - mkdir config/jwt
-    - openssl genrsa -passout pass:1111 -out config/jwt/private.pem -aes256 4096
-    - openssl rsa -passin pass:1111 -pubout -in config/jwt/private.pem -out config/jwt/public.pem
+    - openssl genrsa -passout pass:'!ChangeMe!' -out config/jwt/private.pem -aes256 4096
+    - openssl rsa -passin pass:'!ChangeMe!' -pubout -in config/jwt/private.pem -out config/jwt/public.pem
     - bin/console doctrine:database:create --env=test
     - bin/console doctrine:migrations:migrate --no-interaction --env=test
     - bin/console doctrine:schema:update --force --env=test
