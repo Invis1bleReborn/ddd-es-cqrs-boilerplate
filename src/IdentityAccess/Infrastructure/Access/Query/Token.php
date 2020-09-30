@@ -39,7 +39,7 @@ use Symfony\Component\Serializer\Annotation\Ignore;
  *         },
  *         "refresh"={
  *             "method"="POST",
- *             "path"="/tokens/refresh",
+ *             "path"="/refresh_tokens",
  *             "input"=RefreshTokenRequest::class,
  *             "output"=TokenView::class,
  *         },
