@@ -26,7 +26,7 @@ class ChangeUserStatusControllerTest extends UiTestCase
 
         $response = $this->updateResource($client, '/users/some-id/status');
 
-        $this->assertUnauthorized($response);
+        $this->assertAuthenticationRequired($response);
 
         $rootUsername = 'root@acme.com';
         $rootPassword = '111111';
