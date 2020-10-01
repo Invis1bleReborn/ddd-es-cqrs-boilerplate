@@ -129,6 +129,11 @@ class User implements UserInterface, EnableableUserInterface, SecurityUserInterf
         return null === $this->hashedPassword ? null : $this->hashedPassword->toString();
     }
 
+    public function setHashedPassword(HashedPassword $hashedPassword)
+    {
+        return $this->hashedPassword = $hashedPassword;
+    }
+
     public function getRoles(): ?array
     {
         return null === $this->roles ? null : $this->roles->toArray();
