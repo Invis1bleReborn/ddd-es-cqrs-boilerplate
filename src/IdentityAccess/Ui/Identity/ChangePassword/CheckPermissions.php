@@ -17,7 +17,6 @@ use IdentityAccess\Application\Command\Identity\ChangePassword\ChangePasswordCom
 use IdentityAccess\Application\Query\Identity\UserInterface;
 use IdentityAccess\Ui\Access\AccessCheckerInterface;
 use IdentityAccess\Ui\Access\AccessDeniedException;
-use IdentityAccess\Ui\Identity\ChangePassword\ChangePasswordRequest;
 
 /**
  * Class CheckPermissions.
@@ -40,8 +39,8 @@ class CheckPermissions extends ChangePasswordRequestTransformerDecorator
      */
     public function __invoke(ChangePasswordRequest $request, UserInterface $user): ChangePasswordCommand
     {
-        if (!$this->accessChecker->isGranted('change', $user)) {
-            throw new AccessDeniedException('User enabling denied.');
+        if (!$this->accessChecker->isGranted('change', $user, 'password')) {
+            throw new AccessDeniedException('Password change denied.');
         }
 
         return ($this->transformer)($request, $user);

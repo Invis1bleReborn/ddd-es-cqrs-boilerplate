@@ -55,8 +55,6 @@ class ChangePasswordRequestTransformerAdapter implements DataTransformerInterfac
         }
 
         return User::class === $to &&
-            isset($context['input']['class']) && ChangePasswordRequest::class === $context['input']['class'] &&
-            is_array($data) && isset($data['enabled']) && true === $data['enabled']
-        ;
+            isset($context['input']['class']) && ChangePasswordRequest::class === $context['input']['class'];
     }
 }

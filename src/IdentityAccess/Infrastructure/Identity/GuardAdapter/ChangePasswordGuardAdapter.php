@@ -16,14 +16,14 @@ namespace IdentityAccess\Infrastructure\Identity\GuardAdapter;
 use IdentityAccess\Application\Query\Identity\UserInterface;
 use IdentityAccess\Infrastructure\Access\Security\AbstractGuardAdapter;
 use IdentityAccess\Ui\Access\AccessAttribute;
-use IdentityAccess\Ui\Identity\EnableUser\EnableUserGuard;
+use IdentityAccess\Ui\Identity\ChangePassword\ChangePasswordGuard;
 
 /**
  * Class ChangePasswordGuardAdapter.
  */
 class ChangePasswordGuardAdapter extends AbstractGuardAdapter
 {
-    public function __construct(EnableUserGuard $guard)
+    public function __construct(ChangePasswordGuard $guard)
     {
         $this->guard = $guard;
     }
@@ -35,8 +35,8 @@ class ChangePasswordGuardAdapter extends AbstractGuardAdapter
     {
         return $subject instanceof UserInterface
             && $attribute instanceof AccessAttribute
-            && 'change_password' === $attribute->attribute
-            && null === $attribute->field
+            && 'change' === $attribute->attribute
+            && 'password' === $attribute->field
         ;
     }
 }
