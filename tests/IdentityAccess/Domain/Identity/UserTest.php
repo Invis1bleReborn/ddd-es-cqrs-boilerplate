@@ -16,6 +16,7 @@ namespace IdentityAccess\Domain\Identity;
 use Common\Shared\Domain\UuidGeneratorAwareAggregateRootScenarioTestCase;
 use Common\Shared\Domain\ValueObject\DateTime;
 use IdentityAccess\Domain\Access\ValueObject\Roles;
+use IdentityAccess\Domain\Identity\Event\PasswordChanged;
 use IdentityAccess\Domain\Identity\Event\UserDisabled;
 use IdentityAccess\Domain\Identity\Event\UserEnabled;
 use IdentityAccess\Domain\Identity\Event\UserRegistered;
@@ -102,7 +103,9 @@ class UserTest extends UuidGeneratorAwareAggregateRootScenarioTestCase
         $disabledById = $this->generateUserId();
         $dateDisabled = DateTime::now();
 
-        $disableUser = fn (User $user) => $user->disable($disabledById);
+        $disableUser = function (User $user) use ($disabledById): void {
+            $user->disable($disabledById);
+        };
 
         $userDisabled = new UserDisabled(
             $id,
@@ -138,7 +141,9 @@ class UserTest extends UuidGeneratorAwareAggregateRootScenarioTestCase
         $enabledById = $this->generateUserId();
         $dateEnabled = DateTime::now();
 
-        $enableUser = fn (User $user) => $user->enable($enabledById);
+        $enableUser = function (User $user) use ($enabledById): void {
+            $user->enable($enabledById);
+        };
 
         $userEnabled = new UserEnabled(
             $id,
@@ -160,6 +165,40 @@ class UserTest extends UuidGeneratorAwareAggregateRootScenarioTestCase
             ->then([]);
 
         return $userEnabled;
+    }
+
+    /**
+     * @test
+     * @depends itCanBeRegistered
+     */
+    public function itCanChangePassword(UserRegistered $userRegistered): void
+    {
+        $id = $userRegistered->id();
+        $hashedPassword = HashedPassword::fromString('new hash');
+        $changedById = $this->generateUserId();
+        $dateChanged = DateTime::now();
+
+        $changePassword = function (User $user) use ($hashedPassword, $changedById): void {
+            $user->changePassword($hashedPassword, $changedById);
+        };
+
+        ClockMock::withClockMock($dateChanged->toSeconds());
+
+        $this->scenario
+            ->withAggregateId($id->toString())
+            ->given([
+                $userRegistered,
+            ])
+            ->when($changePassword)
+            ->then([new PasswordChanged(
+                $id,
+                $hashedPassword,
+                $userRegistered->hashedPassword(),
+                $changedById,
+                $dateChanged
+            )])
+            ->when($changePassword)
+            ->then([]);
     }
 
     /**

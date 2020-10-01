@@ -104,8 +104,7 @@ final class User extends EventSourcedAggregateRoot
 
     public function changePassword(
         HashedPassword $hashedPassword,
-        ?UserId $changedBy,
-        DateTime $dateChanged
+        ?UserId $changedBy
     ): void {
         if ($this->hashedPassword->equals($hashedPassword)) {
             return;
@@ -114,8 +113,9 @@ final class User extends EventSourcedAggregateRoot
         $this->apply(new PasswordChanged(
             $this->id,
             $hashedPassword,
+            $this->hashedPassword,
             $changedBy,
-            $dateChanged
+            DateTime::now()
         ));
     }
 
