@@ -15,6 +15,7 @@ namespace IdentityAccess\Infrastructure\Identity\Query;
 
 use Broadway\ReadModel\Projector;
 use Broadway\ReadModel\Repository;
+use IdentityAccess\Domain\Identity\Event\PasswordChanged;
 use IdentityAccess\Domain\Identity\Event\UserDisabled;
 use IdentityAccess\Domain\Identity\Event\UserEnabled;
 use IdentityAccess\Domain\Identity\Event\UserRegistered;
@@ -61,6 +62,15 @@ class UserProjector extends Projector
         $user = $this->getUser($event->id());
 
         $user->setEnabled(false);
+
+        $this->saveUser($user);
+    }
+
+    protected function applyPasswordChanged(PasswordChanged $event): void
+    {
+        $user = $this->getUser($event->id());
+
+        $user->setHashedPassword($event->hashedPassword());
 
         $this->saveUser($user);
     }
