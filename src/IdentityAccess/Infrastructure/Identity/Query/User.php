@@ -207,7 +207,7 @@ class User implements UserInterface, EnableableUserInterface, SecurityUserInterf
             isset($data['hashedPassword']) ? HashedPassword::fromString($data['hashedPassword']) : null,
             isset($data['roles']) ? Roles::fromArray($data['roles']) : null,
             $data['enabled'] ?? null,
-            $data['registeredById'] ?? null,
+            isset($data['registeredById']) ? UserId::fromString($data['registeredById']) : null,
             isset($data['dateRegistered']) ? DateTime::fromString($data['dateRegistered']) : null
         );
     }
