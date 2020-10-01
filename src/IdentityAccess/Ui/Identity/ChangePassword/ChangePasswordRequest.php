@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace IdentityAccess\Ui\Identity\ChangePassword;
 
 use Common\Shared\Ui\RequestInterface;
+use Symfony\Component\Security\Core\Validator\Constraints\UserPassword;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -21,6 +22,12 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 final class ChangePasswordRequest implements RequestInterface
 {
+    /**
+     * @UserPassword
+     * @Assert\Length(min=6)
+     */
+    public ?string $currentPassword;
+
     /**
      * @Assert\NotBlank
      * @Assert\Length(min=6)
@@ -33,9 +40,11 @@ final class ChangePasswordRequest implements RequestInterface
     public ?string $passwordConfirmation;
 
     public function __construct(
+        ?string $currentPassword = null,
         ?string $password = null,
         ?string $passwordConfirmation = null
     ) {
+        $this->currentPassword = $currentPassword;
         $this->password = $password;
         $this->passwordConfirmation = $passwordConfirmation;
     }
