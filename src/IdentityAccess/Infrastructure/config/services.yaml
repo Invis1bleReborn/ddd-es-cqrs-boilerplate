@@ -36,6 +36,10 @@ services:
 #    IdentityAccess\Ui\Identity\RegisterUser\RegisterUserRequestTransformerInterface: '@IdentityAccess\Ui\Identity\RegisterUser\CheckPermissions'
     IdentityAccess\Ui\Identity\RegisterUser\RegisterUserRequestTransformerInterface: '@IdentityAccess\Ui\Identity\RegisterUser\RegisterUserRequestTransformer'
 
+    IdentityAccess\Ui\Identity\ChangePassword\CheckPermissions:
+        decorates: IdentityAccess\Ui\Identity\ChangePassword\ChangePasswordRequestTransformer
+
+    IdentityAccess\Ui\Identity\ChangePassword\ChangePasswordRequestTransformerInterface: '@IdentityAccess\Ui\Identity\ChangePassword\CheckPermissions'
 
     Lexik\Bundle\JWTAuthenticationBundle\Security\Guard\JWTTokenAuthenticator: '@lexik_jwt_authentication.security.guard.jwt_token_authenticator'
     IdentityAccess\Domain\Access\RoleHierarchyInterface: '@IdentityAccess\Infrastructure\Access\RoleHierarchy'

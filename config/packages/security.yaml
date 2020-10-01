@@ -57,3 +57,4 @@ security:
             # app specific
             - ROLE_USER_ENABLER
             - ROLE_USER_DISABLER
+            - ROLE_PASSWORD_CHANGER
