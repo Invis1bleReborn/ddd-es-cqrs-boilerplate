@@ -59,6 +59,12 @@ class ChangeUserStatusControllerTest extends UiTestCase
         ]);
 
         $this->assertNoContent($response);
+
+        $response = $this->updateResource($client, "/users/$aliceUserId/status", [
+            'enabled' => true,
+        ]);
+
+        $this->assertNoContent($response);
     }
 
     protected function setUp(): void
