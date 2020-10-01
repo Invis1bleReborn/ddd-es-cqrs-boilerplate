@@ -46,7 +46,7 @@ class EnableUserHandlerTest extends UserHandlerTestCase
         ClockMock::withClockMock($dateEnabled->toSeconds());
 
         $this->scenario
-            ->givenUserRegistered($id, false)
+            ->givenUserRegistered($id, null, false)
             ->when($enableUser)
             ->then([
                 new UserEnabled(
