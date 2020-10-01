@@ -28,6 +28,7 @@ class UserAwareScenario extends Scenario
 {
     public function givenUserRegistered(
         string $userId,
+        string $hashedPassword = null,
         bool $enabled = true,
         string $registeredById = null,
         DateTime $dateRegistered = null
@@ -38,7 +39,7 @@ class UserAwareScenario extends Scenario
                 new UserRegistered(
                     UserId::fromString($userId),
                     Email::fromString('alice@acme.com'),
-                    HashedPassword::fromString('some hash'),
+                    HashedPassword::fromString($hashedPassword ?? 'some hash'),
                     Roles::fromArray([]),
                     $enabled,
                     null === $registeredById ? null : UserId::fromString($registeredById),

@@ -43,7 +43,7 @@ security:
     access_control:
         - { path: ^/api/docs,                               roles: PUBLIC_ACCESS }
         - { path: ^/api/tokens/create$,  methods: [ POST ], roles: PUBLIC_ACCESS }
-        - { path: ^/api/tokens/refresh$, methods: [ POST ], roles: PUBLIC_ACCESS }
+        - { path: ^/api/refresh_tokens$, methods: [ POST ], roles: PUBLIC_ACCESS }
         - { path: ^/api/users$,          methods: [ POST ], roles: PUBLIC_ACCESS }
         - { path: ^/,                                       roles: IS_AUTHENTICATED_FULLY }
 
@@ -57,3 +57,4 @@ security:
             # app specific
             - ROLE_USER_ENABLER
             - ROLE_USER_DISABLER
+            - ROLE_PASSWORD_CHANGER

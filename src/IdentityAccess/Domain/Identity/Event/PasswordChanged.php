@@ -27,6 +27,8 @@ final class PasswordChanged extends UserIdAwareEvent
 {
     private HashedPassword $hashedPassword;
 
+    private HashedPassword $previousHashedPassword;
+
     private ?UserId $changedBy;
 
     private DateTime $dateChanged;
@@ -34,12 +36,14 @@ final class PasswordChanged extends UserIdAwareEvent
     public function __construct(
         UserId $id,
         HashedPassword $hashedPassword,
+        HashedPassword $previousHashedPassword,
         ?UserId $changedBy,
         DateTime $dateChanged
     ) {
         parent::__construct($id);
 
         $this->hashedPassword = $hashedPassword;
+        $this->previousHashedPassword = $previousHashedPassword;
         $this->changedBy = $changedBy;
         $this->dateChanged = $dateChanged;
     }
@@ -67,12 +71,14 @@ final class PasswordChanged extends UserIdAwareEvent
     {
         Assertion::keyExists($data, 'id');
         Assertion::keyExists($data, 'hashedPassword');
+        Assertion::keyExists($data, 'previousHashedPassword');
         Assertion::nullOrKeyExists($data, 'changedBy');
         Assertion::keyExists($data, 'dateChanged');
 
         return new self(
             UserId::fromString($data['id']),
             HashedPassword::fromString($data['hashedPassword']),
+            HashedPassword::fromString($data['previousHashedPassword']),
             isset($data['changedBy']) ? UserId::fromString($data['changedBy']) : null,
             DateTime::fromString($data['dateChanged']),
         );
@@ -81,7 +87,8 @@ final class PasswordChanged extends UserIdAwareEvent
     public function serialize(): array
     {
         return parent::serialize() + [
-            'password' => $this->hashedPassword->toString(),
+            'hashedPassword' => $this->hashedPassword->toString(),
+            'previousHashedPassword' => $this->previousHashedPassword->toString(),
             'dateChanged' => $this->dateChanged->toString(),
             'changedBy' => null === $this->changedBy ? null : $this->changedBy->toString(),
         ];

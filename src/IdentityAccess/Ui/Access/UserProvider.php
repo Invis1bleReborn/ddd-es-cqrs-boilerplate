@@ -37,5 +37,4 @@ class UserProvider implements UserProviderInterface
             throw new BadCredentialsException(null, [], 0, $exception);
         }
     }
-
 }

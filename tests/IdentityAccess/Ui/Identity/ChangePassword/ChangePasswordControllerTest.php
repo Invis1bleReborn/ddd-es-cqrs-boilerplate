@@ -11,20 +11,20 @@
 
 declare(strict_types=1);
 
-namespace IdentityAccess\Ui\Identity\ChangeUserStatus;
+namespace IdentityAccess\Ui\Identity\ChangePassword;
 
 use IdentityAccess\Ui\UiTestCase;
 
 /**
- * Class ChangeUserStatusControllerTest.
+ * Class ChangePasswordControllerTest.
  */
-class ChangeUserStatusControllerTest extends UiTestCase
+class ChangePasswordControllerTest extends UiTestCase
 {
-    public function testChangeUserStatus(): void
+    public function testChangePassword(): void
     {
         $client = $this->createClient();
 
-        $response = $this->updateResource($client, '/users/some-id/status');
+        $response = $this->updateResource($client, '/users/some-id/password');
 
         $this->assertAuthenticationRequired($response);
 
@@ -38,30 +38,26 @@ class ChangeUserStatusControllerTest extends UiTestCase
         ['userId' => $aliceUserId] = $this->registerUser(null, $aliceUsername, $alicePassword);
         $this->authenticateClient($client, $aliceUsername, $alicePassword);
 
-        $response = $this->updateResource($client, '/users/non-existing/status');
+        $response = $this->updateResource($client, '/users/non-existing/password');
 
         $this->assertNotFound($response);
 
-        $response = $this->updateResource($client, "/users/$rootUserId/status");
-
-        $this->assertValidationFailed($response);
-
-        $response = $this->updateResource($client, "/users/$rootUserId/status", [
-            'enabled' => false,
-        ]);
+        $response = $this->updateResource($client, "/users/$rootUserId/password");
 
         $this->assertForbidden($response);
 
-        $this->authenticateClient($client, $rootUsername, $rootPassword);
-
-        $response = $this->updateResource($client, "/users/$aliceUserId/status", [
-            'enabled' => false,
+        $response = $this->updateResource($client, "/users/$aliceUserId/password", [
+            'currentPassword' => 'wrong password',
+            'password' => 'new password',
+            'passwordConfirmation' => 'new password',
         ]);
 
-        $this->assertNoContent($response);
+        $this->assertValidationFailed($response);
 
-        $response = $this->updateResource($client, "/users/$aliceUserId/status", [
-            'enabled' => true,
+        $response = $this->updateResource($client, "/users/$aliceUserId/password", [
+            'currentPassword' => $alicePassword,
+            'password' => 'new password',
+            'passwordConfirmation' => 'new password',
         ]);
 
         $this->assertNoContent($response);
