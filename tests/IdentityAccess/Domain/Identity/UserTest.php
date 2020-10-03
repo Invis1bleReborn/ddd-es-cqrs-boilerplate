@@ -15,6 +15,7 @@ namespace IdentityAccess\Domain\Identity;
 
 use Common\Shared\Domain\UuidGeneratorAwareAggregateRootScenarioTestCase;
 use Common\Shared\Domain\ValueObject\DateTime;
+use IdentityAccess\Domain\Access\Event\RolesChanged;
 use IdentityAccess\Domain\Access\ValueObject\Roles;
 use IdentityAccess\Domain\Identity\Event\PasswordChanged;
 use IdentityAccess\Domain\Identity\Event\UserDisabled;
@@ -41,7 +42,7 @@ class UserTest extends UuidGeneratorAwareAggregateRootScenarioTestCase
         $id = $this->generateUserId();
         $email = Email::fromString('alice@acme.com');
         $hashedPassword = HashedPassword::fromString('some hash');
-        $roles = Roles::fromArray([]);
+        $roles = Roles::fromArray(['ROLE_USER']);
         $enabled = true;
         $registeredById = $this->generateUserId();
         $dateRegistered = DateTime::now();
@@ -198,6 +199,40 @@ class UserTest extends UuidGeneratorAwareAggregateRootScenarioTestCase
                 $dateChanged
             )])
             ->when($changePassword)
+            ->then([]);
+    }
+
+    /**
+     * @test
+     * @depends itCanBeRegistered
+     */
+    public function itCanChangeRoles(UserRegistered $userRegistered): void
+    {
+        $id = $userRegistered->id();
+        $roles = Roles::fromArray(['ROLE_SUPER_ADMIN']);
+        $changedById = $this->generateUserId();
+        $dateChanged = DateTime::now();
+
+        $changeRoles = function (User $user) use ($roles, $changedById): void {
+            $user->changeRoles($roles, $changedById);
+        };
+
+        ClockMock::withClockMock($dateChanged->toSeconds());
+
+        $this->scenario
+            ->withAggregateId($id->toString())
+            ->given([
+                $userRegistered,
+            ])
+            ->when($changeRoles)
+            ->then([new RolesChanged(
+                $id,
+                $roles,
+                $userRegistered->roles(),
+                $changedById,
+                $dateChanged
+            )])
+            ->when($changeRoles)
             ->then([]);
     }
 
