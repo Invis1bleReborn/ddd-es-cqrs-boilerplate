@@ -17,6 +17,7 @@ use Broadway\ReadModel\InMemory\InMemoryRepository;
 use Broadway\ReadModel\Projector;
 use Common\Shared\Application\Query\UuidGeneratorAwareProjectorScenarioTestCase;
 use Common\Shared\Domain\ValueObject\DateTime;
+use IdentityAccess\Domain\Access\Event\RolesChanged;
 use IdentityAccess\Domain\Access\ValueObject\Roles;
 use IdentityAccess\Domain\Identity\Event\UserDisabled;
 use IdentityAccess\Domain\Identity\Event\UserEnabled;
@@ -149,6 +150,39 @@ class UserProjectorTest extends UuidGeneratorAwareProjectorScenarioTestCase
                     $registeredById,
                     $dateRegistered
                 ),
+            ])
+        ;
+    }
+
+    /**
+     * @test
+     * @depends itCreatesReadModelWhenUserRegistered
+     */
+    public function itUpdatesReadModelWhenRolesChanged($deps)
+    {
+        [$userRegistered, $user] = $deps;
+        /* @var $userRegistered UserRegistered */
+        /* @var $user User */
+
+        $userId = $userRegistered->id();
+        $roles = Roles::fromArray(['ROLE_SUPER_ADMIN']);
+
+        $user->setRoles($roles);
+
+        $this->scenario
+            ->withAggregateId($userId->toString())
+            ->given([
+                $userRegistered,
+            ])
+            ->when(new RolesChanged(
+                $userId,
+                $roles,
+                $userRegistered->roles(),
+                $this->generateUserId(),
+                DateTime::now()
+            ))
+            ->then([
+                $user,
             ])
         ;
     }

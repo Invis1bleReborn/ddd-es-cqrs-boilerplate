@@ -11,58 +11,64 @@
 
 declare(strict_types=1);
 
-namespace IdentityAccess\Application\Command\Identity\EnableUser;
+namespace IdentityAccess\Application\Command\Access\ChangeRoles;
 
 use Broadway\CommandHandling\CommandHandler;
 use Broadway\EventHandling\EventBus;
 use Broadway\EventStore\EventStore;
 use Common\Shared\Domain\ValueObject\DateTime;
 use IdentityAccess\Application\Command\Identity\UserHandlerTestCase;
-use IdentityAccess\Domain\Identity\Event\UserEnabled;
+use IdentityAccess\Domain\Access\Event\RolesChanged;
+use IdentityAccess\Domain\Access\ValueObject\Roles;
 use IdentityAccess\Domain\Identity\ValueObject\UserId;
-use IdentityAccess\Infrastructure\Identity\Command\EnableUser\EnableUserHandlerAdapter;
+use IdentityAccess\Infrastructure\Access\Command\ChangeRoles\ChangeRolesHandlerAdapter;
 use IdentityAccess\Infrastructure\Identity\Repository\UserStore;
 use Symfony\Bridge\PhpUnit\ClockMock;
 
 /**
- * Class EnableUserHandlerTest.
+ * Class ChangeRolesHandlerTest.
  */
-class EnableUserHandlerTest extends UserHandlerTestCase
+class ChangeRolesHandlerTest extends UserHandlerTestCase
 {
     /**
      * @test
      */
-    public function itCanEnableUser(): void
+    public function itCanChangeRoles(): void
     {
         $id = $this->generateUserId();
-        $enabledById = $this->generateUserId();
-        $dateEnabled = DateTime::now();
+        $roles = ['ROLE_SUPER_ADMIN'];
+        $previousRoles = ['ROLE_USER'];
+        $changedById = $this->generateUserId();
+        $dateChanged = DateTime::now();
 
-        $enableUser = new EnableUserCommand(
+        $changeRoles = new ChangeRolesCommand(
             $id,
-            $enabledById
+            $roles,
+            $changedById
         );
 
-        ClockMock::withClockMock($dateEnabled->toSeconds());
+        ClockMock::withClockMock($dateChanged->toSeconds());
 
         $this->scenario
-            ->givenUserRegistered($id, null, [], false)
-            ->when($enableUser)
+            ->givenUserRegistered($id, null, $previousRoles)
+            ->when($changeRoles)
             ->then([
-                new UserEnabled(
+                new RolesChanged(
                     UserId::fromString($id),
-                    UserId::fromString($enabledById),
-                    $dateEnabled
+                    Roles::fromArray($roles),
+                    Roles::fromArray($previousRoles),
+                    UserId::fromString($changedById),
+                    $dateChanged
                 ),
             ])
-            ->when($enableUser)
+            ->when($changeRoles)
             ->then([]);
     }
 
     protected function createCommandHandler(EventStore $eventStore, EventBus $eventBus): CommandHandler
     {
-        return new EnableUserHandlerAdapter(
-            new EnableUserHandler(
+        return new ChangeRolesHandlerAdapter(
+            new ChangeRolesHandler(
                 new UserStore($eventStore, $eventBus)
             )
         );
