@@ -127,6 +127,13 @@ class User implements UserInterface, EnableableUserInterface, SecurityUserInterf
         return $this;
     }
 
+    public function setEmail(Email $email)
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
     /**
      * @ApiProperty(iri="http://schema.org/email")
      */
