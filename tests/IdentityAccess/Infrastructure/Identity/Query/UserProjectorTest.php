@@ -87,6 +87,7 @@ class UserProjectorTest extends UuidGeneratorAwareProjectorScenarioTestCase
         [$userRegistered, $user] = $deps;
         /* @var $userRegistered UserRegistered */
         /* @var $user User */
+        $user = clone $user;
 
         $userId = $userRegistered->id();
 
@@ -164,6 +165,7 @@ class UserProjectorTest extends UuidGeneratorAwareProjectorScenarioTestCase
         [$userRegistered, $user] = $deps;
         /* @var $userRegistered UserRegistered */
         /* @var $user User */
+        $user = clone $user;
 
         $userId = $userRegistered->id();
         $hashedPassword = HashedPassword::fromString('new hash');
@@ -197,6 +199,7 @@ class UserProjectorTest extends UuidGeneratorAwareProjectorScenarioTestCase
         [$userRegistered, $user] = $deps;
         /* @var $userRegistered UserRegistered */
         /* @var $user User */
+        $user = clone $user;
 
         $userId = $userRegistered->id();
         $roles = Roles::fromArray(['ROLE_SUPER_ADMIN']);
