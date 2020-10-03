@@ -41,6 +41,11 @@ services:
 
     IdentityAccess\Ui\Identity\ChangePassword\ChangePasswordRequestTransformerInterface: '@IdentityAccess\Ui\Identity\ChangePassword\CheckPermissions'
 
+    IdentityAccess\Ui\Access\ChangeRoles\CheckPermissions:
+        decorates: IdentityAccess\Ui\Access\ChangeRoles\ChangeRolesRequestTransformer
+
+    IdentityAccess\Ui\Access\ChangeRoles\ChangeRolesRequestTransformerInterface: '@IdentityAccess\Ui\Access\ChangeRoles\CheckPermissions'
+
     Lexik\Bundle\JWTAuthenticationBundle\Security\Guard\JWTTokenAuthenticator: '@lexik_jwt_authentication.security.guard.jwt_token_authenticator'
     IdentityAccess\Domain\Access\RoleHierarchyInterface: '@IdentityAccess\Infrastructure\Access\RoleHierarchy'
     IdentityAccess\Domain\Identity\Repository\UserRepositoryInterface: '@IdentityAccess\Infrastructure\Identity\Repository\UserStore'

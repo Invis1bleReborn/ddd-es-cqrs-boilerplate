@@ -31,4 +31,6 @@ class Role extends Enum
     private const USER_ENABLER = 'ROLE_USER_ENABLER';
 
     private const PASSWORD_CHANGER = 'ROLE_PASSWORD_CHANGER';
+
+    private const ROLES_CHANGER = 'ROLE_ROLES_CHANGER';
 }
