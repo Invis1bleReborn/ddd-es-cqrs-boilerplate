@@ -27,7 +27,7 @@ final class ChangeRolesRequest implements RequestInterface
      */
     public ?array $roles;
 
-    public function __construct(?string $roles = null)
+    public function __construct(?array $roles = null)
     {
         $this->roles = $roles;
     }

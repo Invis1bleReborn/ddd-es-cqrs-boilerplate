@@ -26,6 +26,7 @@ use IdentityAccess\Domain\Access\ValueObject\Roles;
 use IdentityAccess\Domain\Identity\ValueObject\Email;
 use IdentityAccess\Domain\Identity\ValueObject\HashedPassword;
 use IdentityAccess\Domain\Identity\ValueObject\UserId;
+use IdentityAccess\Ui\Access\ChangeRoles\ChangeRolesRequest;
 use IdentityAccess\Ui\Identity\ChangePassword\ChangePasswordRequest;
 use IdentityAccess\Ui\Identity\ChangeUserStatus\ChangeUserStatusRequest;
 use IdentityAccess\Ui\Identity\RegisterUser\RegisterUserRequest;
@@ -74,7 +75,7 @@ use Symfony\Component\Security\Core\User\UserInterface as SecurityUserInterface;
  *         "changeRoles"={
  *             "method"="PUT",
  *             "path"="/users/{id}/roles",
- *             "input"=ChangePasswordRequest::class,
+ *             "input"=ChangeRolesRequest::class,
  *             "output"=false,
  *         },
  *     },
