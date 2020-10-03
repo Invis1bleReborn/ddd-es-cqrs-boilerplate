@@ -58,3 +58,4 @@ security:
             - ROLE_USER_ENABLER
             - ROLE_USER_DISABLER
             - ROLE_PASSWORD_CHANGER
+            - ROLE_ROLES_CHANGER

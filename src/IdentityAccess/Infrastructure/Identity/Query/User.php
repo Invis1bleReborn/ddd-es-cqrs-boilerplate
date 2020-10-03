@@ -71,6 +71,12 @@ use Symfony\Component\Security\Core\User\UserInterface as SecurityUserInterface;
  *             "input"=ChangePasswordRequest::class,
  *             "output"=false,
  *         },
+ *         "changeRoles"={
+ *             "method"="PUT",
+ *             "path"="/users/{id}/roles",
+ *             "input"=ChangePasswordRequest::class,
+ *             "output"=false,
+ *         },
  *     },
  * )
  */
