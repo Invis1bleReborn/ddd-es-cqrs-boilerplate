@@ -41,7 +41,7 @@ class ChangeRolesCommand extends UserIdAwareCommand
     ) {
         parent::__construct($userId);
 
-        $this->changedById = UserId::fromString($changedById);
         $this->roles = Roles::fromArray($roles);
+        $this->changedById = UserId::fromString($changedById);
     }
 }
