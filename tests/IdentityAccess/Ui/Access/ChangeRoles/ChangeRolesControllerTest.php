@@ -47,7 +47,7 @@ class ChangeRolesControllerTest extends UiTestCase
         $this->assertForbidden($response);
 
         $this->authenticateClient($client, $rootUsername, $rootRoles);
-        
+
         $response = $this->updateResource($client, "/users/$aliceUserId/roles", [
             'roles' => ['INVALID_ROLE'],
         ]);
