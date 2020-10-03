@@ -121,8 +121,7 @@ final class User extends EventSourcedAggregateRoot
 
     public function changeRoles(
         Roles $roles,
-        ?UserId $changedBy,
-        DateTime $dateChanged
+        ?UserId $changedBy
     ): void {
         if ($this->roles->equals($roles)) {
             return;
@@ -133,7 +132,7 @@ final class User extends EventSourcedAggregateRoot
             $roles,
             $this->roles,
             $changedBy,
-            $dateChanged
+            DateTime::now()
         ));
     }
 
