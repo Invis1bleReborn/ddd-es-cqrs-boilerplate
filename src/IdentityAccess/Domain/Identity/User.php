@@ -84,7 +84,6 @@ final class User extends EventSourcedAggregateRoot
     public function changeEmail(
         Email $email,
         ?UserId $changedBy,
-        DateTime $dateChanged,
         UniqueEmailSpecificationInterface $uniqueEmailSpecification
     ): void {
         if ($this->email->equals($email)) {
@@ -98,7 +97,7 @@ final class User extends EventSourcedAggregateRoot
             $email,
             $this->email,
             $changedBy,
-            $dateChanged
+            DateTime::now()
         ));
     }
 
