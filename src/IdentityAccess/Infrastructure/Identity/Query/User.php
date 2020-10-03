@@ -128,6 +128,13 @@ class User implements UserInterface, EnableableUserInterface, SecurityUserInterf
         return null === $this->email ? null : $this->email->toString();
     }
 
+    public function setHashedPassword(HashedPassword $hashedPassword)
+    {
+        $this->hashedPassword = $hashedPassword;
+
+        return $this;
+    }
+
     /**
      * @ApiProperty(iri="http://schema.org/accessCode")
      */
@@ -136,9 +143,11 @@ class User implements UserInterface, EnableableUserInterface, SecurityUserInterf
         return null === $this->hashedPassword ? null : $this->hashedPassword->toString();
     }
 
-    public function setHashedPassword(HashedPassword $hashedPassword)
+    public function setRoles(Roles $roles)
     {
-        return $this->hashedPassword = $hashedPassword;
+        $this->roles = $roles;
+
+        return $this;
     }
 
     public function getRoles(): ?array
