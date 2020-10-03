@@ -20,6 +20,7 @@ use Common\Shared\Domain\ValueObject\DateTime;
 use IdentityAccess\Application\Command\Identity\UserHandlerTestCase;
 use IdentityAccess\Domain\Access\ValueObject\Roles;
 use IdentityAccess\Domain\Identity\Event\UserRegistered;
+use IdentityAccess\Domain\Identity\Exception\EmailAlreadyExistsException;
 use IdentityAccess\Domain\Identity\PasswordEncoderInterface;
 use IdentityAccess\Domain\Identity\Specification\UniqueEmailSpecificationInterface;
 use IdentityAccess\Domain\Identity\ValueObject\Email;
@@ -80,7 +81,30 @@ class RegisterUserHandlerTest extends UserHandlerTestCase
                     UserId::fromString($registeredById),
                     $dateRegistered
                 ),
-            ]);
+            ])
+        ;
+    }
+
+    /**
+     * @test
+     */
+    public function itCantRegisterUserWithNonUniqueEmail(): void
+    {
+        $this->expectException(EmailAlreadyExistsException::class);
+
+        $this->uniqueEmailSpecificationStub->method('isUnique')
+            ->willReturn(false);
+
+        $this->scenario
+            ->when(new RegisterUserCommand(
+                $this->generateUserId(),
+                'alice@acme.com',
+                'some password',
+                true,
+                [],
+                $this->generateUserId()
+            ))
+        ;
     }
 
     protected function generateUserId(): string
