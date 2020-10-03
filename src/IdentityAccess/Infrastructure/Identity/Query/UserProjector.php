@@ -16,6 +16,7 @@ namespace IdentityAccess\Infrastructure\Identity\Query;
 use Broadway\ReadModel\Projector;
 use Broadway\ReadModel\Repository;
 use IdentityAccess\Domain\Access\Event\RolesChanged;
+use IdentityAccess\Domain\Identity\Event\EmailChanged;
 use IdentityAccess\Domain\Identity\Event\PasswordChanged;
 use IdentityAccess\Domain\Identity\Event\UserDisabled;
 use IdentityAccess\Domain\Identity\Event\UserEnabled;
@@ -63,6 +64,15 @@ class UserProjector extends Projector
         $user = $this->getUser($event->id());
 
         $user->setEnabled(false);
+
+        $this->saveUser($user);
+    }
+
+    protected function applyEmailChanged(EmailChanged $event): void
+    {
+        $user = $this->getUser($event->id());
+
+        $user->setEmail($event->email());
 
         $this->saveUser($user);
     }

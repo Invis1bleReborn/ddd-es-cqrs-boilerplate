@@ -11,24 +11,24 @@
 
 declare(strict_types=1);
 
-namespace IdentityAccess\Application\Command\Access\ChangeRoles;
+namespace IdentityAccess\Application\Command\Identity\ChangeEmail;
 
 use Assert\AssertionFailedException;
 use IdentityAccess\Application\Command\Identity\UserIdAwareCommand;
-use IdentityAccess\Domain\Access\ValueObject\Roles;
+use IdentityAccess\Domain\Identity\ValueObject\Email;
 use IdentityAccess\Domain\Identity\ValueObject\UserId;
 
 /**
- * Class ChangeRolesCommand.
+ * Class ChangeEmailCommand.
  */
-class ChangeRolesCommand extends UserIdAwareCommand
+class ChangeEmailCommand extends UserIdAwareCommand
 {
     public UserId $changedById;
 
-    public Roles $roles;
+    public Email $email;
 
     /**
-     * ChangeRolesCommand constructor.
+     * ChangeEmailCommand constructor.
      *
      * {@inheritdoc}
      *
@@ -36,12 +36,12 @@ class ChangeRolesCommand extends UserIdAwareCommand
      */
     public function __construct(
         string $userId,
-        array $roles,
+        string $email,
         string $changedById
     ) {
         parent::__construct($userId);
 
-        $this->roles = Roles::fromArray($roles);
+        $this->email = Email::fromString($email);
         $this->changedById = UserId::fromString($changedById);
     }
 }

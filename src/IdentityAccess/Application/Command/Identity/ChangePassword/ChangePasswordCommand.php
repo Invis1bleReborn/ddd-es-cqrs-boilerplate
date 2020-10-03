@@ -41,7 +41,7 @@ class ChangePasswordCommand extends UserIdAwareCommand
     ) {
         parent::__construct($userId);
 
-        $this->changedById = UserId::fromString($changedById);
         $this->plainPassword = PlainPassword::fromString($plainPassword);
+        $this->changedById = UserId::fromString($changedById);
     }
 }
