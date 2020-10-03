@@ -36,6 +36,11 @@ services:
 #    IdentityAccess\Ui\Identity\RegisterUser\RegisterUserRequestTransformerInterface: '@IdentityAccess\Ui\Identity\RegisterUser\CheckPermissions'
     IdentityAccess\Ui\Identity\RegisterUser\RegisterUserRequestTransformerInterface: '@IdentityAccess\Ui\Identity\RegisterUser\RegisterUserRequestTransformer'
 
+    IdentityAccess\Ui\Identity\ChangeEmail\CheckPermissions:
+        decorates: IdentityAccess\Ui\Identity\ChangeEmail\ChangeEmailRequestTransformer
+
+    IdentityAccess\Ui\Identity\ChangeEmail\ChangeEmailRequestTransformerInterface: '@IdentityAccess\Ui\Identity\ChangeEmail\CheckPermissions'
+
     IdentityAccess\Ui\Identity\ChangePassword\CheckPermissions:
         decorates: IdentityAccess\Ui\Identity\ChangePassword\ChangePasswordRequestTransformer
 
