@@ -11,24 +11,24 @@
 
 declare(strict_types=1);
 
-namespace IdentityAccess\Application\Command\Identity\ChangePassword;
+namespace IdentityAccess\Application\Command\Access\ChangeRoles;
 
 use Assert\AssertionFailedException;
 use IdentityAccess\Application\Command\Identity\UserIdAwareCommand;
-use IdentityAccess\Domain\Identity\ValueObject\PlainPassword;
+use IdentityAccess\Domain\Access\ValueObject\Roles;
 use IdentityAccess\Domain\Identity\ValueObject\UserId;
 
 /**
- * Class ChangePasswordCommand.
+ * Class ChangeRolesCommand.
  */
-class ChangePasswordCommand extends UserIdAwareCommand
+class ChangeRolesCommand extends UserIdAwareCommand
 {
     public UserId $changedById;
 
-    public PlainPassword $plainPassword;
+    public Roles $roles;
 
     /**
-     * ChangePasswordCommand constructor.
+     * ChangeRolesCommand constructor.
      *
      * {@inheritdoc}
      *
@@ -36,12 +36,12 @@ class ChangePasswordCommand extends UserIdAwareCommand
      */
     public function __construct(
         string $userId,
-        string $plainPassword,
+        array $roles,
         string $changedById
     ) {
         parent::__construct($userId);
 
-        $this->plainPassword = PlainPassword::fromString($plainPassword);
+        $this->roles = Roles::fromArray($roles);
         $this->changedById = UserId::fromString($changedById);
     }
 }

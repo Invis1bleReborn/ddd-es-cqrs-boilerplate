@@ -11,24 +11,24 @@
 
 declare(strict_types=1);
 
-namespace IdentityAccess\Application\Command\Identity\ChangePassword;
+namespace IdentityAccess\Application\Command\Identity\ChangeEmail;
 
 use Assert\AssertionFailedException;
 use IdentityAccess\Application\Command\Identity\UserIdAwareCommand;
-use IdentityAccess\Domain\Identity\ValueObject\PlainPassword;
+use IdentityAccess\Domain\Identity\ValueObject\Email;
 use IdentityAccess\Domain\Identity\ValueObject\UserId;
 
 /**
- * Class ChangePasswordCommand.
+ * Class ChangeEmailCommand.
  */
-class ChangePasswordCommand extends UserIdAwareCommand
+class ChangeEmailCommand extends UserIdAwareCommand
 {
     public UserId $changedById;
 
-    public PlainPassword $plainPassword;
+    public Email $email;
 
     /**
-     * ChangePasswordCommand constructor.
+     * ChangeEmailCommand constructor.
      *
      * {@inheritdoc}
      *
@@ -36,12 +36,12 @@ class ChangePasswordCommand extends UserIdAwareCommand
      */
     public function __construct(
         string $userId,
-        string $plainPassword,
+        string $email,
         string $changedById
     ) {
         parent::__construct($userId);
 
-        $this->plainPassword = PlainPassword::fromString($plainPassword);
+        $this->email = Email::fromString($email);
         $this->changedById = UserId::fromString($changedById);
     }
 }

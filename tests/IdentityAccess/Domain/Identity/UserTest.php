@@ -15,7 +15,9 @@ namespace IdentityAccess\Domain\Identity;
 
 use Common\Shared\Domain\UuidGeneratorAwareAggregateRootScenarioTestCase;
 use Common\Shared\Domain\ValueObject\DateTime;
+use IdentityAccess\Domain\Access\Event\RolesChanged;
 use IdentityAccess\Domain\Access\ValueObject\Roles;
+use IdentityAccess\Domain\Identity\Event\EmailChanged;
 use IdentityAccess\Domain\Identity\Event\PasswordChanged;
 use IdentityAccess\Domain\Identity\Event\UserDisabled;
 use IdentityAccess\Domain\Identity\Event\UserEnabled;
@@ -41,7 +43,7 @@ class UserTest extends UuidGeneratorAwareAggregateRootScenarioTestCase
         $id = $this->generateUserId();
         $email = Email::fromString('alice@acme.com');
         $hashedPassword = HashedPassword::fromString('some hash');
-        $roles = Roles::fromArray([]);
+        $roles = Roles::fromArray(['ROLE_USER']);
         $enabled = true;
         $registeredById = $this->generateUserId();
         $dateRegistered = DateTime::now();
@@ -171,6 +173,80 @@ class UserTest extends UuidGeneratorAwareAggregateRootScenarioTestCase
      * @test
      * @depends itCanBeRegistered
      */
+    public function itCanChangeEmail(UserRegistered $userRegistered): void
+    {
+        $id = $userRegistered->id();
+        $email = Email::fromString('newalice@acme.com');
+        $changedById = $this->generateUserId();
+        $dateChanged = DateTime::now();
+
+        $changeEmail = function (User $user) use ($email, $changedById): void {
+            $user->changeEmail(
+                $email,
+                $changedById,
+                $this->createUniqueEmailSpecificationStub(true)
+            );
+        };
+
+        ClockMock::withClockMock($dateChanged->toSeconds());
+
+        $this->scenario
+            ->withAggregateId($id->toString())
+            ->given([
+                $userRegistered,
+            ])
+            ->when($changeEmail)
+            ->then([new EmailChanged(
+                $id,
+                $email,
+                $userRegistered->email(),
+                $changedById,
+                $dateChanged
+            )])
+            ->when($changeEmail)
+            ->then([]);
+    }
+
+    /**
+     * @test
+     * @depends itCanBeRegistered
+     */
+    public function itCantChangeEmailToNonUnique(UserRegistered $userRegistered): void
+    {
+        $this->expectException(EmailAlreadyExistsException::class);
+
+        $id = $userRegistered->id();
+        $email = Email::fromString('newalice@acme.com');
+        $changedById = $this->generateUserId();
+        $dateChanged = DateTime::now();
+
+        ClockMock::withClockMock($dateChanged->toSeconds());
+
+        $this->scenario
+            ->withAggregateId($id->toString())
+            ->given([
+                $userRegistered,
+            ])
+            ->when(function (User $user) use ($email, $changedById): void {
+                $user->changeEmail(
+                    $email,
+                    $changedById,
+                    $this->createUniqueEmailSpecificationStub(false)
+                );
+            })
+            ->then([new EmailChanged(
+                $id,
+                $email,
+                $userRegistered->email(),
+                $changedById,
+                $dateChanged
+            )]);
+    }
+
+    /**
+     * @test
+     * @depends itCanBeRegistered
+     */
     public function itCanChangePassword(UserRegistered $userRegistered): void
     {
         $id = $userRegistered->id();
@@ -198,6 +274,40 @@ class UserTest extends UuidGeneratorAwareAggregateRootScenarioTestCase
                 $dateChanged
             )])
             ->when($changePassword)
+            ->then([]);
+    }
+
+    /**
+     * @test
+     * @depends itCanBeRegistered
+     */
+    public function itCanChangeRoles(UserRegistered $userRegistered): void
+    {
+        $id = $userRegistered->id();
+        $roles = Roles::fromArray(['ROLE_SUPER_ADMIN']);
+        $changedById = $this->generateUserId();
+        $dateChanged = DateTime::now();
+
+        $changeRoles = function (User $user) use ($roles, $changedById): void {
+            $user->changeRoles($roles, $changedById);
+        };
+
+        ClockMock::withClockMock($dateChanged->toSeconds());
+
+        $this->scenario
+            ->withAggregateId($id->toString())
+            ->given([
+                $userRegistered,
+            ])
+            ->when($changeRoles)
+            ->then([new RolesChanged(
+                $id,
+                $roles,
+                $userRegistered->roles(),
+                $changedById,
+                $dateChanged
+            )])
+            ->when($changeRoles)
             ->then([]);
     }
 

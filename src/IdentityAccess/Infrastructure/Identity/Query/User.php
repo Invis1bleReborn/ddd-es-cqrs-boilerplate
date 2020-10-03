@@ -26,6 +26,8 @@ use IdentityAccess\Domain\Access\ValueObject\Roles;
 use IdentityAccess\Domain\Identity\ValueObject\Email;
 use IdentityAccess\Domain\Identity\ValueObject\HashedPassword;
 use IdentityAccess\Domain\Identity\ValueObject\UserId;
+use IdentityAccess\Ui\Access\ChangeRoles\ChangeRolesRequest;
+use IdentityAccess\Ui\Identity\ChangeEmail\ChangeEmailRequest;
 use IdentityAccess\Ui\Identity\ChangePassword\ChangePasswordRequest;
 use IdentityAccess\Ui\Identity\ChangeUserStatus\ChangeUserStatusRequest;
 use IdentityAccess\Ui\Identity\RegisterUser\RegisterUserRequest;
@@ -65,10 +67,22 @@ use Symfony\Component\Security\Core\User\UserInterface as SecurityUserInterface;
  *             "input"=ChangeUserStatusRequest::class,
  *             "output"=false,
  *         },
+ *         "changeEmail"={
+ *             "method"="PUT",
+ *             "path"="/users/{id}/email",
+ *             "input"=ChangeEmailRequest::class,
+ *             "output"=false,
+ *         },
  *         "changePassword"={
  *             "method"="PUT",
  *             "path"="/users/{id}/password",
  *             "input"=ChangePasswordRequest::class,
+ *             "output"=false,
+ *         },
+ *         "changeRoles"={
+ *             "method"="PUT",
+ *             "path"="/users/{id}/roles",
+ *             "input"=ChangeRolesRequest::class,
  *             "output"=false,
  *         },
  *     },
@@ -120,12 +134,26 @@ class User implements UserInterface, EnableableUserInterface, SecurityUserInterf
         return $this;
     }
 
+    public function setEmail(Email $email)
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
     /**
      * @ApiProperty(iri="http://schema.org/email")
      */
     public function getEmail(): ?string
     {
         return null === $this->email ? null : $this->email->toString();
+    }
+
+    public function setHashedPassword(HashedPassword $hashedPassword)
+    {
+        $this->hashedPassword = $hashedPassword;
+
+        return $this;
     }
 
     /**
@@ -136,9 +164,11 @@ class User implements UserInterface, EnableableUserInterface, SecurityUserInterf
         return null === $this->hashedPassword ? null : $this->hashedPassword->toString();
     }
 
-    public function setHashedPassword(HashedPassword $hashedPassword)
+    public function setRoles(Roles $roles)
     {
-        return $this->hashedPassword = $hashedPassword;
+        $this->roles = $roles;
+
+        return $this;
     }
 
     public function getRoles(): ?array

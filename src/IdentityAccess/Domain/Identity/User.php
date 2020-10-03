@@ -84,7 +84,6 @@ final class User extends EventSourcedAggregateRoot
     public function changeEmail(
         Email $email,
         ?UserId $changedBy,
-        DateTime $dateChanged,
         UniqueEmailSpecificationInterface $uniqueEmailSpecification
     ): void {
         if ($this->email->equals($email)) {
@@ -98,7 +97,7 @@ final class User extends EventSourcedAggregateRoot
             $email,
             $this->email,
             $changedBy,
-            $dateChanged
+            DateTime::now()
         ));
     }
 
@@ -121,8 +120,7 @@ final class User extends EventSourcedAggregateRoot
 
     public function changeRoles(
         Roles $roles,
-        ?UserId $changedBy,
-        DateTime $dateChanged
+        ?UserId $changedBy
     ): void {
         if ($this->roles->equals($roles)) {
             return;
@@ -133,7 +131,7 @@ final class User extends EventSourcedAggregateRoot
             $roles,
             $this->roles,
             $changedBy,
-            $dateChanged
+            DateTime::now()
         ));
     }
 
