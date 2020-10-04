@@ -27,8 +27,7 @@ final class ChangeEmailHandler extends AbstractCommandHandler
     public function __construct(
         UserRepositoryInterface $userRepository,
         UniqueEmailSpecificationInterface $uniqueEmailSpecification
-    )
-    {
+    ) {
         parent::__construct($userRepository);
 
         $this->uniqueEmailSpecification = $uniqueEmailSpecification;

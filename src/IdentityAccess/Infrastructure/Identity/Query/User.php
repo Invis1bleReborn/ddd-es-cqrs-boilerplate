@@ -127,12 +127,6 @@ class User implements UserInterface, EnableableUserInterface, SecurityUserInterf
         return $this->id->toString();
     }
 
-    public function changeEmail(Email $email)
-    {
-        $this->email = $email;
-
-        return $this;
-    }
 
     public function setEmail(Email $email)
     {
