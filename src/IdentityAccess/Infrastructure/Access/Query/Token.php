@@ -20,11 +20,10 @@ use Common\Shared\Domain\ValueObject\DateTime;
 use IdentityAccess\Application\Query\Access\TokenInterface;
 use IdentityAccess\Ui\Access\CreateToken\CreateTokenRequest;
 use IdentityAccess\Ui\Access\RefreshToken\RefreshTokenRequest;
-use IdentityAccess\Ui\Access\TokenView;
 use Symfony\Component\Serializer\Annotation\Ignore;
 
 /**
- * Token.
+ * JSON Web Token.
  *
  * @see http://schema.org/accessCode Documentation on Schema.org
  *
@@ -35,13 +34,75 @@ use Symfony\Component\Serializer\Annotation\Ignore;
  *         "create"={
  *             "method"="POST",
  *             "input"=CreateTokenRequest::class,
- *             "output"=TokenView::class,
+ *             "openapi_context"={
+ *                 "summary"="Creates JWT",
+ *                 "description"="Creates and returns new JSON Web Token",
+ *                 "responses"={
+ *                     "201"={
+ *                         "description"="Token created",
+ *                         "content"={
+ *                             "application/ld+json"={
+ *                                 "schema"={
+ *                                     "$ref"="#/components/schemas/Token:jsonld",
+ *                                 },
+ *                             },
+ *                             "application/json"={
+ *                                 "schema"={
+ *                                     "$ref"="#/components/schemas/Token",
+ *                                 },
+ *                             },
+ *                             "text/html"={
+ *                                 "schema"={
+ *                                     "$ref"="#/components/schemas/Token",
+ *                                 },
+ *                             },
+ *                         },
+ *                     },
+ *                     "400"={
+ *                         "description"="Invalid input",
+ *                     },
+ *                     "401"={
+ *                         "description"="Bad credentials or Account disabled",
+ *                     },
+ *                 },
+ *             },
  *         },
  *         "refresh"={
  *             "method"="POST",
  *             "path"="/refresh_tokens",
  *             "input"=RefreshTokenRequest::class,
- *             "output"=TokenView::class,
+ *             "openapi_context"={
+ *                 "summary"="Refreshes JWT",
+ *                 "description"="Refreshes and returns refreshed JSON Web Token",
+ *                 "responses"={
+ *                     "201"={
+ *                         "description"="Token refreshed",
+ *                         "content"={
+ *                             "application/ld+json"={
+ *                                 "schema"={
+ *                                     "$ref"="#/components/schemas/Token:jsonld",
+ *                                 },
+ *                             },
+ *                             "application/json"={
+ *                                 "schema"={
+ *                                     "$ref"="#/components/schemas/Token",
+ *                                 },
+ *                             },
+ *                             "text/html"={
+ *                                 "schema"={
+ *                                     "$ref"="#/components/schemas/Token",
+ *                                 },
+ *                             },
+ *                         },
+ *                     },
+ *                     "400"={
+ *                         "description"="Invalid input",
+ *                     },
+ *                     "401"={
+ *                         "description"="Refresh token does not exist.",
+ *                     },
+ *                 },
+ *             },
  *         },
  *     },
  *     itemOperations={
@@ -72,6 +133,8 @@ class Token implements TokenInterface
     }
 
     /**
+     * Access token.
+     *
      * @ApiProperty(iri="http://schema.org/accessCode")
      */
     public function getAccessToken(): string
@@ -80,6 +143,8 @@ class Token implements TokenInterface
     }
 
     /**
+     * Refresh token.
+     *
      * @ApiProperty(iri="http://schema.org/accessCode")
      */
     public function getRefreshToken(): string
@@ -88,6 +153,7 @@ class Token implements TokenInterface
     }
 
     /**
+     * @ApiProperty(readable=false)
      * @Ignore()
      */
     public function getRefreshTokenDateExpired(): \DateTimeImmutable
@@ -99,7 +165,7 @@ class Token implements TokenInterface
     }
 
     /**
-     * @ApiProperty(identifier=true)
+     * @ApiProperty(identifier=true, readable=false)
      * @Ignore()
      */
     public function getId(): string
