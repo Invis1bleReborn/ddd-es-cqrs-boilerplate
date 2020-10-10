@@ -23,16 +23,36 @@ class SwaggerDecorator implements NormalizerInterface
 {
     private NormalizerInterface $decorated;
 
-    public function __construct(NormalizerInterface $decorated)
+    private ?string $apiUriPrefix;
+
+    public function __construct(NormalizerInterface $decorated, string $apiUriPrefix = null)
     {
         $this->decorated = $decorated;
+        $this->apiUriPrefix = $apiUriPrefix ?? '/api';
     }
 
     public function normalize($object, string $format = null, array $context = []): array
     {
         $docs = $this->decorated->normalize($object, $format, $context);
 
-        unset($docs['paths']['/api/tokens/{id}']);
+        $docs['paths'][$this->apiUriPrefix . '/tokens']['post']['responses'][201]['description'] = 'Token created.';
+        $docs['paths'][$this->apiUriPrefix . '/tokens']['post']['responses'][401] = [
+            'description' => 'Bad credentials or Account disabled.',
+        ];
+
+        $docs['paths'][$this->apiUriPrefix . '/refresh_tokens']['post']['responses'][201]['description'] =
+            'Token refreshed.';
+        $docs['paths'][$this->apiUriPrefix . '/refresh_tokens']['post']['responses'][401] = [
+            'description' => 'Refresh token does not exist.',
+        ];
+
+        unset(
+            $docs['paths'][$this->apiUriPrefix . '/refresh_tokens']['post']['responses'][201]['links'],
+            $docs['paths'][$this->apiUriPrefix . '/refresh_tokens']['post']['responses'][404],
+            $docs['paths'][$this->apiUriPrefix . '/tokens']['post']['responses'][201]['links'],
+            $docs['paths'][$this->apiUriPrefix . '/tokens']['post']['responses'][404],
+            $docs['paths'][$this->apiUriPrefix . '/tokens/{id}']
+        );
 
         return $docs;
     }

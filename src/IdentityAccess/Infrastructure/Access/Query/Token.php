@@ -37,34 +37,6 @@ use Symfony\Component\Serializer\Annotation\Ignore;
  *             "openapi_context"={
  *                 "summary"="Creates JWT",
  *                 "description"="Creates and returns new JSON Web Token",
- *                 "responses"={
- *                     "201"={
- *                         "description"="Token created",
- *                         "content"={
- *                             "application/ld+json"={
- *                                 "schema"={
- *                                     "$ref"="#/components/schemas/Token:jsonld",
- *                                 },
- *                             },
- *                             "application/json"={
- *                                 "schema"={
- *                                     "$ref"="#/components/schemas/Token",
- *                                 },
- *                             },
- *                             "text/html"={
- *                                 "schema"={
- *                                     "$ref"="#/components/schemas/Token",
- *                                 },
- *                             },
- *                         },
- *                     },
- *                     "400"={
- *                         "description"="Invalid input",
- *                     },
- *                     "401"={
- *                         "description"="Bad credentials or Account disabled",
- *                     },
- *                 },
  *             },
  *         },
  *         "refresh"={
@@ -74,34 +46,6 @@ use Symfony\Component\Serializer\Annotation\Ignore;
  *             "openapi_context"={
  *                 "summary"="Refreshes JWT",
  *                 "description"="Refreshes and returns refreshed JSON Web Token",
- *                 "responses"={
- *                     "201"={
- *                         "description"="Token refreshed",
- *                         "content"={
- *                             "application/ld+json"={
- *                                 "schema"={
- *                                     "$ref"="#/components/schemas/Token:jsonld",
- *                                 },
- *                             },
- *                             "application/json"={
- *                                 "schema"={
- *                                     "$ref"="#/components/schemas/Token",
- *                                 },
- *                             },
- *                             "text/html"={
- *                                 "schema"={
- *                                     "$ref"="#/components/schemas/Token",
- *                                 },
- *                             },
- *                         },
- *                     },
- *                     "400"={
- *                         "description"="Invalid input",
- *                     },
- *                     "401"={
- *                         "description"="Refresh token does not exist.",
- *                     },
- *                 },
  *             },
  *         },
  *     },
