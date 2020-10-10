@@ -35,8 +35,8 @@ use Symfony\Component\Serializer\Annotation\Ignore;
  *             "method"="POST",
  *             "input"=CreateTokenRequest::class,
  *             "openapi_context"={
- *                 "summary"="Creates JWT",
- *                 "description"="Creates and returns new JSON Web Token",
+ *                 "summary"="Creates JWT.",
+ *                 "description"="Creates and returns new JSON Web Token.",
  *             },
  *         },
  *         "refresh"={
@@ -44,8 +44,8 @@ use Symfony\Component\Serializer\Annotation\Ignore;
  *             "path"="/refresh_tokens",
  *             "input"=RefreshTokenRequest::class,
  *             "openapi_context"={
- *                 "summary"="Refreshes JWT",
- *                 "description"="Refreshes and returns refreshed JSON Web Token",
+ *                 "summary"="Refreshes JWT.",
+ *                 "description"="Refreshes and returns refreshed JSON Web Token.",
  *             },
  *         },
  *     },
