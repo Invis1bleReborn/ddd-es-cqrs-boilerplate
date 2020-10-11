@@ -22,11 +22,15 @@ use Symfony\Component\Validator\Constraints as Assert;
 final class CreateTokenRequest implements RequestInterface
 {
     /**
+     * Username.
+     *
      * @Assert\NotBlank
      */
     public ?string $username;
 
     /**
+     * User password.
+     *
      * @Assert\NotBlank
      */
     public ?string $password;
