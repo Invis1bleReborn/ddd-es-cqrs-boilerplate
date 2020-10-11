@@ -102,11 +102,11 @@ class User implements UserInterface, EnableableUserInterface, SecurityUserInterf
 {
     private UuidInterface $id;
 
-    private ?Email $email;
+    private ?string $email;
 
-    private ?HashedPassword $hashedPassword;
+    private ?string $hashedPassword;
 
-    private ?Roles $roles;
+    private ?array $roles;
 
     private ?bool $enabled;
 
@@ -124,9 +124,9 @@ class User implements UserInterface, EnableableUserInterface, SecurityUserInterf
         ?DateTime $dateRegistered = null
     ) {
         $this->id = Uuid::fromString($id->toString());
-        $this->email = $email;
-        $this->hashedPassword = $hashedPassword;
-        $this->roles = $roles;
+        $this->email = $email->toString();
+        $this->hashedPassword = $hashedPassword->toString();
+        $this->roles = $roles->toArray();
         $this->enabled = $enabled;
         $this->registeredById = null === $registeredById ? null : Uuid::fromString($registeredById->toString());
         $this->dateRegistered = $dateRegistered;
@@ -144,7 +144,7 @@ class User implements UserInterface, EnableableUserInterface, SecurityUserInterf
 
     public function setEmail(Email $email)
     {
-        $this->email = $email;
+        $this->email = $email->toString();
 
         return $this;
     }
@@ -157,24 +157,27 @@ class User implements UserInterface, EnableableUserInterface, SecurityUserInterf
      */
     public function getEmail(): ?string
     {
-        return null === $this->email ? null : $this->email->toString();
+        return $this->email;
     }
 
     public function setHashedPassword(HashedPassword $hashedPassword)
     {
-        $this->hashedPassword = $hashedPassword;
+        $this->hashedPassword = $hashedPassword->toString();
 
         return $this;
     }
 
+    /**
+     * @ApiProperty(readable=false, writable=false)
+     */
     public function getHashedPassword(): ?string
     {
-        return null === $this->hashedPassword ? null : $this->hashedPassword->toString();
+        return $this->hashedPassword;
     }
 
     public function setRoles(Roles $roles)
     {
-        $this->roles = $roles;
+        $this->roles = $roles->toArray();
 
         return $this;
     }
@@ -187,7 +190,7 @@ class User implements UserInterface, EnableableUserInterface, SecurityUserInterf
      */
     public function getRoles(): ?array
     {
-        return null === $this->roles ? null : $this->roles->toArray();
+        return $this->roles;
     }
 
     /**
@@ -239,7 +242,7 @@ class User implements UserInterface, EnableableUserInterface, SecurityUserInterf
 
     public function getPassword(): ?string
     {
-        return $this->getHashedPassword();
+        return $this->hashedPassword;
     }
 
     public function getSalt(): ?string
@@ -249,7 +252,7 @@ class User implements UserInterface, EnableableUserInterface, SecurityUserInterf
 
     public function getUsername(): ?string
     {
-        return $this->getEmail();
+        return $this->email;
     }
 
     public function eraseCredentials(): void
@@ -278,9 +281,9 @@ class User implements UserInterface, EnableableUserInterface, SecurityUserInterf
     {
         return [
             'id' => $this->id->toString(),
-            'email' => null === $this->email ? null : $this->email->toString(),
-            'hashedPassword' => null === $this->hashedPassword ? null : $this->hashedPassword->toString(),
-            'roles' => null === $this->roles ? null : $this->roles->toArray(),
+            'email' => $this->email,
+            'hashedPassword' => $this->hashedPassword,
+            'roles' => $this->roles,
             'enabled' => $this->enabled,
             'registeredById' => null === $this->registeredById ? null : $this->registeredById->toString(),
             'dateRegistered' => null === $this->dateRegistered ? null : $this->dateRegistered->toString(),
