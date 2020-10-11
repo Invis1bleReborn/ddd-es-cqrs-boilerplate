@@ -68,6 +68,6 @@ services:
     IdentityAccess\Application\Query\Access\AccessTokenGeneratorInterface: '@IdentityAccess\Infrastructure\Access\Query\AccessTokenGenerator'
     IdentityAccess\Application\Query\Access\RefreshTokenProviderInterface: '@IdentityAccess\Infrastructure\Access\Query\RefreshTokenProvider'
 
-    IdentityAccess\Infrastructure\Access\Serializer\Normalizer\SwaggerDecorator:
+    IdentityAccess\Infrastructure\Access\Serializer\Normalizer\OpenApiDecorator:
         arguments:
-            $decorated: '@api_platform.swagger.normalizer.documentation'
+            $decorated: '@api_platform.openapi.normalizer'

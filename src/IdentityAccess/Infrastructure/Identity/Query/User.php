@@ -19,7 +19,6 @@ use Assert\AssertionFailedException;
 use Broadway\ReadModel\SerializableReadModel;
 use Common\Shared\Domain\Exception\DateTimeException;
 use Common\Shared\Domain\ValueObject\DateTime;
-use Common\Shared\Ui\IdAwareView;
 use IdentityAccess\Application\Query\Identity\EnableableUserInterface;
 use IdentityAccess\Application\Query\Identity\UserInterface;
 use IdentityAccess\Domain\Access\ValueObject\Roles;
@@ -31,10 +30,10 @@ use IdentityAccess\Ui\Identity\ChangeEmail\ChangeEmailRequest;
 use IdentityAccess\Ui\Identity\ChangePassword\ChangePasswordRequest;
 use IdentityAccess\Ui\Identity\ChangeUserStatus\ChangeUserStatusRequest;
 use IdentityAccess\Ui\Identity\RegisterUser\RegisterUserRequest;
-use IdentityAccess\Ui\Identity\UserView;
 use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\UuidInterface;
 use Symfony\Component\Security\Core\User\UserInterface as SecurityUserInterface;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * User.
@@ -45,43 +44,54 @@ use Symfony\Component\Security\Core\User\UserInterface as SecurityUserInterface;
  *     iri="http://schema.org/Person",
  *     mercure=true,
  *     messenger="input",
- *     output=UserView::class,
  *     collectionOperations={
  *         "get"={
- *             "normalization_context"={"groups"={"list"}},
+ *             "normalization_context"={
+ *                 "groups"={"user:list"},
+ *                 "swagger_definition_name"="list",
+ *             },
  *         },
  *         "register"={
  *             "method"="POST",
- *             "status"=201,
  *             "input"=RegisterUserRequest::class,
- *             "output"=IdAwareView::class,
+ *             "normalization_context"={
+ *                 "groups"={"user:id"},
+ *                 "swagger_definition_name"="id",
+ *             },
+ *             "openapi_context"={
+ *                 "summary"="Registers User.",
+ *                 "description"="Registers new User.",
+ *             },
  *         },
  *     },
  *     itemOperations={
  *         "get"={
- *             "normalization_context"={"groups"={"details"}},
+ *             "normalization_context"={
+ *                 "groups"={"user:details"},
+ *                 "swagger_definition_name"="details",
+ *             },
  *         },
  *         "changeStatus"={
  *             "method"="PUT",
- *             "path"="/users/{id}/status",
+ *             "path"="/api/users/{id}/status",
  *             "input"=ChangeUserStatusRequest::class,
  *             "output"=false,
  *         },
  *         "changeEmail"={
  *             "method"="PUT",
- *             "path"="/users/{id}/email",
+ *             "path"="/api/users/{id}/email",
  *             "input"=ChangeEmailRequest::class,
  *             "output"=false,
  *         },
  *         "changePassword"={
  *             "method"="PUT",
- *             "path"="/users/{id}/password",
+ *             "path"="/api/users/{id}/password",
  *             "input"=ChangePasswordRequest::class,
  *             "output"=false,
  *         },
  *         "changeRoles"={
  *             "method"="PUT",
- *             "path"="/users/{id}/roles",
+ *             "path"="/api/users/{id}/roles",
  *             "input"=ChangeRolesRequest::class,
  *             "output"=false,
  *         },
@@ -122,6 +132,11 @@ class User implements UserInterface, EnableableUserInterface, SecurityUserInterf
         $this->dateRegistered = $dateRegistered;
     }
 
+    /**
+     * User ID.
+     *
+     * @Groups({"user:id", "user:details", "user:list"})
+     */
     public function getId(): string
     {
         return $this->id->toString();
@@ -135,7 +150,10 @@ class User implements UserInterface, EnableableUserInterface, SecurityUserInterf
     }
 
     /**
+     * User email.
+     *
      * @ApiProperty(iri="http://schema.org/email")
+     * @Groups({"user:details", "user:list"})
      */
     public function getEmail(): ?string
     {
@@ -149,9 +167,6 @@ class User implements UserInterface, EnableableUserInterface, SecurityUserInterf
         return $this;
     }
 
-    /**
-     * @ApiProperty(iri="http://schema.org/accessCode")
-     */
     public function getHashedPassword(): ?string
     {
         return null === $this->hashedPassword ? null : $this->hashedPassword->toString();
@@ -164,11 +179,23 @@ class User implements UserInterface, EnableableUserInterface, SecurityUserInterf
         return $this;
     }
 
+    /**
+     * User roles.
+     *
+     * @ApiProperty()
+     * @Groups({"user:details", "user:list"})
+     */
     public function getRoles(): ?array
     {
         return null === $this->roles ? null : $this->roles->toArray();
     }
 
+    /**
+     * Account status.
+     *
+     * @ApiProperty()
+     * @Groups({"user:details", "user:list"})
+     */
     public function isEnabled(): ?bool
     {
         return $this->enabled;
@@ -181,11 +208,23 @@ class User implements UserInterface, EnableableUserInterface, SecurityUserInterf
         return $this;
     }
 
+    /**
+     * User which registered this user.
+     *
+     * @ApiProperty()
+     * @Groups({"user:details"})
+     */
     public function getRegisteredById(): ?string
     {
         return null === $this->registeredById ? null : $this->registeredById->toString();
     }
 
+    /**
+     * Date when user was registered.
+     *
+     * @ApiProperty()
+     * @Groups({"user:details", "user:list"})
+     */
     public function getDateRegistered(): ?\DateTimeImmutable
     {
         if (null === $this->dateRegistered) {

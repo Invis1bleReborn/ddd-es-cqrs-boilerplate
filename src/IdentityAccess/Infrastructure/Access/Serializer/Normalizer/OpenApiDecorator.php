@@ -13,15 +13,14 @@ declare(strict_types=1);
 
 namespace IdentityAccess\Infrastructure\Access\Serializer\Normalizer;
 
-use ApiPlatform\Core\Documentation\Documentation;
 use IdentityAccess\Ui\Access\CreateToken\CreateTokenRequest;
 use IdentityAccess\Ui\Access\RefreshToken\RefreshTokenRequest;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 /**
- * Class SwaggerDecorator.
+ * Class OpenApiDecorator.
  */
-class SwaggerDecorator implements NormalizerInterface
+class OpenApiDecorator implements NormalizerInterface
 {
     private NormalizerInterface $decorated;
 
@@ -79,28 +78,11 @@ class SwaggerDecorator implements NormalizerInterface
                 $docs['paths'][$uri]['post']['responses'][$statusCode]['description'] = $response['description'];
             }
 
-            $schemaName = $data['resource'] . ':' . md5($inputClass);
-
-            $docs['components']['schemas'][$schemaName]['description'] =
-            $docs['components']['schemas'][$schemaName . ':jsonld']['description'] =
             $docs['paths'][$uri]['post']['requestBody']['description'] = $data['schema']['description'];
-
-            foreach ($docs['paths'][$uri]['post']['requestBody']['content'] as $type => $content) {
-                $docs['paths'][$uri]['post']['requestBody']['content'][$type]['schema']['$ref'] = strtr(
-                    $content['schema']['$ref'],
-                    [$schemaName => $data['schema']['name']]
-                );
-            }
-
-            $docs['components']['schemas'][$data['schema']['name']] = $docs['components']['schemas'][$schemaName];
-            $docs['components']['schemas'][$data['schema']['name'] . ':jsonld'] =
-                $docs['components']['schemas'][$schemaName . ':jsonld'];
 
             unset(
                 $docs['paths'][$uri]['post']['responses'][201]['links'],
-                $docs['paths'][$uri]['post']['responses'][404],
-                $docs['components']['schemas'][$schemaName],
-                $docs['components']['schemas'][$schemaName . ':jsonld']
+                $docs['paths'][$uri]['post']['responses'][404]
             );
         }
 
@@ -111,6 +93,6 @@ class SwaggerDecorator implements NormalizerInterface
 
     public function supportsNormalization($data, string $format = null): bool
     {
-        return $data instanceof Documentation;
+        return $this->decorated->supportsNormalization($data, $format);
     }
 }
