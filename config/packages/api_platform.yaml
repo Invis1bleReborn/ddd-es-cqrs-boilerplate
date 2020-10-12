@@ -22,9 +22,9 @@ api_platform:
         Doctrine\ORM\OptimisticLockException: 409
 
         # Custom mapping
-        Symfony\Component\Security\Core\Exception\AccountStatusException: 401
-        Symfony\Component\Security\Core\Exception\BadCredentialsException: 401
-        Symfony\Component\Security\Core\Exception\UsernameNotFoundException: 401
+        IdentityAccess\Infrastructure\Access\Security\AuthenticationException: 401
+        IdentityAccess\Infrastructure\Access\Security\BadCredentialsException: 401
+        IdentityAccess\Infrastructure\Access\Security\AccountDisabledException: 401
         IdentityAccess\Ui\Access\AccessDeniedException: 403
 
     show_webby: false
