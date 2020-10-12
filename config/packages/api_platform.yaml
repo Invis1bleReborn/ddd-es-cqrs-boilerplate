@@ -1,5 +1,6 @@
 api_platform:
     version: '0.1.0'
+
     patch_formats:
         json: ['application/merge-patch+json']
 
@@ -28,3 +29,6 @@ api_platform:
         IdentityAccess\Ui\Access\AccessDeniedException: 403
 
     show_webby: false
+
+    defaults:
+        stateless: true
