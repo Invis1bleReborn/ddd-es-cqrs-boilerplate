@@ -1,3 +1,6 @@
+imports:
+    - { resource: api_doc_patch.yaml }
+
 services:
     # default configuration for services in *this* file
     _defaults:
@@ -71,3 +74,4 @@ services:
     IdentityAccess\Infrastructure\Access\Serializer\Normalizer\OpenApiDecorator:
         arguments:
             $decorated: '@api_platform.openapi.normalizer'
+            $patchData: '%api_doc_patch_data%'

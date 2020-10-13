@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace IdentityAccess\Ui\Identity\RegisterUser;
 
+use ApiPlatform\Core\Annotation\ApiProperty;
 use Common\Shared\Infrastructure\Validator\Constraints\UniqueDto;
 use Common\Shared\Ui\RequestInterface;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -22,36 +23,57 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @UniqueDto(
  *     entityClass="IdentityAccess\Infrastructure\Identity\Query\User",
- *     fieldMapping={"email": "email.value"}
+ *     fieldMapping={"email": "email"}
  * )
  */
 final class RegisterUserRequest implements RequestInterface
 {
     /**
+     * User email.
+     *
      * @Assert\NotBlank
      * @Assert\Email
      */
     public ?string $email;
 
     /**
+     * User password.
+     *
      * @Assert\NotBlank
      * @Assert\Length(min=6)
      */
     public ?string $password;
 
     /**
+     * Password confirmation.
+     *
      * @Assert\IdenticalTo(propertyPath="password")
      */
     public ?string $passwordConfirmation;
 
     /**
+     * Account status.
+     *
      * @Assert\NotNull
      */
     public ?bool $enabled;
 
     /**
+     * User roles.
+     *
      * @Assert\Choice(callback={"IdentityAccess\Domain\Access\ValueObject\Role", "toArray"}, multiple=true)
      * @Assert\Unique
+     * @ApiProperty(
+     *     example={"ROLE_USER"},
+     *     default={},
+     *     openapiContext={
+     *         "type"="array",
+     *         "items"={
+     *             "type"="string",
+     *             "example"="ROLE_USER",
+     *         },
+     *     },
+     * )
      */
     public ?array $roles;
 

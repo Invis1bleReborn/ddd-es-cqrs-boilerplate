@@ -41,7 +41,7 @@ use Symfony\Component\Serializer\Annotation\Ignore;
  *         },
  *         "refresh"={
  *             "method"="POST",
- *             "path"="/api/refresh_tokens",
+ *             "path"="/refresh_tokens",
  *             "input"=RefreshTokenRequest::class,
  *             "openapi_context"={
  *                 "summary"="Refreshes JWT.",

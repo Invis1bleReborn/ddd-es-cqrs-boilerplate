@@ -50,6 +50,10 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *                 "groups"={"user:list"},
  *                 "swagger_definition_name"="list",
  *             },
+ *             "openapi_context"={
+ *                 "summary"="Retrieves Users.",
+ *                 "description"="Retrieves the collection of Users.",
+ *             },
  *         },
  *         "register"={
  *             "method"="POST",
@@ -70,30 +74,50 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *                 "groups"={"user:details"},
  *                 "swagger_definition_name"="details",
  *             },
+ *             "openapi_context"={
+ *                 "summary"="Retrieves User.",
+ *                 "description"="Retrieves a User.",
+ *             },
  *         },
  *         "changeStatus"={
  *             "method"="PUT",
- *             "path"="/api/users/{id}/status",
+ *             "path"="/users/{id}/status",
  *             "input"=ChangeUserStatusRequest::class,
  *             "output"=false,
+ *             "openapi_context"={
+ *                 "summary"="Updates User status.",
+ *                 "description"="Enables or disables User.",
+ *             },
  *         },
  *         "changeEmail"={
  *             "method"="PUT",
- *             "path"="/api/users/{id}/email",
+ *             "path"="/users/{id}/email",
  *             "input"=ChangeEmailRequest::class,
  *             "output"=false,
+ *             "openapi_context"={
+ *                 "summary"="Updates User email.",
+ *                 "description"="Updates User email address.",
+ *             },
  *         },
  *         "changePassword"={
  *             "method"="PUT",
- *             "path"="/api/users/{id}/password",
+ *             "path"="/users/{id}/password",
  *             "input"=ChangePasswordRequest::class,
  *             "output"=false,
+ *             "openapi_context"={
+ *                 "summary"="Updates User password.",
+ *                 "description"="Updates User password.",
+ *             },
  *         },
  *         "changeRoles"={
  *             "method"="PUT",
- *             "path"="/api/users/{id}/roles",
+ *             "path"="/users/{id}/roles",
  *             "input"=ChangeRolesRequest::class,
  *             "output"=false,
+ *             "openapi_context"={
+ *                 "summary"="Updates User roles.",
+ *                 "description"="Updates User roles.",
+ *             },
  *         },
  *     },
  * )
@@ -124,9 +148,9 @@ class User implements UserInterface, EnableableUserInterface, SecurityUserInterf
         ?DateTime $dateRegistered = null
     ) {
         $this->id = Uuid::fromString($id->toString());
-        $this->email = $email->toString();
-        $this->hashedPassword = $hashedPassword->toString();
-        $this->roles = $roles->toArray();
+        $this->email = null === $email ? null : $email->toString();
+        $this->hashedPassword = null === $hashedPassword ? null : $hashedPassword->toString();
+        $this->roles = null === $roles ? null : $roles->toArray();
         $this->enabled = $enabled;
         $this->registeredById = null === $registeredById ? null : Uuid::fromString($registeredById->toString());
         $this->dateRegistered = $dateRegistered;
