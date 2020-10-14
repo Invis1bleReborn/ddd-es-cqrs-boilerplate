@@ -44,7 +44,7 @@ class OpenApiDecorator implements NormalizerInterface
         $docs = $this->decorated->normalize($object, $format, $context);
 
         $docs = $this->addMissingUriPrefixes($docs);
-        $docs = $this->fixEmptyServerLists($docs);
+        $docs = $this->removeEmptyServerLists($docs);
         $docs = $this->fixInvalidSecurityConfiguration($docs);
         $docs = $this->removeTokenOperations($docs);
         $docs = $this->removeBadLinks($docs);
@@ -85,14 +85,22 @@ class OpenApiDecorator implements NormalizerInterface
         return $docs;
     }
 
-    protected function fixEmptyServerLists(array $docs): array
+    protected function removeEmptyServerLists(array $docs): array
     {
-        $this->walkOperations($docs, function (string $uri, string $method, array $paths) use (&$docs): void {
-            if (!isset($paths[$method]['servers']) || !empty($data[$method]['servers'])) {
-                return;
+        if (empty($docs['servers'])) {
+            unset($docs['servers']);
+        }
+
+        $this->walkPaths($docs, function (string $uri, array $path) use (&$docs): void {
+            if (empty($path['servers'])) {
+                unset($docs['paths'][$uri]['servers']);
             }
 
-            $docs['paths'][$uri][$method]['servers'] = [['url' => '/', 'description' => '']];
+            $this->walkMethods($path, function (string $method, array $operation) use (&$docs, $uri): void {
+                if (empty($operation['servers'])) {
+                    unset($docs['paths'][$uri][$method]['servers']);
+                }
+            });
         });
 
         return $docs;
@@ -120,24 +128,20 @@ class OpenApiDecorator implements NormalizerInterface
         $this->walkOperations($docs, function (
             string $uri,
             string $method,
-            array $paths
+            array $operation
         ) use (&$operationIndex): void {
-            $operationIndex[$paths[$method]['operationId']] = true;
+            $operationIndex[$operation['operationId']] = true;
         });
 
         $this->walkOperations($docs, function (
             string $uri,
             string $method,
-            array $paths
+            array $operation
         ) use (
             &$docs,
             $operationIndex
         ): void {
-            if (empty($paths[$method]['responses'])) {
-                return;
-            }
-
-            foreach ($paths[$method]['responses'] as $statusCode => $response) {
+            foreach ($operation['responses'] as $statusCode => $response) {
                 $links = [];
 
                 if (204 !== $statusCode && !empty($response['links'])) {
@@ -172,8 +176,8 @@ class OpenApiDecorator implements NormalizerInterface
 
     protected function removeInvalid404Responses(array $docs): array
     {
-        $this->walkOperations($docs, function (string $uri, string $method, array $paths) use (&$docs): void {
-            if (!isset($paths[$method]['responses'][404])) {
+        $this->walkOperations($docs, function (string $uri, string $method, array $operation) use (&$docs): void {
+            if (!isset($operation['responses'][404])) {
                 return;
             }
 
@@ -192,27 +196,27 @@ class OpenApiDecorator implements NormalizerInterface
         $this->walkOperations(['paths' => $this->patchData], function (
             string $uri,
             string $method,
-            array $paths
+            array $operation
         ) use (&$docs): void {
             $uri = $this->apiUriPrefix . $uri;
 
-            foreach ($paths[$method]['responses'] ?? [] as $statusCode => $response) {
+            foreach ($operation['responses'] ?? [] as $statusCode => $response) {
                 $docs['paths'][$uri][$method]['responses'][$statusCode]['description'] = $response['description'];
             }
 
-            foreach ($paths[$method]['parameters'] ?? [] as $i => $parameter) {
+            foreach ($operation['parameters'] ?? [] as $i => $parameter) {
                 $docs['paths'][$uri][$method]['parameters'][$i]['description'] = $parameter['description'];
             }
 
-            if (!isset($paths[$method]['schema'])) {
+            if (!isset($operation['schema'])) {
                 return;
             }
 
-            $docs['paths'][$uri][$method]['requestBody']['description'] = $paths[$method]['schema']['description'];
+            $docs['paths'][$uri][$method]['requestBody']['description'] = $operation['schema']['description'];
 
             foreach ($docs['paths'][$uri][$method]['requestBody']['content'] as $type => $content) {
                 preg_match('#^\#/components/schemas/(.+)$#', $content['schema']['$ref'], $matches);
-                $docs['components']['schemas'][$matches[1]]['description'] = $paths[$method]['schema']['description'];
+                $docs['components']['schemas'][$matches[1]]['description'] = $operation['schema']['description'];
             }
         });
 
@@ -238,16 +242,30 @@ class OpenApiDecorator implements NormalizerInterface
         return $docs;
     }
 
+    protected function walkPaths(array $docs, callable $function): void
+    {
+        foreach ($docs['paths'] as $uri => $path) {
+            $function($uri, $path);
+        }
+    }
+
+    protected function walkMethods(array $path, callable $function): void
+    {
+        foreach (static::METHODS as $method) {
+            if (!isset($path[$method])) {
+                continue;
+            }
+
+            $function($method, $path[$method]);
+        }
+    }
+
     protected function walkOperations(array $docs, callable $function): void
     {
-        foreach ($docs['paths'] as $uri => $paths) {
-            foreach (static::METHODS as $method) {
-                if (!isset($paths[$method])) {
-                    continue;
-                }
-
-                $function($uri, $method, $paths);
-            }
-        }
+        $this->walkPaths($docs, function (string $uri, array $path) use ($function): void {
+            $this->walkMethods($path, function (string $method, array $operation) use ($uri, $function): void {
+                $function($uri, $method, $operation);
+            });
+        });
     }
 }
