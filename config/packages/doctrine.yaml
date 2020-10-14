@@ -13,23 +13,15 @@ doctrine:
         types:
             uuid: Ramsey\Uuid\Doctrine\UuidType
             datetime_immutable: Common\Shared\Infrastructure\Doctrine\DateTimeType
-            roles: IdentityAccess\Infrastructure\Access\Doctrine\RolesType
 
     orm:
         auto_generate_proxy_classes: true
         naming_strategy: doctrine.orm.naming_strategy.underscore_number_aware
         auto_mapping: true
         mappings:
-            IdentityAccess\Query:
+            IdentityAccess:
                 is_bundle: false
                 type: xml
-                dir: '%kernel.project_dir%/src/IdentityAccess/Infrastructure/config/doctrine/Query'
+                dir: '%kernel.project_dir%/src/IdentityAccess/Infrastructure/config/doctrine'
                 prefix: IdentityAccess\Infrastructure
-                alias: IdentityAccess
-
-            IdentityAccess\Domain:
-                is_bundle: false
-                type: xml
-                dir: '%kernel.project_dir%/src/IdentityAccess/Infrastructure/config/doctrine/Domain'
-                prefix: IdentityAccess\Domain
                 alias: IdentityAccess

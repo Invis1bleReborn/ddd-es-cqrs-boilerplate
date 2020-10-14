@@ -14,17 +14,12 @@
 
         <id name="id" type="uuid" />
 
+        <field name="email" unique="true" />
+        <field name="hashedPassword" column="password" length="128" />
         <field name="enabled" type="boolean" />
-        <field name="roles" type="roles" />
+        <field name="roles" type="json_array" />
         <field name="registeredById" type="uuid" nullable="true" />
         <field name="dateRegistered" type="datetime_immutable" />
-
-        <embedded name="email"
-            class="IdentityAccess\Domain\Identity\ValueObject\Email"
-            use-column-prefix="false" />
-        <embedded name="hashedPassword"
-            class="IdentityAccess\Domain\Identity\ValueObject\HashedPassword"
-            use-column-prefix="false" />
 
     </entity>
 

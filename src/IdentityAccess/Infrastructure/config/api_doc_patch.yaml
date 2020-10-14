@@ -1,0 +1,105 @@
+parameters:
+    api_doc_patch_data:
+        /tokens:
+            post:
+                responses:
+                    201:
+                        description: 'Token created.'
+                    401:
+                        description: 'Bad credentials or Account disabled.'
+                schema:
+                    description: 'User account credentials.'
+        /refresh_tokens:
+            post:
+                responses:
+                    201:
+                        description: 'Token refreshed.'
+                    401:
+                        description: 'Refresh token does not exist.'
+                schema:
+                    description: 'Refresh token.'
+        /users:
+            get:
+                responses:
+                    401:
+                        description: 'Not authenticated.'
+            post:
+                responses:
+                    201:
+                        description: 'User registered.'
+                schema:
+                    description: 'The new User account data.'
+        '/users/{id}':
+            get:
+                responses:
+                    401:
+                        description: 'Not authenticated.'
+                    404:
+                        description: 'User not found.'
+                parameters:
+                    -
+                        description: 'User identifier.'
+        '/users/{id}/status':
+            put:
+                responses:
+                    204:
+                        description: 'User status updated.'
+                    401:
+                        description: 'Not authenticated.'
+                    403:
+                        description: 'Not authorized.'
+                    404:
+                        description: 'User not found.'
+                parameters:
+                    -
+                        description: 'User identifier.'
+                schema:
+                    description: 'The new User status.'
+        '/users/{id}/email':
+            put:
+                responses:
+                    204:
+                        description: 'User email updated.'
+                    401:
+                        description: 'Not authenticated.'
+                    403:
+                        description: 'Not authorized.'
+                    404:
+                        description: 'User not found.'
+                parameters:
+                    -
+                        description: 'User identifier.'
+                schema:
+                    description: 'The new User email.'
+        '/users/{id}/password':
+            put:
+                responses:
+                    204:
+                        description: 'User password updated.'
+                    401:
+                        description: 'Not authenticated.'
+                    403:
+                        description: 'Not authorized.'
+                    404:
+                        description: 'User not found.'
+                parameters:
+                    -
+                        description: 'User identifier.'
+                schema:
+                    description: 'The new User password.'
+        '/users/{id}/roles':
+            put:
+                responses:
+                    204:
+                        description: 'User roles updated.'
+                    401:
+                        description: 'Not authenticated.'
+                    403:
+                        description: 'Not authorized.'
+                    404:
+                        description: 'User not found.'
+                parameters:
+                    -
+                        description: 'User identifier.'
+                schema:
+                    description: 'The new User roles.'
