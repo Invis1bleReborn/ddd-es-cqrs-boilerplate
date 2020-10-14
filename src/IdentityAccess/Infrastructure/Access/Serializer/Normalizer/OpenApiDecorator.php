@@ -43,7 +43,7 @@ class OpenApiDecorator implements NormalizerInterface
     {
         $docs = $this->decorated->normalize($object, $format, $context);
 
-        $docs = $this->addMissedUriPrefixes($docs);
+        $docs = $this->addMissingUriPrefixes($docs);
         $docs = $this->fixEmptyServerLists($docs);
         $docs = $this->fixInvalidSecurityConfiguration($docs);
         $docs = $this->removeTokenOperations($docs);
@@ -61,7 +61,7 @@ class OpenApiDecorator implements NormalizerInterface
         return $this->decorated->supportsNormalization($data, $format);
     }
 
-    protected function addMissedUriPrefixes(array $docs): array
+    protected function addMissingUriPrefixes(array $docs): array
     {
         $fixedPaths = [];
 
