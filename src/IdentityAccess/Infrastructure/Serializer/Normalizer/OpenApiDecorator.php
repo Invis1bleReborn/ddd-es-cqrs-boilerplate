@@ -108,6 +108,10 @@ class OpenApiDecorator implements NormalizerInterface
 
     protected function fixInvalidSecurityConfiguration(array $docs): array
     {
+        if (!isset($docs['security'])) {
+            return $docs;
+        }
+
         $security = [];
 
         foreach ($docs['security'] as $k => $v) {
