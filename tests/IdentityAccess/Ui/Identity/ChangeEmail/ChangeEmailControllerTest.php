@@ -38,7 +38,7 @@ class ChangeEmailControllerTest extends UiTestCase
         ['userId' => $aliceUserId] = $this->registerUser(null, $aliceUsername, $aliceEmail);
         $this->authenticateClient($client, $aliceUsername, $aliceEmail);
 
-        $response = $this->updateResource($client, '/users/non-existing/email');
+        $response = $this->updateResource($client, "/users/{$this->getUUID4stub()}/email");
 
         $this->assertNotFound($response);
 
