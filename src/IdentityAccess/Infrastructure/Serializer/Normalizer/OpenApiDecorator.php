@@ -181,7 +181,7 @@ class OpenApiDecorator implements NormalizerInterface
     protected function removeInvalid404Responses(array $docs): array
     {
         $this->walkOperations($docs, function (string $uri, string $method, array $operation) use (&$docs): void {
-            if (!isset($operation['responses'][404]) || empty($operation['parameters'])) {
+            if (!isset($operation['responses'][404]) || !empty($operation['parameters'])) {
                 return;
             }
 
