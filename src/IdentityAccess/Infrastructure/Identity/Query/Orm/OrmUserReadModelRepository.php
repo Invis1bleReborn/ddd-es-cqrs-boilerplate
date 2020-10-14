@@ -62,7 +62,7 @@ class OrmUserReadModelRepository extends OrmRepository implements CheckUserByEma
 
         return $this->repository
             ->createQueryBuilder($alias)
-            ->where($alias . '.email.value = :email')
+            ->where($alias . '.email = :email')
             ->setParameter('email', $email->toString())
         ;
     }

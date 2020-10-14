@@ -22,6 +22,8 @@ use Symfony\Component\Validator\Constraints as Assert;
 final class RefreshTokenRequest implements RequestInterface
 {
     /**
+     * Refresh token.
+     *
      * @Assert\NotBlank
      */
     public ?string $refreshToken;
