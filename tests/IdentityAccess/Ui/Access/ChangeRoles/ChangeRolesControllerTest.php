@@ -38,7 +38,7 @@ class ChangeRolesControllerTest extends UiTestCase
         ['userId' => $aliceUserId] = $this->registerUser(null, $aliceUsername, $aliceRoles);
         $this->authenticateClient($client, $aliceUsername, $aliceRoles);
 
-        $response = $this->updateResource($client, '/users/non-existing/roles');
+        $response = $this->updateResource($client, "/users/{$this->getUUID4stub()}/roles");
 
         $this->assertNotFound($response);
 

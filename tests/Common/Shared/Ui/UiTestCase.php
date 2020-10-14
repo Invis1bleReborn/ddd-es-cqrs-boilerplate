@@ -210,6 +210,14 @@ abstract class UiTestCase extends ApiTestCase
         return '/api';
     }
 
+    /**
+     * @return string UUID v4 stub
+     */
+    protected function getUUID4stub(): string
+    {
+        return '00000000-0000-4000-a000-000000000000';
+    }
+
     protected function setUpStorage(): void
     {
         foreach ($this->storageSetUpCommandProvider() as $command) {

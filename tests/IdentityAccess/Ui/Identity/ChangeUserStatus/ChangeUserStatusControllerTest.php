@@ -38,7 +38,7 @@ class ChangeUserStatusControllerTest extends UiTestCase
         ['userId' => $aliceUserId] = $this->registerUser(null, $aliceUsername, $alicePassword);
         $this->authenticateClient($client, $aliceUsername, $alicePassword);
 
-        $response = $this->updateResource($client, '/users/non-existing/status');
+        $response = $this->updateResource($client, "/users/{$this->getUUID4stub()}/status");
 
         $this->assertNotFound($response);
 
