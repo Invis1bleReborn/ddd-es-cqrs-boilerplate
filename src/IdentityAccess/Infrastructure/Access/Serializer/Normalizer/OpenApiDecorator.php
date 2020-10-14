@@ -45,6 +45,7 @@ class OpenApiDecorator implements NormalizerInterface
 
         $docs = $this->addMissedUriPrefixes($docs);
         $docs = $this->fixEmptyServerLists($docs);
+        $docs = $this->fixInvalidSecurityConfiguration($docs);
         $docs = $this->removeTokenOperations($docs);
         $docs = $this->removeBadLinks($docs);
         $docs = $this->removeInvalidResponseContent($docs);
@@ -92,6 +93,29 @@ class OpenApiDecorator implements NormalizerInterface
             }
 
             $docs['paths'][$uri][$method]['servers'] = [['url' => '/', 'description' => '']];
+        });
+
+        return $docs;
+    }
+
+    protected function fixInvalidSecurityConfiguration(array $docs): array
+    {
+        $security = [];
+
+        foreach ($docs['security'] as $k => $v) {
+            $security[] = [
+                $k => $v,
+            ];
+        }
+
+        $docs['security'] = $security;
+
+        $this->walkOperations($docs, function (string $uri, string $method, array $paths) use (&$docs): void {
+            if (!empty($paths[$method]['security'])) {
+                return;
+            }
+
+            unset($docs['paths'][$uri][$method]['security']);
         });
 
         return $docs;
