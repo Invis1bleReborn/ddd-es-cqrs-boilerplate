@@ -71,7 +71,7 @@ services:
     IdentityAccess\Application\Query\Access\AccessTokenGeneratorInterface: '@IdentityAccess\Infrastructure\Access\Query\AccessTokenGenerator'
     IdentityAccess\Application\Query\Access\RefreshTokenProviderInterface: '@IdentityAccess\Infrastructure\Access\Query\RefreshTokenProvider'
 
-    IdentityAccess\Infrastructure\Access\Serializer\Normalizer\OpenApiDecorator:
+    IdentityAccess\Infrastructure\Serializer\Normalizer\OpenApiDecorator:
         arguments:
             $decorated: '@api_platform.openapi.normalizer'
             $patchData: '%api_doc_patch_data%'

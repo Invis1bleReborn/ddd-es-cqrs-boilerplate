@@ -11,7 +11,7 @@
 
 declare(strict_types=1);
 
-namespace IdentityAccess\Infrastructure\Access\Serializer\Normalizer;
+namespace IdentityAccess\Infrastructure\Serializer\Normalizer;
 
 use IdentityAccess\Domain\Access\ValueObject\Role;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
