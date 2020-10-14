@@ -110,14 +110,6 @@ class OpenApiDecorator implements NormalizerInterface
 
         $docs['security'] = $security;
 
-        $this->walkOperations($docs, function (string $uri, string $method, array $paths) use (&$docs): void {
-            if (!empty($paths[$method]['security'])) {
-                return;
-            }
-
-            unset($docs['paths'][$uri][$method]['security']);
-        });
-
         return $docs;
     }
 

@@ -53,6 +53,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *             "openapi_context"={
  *                 "summary"="Retrieves Users.",
  *                 "description"="Retrieves the collection of Users.",
+ *                 "security"={{"apiKey"={}}},
  *             },
  *         },
  *         "register"={
@@ -65,6 +66,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *             "openapi_context"={
  *                 "summary"="Registers User.",
  *                 "description"="Registers new User.",
+ *                 "security"={{"apiKey"={}}},
  *             },
  *         },
  *     },
@@ -77,6 +79,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *             "openapi_context"={
  *                 "summary"="Retrieves User.",
  *                 "description"="Retrieves a User.",
+ *                 "security"={{"apiKey"={}}},
  *             },
  *         },
  *         "changeStatus"={
@@ -87,6 +90,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *             "openapi_context"={
  *                 "summary"="Updates User status.",
  *                 "description"="Enables or disables User.",
+ *                 "security"={{"apiKey"={}}},
  *             },
  *         },
  *         "changeEmail"={
@@ -97,6 +101,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *             "openapi_context"={
  *                 "summary"="Updates User email.",
  *                 "description"="Updates User email address.",
+ *                 "security"={{"apiKey"={}}},
  *             },
  *         },
  *         "changePassword"={
@@ -107,6 +112,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *             "openapi_context"={
  *                 "summary"="Updates User password.",
  *                 "description"="Updates User password.",
+ *                 "security"={{"apiKey"={}}},
  *             },
  *         },
  *         "changeRoles"={
@@ -117,6 +123,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *             "openapi_context"={
  *                 "summary"="Updates User roles.",
  *                 "description"="Updates User roles.",
+ *                 "security"={{"apiKey"={}}},
  *             },
  *         },
  *     },
