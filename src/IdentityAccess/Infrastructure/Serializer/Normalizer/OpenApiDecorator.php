@@ -227,15 +227,13 @@ class OpenApiDecorator implements NormalizerInterface
     {
         $roles = Role::toArray();
 
-        foreach (['User.RegisterUserRequest', 'User.ChangeRolesRequest'] as $schemaName) {
-            foreach (['', '.jsonld'] as $formatSuffix) {
-                $schemaKey = $schemaName . $formatSuffix;
-
-                if (!isset($docs['components']['schemas'][$schemaKey])) {
+        foreach ($docs['components']['schemas'] as $schemaName => $schema) {
+            foreach ($schema['properties'] ?? [] as $propertyName => $property) {
+                if ('array' !== $property['type'] || 'User roles.' !== $property['description']) {
                     continue;
                 }
 
-                $docs['components']['schemas'][$schemaKey]['properties']['roles']['items']['enum'] = $roles;
+                $docs['components']['schemas'][$schemaName]['properties'][$propertyName]['items']['enum'] = $roles;
             }
         }
 
