@@ -11,7 +11,7 @@
 
 declare(strict_types=1);
 
-namespace IdentityAccess\Infrastructure\Access\Serializer\Normalizer;
+namespace IdentityAccess\Infrastructure\Serializer\Normalizer;
 
 use IdentityAccess\Domain\Access\ValueObject\Role;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
@@ -108,6 +108,10 @@ class OpenApiDecorator implements NormalizerInterface
 
     protected function fixInvalidSecurityConfiguration(array $docs): array
     {
+        if (!isset($docs['security'])) {
+            return $docs;
+        }
+
         $security = [];
 
         foreach ($docs['security'] as $k => $v) {
@@ -177,11 +181,7 @@ class OpenApiDecorator implements NormalizerInterface
     protected function removeInvalid404Responses(array $docs): array
     {
         $this->walkOperations($docs, function (string $uri, string $method, array $operation) use (&$docs): void {
-            if (!isset($operation['responses'][404])) {
-                return;
-            }
-
-            if (preg_match('#{.+}#', $uri)) {
+            if (!isset($operation['responses'][404]) || !empty($operation['parameters'])) {
                 return;
             }
 
@@ -227,15 +227,13 @@ class OpenApiDecorator implements NormalizerInterface
     {
         $roles = Role::toArray();
 
-        foreach (['User.RegisterUserRequest', 'User.ChangeRolesRequest'] as $schemaName) {
-            foreach (['', '.jsonld'] as $formatSuffix) {
-                $schemaKey = $schemaName . $formatSuffix;
-
-                if (!isset($docs['components']['schemas'][$schemaKey])) {
+        foreach ($docs['components']['schemas'] as $schemaName => $schema) {
+            foreach ($schema['properties'] ?? [] as $propertyName => $property) {
+                if ('array' !== $property['type'] || 'User roles.' !== $property['description']) {
                     continue;
                 }
 
-                $docs['components']['schemas'][$schemaKey]['properties']['roles']['items']['enum'] = $roles;
+                $docs['components']['schemas'][$schemaName]['properties'][$propertyName]['items']['enum'] = $roles;
             }
         }
 
