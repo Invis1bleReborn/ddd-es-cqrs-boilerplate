@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6f2eeb194e1cbae7cd12ee8810bae0f4",
+    "content-hash": "83d8160e81ed926a2073e5804f225df5",
     "packages": [
         {
             "name": "api-platform/api-pack",
@@ -45,12 +45,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/api-platform/core.git",
-                "reference": "42c717b371a366b032fd2cf51e15b5b280c84658"
+                "reference": "68163f32c3f30a1fefd20053e90f35d4e38c015f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/api-platform/core/zipball/42c717b371a366b032fd2cf51e15b5b280c84658",
-                "reference": "42c717b371a366b032fd2cf51e15b5b280c84658",
+                "url": "https://api.github.com/repos/api-platform/core/zipball/68163f32c3f30a1fefd20053e90f35d4e38c015f",
+                "reference": "68163f32c3f30a1fefd20053e90f35d4e38c015f",
                 "shasum": ""
             },
             "require": {
@@ -194,7 +194,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-10-14T13:15:58+00:00"
+            "time": "2020-10-15T17:05:09+00:00"
         },
         {
             "name": "beberlei/assert",

@@ -63,7 +63,6 @@ class OpenApiDecoratorTest extends TestCase
                                 'description' => 'Not found.',
                             ],
                         ],
-                        'servers' => [],
                     ],
                     'put' => [
                         'operationId' => 'anotherOperationId',
@@ -80,7 +79,6 @@ class OpenApiDecoratorTest extends TestCase
                             ],
                         ],
                     ],
-                    'servers' => [],
                 ],
                 '/path/{id}' => [
                     'put' => [
@@ -125,7 +123,6 @@ class OpenApiDecoratorTest extends TestCase
                     ],
                 ],
             ],
-            'servers' => [],
             'security' => [
                 'apiKey' => [],
             ],
