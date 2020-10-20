@@ -42,6 +42,10 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *
  * @ApiResource(
  *     iri="http://schema.org/Person",
+ *     order={
+ *         "email"="ASC",
+ *         "dateRegistered"="DESC",
+ *     },
  *     mercure=true,
  *     messenger="input",
  *     collectionOperations={
