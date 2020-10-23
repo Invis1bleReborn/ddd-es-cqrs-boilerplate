@@ -187,7 +187,7 @@ abstract class UiTestCase extends ApiTestCase
         string $method,
         string $uri,
         array $options = [],
-        array $content = [],
+        ?array $content = [],
         bool $useApiUriPrefix = true
     ): Response {
         if (null !== $content) {
