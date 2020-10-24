@@ -5,7 +5,7 @@ DDD ES CQRS Boilerplate
 [![Test Coverage](https://api.codeclimate.com/v1/badges/85236f7a90b2ebf7ef50/test_coverage)](https://codeclimate.com/github/Invis1bleReborn/ddd-es-cqrs-boilerplate/test_coverage)
 [![Maintainability](https://api.codeclimate.com/v1/badges/85236f7a90b2ebf7ef50/maintainability)](https://codeclimate.com/github/Invis1bleReborn/ddd-es-cqrs-boilerplate/maintainability)
 
-[![API docs](https://image.thum.io/get/maxAge/12/width/700/https://ddd-es-cqrs-boilerplate.herokuapp.com/api/docs)](https://ddd-es-cqrs-boilerplate.herokuapp.com/api/docs)
+[![API docs](https://image.thum.io/get/maxAge/12/width/700/https://ddd-es-cqrs-boilerplate.herokuapp.com/api/docs)](https://bit.ly/2HxD1vy)
 
 Installation
 ------------
