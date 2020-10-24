@@ -207,7 +207,10 @@ class OpenApiDecorator implements NormalizerInterface
 
         foreach ($docs['components']['schemas'] as $schemaName => $schema) {
             foreach ($schema['properties'] ?? [] as $propertyName => $property) {
-                if ('array' !== $property['type'] || 'User roles.' !== $property['description']) {
+                if ('array' !== $property['type'] ||
+                    !isset($property['description']) ||
+                    'User roles.' !== $property['description']
+                ) {
                     continue;
                 }
 
