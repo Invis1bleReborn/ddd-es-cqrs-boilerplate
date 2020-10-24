@@ -13,8 +13,14 @@ declare(strict_types=1);
 
 namespace IdentityAccess\Infrastructure\Identity\Query;
 
+use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiProperty;
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\BooleanFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
+use ApiPlatform\Core\Serializer\Filter\PropertyFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use Assert\AssertionFailedException;
 use Broadway\ReadModel\SerializableReadModel;
 use Common\Shared\Domain\Exception\DateTimeException;
@@ -42,6 +48,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *
  * @ApiResource(
  *     iri="http://schema.org/Person",
+ *     order={},
  *     mercure=true,
  *     messenger="input",
  *     collectionOperations={
@@ -53,7 +60,6 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *             "openapi_context"={
  *                 "summary"="Retrieves Users.",
  *                 "description"="Retrieves the collection of Users.",
- *                 "security"={{"apiKey"={}}},
  *             },
  *         },
  *         "register"={
@@ -66,7 +72,6 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *             "openapi_context"={
  *                 "summary"="Registers User.",
  *                 "description"="Registers new User.",
- *                 "security"={{"apiKey"={}}},
  *             },
  *         },
  *     },
@@ -79,7 +84,6 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *             "openapi_context"={
  *                 "summary"="Retrieves User.",
  *                 "description"="Retrieves a User.",
- *                 "security"={{"apiKey"={}}},
  *             },
  *         },
  *         "changeStatus"={
@@ -90,7 +94,6 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *             "openapi_context"={
  *                 "summary"="Updates User status.",
  *                 "description"="Enables or disables User.",
- *                 "security"={{"apiKey"={}}},
  *             },
  *         },
  *         "changeEmail"={
@@ -101,7 +104,6 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *             "openapi_context"={
  *                 "summary"="Updates User email.",
  *                 "description"="Updates User email address.",
- *                 "security"={{"apiKey"={}}},
  *             },
  *         },
  *         "changePassword"={
@@ -112,7 +114,6 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *             "openapi_context"={
  *                 "summary"="Updates User password.",
  *                 "description"="Updates User password.",
- *                 "security"={{"apiKey"={}}},
  *             },
  *         },
  *         "changeRoles"={
@@ -123,8 +124,27 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *             "openapi_context"={
  *                 "summary"="Updates User roles.",
  *                 "description"="Updates User roles.",
- *                 "security"={{"apiKey"={}}},
  *             },
+ *         },
+ *     },
+ * )
+ * @ApiFilter(
+ *     OrderFilter::class,
+ *     properties={"email", "enabled", "dateRegistered"},
+ *     arguments={"orderParameterName"="_order"},
+ * )
+ * @ApiFilter(
+ *     PropertyFilter::class,
+ *     arguments={
+ *         "parameterName"="_properties",
+ *         "overrideDefaultProperties"=false,
+ *         "whitelist"={
+ *             "id",
+ *             "email",
+ *             "roles",
+ *             "enabled",
+ *             "registeredById",
+ *             "dateRegistered",
  *         },
  *     },
  * )
@@ -133,16 +153,25 @@ class User implements UserInterface, EnableableUserInterface, SecurityUserInterf
 {
     private UuidInterface $id;
 
+    /**
+     * @ApiFilter(SearchFilter::class, strategy="partial")
+     */
     private ?string $email;
 
     private ?string $hashedPassword;
 
     private ?array $roles;
 
+    /**
+     * @ApiFilter(BooleanFilter::class)
+     */
     private ?bool $enabled;
 
     private ?UuidInterface $registeredById;
 
+    /**
+     * @ApiFilter(DateFilter::class)
+     */
     private ?DateTime $dateRegistered;
 
     public function __construct(

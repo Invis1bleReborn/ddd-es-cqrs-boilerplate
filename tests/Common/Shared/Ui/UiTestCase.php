@@ -28,6 +28,14 @@ abstract class UiTestCase extends ApiTestCase
 {
     public const DEFAULT_EXPECTED_RESPONSE_CONTENT_TYPE = 'application/ld+json; charset=utf-8';
 
+    public static function assertOk(
+        Response $response,
+        string $contentType = self::DEFAULT_EXPECTED_RESPONSE_CONTENT_TYPE
+    ): void {
+        static::assertResponseStatusCodeSame(200);
+        static::assertJsonResponse($response, $contentType);
+    }
+
     public static function assertCreated(string $contentType = self::DEFAULT_EXPECTED_RESPONSE_CONTENT_TYPE): void
     {
         static::assertResponseStatusCodeSame(201);
@@ -187,7 +195,7 @@ abstract class UiTestCase extends ApiTestCase
         string $method,
         string $uri,
         array $options = [],
-        array $content = [],
+        ?array $content = [],
         bool $useApiUriPrefix = true
     ): Response {
         if (null !== $content) {

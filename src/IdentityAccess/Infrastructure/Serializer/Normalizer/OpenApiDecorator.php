@@ -44,7 +44,6 @@ class OpenApiDecorator implements NormalizerInterface
         $docs = $this->decorated->normalize($object, $format, $context);
 
         $docs = $this->addMissingUriPrefixes($docs);
-        $docs = $this->removeEmptyServerLists($docs);
         $docs = $this->fixInvalidSecurityConfiguration($docs);
         $docs = $this->removeTokenOperations($docs);
         $docs = $this->removeBadLinks($docs);
@@ -81,27 +80,6 @@ class OpenApiDecorator implements NormalizerInterface
     protected function removeTokenOperations(array $docs): array
     {
         unset($docs['paths'][$this->apiUriPrefix . '/tokens/{id}']);
-
-        return $docs;
-    }
-
-    protected function removeEmptyServerLists(array $docs): array
-    {
-        if (empty($docs['servers'])) {
-            unset($docs['servers']);
-        }
-
-        $this->walkPaths($docs, function (string $uri, array $path) use (&$docs): void {
-            if (empty($path['servers'])) {
-                unset($docs['paths'][$uri]['servers']);
-            }
-
-            $this->walkMethods($path, function (string $method, array $operation) use (&$docs, $uri): void {
-                if (empty($operation['servers'])) {
-                    unset($docs['paths'][$uri][$method]['servers']);
-                }
-            });
-        });
 
         return $docs;
     }

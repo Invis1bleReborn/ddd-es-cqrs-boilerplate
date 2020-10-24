@@ -37,6 +37,7 @@ use Symfony\Component\Serializer\Annotation\Ignore;
  *             "openapi_context"={
  *                 "summary"="Creates JWT.",
  *                 "description"="Creates and returns new JSON Web Token.",
+ *                 "security"={},
  *             },
  *         },
  *         "refresh"={
@@ -46,6 +47,7 @@ use Symfony\Component\Serializer\Annotation\Ignore;
  *             "openapi_context"={
  *                 "summary"="Refreshes JWT.",
  *                 "description"="Refreshes and returns refreshed JSON Web Token.",
+ *                 "security"={},
  *             },
  *         },
  *     },
