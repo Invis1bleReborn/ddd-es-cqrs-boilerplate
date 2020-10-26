@@ -42,18 +42,16 @@ class GetUserControllerTest extends UiTestCase
 
         $this->assertOk($response);
         $this->assertMatchesJsonSchema([
+            'type' => 'object',
             'properties' => [
-                'id' => ['type' => 'string'],
-                'email' => ['type' => 'string'],
+                'id' => ['enum' => [$rootUserId]],
+                'email' => ['enum' => [$rootUsername]],
                 'roles' => [
                     'type' => 'array',
-                    'items' => [
-                        'type' => 'string',
-                        'pattern' => '^ROLE_[A-Z_]+$',
-                    ],
+                    'enum' => [['ROLE_SUPER_ADMIN']],
                 ],
-                'enabled' => ['type' => 'boolean'],
-                'registeredById' => ['type' => ['string', 'null']],
+                'enabled' => ['enum' => [true]],
+                'registeredById' => ['enum' => [null]],
                 'dateRegistered' => ['type' => 'string'],
             ],
             'additionalProperties' => true,
