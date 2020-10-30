@@ -62,8 +62,14 @@ use Symfony\Component\Serializer\Annotation\Ignore;
  */
 class Token implements TokenInterface
 {
+    /**
+     * Access token.
+     */
     private string $accessToken;
 
+    /**
+     * Refresh token.
+     */
     private string $refreshToken;
 
     private DateTime $refreshTokenDateExpired;
@@ -79,8 +85,6 @@ class Token implements TokenInterface
     }
 
     /**
-     * Access token.
-     *
      * @ApiProperty(iri="http://schema.org/accessCode")
      */
     public function getAccessToken(): string
@@ -89,8 +93,6 @@ class Token implements TokenInterface
     }
 
     /**
-     * Refresh token.
-     *
      * @ApiProperty(iri="http://schema.org/accessCode")
      */
     public function getRefreshToken(): string

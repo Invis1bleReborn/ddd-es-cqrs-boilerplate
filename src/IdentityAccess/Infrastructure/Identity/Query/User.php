@@ -151,25 +151,42 @@ use Symfony\Component\Serializer\Annotation\Groups;
  */
 class User implements UserInterface, EnableableUserInterface, SecurityUserInterface, SerializableReadModel
 {
+    /**
+     * User ID.
+     */
     private UuidInterface $id;
 
     /**
+     * User email.
+     *
      * @ApiFilter(SearchFilter::class, strategy="partial")
      */
     private ?string $email;
 
     private ?string $hashedPassword;
 
+    /**
+     * User roles.
+     *
+     * @var string[]|null
+     */
     private ?array $roles;
 
     /**
+     * Account status.
+     *
      * @ApiFilter(BooleanFilter::class)
      */
     private ?bool $enabled;
 
+    /**
+     * User which registered this user.
+     */
     private ?UuidInterface $registeredById;
 
     /**
+     * Date when user was registered.
+     *
      * @ApiFilter(DateFilter::class)
      */
     private ?DateTime $dateRegistered;
@@ -193,8 +210,6 @@ class User implements UserInterface, EnableableUserInterface, SecurityUserInterf
     }
 
     /**
-     * User ID.
-     *
      * @Groups({"user:id", "user:details", "user:list"})
      */
     public function getId(): string
@@ -210,8 +225,6 @@ class User implements UserInterface, EnableableUserInterface, SecurityUserInterf
     }
 
     /**
-     * User email.
-     *
      * @ApiProperty(iri="http://schema.org/email")
      * @Groups({"user:details", "user:list"})
      */
@@ -243,10 +256,9 @@ class User implements UserInterface, EnableableUserInterface, SecurityUserInterf
     }
 
     /**
-     * User roles.
-     *
      * @ApiProperty()
      * @Groups({"user:details", "user:list"})
+     * @return string[]
      */
     public function getRoles(): ?array
     {
@@ -254,8 +266,6 @@ class User implements UserInterface, EnableableUserInterface, SecurityUserInterf
     }
 
     /**
-     * Account status.
-     *
      * @ApiProperty()
      * @Groups({"user:details", "user:list"})
      */
@@ -272,8 +282,6 @@ class User implements UserInterface, EnableableUserInterface, SecurityUserInterf
     }
 
     /**
-     * User which registered this user.
-     *
      * @ApiProperty()
      * @Groups({"user:details"})
      */
@@ -283,8 +291,6 @@ class User implements UserInterface, EnableableUserInterface, SecurityUserInterf
     }
 
     /**
-     * Date when user was registered.
-     *
      * @ApiProperty()
      * @Groups({"user:details", "user:list"})
      */

@@ -152,6 +152,68 @@ abstract class UiTestCase extends ApiTestCase
         static::assertResponseHasHeader('Location', $message ?? 'Response does not contain Location header.');
     }
 
+    public static function assertListItemMatchesJsonSchema(
+        array $jsonSchema,
+        string $uri = null,
+        array $searchVariables = null,
+        string $message = ''
+    ) {
+        $listSchema = [
+            'type' => 'object',
+            'properties' => [
+                'hydra:member' => [
+                    'type' => 'array',
+                    'items' => $jsonSchema,
+                ],
+                'hydra:totalItems' => [
+                    'type' => 'number',
+                    'minimum' => 0,
+                ],
+            ],
+            'required' => ['hydra:member', 'hydra:totalItems'],
+        ];
+
+        if (!empty($searchVariables)) {
+            $listSchema['hydra:search'] = [
+                'type' => 'object',
+                'properties' => [
+                    '@type' => [
+                        'enum' => ['hydra:IriTemplate'],
+                    ],
+                    'hydra:template' => [
+                        'enum' => [sprintf(
+                            '%s%s{?%s}',
+                            static::getApiUriPrefix(),
+                            $uri,
+                            implode(',', array_keys($searchVariables))
+                        )],
+                    ],
+                    'hydra:variableRepresentation' => [
+                        'enum' => ['BasicRepresentation'],
+                    ],
+                ],
+                'required' => ['@type', 'hydra:template', 'hydra:variableRepresentation', 'hydra:mapping'],
+            ];
+
+            foreach ($searchVariables as $variable => $property) {
+                $listSchema['hydra:search']['properties']['hydra:mapping']['items'][] = [
+                    'enum' => [
+                        [
+                            '@type' => 'IriTemplateMapping',
+                            'variable' => $variable,
+                            'property' => $property,
+                            'required' => false,
+                        ],
+                    ],
+                ];
+            }
+
+            $listSchema['required'][] = 'hydra:search';
+        }
+
+        static::assertMatchesJsonSchema($listSchema, null, $message);
+    }
+
     protected function getResource(
         Client $client,
         string $uri,
