@@ -140,7 +140,7 @@ DESCRIPTION
         );
 
         try {
-            $this->wrap(function () use ($request) {
+            $this->tryOrWarn(function () use ($request) {
                 $this->validator->validate($request);
             });
         } catch (ValidationException $exception) {
@@ -157,7 +157,7 @@ DESCRIPTION
 
         if (null !== $registeredBy) {
             try {
-                $registeredBy = $this->wrap(
+                $registeredBy = $this->tryOrWarn(
                     fn (): UserInterface => $this->userProvider->loadUserByUsername($registeredBy)
                 );
             } catch (UsernameNotFoundException $exception) {
@@ -179,7 +179,7 @@ DESCRIPTION
         );
 
         try {
-            $this->wrap(function () use ($command) {
+            $this->tryOrWarn(function () use ($command) {
                 $this->commandBus->handle($command);
             });
         } catch (\Throwable $exception) {
@@ -201,7 +201,7 @@ DESCRIPTION
         return 0;
     }
 
-    protected function wrap(callable $codeBlock)
+    protected function tryOrWarn(callable $codeBlock)
     {
         try {
             return $codeBlock();
