@@ -12,20 +12,30 @@ services:
         arguments:
             - '@messenger.bus.command'
 
-#    Common\Shared\Infrastructure\Bus\QueryBus:
-#        arguments:
-#            - '@messenger.bus.query'
+    Common\Shared\Infrastructure\Bus\QueryBus:
+        arguments:
+            - '@messenger.bus.query'
 
     Common\Shared\Infrastructure\Bus\EventBus:
         arguments:
             - '@messenger.bus.event.async'
 
-    Common\Shared\Application\Bus\Command\CommandBusInterface: '@Common\Shared\Infrastructure\Bus\CommandBus'
-    Common\Shared\Application\Bus\Event\EventBusInterface: '@Common\Shared\Infrastructure\Bus\EventBus'
+    Common\Shared\Application\Command\CommandBusInterface: '@Common\Shared\Infrastructure\Bus\CommandBus'
+    Common\Shared\Application\Query\QueryBusInterface: '@Common\Shared\Infrastructure\Bus\QueryBus'
+    Common\Shared\Application\Event\EventBusInterface: '@Common\Shared\Infrastructure\Bus\EventBus'
 
     Doctrine\Migrations\Version\DbalMigrationFactory: ~
     Common\Shared\Infrastructure\Migrations\MigrationFactory:
         decorates: Doctrine\Migrations\Version\DbalMigrationFactory
+
+    Common\Shared\Infrastructure\DependencyInjection\Filter\Handler\Doctrine\Orm\:
+        resource: '../DependencyInjection/Filter/Handler/Doctrine/Orm/**FilterHandler.php'
+        tags: [ app.query.filter_handler ]
+
+    Common\Shared\Infrastructure\Query\Metadata\PhpModelFilterMetadataFactory:
+        decorates: api_platform.metadata.resource.metadata_factory
+        arguments:
+            $filterDescriptors: '%app.query.filter_descriptors%'
 
     Common\Shared\Infrastructure\Query\Normalizer\DateTimeNormalizer:
         arguments: [ '@serializer.normalizer.datetime' ]

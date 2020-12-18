@@ -10,6 +10,9 @@ parameters:
 
         env(ELASTIC_HOST): 'elasticsearch:9200'
 
+    app.query.filter_directories:
+        - src/IdentityAccess/Application/Query/Identity/ListUsers/Filter
+
 services:
     # default configuration for services in *this* file
     _defaults:

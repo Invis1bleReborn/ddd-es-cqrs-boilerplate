@@ -11,15 +11,11 @@
 
 declare(strict_types=1);
 
-namespace Common\Shared\Application\Bus\Event;
+namespace Common\Shared\Application\Query;
 
 /**
- * Interface EventBusInterface.
+ * Interface QueryHandlerInterface.
  */
-interface EventBusInterface
+interface QueryHandlerInterface
 {
-    /**
-     * @throws \Throwable
-     */
-    public function handle(EventInterface $event): void;
 }

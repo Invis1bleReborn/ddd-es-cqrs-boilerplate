@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace IdentityAccess\Infrastructure\Access\Query;
 
-use Common\Shared\Application\Bus\Event\EventHandlerInterface;
+use Common\Shared\Application\Event\EventHandlerInterface;
 use Gesdinet\JWTRefreshTokenBundle\Model\RefreshTokenManagerInterface;
 use IdentityAccess\Application\Event\Access\TokenRefreshed;
 

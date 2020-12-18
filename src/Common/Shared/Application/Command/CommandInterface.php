@@ -11,11 +11,11 @@
 
 declare(strict_types=1);
 
-namespace Common\Shared\Application\Bus\Event;
+namespace Common\Shared\Application\Command;
 
 /**
- * Interface EventHandlerInterface.
+ * Interface CommandInterface.
  */
-interface EventHandlerInterface
+interface CommandInterface
 {
 }

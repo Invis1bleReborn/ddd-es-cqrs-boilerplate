@@ -13,9 +13,9 @@ declare(strict_types=1);
 
 namespace Common\Shared\CommandHandling;
 
-use Common\Shared\Application\Bus\Command\CommandHandlerInterface;
-use Common\Shared\Application\Bus\Command\CommandInterface;
-use Common\Shared\Application\Bus\Event\EventInterface;
+use Common\Shared\Application\Command\CommandHandlerInterface;
+use Common\Shared\Application\Command\CommandInterface;
+use Common\Shared\Application\Event\EventInterface;
 use Common\Shared\Infrastructure\Bus\TraceableEventBus;
 use PHPUnit\Framework\TestCase;
 

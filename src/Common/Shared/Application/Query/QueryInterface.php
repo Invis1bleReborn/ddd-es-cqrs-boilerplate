@@ -11,15 +11,11 @@
 
 declare(strict_types=1);
 
-namespace Common\Shared\Application\Bus\Command;
+namespace Common\Shared\Application\Query;
 
 /**
- * Class CommandBus.
+ * Interface QueryInterface.
  */
-interface CommandBusInterface
+interface QueryInterface
 {
-    /**
-     * @throws \Throwable
-     */
-    public function handle(CommandInterface $command): void;
 }

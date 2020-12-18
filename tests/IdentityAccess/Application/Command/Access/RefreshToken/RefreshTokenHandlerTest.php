@@ -14,8 +14,8 @@ declare(strict_types=1);
 namespace IdentityAccess\Application\Command\Access\RefreshToken;
 
 use Broadway\UuidGenerator\Rfc4122\Version4Generator;
-use Common\Shared\Application\Bus\Command\CommandHandlerInterface;
-use Common\Shared\Application\Bus\Event\EventBusInterface;
+use Common\Shared\Application\Command\CommandHandlerInterface;
+use Common\Shared\Application\Event\EventBusInterface;
 use Common\Shared\CommandHandling\EventPublishingCommandHandlerScenarioTestCase;
 use Common\Shared\Domain\ValueObject\DateTime;
 use Common\Shared\Domain\ValueObject\UuidGeneratorInterface;

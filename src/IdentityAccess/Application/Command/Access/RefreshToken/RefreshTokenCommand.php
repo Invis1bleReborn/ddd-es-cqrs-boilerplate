@@ -14,7 +14,7 @@ declare(strict_types=1);
 namespace IdentityAccess\Application\Command\Access\RefreshToken;
 
 use Assert\AssertionFailedException;
-use Common\Shared\Application\Bus\Command\CommandInterface;
+use Common\Shared\Application\Command\CommandInterface;
 use IdentityAccess\Application\Query\Identity\UserInterface;
 use IdentityAccess\Domain\Access\ValueObject\RefreshToken;
 

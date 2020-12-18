@@ -15,8 +15,8 @@ namespace Common\Shared\Infrastructure\Event\Publisher;
 
 use Broadway\Domain\DomainMessage;
 use Broadway\EventHandling\EventListener;
-use Common\Shared\Application\Bus\Event\Event;
-use Common\Shared\Application\Bus\Event\EventBusInterface;
+use Common\Shared\Application\Event\Event;
+use Common\Shared\Application\Event\EventBusInterface;
 use Symfony\Component\Console\ConsoleEvents;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpKernel\KernelEvents;

@@ -11,11 +11,16 @@
 
 declare(strict_types=1);
 
-namespace Common\Shared\Application\Bus\Command;
+namespace Common\Shared\Application\Query\Sorting;
+
+use MyCLabs\Enum\Enum;
 
 /**
- * Interface CommandHandlerInterface.
+ * Class Direction.
  */
-interface CommandHandlerInterface
+class Direction extends Enum
 {
+    private const ASC = 'ASC';
+
+    private const DESC = 'DESC';
 }

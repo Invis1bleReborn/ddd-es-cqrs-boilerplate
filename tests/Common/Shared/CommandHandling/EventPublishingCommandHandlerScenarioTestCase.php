@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace Common\Shared\CommandHandling;
 
-use Common\Shared\Application\Bus\Command\CommandHandlerInterface;
-use Common\Shared\Application\Bus\Event\EventBusInterface;
+use Common\Shared\Application\Command\CommandHandlerInterface;
+use Common\Shared\Application\Event\EventBusInterface;
 use Common\Shared\Domain\ValueObject\DateTime;
 use Common\Shared\Infrastructure\Bus\EventBus;
 use Common\Shared\Infrastructure\Bus\TraceableEventBus;

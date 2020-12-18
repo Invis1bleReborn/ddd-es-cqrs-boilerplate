@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace IdentityAccess\Application\Command\Access\CreateToken;
 
-use Common\Shared\Application\Bus\Command\CommandHandlerInterface;
-use Common\Shared\Application\Bus\Event\EventBusInterface;
+use Common\Shared\Application\Command\CommandHandlerInterface;
+use Common\Shared\Application\Event\EventBusInterface;
 use Common\Shared\Domain\ValueObject\DateTime;
 use IdentityAccess\Application\Event\Access\TokenCreated;
 use IdentityAccess\Application\Query\Access\TokenGeneratorInterface;

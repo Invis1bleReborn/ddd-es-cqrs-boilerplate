@@ -17,6 +17,8 @@ use Common\Shared\Infrastructure\Query\Repository\OrmRepository;
 use Doctrine\ORM\NonUniqueResultException;
 use Doctrine\ORM\NoResultException;
 use Doctrine\ORM\QueryBuilder;
+use IdentityAccess\Application\Query\Identity\FindById\FindUserByIdInterface;
+use IdentityAccess\Application\Query\Identity\UserInterface;
 use IdentityAccess\Domain\Identity\Exception\NonUniqueUserException;
 use IdentityAccess\Domain\Identity\Repository\CheckUserByEmailInterface;
 use IdentityAccess\Domain\Identity\ValueObject\Email;
@@ -26,8 +28,16 @@ use IdentityAccess\Infrastructure\Identity\Query\User;
 /**
  * Class OrmUserReadModelRepository.
  */
-class OrmUserReadModelRepository extends OrmRepository implements CheckUserByEmailInterface
+class OrmUserReadModelRepository extends OrmRepository implements FindUserByIdInterface, CheckUserByEmailInterface
 {
+    public function findById(UserId $userId): ?UserInterface
+    {
+        $user = $this->repository->find($userId->toString());
+        /* @var $user UserInterface|null */
+
+        return $user;
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -60,8 +70,7 @@ class OrmUserReadModelRepository extends OrmRepository implements CheckUserByEma
     {
         $alias = 'user';
 
-        return $this->repository
-            ->createQueryBuilder($alias)
+        return $this->repository->createQueryBuilder($alias)
             ->where($alias . '.email = :email')
             ->setParameter('email', $email->toString())
         ;

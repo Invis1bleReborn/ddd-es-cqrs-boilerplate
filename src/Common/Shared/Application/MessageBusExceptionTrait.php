@@ -11,7 +11,7 @@
 
 declare(strict_types=1);
 
-namespace Common\Shared\Application\Bus;
+namespace Common\Shared\Application;
 
 use Symfony\Component\Messenger\Exception\HandlerFailedException;
 

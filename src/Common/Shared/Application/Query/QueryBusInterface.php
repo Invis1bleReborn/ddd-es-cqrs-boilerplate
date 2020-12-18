@@ -11,11 +11,12 @@
 
 declare(strict_types=1);
 
-namespace Common\Shared\Application\Bus\Command;
+namespace Common\Shared\Application\Query;
 
 /**
- * Interface CommandInterface.
+ * Interface QueryBusInterface.
  */
-interface CommandInterface
+interface QueryBusInterface
 {
+    public function ask(QueryInterface $query);
 }

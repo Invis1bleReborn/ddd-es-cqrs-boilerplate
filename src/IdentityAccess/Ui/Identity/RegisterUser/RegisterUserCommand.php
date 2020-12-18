@@ -15,10 +15,10 @@ namespace IdentityAccess\Ui\Identity\RegisterUser;
 
 use ApiPlatform\Core\Validator\Exception\ValidationException;
 use ApiPlatform\Core\Validator\ValidatorInterface;
-use Common\Shared\Application\Bus\Command\CommandBusInterface;
+use Common\Shared\Application\Command\CommandBusInterface;
+use Common\Shared\Application\Query\QueryBusInterface;
 use Common\Shared\Domain\ValueObject\UuidGeneratorInterface;
-use IdentityAccess\Application\Query\Identity\UserInterface;
-use IdentityAccess\Application\Query\Identity\UserProviderInterface;
+use IdentityAccess\Application\Query\Identity\FindByEmail\FindByEmailQuery;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -26,7 +26,6 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Question\Question;
 use Symfony\Component\Console\Style\SymfonyStyle;
-use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
 
 /**
  * Class RegisterUserCommand.
@@ -40,9 +39,9 @@ class RegisterUserCommand extends Command
 
     private ValidatorInterface $validator;
 
-    private UserProviderInterface $userProvider;
-
     private UuidGeneratorInterface $uuidGenerator;
+
+    private QueryBusInterface $queryBus;
 
     private CommandBusInterface $commandBus;
 
@@ -55,15 +54,15 @@ class RegisterUserCommand extends Command
     public function __construct(
         ValidatorInterface $validator,
         UuidGeneratorInterface $uuidGenerator,
-        UserProviderInterface $userProvider,
+        QueryBusInterface $queryBus,
         CommandBusInterface $commandBus,
         string $name = null
     ) {
         parent::__construct($name);
 
         $this->validator = $validator;
-        $this->userProvider = $userProvider;
         $this->uuidGenerator = $uuidGenerator;
+        $this->queryBus = $queryBus;
         $this->commandBus = $commandBus;
     }
 
@@ -156,11 +155,11 @@ DESCRIPTION
         $registeredBy = $input->getOption('registered-by');
 
         if (null !== $registeredBy) {
-            try {
-                $registeredBy = $this->tryOrWarn(
-                    fn (): UserInterface => $this->userProvider->loadUserByUsername($registeredBy)
-                );
-            } catch (UsernameNotFoundException $exception) {
+            $registeredBy = $this->queryBus->ask(new FindByEmailQuery($registeredBy));
+
+            if (null === $registeredBy) {
+                $this->warn(sprintf('User "%s" not found.', $registeredBy));
+
                 return 1;
             }
 
@@ -206,17 +205,20 @@ DESCRIPTION
         try {
             return $codeBlock();
         } catch (\Throwable $exception) {
-            $errorText = $exception->getMessage();
-
-            if ($this->outputData) {
-                $this->io->writeln(json_encode(['error' => $errorText]));
-            }
-
-            if ($this->outputUi) {
-                $this->io->error($errorText);
-            }
+            $this->warn($exception->getMessage());
 
             throw $exception;
+        }
+    }
+
+    protected function warn(string $errorText): void
+    {
+        if ($this->outputData) {
+            $this->io->writeln(json_encode(['error' => $errorText]));
+        }
+
+        if ($this->outputUi) {
+            $this->io->error($errorText);
         }
     }
 }

@@ -12,6 +12,8 @@
 namespace Common\Shared\Infrastructure;
 
 use Broadway\ReadModel\Repository;
+use Common\Shared\Infrastructure\DependencyInjection\CreateCollectionFiltersPass;
+use Common\Shared\Infrastructure\DependencyInjection\CreateFilterDescriptorsPass;
 use Common\Shared\Infrastructure\DependencyInjection\RegisterMessageHandlersPass;
 use IdentityAccess\Infrastructure\Identity\Query\Orm\OrmUserReadModelRepository;
 use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
@@ -103,5 +105,7 @@ class Kernel extends BaseKernel
     protected function build(ContainerBuilder $container)
     {
         $container->addCompilerPass(new RegisterMessageHandlersPass(), PassConfig::TYPE_BEFORE_OPTIMIZATION, 99999);
+        $container->addCompilerPass(new CreateFilterDescriptorsPass(), PassConfig::TYPE_BEFORE_OPTIMIZATION, 11);
+        $container->addCompilerPass(new CreateCollectionFiltersPass(), PassConfig::TYPE_BEFORE_OPTIMIZATION, 1);
     }
 }

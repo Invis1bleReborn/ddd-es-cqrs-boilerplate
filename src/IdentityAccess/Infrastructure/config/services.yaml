@@ -70,6 +70,7 @@ services:
     IdentityAccess\Ui\Access\RefreshTokenCheckerInterface: '@IdentityAccess\Ui\Access\RefreshTokenChecker'
     IdentityAccess\Application\Query\Access\AccessTokenGeneratorInterface: '@IdentityAccess\Infrastructure\Access\Query\AccessTokenGenerator'
     IdentityAccess\Application\Query\Access\RefreshTokenProviderInterface: '@IdentityAccess\Infrastructure\Access\Query\RefreshTokenProvider'
+    IdentityAccess\Application\Query\Identity\FindById\FindUserByIdInterface: '@IdentityAccess\Infrastructure\Identity\Query\Orm\OrmUserReadModelRepository'
 
     IdentityAccess\Infrastructure\Serializer\Normalizer\OpenApiDecorator:
         arguments:
