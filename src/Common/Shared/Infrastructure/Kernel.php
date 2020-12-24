@@ -105,7 +105,11 @@ class Kernel extends BaseKernel
     protected function build(ContainerBuilder $container)
     {
         $container->addCompilerPass(new RegisterMessageHandlersPass(), PassConfig::TYPE_BEFORE_OPTIMIZATION, 99999);
-        $container->addCompilerPass(new CreateCollectionMutatorDescriptorsPass(), PassConfig::TYPE_BEFORE_OPTIMIZATION, 11);
+        $container->addCompilerPass(
+            new CreateCollectionMutatorDescriptorsPass(),
+            PassConfig::TYPE_BEFORE_OPTIMIZATION,
+            11
+        );
         $container->addCompilerPass(new CreateCollectionFiltersPass(), PassConfig::TYPE_BEFORE_OPTIMIZATION, 1);
     }
 }
