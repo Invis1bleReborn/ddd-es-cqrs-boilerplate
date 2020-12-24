@@ -14,36 +14,41 @@ declare(strict_types=1);
 namespace Common\Shared\Infrastructure\DependencyInjection;
 
 use ApiPlatform\Core\Util\ReflectionClassRecursiveIterator;
-use Common\Shared\Infrastructure\DependencyInjection\Filter\Handler\FilterHandlerInterface;
+use Common\Shared\Infrastructure\DependencyInjection\CollectionMutator\DescriptorFactory\
+    CollectionMutatorDescriptorFactoryInterface;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Component\DependencyInjection\Reference;
 
 /**
- * Class CreateFilterDescriptorsPass.
+ * Class CreateCollectionMutatorDescriptorsPass.
  */
-class CreateFilterDescriptorsPass implements CompilerPassInterface
+class CreateCollectionMutatorDescriptorsPass implements CompilerPassInterface
 {
     public function process(ContainerBuilder $container): void
     {
-        $filterClasses = ReflectionClassRecursiveIterator::getReflectionClassesFromDirectories(
-            $container->getParameter('app.query.filter_directories')
+        $mutatorClasses = ReflectionClassRecursiveIterator::getReflectionClassesFromDirectories(
+            $container->getParameter('app.query.collection_mutator_directories')
+        );
+
+        $descriptorFactories = $container->findTaggedServiceIds(
+            'app.query.collection_mutator_descriptor_factory',
+            true
         );
 
         $descriptors = [];
 
-        foreach ($filterClasses as $filterClass) {
-            $filterClassName = $filterClass->getName();
+        foreach ($mutatorClasses as $mutatorClass) {
+            $mutatorClassName = $mutatorClass->getName();
 
-            foreach ($container->findTaggedServiceIds('app.query.filter_handler', true) as $serviceId => $tags) {
-                $handler = $container->get($serviceId);
-                /* @var $handler FilterHandlerInterface */
+            foreach ($descriptorFactories as $serviceId => $tags) {
+                $factory = $container->get($serviceId);
+                /* @var $factory CollectionMutatorDescriptorFactoryInterface */
 
-                if (!$handler->supports($filterClassName)) {
+                if (!$factory->supports($mutatorClassName)) {
                     continue;
                 }
 
-                $descriptor = $handler->handle($filterClass);
+                $descriptor = $factory->create($mutatorClass);
 
                 if (isset($descriptors[$descriptor['id']], $descriptor['arguments']['properties'])) {
                     if (isset($descriptors[$descriptor['id']]['arguments']['properties'])) {
@@ -61,17 +66,6 @@ class CreateFilterDescriptorsPass implements CompilerPassInterface
             }
         }
 
-        $container->setParameter('app.query.filter_descriptors', $descriptors);
-    }
-
-    protected function findFilterHandlers(ContainerBuilder $container): array
-    {
-        $handlers = [];
-
-        foreach ($container->findTaggedServiceIds('app.query.filter_handler', true) as $serviceId => $tags) {
-            $handlers[] = new Reference($serviceId);
-        }
-
-        return $handlers;
+        $container->setParameter('app.query.collection_mutator_descriptors', $descriptors);
     }
 }

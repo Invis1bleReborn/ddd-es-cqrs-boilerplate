@@ -16,7 +16,6 @@ namespace IdentityAccess\Infrastructure\Identity\Query;
 use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiProperty;
 use ApiPlatform\Core\Annotation\ApiResource;
-use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 use ApiPlatform\Core\Serializer\Filter\PropertyFilter;
 use Assert\AssertionFailedException;
 use Broadway\ReadModel\SerializableReadModel;
@@ -124,11 +123,6 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *             },
  *         },
  *     },
- * )
- * @ApiFilter(
- *     OrderFilter::class,
- *     properties={"email", "enabled", "dateRegistered"},
- *     arguments={"orderParameterName"="_order"},
  * )
  * @ApiFilter(
  *     PropertyFilter::class,

@@ -11,18 +11,17 @@
 
 declare(strict_types=1);
 
-namespace Common\Shared\Application\Query\Sorting;
+namespace IdentityAccess\Application\Query\Identity\ListUsers;
 
-use MyCLabs\Enum\Enum;
+use IdentityAccess\Infrastructure\Identity\Query\User;
 
 /**
- * Class NullsComparisonStrategy.
+ * Trait UserModelAwareTrait.
  */
-class NullsComparisonStrategy extends Enum
+trait UserModelAwareTrait
 {
-    private const DBMS_DEFAULT = null;
-
-    private const NULLS_SMALLEST = 'NULLS_SMALLEST';
-
-    private const NULLS_LARGEST = 'NULLS_LARGEST';
+    public static function getModelClass(): string
+    {
+        return User::class;
+    }
 }

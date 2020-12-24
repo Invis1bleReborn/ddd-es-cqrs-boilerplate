@@ -11,15 +11,16 @@
 
 declare(strict_types=1);
 
-namespace Common\Shared\Infrastructure\DependencyInjection\Filter\Handler\Doctrine\Orm;
+namespace Common\Shared\Infrastructure\DependencyInjection\CollectionMutator\DescriptorFactory\Doctrine\Orm;
 
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
-use Common\Shared\Infrastructure\DependencyInjection\Filter\Handler\AbstractFilterHandler;
+use Common\Shared\Infrastructure\DependencyInjection\CollectionMutator\DescriptorFactory\
+    AbstractFilterDescriptorFactory;
 
 /**
- * Class SearchFilterHandler.
+ * Class SearchFilterDescriptorFactory.
  */
-class SearchFilterHandler extends AbstractFilterHandler
+class SearchFilterDescriptorFactory extends AbstractFilterDescriptorFactory
 {
     protected function getSupportedType(): string
     {

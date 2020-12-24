@@ -6,6 +6,7 @@ services:
         bind:
 #            bool $debugFailures: '%kernel.debug%'
             Broadway\EventStore\Dbal\DBALEventStore $eventStore: '@broadway.event_store.dbal'
+            array $collectionMutatorDescriptors: '%app.query.collection_mutator_descriptors%'
 
 
     Common\Shared\Infrastructure\Bus\CommandBus:
@@ -28,21 +29,24 @@ services:
     Common\Shared\Infrastructure\Migrations\MigrationFactory:
         decorates: Doctrine\Migrations\Version\DbalMigrationFactory
 
-    Common\Shared\Infrastructure\DependencyInjection\Filter\Handler\Doctrine\Orm\:
-        resource: '../DependencyInjection/Filter/Handler/Doctrine/Orm/**FilterHandler.php'
-        tags: [ app.query.filter_handler ]
+    Common\Shared\Infrastructure\DependencyInjection\CollectionMutator\DescriptorFactory\Doctrine\Orm\:
+        resource: '../DependencyInjection/CollectionMutator/DescriptorFactory/Doctrine/Orm/**DescriptorFactory.php'
+        tags: [ app.query.collection_mutator_descriptor_factory ]
 
     Common\Shared\Infrastructure\Query\Metadata\PhpModelFilterMetadataFactory:
         decorates: api_platform.metadata.resource.metadata_factory
-        arguments:
-            $filterDescriptors: '%app.query.filter_descriptors%'
 
     Common\Shared\Infrastructure\Query\Normalizer\DateTimeNormalizer:
         arguments: [ '@serializer.normalizer.datetime' ]
         tags: [ serializer.normalizer ]
 
-    Common\Shared\:
-        resource: '../../**/{UuidGenerator,Validator/Constraints/*Validator}.php'
+    Common\Shared\Infrastructure\:
+        resource: '../{Uuid/UuidGenerator,Validator/Constraints/*Validator}.php'
+
+    Common\Shared\Infrastructure\Query\Context\AbstractContextTransformer:
+        abstract: true
+        arguments:
+            $orderParameterName: '%api_platform.collection.order_parameter_name%'
 
     Broadway\UuidGenerator\UuidGeneratorInterface: '@broadway.uuid.generator'
     Common\Shared\Domain\ValueObject\UuidGeneratorInterface: '@Common\Shared\Infrastructure\Uuid\UuidGenerator'

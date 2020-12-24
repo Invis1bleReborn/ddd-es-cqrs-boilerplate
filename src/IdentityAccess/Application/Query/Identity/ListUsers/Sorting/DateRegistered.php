@@ -11,18 +11,13 @@
 
 declare(strict_types=1);
 
-namespace IdentityAccess\Application\Query\Identity\ListUsers\Filter;
-
-use Common\Shared\Application\Query\Filter\DateFilter;
-use IdentityAccess\Application\Query\Identity\ListUsers\UserModelAwareTrait;
+namespace IdentityAccess\Application\Query\Identity\ListUsers\Sorting;
 
 /**
  * Class DateRegistered.
  */
-class DateRegistered extends DateFilter
+class DateRegistered extends UserModelAwareSorting
 {
-    use UserModelAwareTrait;
-
     public static function getPropertyName(): string
     {
         return 'dateRegistered';

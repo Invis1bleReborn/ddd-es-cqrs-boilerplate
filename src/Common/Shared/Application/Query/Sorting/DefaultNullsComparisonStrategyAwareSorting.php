@@ -11,17 +11,15 @@
 
 declare(strict_types=1);
 
-namespace IdentityAccess\Application\Query\Identity\ListUsers\Filter;
-
-use IdentityAccess\Infrastructure\Identity\Query\User;
+namespace Common\Shared\Application\Query\Sorting;
 
 /**
- * Trait UserModelAwareTrait.
+ * Class Sorting.
  */
-trait UserModelAwareTrait
+abstract class DefaultNullsComparisonStrategyAwareSorting extends Sorting
 {
-    public static function getModelClass(): string
+    public static function getNullsComparisonStrategy(): ?NullsComparisonStrategy
     {
-        return User::class;
+        return null;
     }
 }

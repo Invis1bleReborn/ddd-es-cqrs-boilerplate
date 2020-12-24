@@ -28,7 +28,7 @@ class CreateCollectionFiltersPass implements CompilerPassInterface
 
     public function process(ContainerBuilder $container): void
     {
-        foreach ($container->getParameter('app.query.filter_descriptors') as $descriptor) {
+        foreach ($container->getParameter('app.query.collection_mutator_descriptors') as $descriptor) {
             $this->createFilterDefinition($container, $descriptor);
         }
     }
@@ -39,9 +39,9 @@ class CreateCollectionFiltersPass implements CompilerPassInterface
             return;
         }
 
-        $filterReflectionClass = $container->getReflectionClass($descriptor['class'], false);
+        $mutatorReflectionClass = $container->getReflectionClass($descriptor['class'], false);
 
-        if (null === $filterReflectionClass) {
+        if (null === $mutatorReflectionClass) {
             throw new InvalidArgumentException(sprintf(
                 'Class "%s" used for service "%s" cannot be found.',
                 $descriptor['class'],
@@ -54,7 +54,7 @@ class CreateCollectionFiltersPass implements CompilerPassInterface
         ) {
             $definition = new ChildDefinition($parentDefinition->getClass());
         } else {
-            $definition = new Definition($filterReflectionClass->getName());
+            $definition = new Definition($mutatorReflectionClass->getName());
             $definition->setAutoconfigured(true);
         }
 
@@ -63,7 +63,7 @@ class CreateCollectionFiltersPass implements CompilerPassInterface
 
         $parameterNames = [];
 
-        $constructorReflectionMethod = $filterReflectionClass->getConstructor();
+        $constructorReflectionMethod = $mutatorReflectionClass->getConstructor();
 
         if (null !== $constructorReflectionMethod) {
             foreach ($constructorReflectionMethod->getParameters() as $reflectionParameter) {

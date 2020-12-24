@@ -11,12 +11,15 @@
 
 declare(strict_types=1);
 
-namespace Common\Shared\Application\Query\Filter;
+namespace IdentityAccess\Application\Query\Identity\ListUsers\Sorting;
 
 /**
- * Interface ModelAwareInterface.
+ * Class Enabled.
  */
-interface ModelAwareInterface
+class Enabled extends UserModelAwareSorting
 {
-    public static function getModelClass(): string;
+    public static function getPropertyName(): string
+    {
+        return 'enabled';
+    }
 }

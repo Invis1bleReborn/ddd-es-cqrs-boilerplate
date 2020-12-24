@@ -11,17 +11,17 @@
 
 declare(strict_types=1);
 
-namespace Common\Shared\Infrastructure\DependencyInjection\Filter\Handler;
+namespace Common\Shared\Infrastructure\DependencyInjection\CollectionMutator\DescriptorFactory;
 
 /**
- * Interface FilterHandlerInterface.
+ * Interface CollectionMutatorDescriptorFactoryInterface.
  */
-interface FilterHandlerInterface
+interface CollectionMutatorDescriptorFactoryInterface
 {
     public function supports(string $fqcn): bool;
 
     /**
      * @return array[]
      */
-    public function handle(\ReflectionClass $filterClass): array;
+    public function create(\ReflectionClass $mutatorClass): array;
 }

@@ -11,15 +11,16 @@
 
 declare(strict_types=1);
 
-namespace Common\Shared\Infrastructure\DependencyInjection\Filter\Handler\Doctrine\Orm;
+namespace Common\Shared\Infrastructure\DependencyInjection\CollectionMutator\DescriptorFactory\Doctrine\Orm;
 
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter;
-use Common\Shared\Infrastructure\DependencyInjection\Filter\Handler\AbstractFilterHandler;
+use Common\Shared\Infrastructure\DependencyInjection\CollectionMutator\DescriptorFactory\
+    AbstractFilterDescriptorFactory;
 
 /**
- * Class DateFilterHandler.
+ * Class DateFilterDescriptorFactory.
  */
-class DateFilterHandler extends AbstractFilterHandler
+class DateFilterDescriptorFactory extends AbstractFilterDescriptorFactory
 {
     protected function getSupportedType(): string
     {

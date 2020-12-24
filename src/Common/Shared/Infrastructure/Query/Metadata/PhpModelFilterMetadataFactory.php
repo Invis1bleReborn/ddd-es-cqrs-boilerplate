@@ -23,16 +23,16 @@ use ApiPlatform\Core\Metadata\Resource\ResourceMetadata;
 final class PhpModelFilterMetadataFactory implements ResourceMetadataFactoryInterface
 {
     /**
-     * @var array[] $filterDescriptors
+     * @var array[] $collectionMutatorDescriptors
      */
-    private array $filterDescriptors;
+    private array $collectionMutatorDescriptors;
 
     private ?ResourceMetadataFactoryInterface $decorated;
 
-    public function __construct(array $filterDescriptors, ResourceMetadataFactoryInterface $decorated = null)
+    public function __construct(array $collectionMutatorDescriptors, ResourceMetadataFactoryInterface $decorated = null)
     {
         $this->decorated = $decorated;
-        $this->filterDescriptors = $filterDescriptors;
+        $this->collectionMutatorDescriptors = $collectionMutatorDescriptors;
     }
 
     public function create(string $modelClass): ResourceMetadata
@@ -51,7 +51,7 @@ final class PhpModelFilterMetadataFactory implements ResourceMetadataFactoryInte
         }
 
         $filters = array_keys(array_filter(
-            $this->filterDescriptors,
+            $this->collectionMutatorDescriptors,
             fn (array $descriptor): bool => $descriptor['model_class'] === $modelClass
         ));
 

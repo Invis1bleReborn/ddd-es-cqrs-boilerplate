@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace IdentityAccess\Application\Query\Identity\ListUsers\Filter;
 
 use Common\Shared\Application\Query\Filter\BooleanFilter;
+use IdentityAccess\Application\Query\Identity\ListUsers\UserModelAwareTrait;
 
 /**
  * Class Enabled.

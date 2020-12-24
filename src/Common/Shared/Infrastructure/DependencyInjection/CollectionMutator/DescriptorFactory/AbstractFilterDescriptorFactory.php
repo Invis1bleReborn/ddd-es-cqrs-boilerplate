@@ -11,18 +11,19 @@
 
 declare(strict_types=1);
 
-namespace Common\Shared\Infrastructure\DependencyInjection\Filter\Handler;
+namespace Common\Shared\Infrastructure\DependencyInjection\CollectionMutator\DescriptorFactory;
 
-use ApiPlatform\Core\Util\Inflector;
 use Common\Shared\Application\Query\Filter\FilterInterface;
 use Common\Shared\Application\Query\Filter\MatchingStrategy;
 use Common\Shared\Application\Query\Filter\Type;
 
 /**
- * Class AbstractFilterHandler.
+ * Class AbstractFilterDescriptorFactory.
  */
-abstract class AbstractFilterHandler implements FilterHandlerInterface
+abstract class AbstractFilterDescriptorFactory implements CollectionMutatorDescriptorFactoryInterface
 {
+    use FilterIdGeneratorTrait;
+
     public function supports(string $fqcn): bool
     {
         if (!is_subclass_of($fqcn, FilterInterface::class)) {
@@ -35,7 +36,7 @@ abstract class AbstractFilterHandler implements FilterHandlerInterface
         return $this->getSupportedType() === $type->getValue();
     }
 
-    public function handle(\ReflectionClass $filterClass): array
+    public function create(\ReflectionClass $filterClass): array
     {
         $filterClassName = $filterClass->getName();
         $filterClassName_ = $this->getFilterClass();
@@ -55,17 +56,6 @@ abstract class AbstractFilterHandler implements FilterHandlerInterface
                 ],
             ],
         ];
-    }
-
-    protected function generateFilterId(string $modelClass, string $filterClass, string $filterId = null): string
-    {
-        $id = 'php_' . Inflector::tableize(str_replace('\\', '', $modelClass . $filterClass));
-
-        if (null !== $filterId) {
-            $id .= '_' . $filterId;
-        }
-
-        return $id;
     }
 
     abstract protected function getSupportedType(): string;

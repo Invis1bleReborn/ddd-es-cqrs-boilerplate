@@ -16,21 +16,22 @@ namespace Common\Shared\Application\Query\Sorting;
 /**
  * Class Sorting.
  */
-class Sorting
+abstract class Sorting implements SortingInterface
 {
-    public string $propertyName;
+    protected Direction $direction;
 
-    public Direction $direction;
-
-    public ?NullsComparisonStrategy $nullsComparisonStrategy;
-
-    public function __construct(
-        string $propertyName,
-        Direction $direction,
-        NullsComparisonStrategy $nullsComparisonStrategy = null
-    ) {
-        $this->propertyName = $propertyName;
+    public function __construct(Direction $direction)
+    {
         $this->direction = $direction;
-        $this->nullsComparisonStrategy = $nullsComparisonStrategy;
+    }
+
+    public function getDirection(): Direction
+    {
+        return $this->direction;
+    }
+
+    public static function getDefaultDirection(): ?Direction
+    {
+        return null;
     }
 }

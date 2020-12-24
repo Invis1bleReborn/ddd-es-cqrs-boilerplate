@@ -11,25 +11,15 @@
 
 declare(strict_types=1);
 
-namespace IdentityAccess\Application\Query\Identity\ListUsers\Filter;
-
-use Common\Shared\Application\Query\Filter\SearchFilter;
-use IdentityAccess\Application\Query\Identity\ListUsers\UserModelAwareTrait;
+namespace IdentityAccess\Application\Query\Identity\ListUsers\Sorting;
 
 /**
  * Class Email.
  */
-class Email extends SearchFilter
+class Email extends UserModelAwareSorting
 {
-    use UserModelAwareTrait;
-
     public static function getPropertyName(): string
     {
         return 'email';
-    }
-
-    protected static function getMatchingStrategyValue(): string
-    {
-        return 'PARTIAL';
     }
 }

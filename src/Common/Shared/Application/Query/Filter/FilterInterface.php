@@ -13,6 +13,8 @@ declare(strict_types=1);
 
 namespace Common\Shared\Application\Query\Filter;
 
+use Common\Shared\Application\Query\ModelAwareInterface;
+
 /**
  * Interface FilterInterface.
  */

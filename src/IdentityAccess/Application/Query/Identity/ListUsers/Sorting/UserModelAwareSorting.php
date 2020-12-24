@@ -11,25 +11,15 @@
 
 declare(strict_types=1);
 
-namespace IdentityAccess\Application\Query\Identity\ListUsers\Filter;
+namespace IdentityAccess\Application\Query\Identity\ListUsers\Sorting;
 
-use Common\Shared\Application\Query\Filter\SearchFilter;
+use Common\Shared\Application\Query\Sorting\DefaultNullsComparisonStrategyAwareSorting;
 use IdentityAccess\Application\Query\Identity\ListUsers\UserModelAwareTrait;
 
 /**
- * Class Email.
+ * Class UserModelAwareSorting.
  */
-class Email extends SearchFilter
+abstract class UserModelAwareSorting extends DefaultNullsComparisonStrategyAwareSorting
 {
     use UserModelAwareTrait;
-
-    public static function getPropertyName(): string
-    {
-        return 'email';
-    }
-
-    protected static function getMatchingStrategyValue(): string
-    {
-        return 'PARTIAL';
-    }
 }

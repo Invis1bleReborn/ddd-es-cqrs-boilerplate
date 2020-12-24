@@ -15,6 +15,11 @@ api_platform:
         - '%kernel.project_dir%/src/IdentityAccess/Infrastructure/Access/Query'
         - '%kernel.project_dir%/src/IdentityAccess/Infrastructure/Identity/Query'
 
+    collection:
+        order_parameter_name: _order
+        pagination:
+            page_parameter_name: _page
+
     exception_to_status:
         # The 4 following handlers are registered by default, keep those lines to prevent unexpected side effects
         Symfony\Component\Serializer\Exception\ExceptionInterface: 400
