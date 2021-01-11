@@ -11,28 +11,28 @@
 
 declare(strict_types=1);
 
-namespace IdentityAccess\Application\Query\Identity\FindByEmail;
+namespace IdentityAccess\Application\Query\Identity\FindByUsername;
 
 use Assert\AssertionFailedException;
 use Common\Shared\Application\Query\QueryInterface;
-use IdentityAccess\Domain\Identity\ValueObject\Email;
+use IdentityAccess\Domain\Identity\ValueObject\Username;
 
 /**
- * Class FindByEmailQuery.
+ * Class FindByUsernameQuery.
  */
-class FindByEmailQuery implements QueryInterface
+class FindByUsernameQuery implements QueryInterface
 {
-    public Email $email;
+    public Username $username;
 
     /**
-     * FindByEmailQuery constructor.
+     * FindByUsernameQuery constructor.
      *
-     * @param string $email
+     * @param string $username
      *
      * @throws AssertionFailedException
      */
-    public function __construct(string $email)
+    public function __construct(string $username)
     {
-        $this->email = Email::fromString($email);
+        $this->username = Username::fromString($username);
     }
 }

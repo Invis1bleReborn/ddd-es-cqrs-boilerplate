@@ -14,8 +14,7 @@ declare(strict_types=1);
 namespace Common\Shared\Infrastructure\DependencyInjection;
 
 use ApiPlatform\Core\Util\ReflectionClassRecursiveIterator;
-use Common\Shared\Infrastructure\DependencyInjection\CollectionMutator\DescriptorFactory\
-    CollectionMutatorDescriptorFactoryInterface;
+use Common\Shared\Infrastructure\DependencyInjection\CollectionMutator\DescriptorFactory;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
@@ -42,7 +41,7 @@ class CreateCollectionMutatorDescriptorsPass implements CompilerPassInterface
 
             foreach ($descriptorFactories as $serviceId => $tags) {
                 $factory = $container->get($serviceId);
-                /* @var $factory CollectionMutatorDescriptorFactoryInterface */
+                /* @var $factory DescriptorFactory\CollectionMutatorDescriptorFactoryInterface */
 
                 if (!$factory->supports($mutatorClassName)) {
                     continue;

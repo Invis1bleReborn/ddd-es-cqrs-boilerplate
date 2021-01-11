@@ -62,17 +62,17 @@ class Kernel extends BaseKernel
             );
 
         $servicePatterns = [
-            'Ui/**/*Command',
-            'Ui/**/*Guard',
             'Infrastructure/**/GuardAdapter/*GuardAdapter',
+            'Infrastructure/**/Query/**/*Repository',
             'Infrastructure/**/Query/*Projector',
             'Infrastructure/**/Query/*Provider',
-            'Infrastructure/**/Query/**/*Repository',
-            'Infrastructure/**/Specification/*Specification',
             'Infrastructure/**/Repository/*Store',
-            'Ui/**/*Transformer',
             'Infrastructure/**/Request/*RequestTransformerAdapter',
+            'Infrastructure/**/Specification/*Specification',
             'Infrastructure/**/View/*TransformerAdapter',
+            'Ui/**/*Command',
+            'Ui/**/*Guard',
+            'Ui/**/*Transformer',
         ];
 
         $servicesPattern = '{' . implode(',', $servicePatterns) . '}.php';

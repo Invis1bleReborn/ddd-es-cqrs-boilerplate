@@ -24,7 +24,7 @@ framework:
             # failed: 'doctrine://default?queue_name=failed'
             # sync: 'sync://'
 
-            events:
+            async:
                 dsn: "%env(MESSENGER_TRANSPORT_DSN)%"
                 retry_strategy:
                     delay: 2000
@@ -34,7 +34,7 @@ framework:
             # Route your messages to the transports
             # 'App\Message\YourMessage': async
 
-            Common\Shared\Application\Event\EventInterface: events
+            Common\Shared\Application\Event\EventInterface: async
 
 parameters:
     messenger.doctrine.table_name: messenger_messages

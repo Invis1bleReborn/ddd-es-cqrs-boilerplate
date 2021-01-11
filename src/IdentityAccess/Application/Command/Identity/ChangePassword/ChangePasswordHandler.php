@@ -33,7 +33,7 @@ final class ChangePasswordHandler extends AbstractCommandHandler
         $this->passwordEncoder = $passwordEncoder;
     }
 
-    public function __invoke(ChangePasswordCommand $command)
+    public function __invoke(ChangePasswordCommand $command): void
     {
         $user = $this->getUser($command->userId);
 

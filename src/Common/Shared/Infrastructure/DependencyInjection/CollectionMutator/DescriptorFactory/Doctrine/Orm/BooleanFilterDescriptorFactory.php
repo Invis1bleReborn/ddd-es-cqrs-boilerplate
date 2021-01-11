@@ -14,13 +14,12 @@ declare(strict_types=1);
 namespace Common\Shared\Infrastructure\DependencyInjection\CollectionMutator\DescriptorFactory\Doctrine\Orm;
 
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\BooleanFilter;
-use Common\Shared\Infrastructure\DependencyInjection\CollectionMutator\DescriptorFactory\
-    AbstractFilterDescriptorFactory;
+use Common\Shared\Infrastructure\DependencyInjection\CollectionMutator\DescriptorFactory;
 
 /**
  * Class BooleanFilterDescriptorFactory.
  */
-class BooleanFilterDescriptorFactory extends AbstractFilterDescriptorFactory
+class BooleanFilterDescriptorFactory extends DescriptorFactory\AbstractFilterDescriptorFactory
 {
     protected function getSupportedType(): string
     {

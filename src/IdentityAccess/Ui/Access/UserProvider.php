@@ -14,7 +14,7 @@ declare(strict_types=1);
 namespace IdentityAccess\Ui\Access;
 
 use Common\Shared\Application\Query\QueryBusInterface;
-use IdentityAccess\Application\Query\Identity\FindByEmail\FindByEmailQuery;
+use IdentityAccess\Application\Query\Identity\FindByUsername\FindByUsernameQuery;
 use IdentityAccess\Application\Query\Identity\UserInterface;
 use IdentityAccess\Infrastructure\Access\Security\BadCredentialsException;
 
@@ -32,7 +32,7 @@ class UserProvider implements UserProviderInterface
 
     public function load(string $username): UserInterface
     {
-        $user = $this->queryBus->ask(new FindByEmailQuery($username));
+        $user = $this->queryBus->ask(new FindByUsernameQuery($username));
 
         if (null === $user) {
             throw new BadCredentialsException();

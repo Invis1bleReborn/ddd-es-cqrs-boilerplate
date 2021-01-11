@@ -18,7 +18,7 @@ use ApiPlatform\Core\Validator\ValidatorInterface;
 use Common\Shared\Application\Command\CommandBusInterface;
 use Common\Shared\Application\Query\QueryBusInterface;
 use Common\Shared\Domain\ValueObject\UuidGeneratorInterface;
-use IdentityAccess\Application\Query\Identity\FindByEmail\FindByEmailQuery;
+use IdentityAccess\Application\Query\Identity\FindByUsername\FindByUsernameQuery;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -155,7 +155,7 @@ DESCRIPTION
         $registeredBy = $input->getOption('registered-by');
 
         if (null !== $registeredBy) {
-            $registeredBy = $this->queryBus->ask(new FindByEmailQuery($registeredBy));
+            $registeredBy = $this->queryBus->ask(new FindByUsernameQuery($registeredBy));
 
             if (null === $registeredBy) {
                 $this->warn(sprintf('User "%s" not found.', $registeredBy));

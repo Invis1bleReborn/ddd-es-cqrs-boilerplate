@@ -49,4 +49,38 @@ abstract class AbstractListQuery implements ListQueryInterface
         $this->limit = $limit;
         $this->offset = $offset;
     }
+
+    /**
+     * @return static
+     * @throws AssertionFailedException
+     */
+    public static function create(
+        Filters $filters = null,
+        Sortings $sortings = null,
+        int $limit = null,
+        int $offset = null
+    )
+    {
+        return new static($filters, $sortings, $limit, $offset);
+    }
+    
+    public function getFilters(): ?Filters
+    {
+        return $this->filters;
+    }
+    
+    public function getSortings(): ?Sortings
+    {
+        return $this->sortings;
+    }
+
+    public function getOffset(): ?int
+    {
+        return $this->offset;
+    }
+
+    public function getLimit(): ?int
+    {
+        return $this->limit;
+    }
 }

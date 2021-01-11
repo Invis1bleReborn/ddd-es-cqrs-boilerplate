@@ -13,6 +13,8 @@ declare(strict_types=1);
 
 namespace Common\Shared\Application\Query\Filter;
 
+use Common\Shared\Domain\ValueObject\DateTime;
+
 /**
  * Class DateFilter.
  */
@@ -20,7 +22,12 @@ abstract class DateFilter extends Filter
 {
     protected static ?Type $type;
 
-    public function __construct(bool $value)
+    /**
+     * DateFilter constructor.
+     *
+     * @param array<string, DateTime> $value
+     */
+    public function __construct(array $value)
     {
         parent::__construct($value);
     }
@@ -37,5 +44,13 @@ abstract class DateFilter extends Filter
     public static function getMatchingStrategy(): ?MatchingStrategy
     {
         return null;
+    }
+
+    /**
+     * @return array<string, DateTime> $value
+     */
+    public function getValue(): array
+    {
+        return parent::getValue();
     }
 }

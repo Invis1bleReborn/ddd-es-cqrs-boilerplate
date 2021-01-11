@@ -36,6 +36,18 @@ services:
     Common\Shared\Infrastructure\Query\Metadata\PhpModelFilterMetadataFactory:
         decorates: api_platform.metadata.resource.metadata_factory
 
+    app.collection.context_transformer:
+        class: Common\Shared\Infrastructure\Query\Context\AbstractContextTransformer
+        abstract: true
+        arguments:
+            $orderParameterName: '%api_platform.collection.order_parameter_name%'
+            $paginationEnabled: '%api_platform.collection.pagination.enabled%'
+            $clientPaginationEnabled: '%api_platform.collection.pagination.client_enabled%'
+            $pageParameterName: '%api_platform.collection.pagination.page_parameter_name%'
+            $clientPageSize: '%api_platform.collection.pagination.client_items_per_page%'
+            $pageSizeParameterName: '%api_platform.collection.pagination.items_per_page_parameter_name%'
+            $defaultPageSize: '%api_platform.collection.pagination.items_per_page%'
+
     Common\Shared\Infrastructure\Query\Normalizer\DateTimeNormalizer:
         arguments: [ '@serializer.normalizer.datetime' ]
         tags: [ serializer.normalizer ]
@@ -47,6 +59,8 @@ services:
         abstract: true
         arguments:
             $orderParameterName: '%api_platform.collection.order_parameter_name%'
+
+    ApiPlatform\Core\DataProvider\ContextAwareCollectionDataProviderInterface: '@api_platform.doctrine.orm.default.collection_data_provider'
 
     Broadway\UuidGenerator\UuidGeneratorInterface: '@broadway.uuid.generator'
     Common\Shared\Domain\ValueObject\UuidGeneratorInterface: '@Common\Shared\Infrastructure\Uuid\UuidGenerator'

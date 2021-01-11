@@ -14,13 +14,12 @@ declare(strict_types=1);
 namespace Common\Shared\Infrastructure\DependencyInjection\CollectionMutator\DescriptorFactory\Doctrine\Orm;
 
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
-use Common\Shared\Infrastructure\DependencyInjection\CollectionMutator\DescriptorFactory\
-    AbstractFilterDescriptorFactory;
+use Common\Shared\Infrastructure\DependencyInjection\CollectionMutator\DescriptorFactory;
 
 /**
  * Class SearchFilterDescriptorFactory.
  */
-class SearchFilterDescriptorFactory extends AbstractFilterDescriptorFactory
+class SearchFilterDescriptorFactory extends DescriptorFactory\AbstractFilterDescriptorFactory
 {
     protected function getSupportedType(): string
     {

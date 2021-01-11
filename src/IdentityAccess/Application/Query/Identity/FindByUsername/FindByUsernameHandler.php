@@ -11,7 +11,7 @@
 
 declare(strict_types=1);
 
-namespace IdentityAccess\Application\Query\Identity\FindByEmail;
+namespace IdentityAccess\Application\Query\Identity\FindByUsername;
 
 use Common\Shared\Application\Query\QueryHandlerInterface;
 use IdentityAccess\Application\Query\Identity\UserInterface;
@@ -19,9 +19,9 @@ use IdentityAccess\Application\Query\Identity\UserProviderInterface;
 use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
 
 /**
- * Class FindByEmailHandler.
+ * Class FindByUsernameHandler.
  */
-class FindByEmailHandler implements QueryHandlerInterface
+class FindByUsernameHandler implements QueryHandlerInterface
 {
     private UserProviderInterface $userProvider;
 
@@ -30,10 +30,10 @@ class FindByEmailHandler implements QueryHandlerInterface
         $this->userProvider = $userProvider;
     }
 
-    public function __invoke(FindByEmailQuery $query): ?UserInterface
+    public function __invoke(FindByUsernameQuery $query): ?UserInterface
     {
         try {
-            return $this->userProvider->loadUserByUsername($query->email->toString());
+            return $this->userProvider->loadUserByUsername($query->username->toString());
         } catch (UsernameNotFoundException $exception) {
             return null;
         }

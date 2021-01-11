@@ -14,13 +14,12 @@ declare(strict_types=1);
 namespace Common\Shared\Infrastructure\DependencyInjection\CollectionMutator\DescriptorFactory\Doctrine\Orm;
 
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
-use Common\Shared\Infrastructure\DependencyInjection\CollectionMutator\DescriptorFactory\
-    AbstractSortingDescriptorFactory;
+use Common\Shared\Infrastructure\DependencyInjection\CollectionMutator\DescriptorFactory;
 
 /**
  * Class SortingDescriptorFactory.
  */
-class SortingDescriptorFactory extends AbstractSortingDescriptorFactory
+class SortingDescriptorFactory extends DescriptorFactory\AbstractSortingDescriptorFactory
 {
     protected function getFilterClass(): string
     {
