@@ -41,6 +41,6 @@ class EnabledFilterFactory extends BaseFilterFactory
 
     protected function createFilterFromContextValue($value): FilterInterface
     {
-        return new Enabled($value);
+        return new Enabled((bool)$value);
     }
 }
