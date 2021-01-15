@@ -11,17 +11,19 @@
 
 declare(strict_types=1);
 
-namespace Common\Shared\Ui;
+namespace Common\Shared\Application\Query\Filter;
 
-use Broadway\ReadModel\Identifiable;
+use Common\Shared\Application\Query\ModelClassNameAwareTrait;
 
 /**
- * Class IdentifiableObjectTransformer.
+ * Class DateFilterStub.
  */
-class IdentifiableObjectTransformer
+class DateFilterStub extends DateFilter
 {
-    public function __invoke(Identifiable $identifiable): IdAwareView
+    use ModelClassNameAwareTrait;
+
+    public static function getPropertyName(): string
     {
-        return new IdAwareView($identifiable->getId());
+        return 'datePropertyName';
     }
 }

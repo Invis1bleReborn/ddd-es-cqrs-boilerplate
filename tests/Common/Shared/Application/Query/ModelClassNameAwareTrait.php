@@ -11,22 +11,15 @@
 
 declare(strict_types=1);
 
-namespace Common\Shared\Ui;
+namespace Common\Shared\Application\Query;
 
 /**
- * Class IdAwareView.
+ * Trait ModelClassNameAwareTrait.
  */
-final class IdAwareView
+trait ModelClassNameAwareTrait
 {
-    private string $id;
-
-    public function __construct(string $id)
+    public static function getModelClass(): string
     {
-        $this->id = $id;
-    }
-
-    public function getId(): string
-    {
-        return $this->id;
+        return 'ModelClassName';
     }
 }
