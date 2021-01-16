@@ -13,14 +13,14 @@ declare(strict_types=1);
 
 namespace Common\Shared\Application\Query\Sorting;
 
-use Common\Shared\Application\Query\ModelClassNameAwareTrait;
+use Common\Shared\Application\Query\FooModelAwareTrait;
 
 /**
  * Class SortingStub.
  */
 class SortingStub extends Sorting
 {
-    use ModelClassNameAwareTrait;
+    use FooModelAwareTrait;
 
     public static function getPropertyName(): string
     {
@@ -29,6 +29,6 @@ class SortingStub extends Sorting
 
     public static function getNullsComparisonStrategy(): ?NullsComparisonStrategy
     {
-        return new NullsComparisonStrategy('DBMS_DEFAULT');
+        return new NullsComparisonStrategy(null);
     }
 }

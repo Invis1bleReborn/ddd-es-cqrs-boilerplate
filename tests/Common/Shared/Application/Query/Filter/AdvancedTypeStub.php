@@ -13,17 +13,10 @@ declare(strict_types=1);
 
 namespace Common\Shared\Application\Query\Filter;
 
-use Common\Shared\Application\Query\FooModelAwareTrait;
-
 /**
- * Class DateFilterStub.
+ * Class AdvancedTypeStub.
  */
-class DateFilterStub extends DateFilter
+class AdvancedTypeStub extends Type
 {
-    use FooModelAwareTrait;
-
-    public static function getPropertyName(): string
-    {
-        return 'datePropertyName';
-    }
+    public const UNSUPPORTED = 'UNSUPPORTED';
 }

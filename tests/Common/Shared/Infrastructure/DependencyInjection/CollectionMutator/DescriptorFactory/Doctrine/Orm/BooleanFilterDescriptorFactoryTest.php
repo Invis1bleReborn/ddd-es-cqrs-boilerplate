@@ -13,33 +13,39 @@ declare(strict_types=1);
 
 namespace Common\Shared\Infrastructure\DependencyInjection\CollectionMutator\DescriptorFactory\Doctrine\Orm;
 
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\BooleanFilter;
 use Common\Shared\Application\Query\Filter\BooleanFilterStub;
-use Common\Shared\Application\Query\Filter\SearchFilterStub;
+use Common\Shared\Application\Query\FooModel;
 use Common\Shared\Infrastructure\DependencyInjection\CollectionMutator\DescriptorFactory;
 
 /**
  * Class BooleanFilterDescriptorFactoryTest.
  */
-class BooleanFilterDescriptorFactoryTest extends FilterDescriptorFactoryTestCase
+class BooleanFilterDescriptorFactoryTest extends FilterDescriptorFactoryTestAbstract
 {
-    /**
-     * @test
-     */
-    public function itSupportsBooleanFilter()
-    {
-        $this->assertTrue($this->descriptorFactory->supports(BooleanFilterStub::class));
-    }
-
-    /**
-     * @test
-     */
-    public function itDoesNotSupportNonBooleanFilter()
-    {
-        $this->assertFalse($this->descriptorFactory->supports(SearchFilterStub::class));
-    }
-
     protected function createDescriptorFactory(): DescriptorFactory\AbstractFilterDescriptorFactory
     {
         return new BooleanFilterDescriptorFactory();
+    }
+
+    protected function getSupportedMutatorClassName(): string
+    {
+        return BooleanFilterStub::class;
+    }
+
+    protected function getExpectedDescriptor(): array
+    {
+        return [
+            'id' => 'php_' .
+                'common_shared_application_query_foo_model_' .
+                'api_platform_core_bridge_doctrine_orm_filter_boolean_filter',
+            'class' => BooleanFilter::class,
+            'model_class' => FooModel::class,
+            'arguments' => [
+                'properties' => [
+                    'booleanPropertyName' => null,
+                ],
+            ],
+        ];
     }
 }

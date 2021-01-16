@@ -13,14 +13,14 @@ declare(strict_types=1);
 
 namespace Common\Shared\Application\Query\Filter;
 
-use Common\Shared\Application\Query\ModelClassNameAwareTrait;
+use Common\Shared\Application\Query\FooModelAwareTrait;
 
 /**
  * Class SearchFilterStub.
  */
 class SearchFilterStub extends SearchFilter
 {
-    use ModelClassNameAwareTrait;
+    use FooModelAwareTrait;
 
     public static function getPropertyName(): string
     {

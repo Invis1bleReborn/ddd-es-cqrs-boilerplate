@@ -16,14 +16,24 @@ namespace Common\Shared\Application\Query\Filter;
 use Common\Shared\Application\Query\FooModelAwareTrait;
 
 /**
- * Class DateFilterStub.
+ * Class UnsupportedFilterStub.
  */
-class DateFilterStub extends DateFilter
+class UnsupportedFilterStub extends Filter
 {
     use FooModelAwareTrait;
 
     public static function getPropertyName(): string
     {
-        return 'datePropertyName';
+        return 'unsupportedPropertyName';
+    }
+
+    public static function getType(): Type
+    {
+        return new AdvancedTypeStub('UNSUPPORTED');
+    }
+
+    public static function getMatchingStrategy(): ?MatchingStrategy
+    {
+        return null;
     }
 }

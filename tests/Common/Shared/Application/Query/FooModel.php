@@ -14,12 +14,8 @@ declare(strict_types=1);
 namespace Common\Shared\Application\Query;
 
 /**
- * Trait ModelClassNameAwareTrait.
+ * Class FooModel.
  */
-trait ModelClassNameAwareTrait
+class FooModel
 {
-    public static function getModelClass(): string
-    {
-        return 'ModelClassName';
-    }
 }

@@ -13,33 +13,39 @@ declare(strict_types=1);
 
 namespace Common\Shared\Infrastructure\DependencyInjection\CollectionMutator\DescriptorFactory\Doctrine\Orm;
 
-use Common\Shared\Application\Query\Filter\BooleanFilterStub;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter;
 use Common\Shared\Application\Query\Filter\DateFilterStub;
+use Common\Shared\Application\Query\FooModel;
 use Common\Shared\Infrastructure\DependencyInjection\CollectionMutator\DescriptorFactory;
 
 /**
  * Class DateFilterDescriptorFactoryTest.
  */
-class DateFilterDescriptorFactoryTest extends FilterDescriptorFactoryTestCase
+class DateFilterDescriptorFactoryTest extends FilterDescriptorFactoryTestAbstract
 {
-    /**
-     * @test
-     */
-    public function itSupportsDateFilter()
-    {
-        $this->assertTrue($this->descriptorFactory->supports(DateFilterStub::class));
-    }
-
-    /**
-     * @test
-     */
-    public function itDoesNotSupportNonDateFilter()
-    {
-        $this->assertFalse($this->descriptorFactory->supports(BooleanFilterStub::class));
-    }
-
     protected function createDescriptorFactory(): DescriptorFactory\AbstractFilterDescriptorFactory
     {
         return new DateFilterDescriptorFactory();
+    }
+
+    protected function getSupportedMutatorClassName(): string
+    {
+        return DateFilterStub::class;
+    }
+
+    protected function getExpectedDescriptor(): array
+    {
+        return [
+            'id' => 'php_' .
+                'common_shared_application_query_foo_model_' .
+                'api_platform_core_bridge_doctrine_orm_filter_date_filter',
+            'class' => DateFilter::class,
+            'model_class' => FooModel::class,
+            'arguments' => [
+                'properties' => [
+                    'datePropertyName' => null,
+                ],
+            ],
+        ];
     }
 }

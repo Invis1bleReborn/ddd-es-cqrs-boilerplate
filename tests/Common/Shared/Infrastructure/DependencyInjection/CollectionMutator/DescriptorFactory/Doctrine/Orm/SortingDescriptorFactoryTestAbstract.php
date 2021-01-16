@@ -1,5 +1,4 @@
 <?php
-
 /*
  * This file is part of invis1ble/ddd-es-cqrs-boilerplate.
  *
@@ -13,24 +12,25 @@ declare(strict_types=1);
 
 namespace Common\Shared\Infrastructure\DependencyInjection\CollectionMutator\DescriptorFactory\Doctrine\Orm;
 
-use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
-use Common\Shared\Application\Query\Filter\SearchFilterStub;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 use Common\Shared\Application\Query\FooModel;
-use Common\Shared\Infrastructure\DependencyInjection\CollectionMutator\DescriptorFactory;
+use Common\Shared\Application\Query\Sorting\SortingStub;
+use Common\Shared\Application\Query\Sorting\UnsupportedSortingStub;
+use Common\Shared\Infrastructure\DependencyInjection\CollectionMutator\DescriptorFactory as Df;
 
 /**
- * Class SearchFilterDescriptorFactoryTest.
+ * Class FilterDescriptorFactoryTestCase.
  */
-class SearchFilterDescriptorFactoryTest extends FilterDescriptorFactoryTestAbstract
+class SortingDescriptorFactoryTestAbstract extends AbstractMutatorDescriptorFactoryTest
 {
-    protected function createDescriptorFactory(): DescriptorFactory\AbstractFilterDescriptorFactory
+    protected function createDescriptorFactory(): Df\CollectionMutatorDescriptorFactoryInterface
     {
-        return new SearchFilterDescriptorFactory();
+        return new SortingDescriptorFactory();
     }
 
     protected function getSupportedMutatorClassName(): string
     {
-        return SearchFilterStub::class;
+        return SortingStub::class;
     }
 
     protected function getExpectedDescriptor(): array
@@ -38,12 +38,14 @@ class SearchFilterDescriptorFactoryTest extends FilterDescriptorFactoryTestAbstr
         return [
             'id' => 'php_' .
                 'common_shared_application_query_foo_model_' .
-                'api_platform_core_bridge_doctrine_orm_filter_search_filter',
-            'class' => SearchFilter::class,
+                'api_platform_core_bridge_doctrine_orm_filter_order_filter',
+            'class' => OrderFilter::class,
             'model_class' => FooModel::class,
             'arguments' => [
                 'properties' => [
-                    'searchPropertyName' => 'exact',
+                    'sortingPropertyName' => [
+                        'nulls_comparison' => null,
+                    ],
                 ],
             ],
         ];

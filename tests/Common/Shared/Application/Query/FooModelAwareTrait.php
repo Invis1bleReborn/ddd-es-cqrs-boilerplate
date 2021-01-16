@@ -11,19 +11,15 @@
 
 declare(strict_types=1);
 
-namespace Common\Shared\Application\Query\Filter;
-
-use Common\Shared\Application\Query\FooModelAwareTrait;
+namespace Common\Shared\Application\Query;
 
 /**
- * Class DateFilterStub.
+ * Trait FooModelAwareTrait.
  */
-class DateFilterStub extends DateFilter
+trait FooModelAwareTrait
 {
-    use FooModelAwareTrait;
-
-    public static function getPropertyName(): string
+    public static function getModelClass(): string
     {
-        return 'datePropertyName';
+        return FooModel::class;
     }
 }
