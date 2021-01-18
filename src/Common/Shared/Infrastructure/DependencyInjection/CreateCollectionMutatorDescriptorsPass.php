@@ -37,6 +37,10 @@ class CreateCollectionMutatorDescriptorsPass implements CompilerPassInterface
         $descriptors = [];
 
         foreach ($mutatorClasses as $mutatorClass) {
+            if (!$mutatorClass->isInstantiable()) {
+                continue;
+            }
+
             $mutatorClassName = $mutatorClass->getName();
 
             foreach ($descriptorFactories as $serviceId => $tags) {
