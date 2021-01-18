@@ -12,6 +12,8 @@
 namespace Common\Shared\Infrastructure;
 
 use Broadway\ReadModel\Repository;
+use Common\Shared\Infrastructure\DependencyInjection\CreateCollectionFiltersPass;
+use Common\Shared\Infrastructure\DependencyInjection\CreateCollectionMutatorDescriptorsPass;
 use Common\Shared\Infrastructure\DependencyInjection\RegisterMessageHandlersPass;
 use IdentityAccess\Infrastructure\Identity\Query\Orm\OrmUserReadModelRepository;
 use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
@@ -60,17 +62,17 @@ class Kernel extends BaseKernel
             );
 
         $servicePatterns = [
-            'Ui/**/*Command',
-            'Ui/**/*Guard',
             'Infrastructure/**/GuardAdapter/*GuardAdapter',
+            'Infrastructure/**/Query/**/*Repository',
             'Infrastructure/**/Query/*Projector',
             'Infrastructure/**/Query/*Provider',
-            'Infrastructure/**/Query/**/*Repository',
-            'Infrastructure/**/Specification/*Specification',
             'Infrastructure/**/Repository/*Store',
-            'Ui/**/*Transformer',
             'Infrastructure/**/Request/*RequestTransformerAdapter',
+            'Infrastructure/**/Specification/*Specification',
             'Infrastructure/**/View/*TransformerAdapter',
+            'Ui/**/*Command',
+            'Ui/**/*Guard',
+            'Ui/**/*Transformer',
         ];
 
         $servicesPattern = '{' . implode(',', $servicePatterns) . '}.php';
@@ -103,5 +105,11 @@ class Kernel extends BaseKernel
     protected function build(ContainerBuilder $container)
     {
         $container->addCompilerPass(new RegisterMessageHandlersPass(), PassConfig::TYPE_BEFORE_OPTIMIZATION, 99999);
+        $container->addCompilerPass(
+            new CreateCollectionMutatorDescriptorsPass(),
+            PassConfig::TYPE_BEFORE_OPTIMIZATION,
+            11
+        );
+        $container->addCompilerPass(new CreateCollectionFiltersPass(), PassConfig::TYPE_BEFORE_OPTIMIZATION, 1);
     }
 }

@@ -13,6 +13,19 @@ services:
     IdentityAccess\:
         resource: '../../**/*{AccessCheckerAdapter,Authenticator,Checker,CheckerAdapter,Handler,PasswordManager,RoleHierarchy,TokenGenerator,UserProvider}.php'
 
+    IdentityAccess\Infrastructure\Identity\Query\ListUsers\Context\Filter\:
+        resource: '../Identity/Query/ListUsers/Context/Filter/*FilterFactory.php'
+        tags: [ identity_access.user_collection.context_filter_factory ]
+
+    IdentityAccess\Infrastructure\Identity\Query\ListUsers\Context\Sorting\:
+        resource: '../Identity/Query/ListUsers/Context/Sorting/*SortingFactory.php'
+        tags: [ identity_access.user_collection.context_sorting_factory ]
+
+    IdentityAccess\Infrastructure\Identity\Query\ListUsers\Context\UserListContextTransformer:
+        parent: app.collection.context_transformer
+        arguments:
+            $filterFactories: !tagged_iterator identity_access.user_collection.context_filter_factory
+            $sortingFactories: !tagged_iterator identity_access.user_collection.context_sorting_factory
 
     # Request Transformers
     IdentityAccess\Ui\Access\CreateToken\CreateTokenRequestTransformerInterface: '@IdentityAccess\Ui\Access\CreateToken\CreateTokenRequestTransformer'
@@ -70,6 +83,7 @@ services:
     IdentityAccess\Ui\Access\RefreshTokenCheckerInterface: '@IdentityAccess\Ui\Access\RefreshTokenChecker'
     IdentityAccess\Application\Query\Access\AccessTokenGeneratorInterface: '@IdentityAccess\Infrastructure\Access\Query\AccessTokenGenerator'
     IdentityAccess\Application\Query\Access\RefreshTokenProviderInterface: '@IdentityAccess\Infrastructure\Access\Query\RefreshTokenProvider'
+    IdentityAccess\Application\Query\Identity\FindById\FindUserByIdInterface: '@IdentityAccess\Infrastructure\Identity\Query\Orm\OrmUserReadModelRepository'
 
     IdentityAccess\Infrastructure\Serializer\Normalizer\OpenApiDecorator:
         arguments:

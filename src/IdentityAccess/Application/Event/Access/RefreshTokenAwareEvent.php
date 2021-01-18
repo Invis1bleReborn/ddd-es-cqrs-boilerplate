@@ -16,7 +16,7 @@ namespace IdentityAccess\Application\Event\Access;
 use Assert\Assertion;
 use Assert\AssertionFailedException;
 use Broadway\Serializer\Serializable;
-use Common\Shared\Application\Bus\Event\EventInterface;
+use Common\Shared\Application\Event\EventInterface;
 use Common\Shared\Domain\Exception\DateTimeException;
 use Common\Shared\Domain\ValueObject\DateTime;
 use IdentityAccess\Domain\Access\ValueObject\RefreshToken;

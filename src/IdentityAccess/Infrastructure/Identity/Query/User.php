@@ -16,11 +16,7 @@ namespace IdentityAccess\Infrastructure\Identity\Query;
 use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiProperty;
 use ApiPlatform\Core\Annotation\ApiResource;
-use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\BooleanFilter;
-use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter;
-use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 use ApiPlatform\Core\Serializer\Filter\PropertyFilter;
-use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use Assert\AssertionFailedException;
 use Broadway\ReadModel\SerializableReadModel;
 use Common\Shared\Domain\Exception\DateTimeException;
@@ -129,11 +125,6 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *     },
  * )
  * @ApiFilter(
- *     OrderFilter::class,
- *     properties={"email", "enabled", "dateRegistered"},
- *     arguments={"orderParameterName"="_order"},
- * )
- * @ApiFilter(
  *     PropertyFilter::class,
  *     arguments={
  *         "parameterName"="_properties",
@@ -158,8 +149,6 @@ class User implements UserInterface, EnableableUserInterface, SecurityUserInterf
 
     /**
      * User email.
-     *
-     * @ApiFilter(SearchFilter::class, strategy="partial")
      */
     private ?string $email;
 
@@ -174,8 +163,6 @@ class User implements UserInterface, EnableableUserInterface, SecurityUserInterf
 
     /**
      * Account status.
-     *
-     * @ApiFilter(BooleanFilter::class)
      */
     private ?bool $enabled;
 
@@ -186,8 +173,6 @@ class User implements UserInterface, EnableableUserInterface, SecurityUserInterf
 
     /**
      * Date when user was registered.
-     *
-     * @ApiFilter(DateFilter::class)
      */
     private ?DateTime $dateRegistered;
 

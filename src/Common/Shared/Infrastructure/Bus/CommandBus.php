@@ -13,9 +13,9 @@ declare(strict_types=1);
 
 namespace Common\Shared\Infrastructure\Bus;
 
-use Common\Shared\Application\Bus\Command\CommandBusInterface;
-use Common\Shared\Application\Bus\Command\CommandInterface;
-use Common\Shared\Application\Bus\MessageBusExceptionTrait;
+use Common\Shared\Application\Command\CommandBusInterface;
+use Common\Shared\Application\Command\CommandInterface;
+use Common\Shared\Application\MessageBusExceptionTrait;
 use Symfony\Component\Messenger\Exception\HandlerFailedException;
 use Symfony\Component\Messenger\MessageBusInterface;
 
@@ -34,7 +34,7 @@ final class CommandBus implements CommandBusInterface
     }
 
     /**
-     * @throws \Throwable
+     * {@inheritdoc}
      */
     public function handle(CommandInterface $command): void
     {

@@ -20,7 +20,7 @@ use IdentityAccess\Application\Command\Identity\AbstractCommandHandler;
  */
 final class ChangeRolesHandler extends AbstractCommandHandler
 {
-    public function __invoke(ChangeRolesCommand $command)
+    public function __invoke(ChangeRolesCommand $command): void
     {
         $user = $this->getUser($command->userId);
 

@@ -6,33 +6,61 @@ services:
         bind:
 #            bool $debugFailures: '%kernel.debug%'
             Broadway\EventStore\Dbal\DBALEventStore $eventStore: '@broadway.event_store.dbal'
+            array $collectionMutatorDescriptors: '%app.query.collection_mutator_descriptors%'
 
 
     Common\Shared\Infrastructure\Bus\CommandBus:
         arguments:
             - '@messenger.bus.command'
 
-#    Common\Shared\Infrastructure\Bus\QueryBus:
-#        arguments:
-#            - '@messenger.bus.query'
+    Common\Shared\Infrastructure\Bus\QueryBus:
+        arguments:
+            - '@messenger.bus.query'
 
     Common\Shared\Infrastructure\Bus\EventBus:
         arguments:
             - '@messenger.bus.event.async'
 
-    Common\Shared\Application\Bus\Command\CommandBusInterface: '@Common\Shared\Infrastructure\Bus\CommandBus'
-    Common\Shared\Application\Bus\Event\EventBusInterface: '@Common\Shared\Infrastructure\Bus\EventBus'
+    Common\Shared\Application\Command\CommandBusInterface: '@Common\Shared\Infrastructure\Bus\CommandBus'
+    Common\Shared\Application\Query\QueryBusInterface: '@Common\Shared\Infrastructure\Bus\QueryBus'
+    Common\Shared\Application\Event\EventBusInterface: '@Common\Shared\Infrastructure\Bus\EventBus'
 
     Doctrine\Migrations\Version\DbalMigrationFactory: ~
     Common\Shared\Infrastructure\Migrations\MigrationFactory:
         decorates: Doctrine\Migrations\Version\DbalMigrationFactory
 
+    Common\Shared\Infrastructure\DependencyInjection\CollectionMutator\DescriptorFactory\Doctrine\Orm\:
+        resource: '../DependencyInjection/CollectionMutator/DescriptorFactory/Doctrine/Orm/**DescriptorFactory.php'
+        tags: [ app.query.collection_mutator_descriptor_factory ]
+
+    Common\Shared\Infrastructure\Query\Metadata\PhpModelFilterMetadataFactory:
+        decorates: api_platform.metadata.resource.metadata_factory
+
+    app.collection.context_transformer:
+        class: Common\Shared\Infrastructure\Query\Context\AbstractContextTransformer
+        abstract: true
+        arguments:
+            $orderParameterName: '%api_platform.collection.order_parameter_name%'
+            $paginationEnabled: '%api_platform.collection.pagination.enabled%'
+            $clientPaginationEnabled: '%api_platform.collection.pagination.client_enabled%'
+            $pageParameterName: '%api_platform.collection.pagination.page_parameter_name%'
+            $clientPageSize: '%api_platform.collection.pagination.client_items_per_page%'
+            $pageSizeParameterName: '%api_platform.collection.pagination.items_per_page_parameter_name%'
+            $defaultPageSize: '%api_platform.collection.pagination.items_per_page%'
+
     Common\Shared\Infrastructure\Query\Normalizer\DateTimeNormalizer:
         arguments: [ '@serializer.normalizer.datetime' ]
         tags: [ serializer.normalizer ]
 
-    Common\Shared\:
-        resource: '../../**/{UuidGenerator,Validator/Constraints/*Validator}.php'
+    Common\Shared\Infrastructure\:
+        resource: '../{Uuid/UuidGenerator,Validator/Constraints/*Validator}.php'
+
+    Common\Shared\Infrastructure\Query\Context\AbstractContextTransformer:
+        abstract: true
+        arguments:
+            $orderParameterName: '%api_platform.collection.order_parameter_name%'
+
+    ApiPlatform\Core\DataProvider\ContextAwareCollectionDataProviderInterface: '@api_platform.doctrine.orm.default.collection_data_provider'
 
     Broadway\UuidGenerator\UuidGeneratorInterface: '@broadway.uuid.generator'
     Common\Shared\Domain\ValueObject\UuidGeneratorInterface: '@Common\Shared\Infrastructure\Uuid\UuidGenerator'

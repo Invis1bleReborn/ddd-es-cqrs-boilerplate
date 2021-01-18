@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace IdentityAccess\Application\Command\Identity;
 
-use Common\Shared\Application\Bus\Command\CommandHandlerInterface;
+use Common\Shared\Application\Command\CommandHandlerInterface;
 use IdentityAccess\Domain\Identity\Repository\UserRepositoryInterface;
 use IdentityAccess\Domain\Identity\User;
 use IdentityAccess\Domain\Identity\ValueObject\UserId;

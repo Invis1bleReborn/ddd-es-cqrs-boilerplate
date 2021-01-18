@@ -13,9 +13,9 @@ declare(strict_types=1);
 
 namespace Common\Shared\Infrastructure\Bus;
 
-use Common\Shared\Application\Bus\Event\EventBusInterface;
-use Common\Shared\Application\Bus\Event\EventInterface;
-use Common\Shared\Application\Bus\MessageBusExceptionTrait;
+use Common\Shared\Application\Event\EventBusInterface;
+use Common\Shared\Application\Event\EventInterface;
+use Common\Shared\Application\MessageBusExceptionTrait;
 use Symfony\Component\Messenger\Exception\HandlerFailedException;
 use Symfony\Component\Messenger\MessageBusInterface;
 

@@ -13,28 +13,31 @@ declare(strict_types=1);
 
 namespace IdentityAccess\Ui\Access;
 
+use Common\Shared\Application\Query\QueryBusInterface;
+use IdentityAccess\Application\Query\Identity\FindByUsername\FindByUsernameQuery;
 use IdentityAccess\Application\Query\Identity\UserInterface;
 use IdentityAccess\Infrastructure\Access\Security\BadCredentialsException;
-use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
 
 /**
  * Class UserProvider.
  */
 class UserProvider implements UserProviderInterface
 {
-    private \IdentityAccess\Application\Query\Identity\UserProviderInterface $userProvider;
+    private QueryBusInterface $queryBus;
 
-    public function __construct(\IdentityAccess\Application\Query\Identity\UserProviderInterface $userProvider)
+    public function __construct(QueryBusInterface $queryBus)
     {
-        $this->userProvider = $userProvider;
+        $this->queryBus = $queryBus;
     }
 
     public function load(string $username): UserInterface
     {
-        try {
-            return $this->userProvider->loadUserByUsername($username);
-        } catch (UsernameNotFoundException $exception) {
-            throw new BadCredentialsException(null, [], 0, $exception);
+        $user = $this->queryBus->ask(new FindByUsernameQuery($username));
+
+        if (null === $user) {
+            throw new BadCredentialsException();
         }
+
+        return $user;
     }
 }

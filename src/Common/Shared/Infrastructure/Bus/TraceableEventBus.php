@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace Common\Shared\Infrastructure\Bus;
 
-use Common\Shared\Application\Bus\Event\EventBusInterface;
-use Common\Shared\Application\Bus\Event\EventInterface;
+use Common\Shared\Application\Event\EventBusInterface;
+use Common\Shared\Application\Event\EventInterface;
 
 /**
  * Class TraceableEventBus.

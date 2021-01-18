@@ -20,7 +20,7 @@ use IdentityAccess\Application\Command\Identity\AbstractCommandHandler;
  */
 final class EnableUserHandler extends AbstractCommandHandler
 {
-    public function __invoke(EnableUserCommand $command)
+    public function __invoke(EnableUserCommand $command): void
     {
         $user = $this->getUser($command->userId);
 

@@ -14,8 +14,9 @@ declare(strict_types=1);
 namespace Common\Shared\Infrastructure\DependencyInjection;
 
 use Broadway\EventHandling\EventListener;
-use Common\Shared\Application\Bus\Command\CommandHandlerInterface;
-use Common\Shared\Application\Bus\Event\EventHandlerInterface;
+use Common\Shared\Application\Command\CommandHandlerInterface;
+use Common\Shared\Application\Event\EventHandlerInterface;
+use Common\Shared\Application\Query\QueryHandlerInterface;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
@@ -27,7 +28,7 @@ class RegisterMessageHandlersPass implements CompilerPassInterface
     public function process(ContainerBuilder $container): void
     {
         $this->registerMessageHandler($container, CommandHandlerInterface::class, 'messenger.bus.command');
-//        $this->registerMessageHandler($container, QueryHandlerInterface::class, 'messenger.bus.query');
+        $this->registerMessageHandler($container, QueryHandlerInterface::class, 'messenger.bus.query');
         $this->registerMessageHandler($container, EventHandlerInterface::class, 'messenger.bus.event.async');
         $this->registerMessageHandler($container, EventListener::class, null, 'broadway.domain.event_listener');
     }

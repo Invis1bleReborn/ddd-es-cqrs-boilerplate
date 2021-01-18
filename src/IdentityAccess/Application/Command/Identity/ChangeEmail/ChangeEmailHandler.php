@@ -33,7 +33,7 @@ final class ChangeEmailHandler extends AbstractCommandHandler
         $this->uniqueEmailSpecification = $uniqueEmailSpecification;
     }
 
-    public function __invoke(ChangeEmailCommand $command)
+    public function __invoke(ChangeEmailCommand $command): void
     {
         $user = $this->getUser($command->userId);
 

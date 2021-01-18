@@ -13,8 +13,8 @@ declare(strict_types=1);
 
 namespace Common\Shared\Infrastructure\Event\Consumer;
 
-use Common\Shared\Application\Bus\Event\Event;
-use Common\Shared\Application\Bus\Event\EventHandlerInterface;
+use Common\Shared\Application\Event\Event;
+use Common\Shared\Application\Event\EventHandlerInterface;
 use Common\Shared\Infrastructure\Event\Query\EventElasticRepository;
 
 /**

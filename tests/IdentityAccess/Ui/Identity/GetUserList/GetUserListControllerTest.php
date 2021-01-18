@@ -34,7 +34,11 @@ class GetUserListControllerTest extends UiTestCase
         $this->registerRootUser(null, $rootUsername, $rootPassword);
         $this->authenticateClient($client, $rootUsername, $rootPassword);
 
-        $response = $this->getResource($client, '/users');
+        $response = $this->getResource(
+            $client,
+            '/users?email=acme&enabled=1&dateRegistered[after]=01-01-2021&' .
+            '_order[email]=asc&_order[enabled]=desc&_order[dateRegistered]=desc'
+        );
 
         $this->assertOk($response);
 
