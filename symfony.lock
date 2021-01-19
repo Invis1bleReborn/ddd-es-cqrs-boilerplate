@@ -179,6 +179,9 @@
     "laminas/laminas-zendframework-bridge": {
         "version": "1.0.4"
     },
+    "lcobucci/clock": {
+        "version": "2.0.0"
+    },
     "lcobucci/jwt": {
         "version": "3.3.2"
     },
@@ -607,6 +610,9 @@
     "symfony/property-info": {
         "version": "v5.0.8"
     },
+    "symfony/proxy-manager-bridge": {
+        "version": "v5.1.10"
+    },
     "symfony/redis-messenger": {
         "version": "v5.1.2"
     },
@@ -730,9 +736,6 @@
     },
     "twig/twig": {
         "version": "v3.0.3"
-    },
-    "webimpress/safe-writer": {
-        "version": "2.0.1"
     },
     "webmozart/assert": {
         "version": "1.8.0"
