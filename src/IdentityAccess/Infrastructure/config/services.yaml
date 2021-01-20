@@ -85,6 +85,10 @@ services:
     IdentityAccess\Application\Query\Access\RefreshTokenProviderInterface: '@IdentityAccess\Infrastructure\Access\Query\RefreshTokenProvider'
     IdentityAccess\Application\Query\Identity\FindById\FindUserByIdInterface: '@IdentityAccess\Infrastructure\Identity\Query\Orm\OrmUserReadModelRepository'
 
+    IdentityAccess\Ui\Access\JwtNotFoundListener:
+        tags:
+            - { name: kernel.event_listener, event: lexik_jwt_authentication.on_jwt_not_found }
+
     IdentityAccess\Infrastructure\Serializer\Normalizer\OpenApiDecorator:
         arguments:
             $decorated: '@api_platform.openapi.normalizer'
