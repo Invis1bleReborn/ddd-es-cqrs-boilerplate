@@ -161,6 +161,9 @@
             ".php_cs.dist"
         ]
     },
+    "friendsofphp/proxy-manager-lts": {
+        "version": "v1.0.3"
+    },
     "gesdinet/jwt-refresh-token-bundle": {
         "version": "v0.9.1"
     },

@@ -90,6 +90,6 @@ services:
             - { name: kernel.event_listener, event: lexik_jwt_authentication.on_jwt_not_found }
 
     IdentityAccess\Infrastructure\Serializer\Normalizer\OpenApiDecorator:
+        decorates: api_platform.swagger.normalizer.api_gateway
         arguments:
-            $decorated: '@api_platform.openapi.normalizer'
             $patchData: '%api_doc_patch_data%'
