@@ -1,11 +1,16 @@
 <?php
 
-$finder = PhpCsFixer\Finder::create()
+declare(strict_types=1);
+
+use PhpCsFixer\Config;
+use PhpCsFixer\Finder;
+
+$finder = Finder::create()
     ->in(['src', 'tests'])
     ->notName('bootstrap.php')
 ;
 
-return PhpCsFixer\Config::create()
+return (new Config)
     ->setRules([
         '@Symfony' => true,
         'array_syntax' => ['syntax' => 'short'],

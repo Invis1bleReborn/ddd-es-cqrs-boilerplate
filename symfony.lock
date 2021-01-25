@@ -16,9 +16,6 @@
             "src/Entity/.gitignore"
         ]
     },
-    "api-platform/schema-generator": {
-        "version": "v2.2.2"
-    },
     "beberlei/assert": {
         "version": "v3.2.7"
     },
@@ -56,10 +53,10 @@
         "version": "1.0.0"
     },
     "composer/semver": {
-        "version": "1.5.1"
+        "version": "3.2.4"
     },
     "composer/xdebug-handler": {
-        "version": "1.4.1"
+        "version": "1.4.5"
     },
     "doctrine/annotations": {
         "version": "1.0",
@@ -140,9 +137,6 @@
     "doctrine/sql-formatter": {
         "version": "1.1.0"
     },
-    "easyrdf/easyrdf": {
-        "version": "0.9.1"
-    },
     "escapestudios/symfony2-coding-standard": {
         "version": "3.11.0"
     },
@@ -150,12 +144,12 @@
         "version": "1.1.1"
     },
     "friendsofphp/php-cs-fixer": {
-        "version": "2.2",
+        "version": "2.16",
         "recipe": {
             "repo": "github.com/symfony/recipes",
             "branch": "master",
-            "version": "2.2",
-            "ref": "cc05ab6abf6894bddb9bbd6a252459010ebe040b"
+            "version": "2.16",
+            "ref": "c1947bad147704aeaf0285745f0baae927a58959"
         },
         "files": [
             ".php_cs.dist"
@@ -187,9 +181,6 @@
     },
     "lcobucci/jwt": {
         "version": "3.3.2"
-    },
-    "league/html-to-markdown": {
-        "version": "4.9.1"
     },
     "lexik/jwt-authentication-bundle": {
         "version": "2.5",
@@ -246,7 +237,7 @@
         "version": "7.4"
     },
     "php-cs-fixer/diff": {
-        "version": "v1.3.0"
+        "version": "v1.3.1"
     },
     "phpdocumentor/reflection-common": {
         "version": "2.1.0"
@@ -566,7 +557,7 @@
         ]
     },
     "symfony/options-resolver": {
-        "version": "v5.0.8"
+        "version": "v5.2.1"
     },
     "symfony/orm-pack": {
         "version": "v1.0.8"
@@ -602,7 +593,7 @@
         "version": "v1.17.1"
     },
     "symfony/process": {
-        "version": "v5.0.8"
+        "version": "v5.2.1"
     },
     "symfony/profiler-pack": {
         "version": "v1.0.4"
