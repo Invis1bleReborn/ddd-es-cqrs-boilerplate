@@ -84,7 +84,7 @@ class CreateCollectionFiltersPassTest extends TestCase
             ],
         ];
     }
-    
+
     /**
      * @test
      */

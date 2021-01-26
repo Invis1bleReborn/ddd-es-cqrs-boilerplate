@@ -71,7 +71,7 @@ class OpenApiDecoratorTest extends TestCase
                                 'description' => 'Some description.',
                                 'content' => [],
                                 'links' => [
-                                    'foo' => 'nonExistingOperationId'
+                                    'foo' => 'nonExistingOperationId',
                                 ],
                             ],
                             404 => [

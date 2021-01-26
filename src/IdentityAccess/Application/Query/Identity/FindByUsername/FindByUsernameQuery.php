@@ -27,8 +27,6 @@ class FindByUsernameQuery implements QueryInterface
     /**
      * FindByUsernameQuery constructor.
      *
-     * @param string $username
-     *
      * @throws AssertionFailedException
      */
     public function __construct(string $username)
