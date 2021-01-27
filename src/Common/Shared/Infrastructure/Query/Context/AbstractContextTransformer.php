@@ -30,7 +30,7 @@ abstract class AbstractContextTransformer implements ContextTransformerInterface
      * @var iterable<FilterFactoryInterface>
      */
     protected iterable $filterFactories;
-    
+
     /**
      * @var iterable<SortingFactoryInterface>
      */
@@ -68,7 +68,7 @@ abstract class AbstractContextTransformer implements ContextTransformerInterface
         foreach ($filterFactories as $factory) {
             Assertion::isInstanceOf($factory, FilterFactoryInterface::class);
         }
-        
+
         foreach ($sortingFactories as $factory) {
             Assertion::isInstanceOf($factory, SortingFactoryInterface::class);
         }

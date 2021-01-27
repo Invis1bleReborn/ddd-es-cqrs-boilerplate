@@ -23,7 +23,7 @@ use ApiPlatform\Core\Metadata\Resource\ResourceMetadata;
 final class PhpModelFilterMetadataFactory implements ResourceMetadataFactoryInterface
 {
     /**
-     * @var array[] $collectionMutatorDescriptors
+     * @var array[]
      */
     private array $collectionMutatorDescriptors;
 

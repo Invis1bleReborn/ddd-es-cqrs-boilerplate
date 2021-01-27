@@ -52,6 +52,7 @@ abstract class AbstractListQuery implements ListQueryInterface
 
     /**
      * @return static
+     *
      * @throws AssertionFailedException
      */
     public static function create(
@@ -59,16 +60,15 @@ abstract class AbstractListQuery implements ListQueryInterface
         Sortings $sortings = null,
         int $limit = null,
         int $offset = null
-    )
-    {
+    ) {
         return new static($filters, $sortings, $limit, $offset);
     }
-    
+
     public function getFilters(): ?Filters
     {
         return $this->filters;
     }
-    
+
     public function getSortings(): ?Sortings
     {
         return $this->sortings;

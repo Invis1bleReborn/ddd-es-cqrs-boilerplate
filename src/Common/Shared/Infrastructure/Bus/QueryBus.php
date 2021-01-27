@@ -13,9 +13,9 @@ declare(strict_types=1);
 
 namespace Common\Shared\Infrastructure\Bus;
 
+use Common\Shared\Application\MessageBusExceptionTrait;
 use Common\Shared\Application\Query\QueryBusInterface;
 use Common\Shared\Application\Query\QueryInterface;
-use Common\Shared\Application\MessageBusExceptionTrait;
 use Symfony\Component\Messenger\HandleTrait;
 use Symfony\Component\Messenger\MessageBusInterface;
 

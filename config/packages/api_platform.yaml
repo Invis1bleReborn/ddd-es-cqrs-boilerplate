@@ -21,6 +21,9 @@ api_platform:
             enabled_parameter_name: _pagination
             page_parameter_name: _page
             items_per_page_parameter_name: _page_size
+            client_items_per_page: true
+            items_per_page: 10
+            maximum_items_per_page: 500
         exists_parameter_name: _exists
 
     exception_to_status:
@@ -31,15 +34,9 @@ api_platform:
         Doctrine\ORM\OptimisticLockException: 409
 
         # Custom mapping
-        IdentityAccess\Infrastructure\Access\Security\AuthenticationException: 401
+        Symfony\Component\Security\Core\Exception\AuthenticationException: 401
         IdentityAccess\Infrastructure\Access\Security\BadCredentialsException: 401
         IdentityAccess\Infrastructure\Access\Security\AccountDisabledException: 401
         IdentityAccess\Ui\Access\AccessDeniedException: 403
 
     show_webby: false
-
-    defaults:
-        stateless: true
-        pagination_client_items_per_page: true
-        pagination_items_per_page: 10
-        pagination_maximum_items_per_page: 500
