@@ -20,8 +20,5 @@ interface CollectionMutatorDescriptorFactoryInterface
 {
     public function supports(string $fqcn): bool;
 
-    /**
-     * @return array[]
-     */
     public function create(\ReflectionClass $mutatorClass): array;
 }
