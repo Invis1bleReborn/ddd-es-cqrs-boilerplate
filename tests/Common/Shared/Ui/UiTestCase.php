@@ -54,7 +54,7 @@ abstract class UiTestCase extends ApiTestCase
         string $description = null,
         array $violations = null
     ): void {
-        static::assertResponseStatusCodeSame(400);
+        static::assertResponseStatusCodeSame(422);
         static::assertJsonResponse($response);
 
         $subset = [

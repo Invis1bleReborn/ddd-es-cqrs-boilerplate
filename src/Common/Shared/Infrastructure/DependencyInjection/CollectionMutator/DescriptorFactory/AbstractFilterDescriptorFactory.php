@@ -51,8 +51,7 @@ abstract class AbstractFilterDescriptorFactory implements CollectionMutatorDescr
             'model_class' => $modelClassName,
             'arguments' => [
                 'properties' => [
-                    call_user_func([$filterClassName, 'getPropertyName']) =>
-                        null === $matchingStrategy ? null : strtolower($matchingStrategy->getValue()),
+                    call_user_func([$filterClassName, 'getPropertyName']) => null === $matchingStrategy ? null : strtolower($matchingStrategy->getValue()),
                 ],
             ],
         ];

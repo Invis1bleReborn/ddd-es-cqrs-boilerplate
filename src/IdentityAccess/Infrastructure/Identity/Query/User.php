@@ -243,6 +243,7 @@ class User implements UserInterface, EnableableUserInterface, SecurityUserInterf
     /**
      * @ApiProperty()
      * @Groups({"user:details", "user:list"})
+     *
      * @return string[]
      */
     public function getRoles(): ?array

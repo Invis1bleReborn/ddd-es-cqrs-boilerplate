@@ -1,4 +1,5 @@
 <?php
+
 /*
  * This file is part of invis1ble/ddd-es-cqrs-boilerplate.
  *
@@ -15,7 +16,6 @@ namespace Common\Shared\Infrastructure\DependencyInjection\CollectionMutator\Des
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 use Common\Shared\Application\Query\FooModel;
 use Common\Shared\Application\Query\Sorting\SortingStub;
-use Common\Shared\Application\Query\Sorting\UnsupportedSortingStub;
 use Common\Shared\Infrastructure\DependencyInjection\CollectionMutator\DescriptorFactory as Df;
 
 /**
