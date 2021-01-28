@@ -41,34 +41,40 @@ class CreateCollectionMutatorDescriptorsPass implements CompilerPassInterface
                 continue;
             }
 
-            $mutatorClassName = $mutatorClass->getName();
-
             foreach ($descriptorFactories as $serviceId => $tags) {
                 $factory = $container->get($serviceId);
-                /* @var $factory DescriptorFactory\CollectionMutatorDescriptorFactoryInterface */
+                /* @var DescriptorFactory\CollectionMutatorDescriptorFactoryInterface $factory */
 
-                if (!$factory->supports($mutatorClassName)) {
-                    continue;
-                }
-
-                $descriptor = $factory->create($mutatorClass);
-
-                if (isset($descriptors[$descriptor['id']], $descriptor['arguments']['properties'])) {
-                    if (isset($descriptors[$descriptor['id']]['arguments']['properties'])) {
-                        $descriptors[$descriptor['id']]['arguments']['properties'] = array_merge(
-                            $descriptors[$descriptor['id']]['arguments']['properties'],
-                            $descriptor['arguments']['properties']
-                        );
-                    } else {
-                        $descriptors[$descriptor['id']]['arguments']['properties'] =
-                            $descriptor['arguments']['properties'];
-                    }
-                } else {
-                    $descriptors[$descriptor['id']] = $descriptor;
-                }
+                $this->handleMutator($mutatorClass, $factory, $descriptors);
             }
         }
 
         $container->setParameter('app.query.collection_mutator_descriptors', $descriptors);
+    }
+
+    protected function handleMutator(
+        \ReflectionClass $mutatorClass,
+        DescriptorFactory\CollectionMutatorDescriptorFactoryInterface $factory,
+        array &$descriptors
+    ) {
+        if (!$factory->supports($mutatorClass->getName())) {
+            return;
+        }
+
+        $descriptor = $factory->create($mutatorClass);
+
+        if (isset($descriptors[$descriptor['id']], $descriptor['arguments']['properties'])) {
+            if (isset($descriptors[$descriptor['id']]['arguments']['properties'])) {
+                $descriptors[$descriptor['id']]['arguments']['properties'] = array_merge(
+                    $descriptors[$descriptor['id']]['arguments']['properties'],
+                    $descriptor['arguments']['properties']
+                );
+            } else {
+                $descriptors[$descriptor['id']]['arguments']['properties'] =
+                    $descriptor['arguments']['properties'];
+            }
+        } else {
+            $descriptors[$descriptor['id']] = $descriptor;
+        }
     }
 }
