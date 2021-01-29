@@ -43,13 +43,11 @@ abstract class AbstractSortingDescriptorFactory implements CollectionMutatorDesc
         if (null === $nullsComparisonStrategy) {
             $nullsComparisonStrategyValue = null;
         } else {
-            $nullsComparisonStrategyValue = $nullsComparisonStrategy->getValue();
+            $nullsComparisonStrategyValue = strtolower($nullsComparisonStrategy->getValue());
         }
 
         $filterArguments = [
-            'nulls_comparison' => null === $nullsComparisonStrategyValue ?
-                null :
-                strtolower($nullsComparisonStrategyValue),
+            'nulls_comparison' => $nullsComparisonStrategyValue,
         ];
 
         $defaultDirection = call_user_func([$sortingClassName, 'getDefaultDirection']);
