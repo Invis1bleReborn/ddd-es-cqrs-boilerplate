@@ -29,25 +29,17 @@ class CreateCollectionFiltersPass implements CompilerPassInterface
     public function process(ContainerBuilder $container): void
     {
         foreach ($container->getParameter('app.query.collection_mutator_descriptors') as $descriptor) {
+            if ($container->has($descriptor['id'])) {
+                continue;
+            }
+
             $this->createFilterDefinition($container, $descriptor);
         }
     }
 
     private function createFilterDefinition(ContainerBuilder $container, array $descriptor): void
     {
-        if ($container->has($descriptor['id'])) {
-            return;
-        }
-
-        $mutatorReflectionClass = $container->getReflectionClass($descriptor['class'], false);
-
-        if (null === $mutatorReflectionClass) {
-            throw new InvalidArgumentException(sprintf(
-                'Class "%s" used for service "%s" cannot be found.',
-                $descriptor['class'],
-                $descriptor['id']
-            ));
-        }
+        $mutatorReflectionClass = $this->getMutatorReflectionClass($container, $descriptor);
 
         if ($container->has($descriptor['class']) &&
             ($parentDefinition = $container->findDefinition($descriptor['class']))->isAbstract()
@@ -61,6 +53,31 @@ class CreateCollectionFiltersPass implements CompilerPassInterface
         $definition->addTag(static::TAG_FILTER_NAME);
         $definition->setAutowired(true);
 
+        $this->setDefinitionArguments($definition, $mutatorReflectionClass, $descriptor);
+
+        $container->setDefinition($descriptor['id'], $definition);
+    }
+
+    private function getMutatorReflectionClass(ContainerBuilder $container, array $descriptor): \ReflectionClass
+    {
+        $mutatorReflectionClass = $container->getReflectionClass($descriptor['class'], false);
+
+        if (null === $mutatorReflectionClass) {
+            throw new InvalidArgumentException(sprintf(
+                'Class "%s" used for service "%s" cannot be found.',
+                $descriptor['class'],
+                $descriptor['id']
+            ));
+        }
+
+        return $mutatorReflectionClass;
+    }
+
+    private function setDefinitionArguments(
+        Definition $definition,
+        \ReflectionClass $mutatorReflectionClass,
+        array $descriptor
+    ): void {
         $parameterNames = [];
 
         $constructorReflectionMethod = $mutatorReflectionClass->getConstructor();
@@ -82,7 +99,5 @@ class CreateCollectionFiltersPass implements CompilerPassInterface
 
             $definition->setArgument("$$key", $value);
         }
-
-        $container->setDefinition($descriptor['id'], $definition);
     }
 }
