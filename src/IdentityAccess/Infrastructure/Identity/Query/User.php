@@ -13,10 +13,7 @@ declare(strict_types=1);
 
 namespace IdentityAccess\Infrastructure\Identity\Query;
 
-use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiProperty;
-use ApiPlatform\Core\Annotation\ApiResource;
-use ApiPlatform\Core\Serializer\Filter\PropertyFilter;
 use Assert\AssertionFailedException;
 use Broadway\ReadModel\SerializableReadModel;
 use Common\Shared\Domain\Exception\DateTimeException;
@@ -27,11 +24,6 @@ use IdentityAccess\Domain\Access\ValueObject\Roles;
 use IdentityAccess\Domain\Identity\ValueObject\Email;
 use IdentityAccess\Domain\Identity\ValueObject\HashedPassword;
 use IdentityAccess\Domain\Identity\ValueObject\UserId;
-use IdentityAccess\Ui\Access\ChangeRoles\ChangeRolesRequest;
-use IdentityAccess\Ui\Identity\ChangeEmail\ChangeEmailRequest;
-use IdentityAccess\Ui\Identity\ChangePassword\ChangePasswordRequest;
-use IdentityAccess\Ui\Identity\ChangeUserStatus\ChangeUserStatusRequest;
-use IdentityAccess\Ui\Identity\RegisterUser\RegisterUserRequest;
 use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\UuidInterface;
 use Symfony\Component\Security\Core\User\UserInterface as SecurityUserInterface;
@@ -40,105 +32,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * User.
  *
- * @see http://schema.org/Person Documentation on Schema.org
- *
- * @ApiResource(
- *     iri="http://schema.org/Person",
- *     order={},
- *     mercure=true,
- *     messenger="input",
- *     collectionOperations={
- *         "get"={
- *             "normalization_context"={
- *                 "groups"={"user:list"},
- *                 "swagger_definition_name"="list",
- *             },
- *             "openapi_context"={
- *                 "summary"="Retrieves Users.",
- *                 "description"="Retrieves the collection of Users.",
- *             },
- *         },
- *         "register"={
- *             "method"="POST",
- *             "input"=RegisterUserRequest::class,
- *             "normalization_context"={
- *                 "groups"={"user:id"},
- *                 "swagger_definition_name"="id",
- *             },
- *             "openapi_context"={
- *                 "summary"="Registers User.",
- *                 "description"="Registers new User.",
- *             },
- *         },
- *     },
- *     itemOperations={
- *         "get"={
- *             "normalization_context"={
- *                 "groups"={"user:details"},
- *                 "swagger_definition_name"="details",
- *             },
- *             "openapi_context"={
- *                 "summary"="Retrieves User.",
- *                 "description"="Retrieves a User.",
- *             },
- *         },
- *         "changeStatus"={
- *             "method"="PUT",
- *             "path"="/users/{id}/status",
- *             "input"=ChangeUserStatusRequest::class,
- *             "output"=false,
- *             "openapi_context"={
- *                 "summary"="Updates User status.",
- *                 "description"="Enables or disables User.",
- *             },
- *         },
- *         "changeEmail"={
- *             "method"="PUT",
- *             "path"="/users/{id}/email",
- *             "input"=ChangeEmailRequest::class,
- *             "output"=false,
- *             "openapi_context"={
- *                 "summary"="Updates User email.",
- *                 "description"="Updates User email address.",
- *             },
- *         },
- *         "changePassword"={
- *             "method"="PUT",
- *             "path"="/users/{id}/password",
- *             "input"=ChangePasswordRequest::class,
- *             "output"=false,
- *             "openapi_context"={
- *                 "summary"="Updates User password.",
- *                 "description"="Updates User password.",
- *             },
- *         },
- *         "changeRoles"={
- *             "method"="PUT",
- *             "path"="/users/{id}/roles",
- *             "input"=ChangeRolesRequest::class,
- *             "output"=false,
- *             "openapi_context"={
- *                 "summary"="Updates User roles.",
- *                 "description"="Updates User roles.",
- *             },
- *         },
- *     },
- * )
- * @ApiFilter(
- *     PropertyFilter::class,
- *     arguments={
- *         "parameterName"="_properties",
- *         "overrideDefaultProperties"=false,
- *         "whitelist"={
- *             "id",
- *             "email",
- *             "roles",
- *             "enabled",
- *             "registeredById",
- *             "dateRegistered",
- *         },
- *     },
- * )
+ * @see https://schema.org/Person Documentation on Schema.org
  */
 class User implements UserInterface, EnableableUserInterface, SecurityUserInterface, SerializableReadModel
 {

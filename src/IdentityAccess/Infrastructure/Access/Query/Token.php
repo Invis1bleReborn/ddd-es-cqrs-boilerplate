@@ -13,52 +13,15 @@ declare(strict_types=1);
 
 namespace IdentityAccess\Infrastructure\Access\Query;
 
-use ApiPlatform\Core\Action\NotFoundAction;
 use ApiPlatform\Core\Annotation\ApiProperty;
-use ApiPlatform\Core\Annotation\ApiResource;
 use Common\Shared\Domain\ValueObject\DateTime;
 use IdentityAccess\Application\Query\Access\TokenInterface;
-use IdentityAccess\Ui\Access\CreateToken\CreateTokenRequest;
-use IdentityAccess\Ui\Access\RefreshToken\RefreshTokenRequest;
 use Symfony\Component\Serializer\Annotation\Ignore;
 
 /**
  * JSON Web Token.
  *
- * @see http://schema.org/accessCode Documentation on Schema.org
- *
- * @ApiResource(
- *     iri="http://schema.org/Thing",
- *     messenger="input",
- *     collectionOperations={
- *         "create"={
- *             "method"="POST",
- *             "input"=CreateTokenRequest::class,
- *             "openapi_context"={
- *                 "summary"="Creates JWT.",
- *                 "description"="Creates and returns new JSON Web Token.",
- *                 "security"={},
- *             },
- *         },
- *         "refresh"={
- *             "method"="POST",
- *             "path"="/refresh_tokens",
- *             "input"=RefreshTokenRequest::class,
- *             "openapi_context"={
- *                 "summary"="Refreshes JWT.",
- *                 "description"="Refreshes and returns refreshed JSON Web Token.",
- *                 "security"={},
- *             },
- *         },
- *     },
- *     itemOperations={
- *         "get"={
- *             "controller"=NotFoundAction::class,
- *             "read"=false,
- *             "output"=false,
- *         },
- *     },
- * )
+ * @see https://schema.org/accessCode Documentation on Schema.org
  */
 class Token implements TokenInterface
 {

@@ -93,3 +93,12 @@ services:
         decorates: api_platform.swagger.normalizer.api_gateway
         arguments:
             $patchData: '%api_doc_patch_data%'
+
+    identity_access.user.property_filter:
+        parent: api_platform.serializer.property_filter
+        autoconfigure: false
+        autowire: false
+        arguments:
+            $parameterName: _properties
+            $whitelist: [ id, email, roles, enabled, registeredById, dateRegistered ]
+        tags: [ api_platform.filter ]

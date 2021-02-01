@@ -1,0 +1,65 @@
+IdentityAccess\Infrastructure\Identity\Query\User:
+    iri: https://schema.org/Person
+    attributes:
+        filters: [ identity_access.user.property_filter ]
+        order: []
+        mercure: true
+        messenger: input
+    collectionOperations:
+        get:
+            normalization_context:
+                groups: [ 'user:list' ]
+                swagger_definition_name: list
+            openapi_context:
+                summary: Retrieves Users.
+                description: Retrieves the collection of Users.
+        register:
+            method: POST
+            input: IdentityAccess\Ui\Identity\RegisterUser\RegisterUserRequest
+            normalization_context:
+                groups: [ 'user:id' ]
+                swagger_definition_name: id
+            openapi_context:
+                summary: Registers User.
+                description: Registers new User.
+    itemOperations:
+        get:
+            normalization_context:
+                groups: [ 'user:details' ]
+                swagger_definition_name: details
+            openapi_context:
+                summary: Retrieves User.
+                description: Retrieves a User.
+        changeStatus:
+            method: PUT
+            path: '/users/{id}/status'
+            input: IdentityAccess\Ui\Identity\ChangeUserStatus\ChangeUserStatusRequest
+            output: false
+            openapi_context:
+                summary: Updates User status.
+                description: Enables or disables User.
+        changeEmail:
+            method: PUT
+            path: '/users/{id}/email'
+            input: IdentityAccess\Ui\Identity\ChangeEmail\ChangeEmailRequest
+            output: false
+            openapi_context:
+                summary: Updates User email.
+                description: Updates User email address.
+        changePassword:
+            method: PUT
+            path: '/users/{id}/password'
+            input: IdentityAccess\Ui\Identity\ChangePassword\ChangePasswordRequest
+            output: false
+            openapi_context:
+                summary: Updates User password.
+                description: Updates User password address.
+        changeRoles:
+            method: PUT
+            path: '/users/{id}/roles'
+            input: IdentityAccess\Ui\Access\ChangeRoles\ChangeRolesRequest
+            output: false
+            openapi_context:
+                summary: Updates User roles.
+                description: Updates User roles address.
+            
