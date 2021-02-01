@@ -21,7 +21,7 @@ use Symfony\Component\Serializer\Annotation\Ignore;
 /**
  * JSON Web Token.
  *
- * @see https://schema.org/accessCode Documentation on Schema.org
+ * @see https://en.wikipedia.org/wiki/JSON_Web_Token Documentation on Wikipedia.org
  */
 class Token implements TokenInterface
 {

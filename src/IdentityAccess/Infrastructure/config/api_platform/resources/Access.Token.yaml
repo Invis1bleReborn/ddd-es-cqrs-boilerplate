@@ -1,5 +1,5 @@
 IdentityAccess\Infrastructure\Access\Query\Token:
-    iri: https://schema.org/Thing
+    iri: https://en.wikipedia.org/wiki/JSON_Web_Token
     attributes:
         messenger: input
     collectionOperations:
