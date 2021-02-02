@@ -10,6 +10,13 @@ framework:
         cookie_secure: auto
         cookie_samesite: lax
 
+    serializer:
+        enable_annotations: false
+        mapping:
+            paths:
+                # IdentityAccess
+                - '%kernel.project_dir%/src/IdentityAccess/Infrastructure/config/serializer'
+
     #esi: true
     #fragments: true
     php_errors:

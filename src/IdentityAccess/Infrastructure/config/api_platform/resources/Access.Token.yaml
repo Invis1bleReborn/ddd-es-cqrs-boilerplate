@@ -1,0 +1,35 @@
+IdentityAccess\Infrastructure\Access\Query\Token:
+    iri: https://en.wikipedia.org/wiki/JSON_Web_Token
+    attributes:
+        messenger: input
+    properties:
+        id:
+            identifier: true
+            readable: false
+        accessToken:
+            iri: https://schema.org/accessCode
+        refreshToken:
+            iri: https://schema.org/accessCode
+        refreshTokenDateExpired:
+            readable: false
+    collectionOperations:
+        create:
+            method: POST
+            input: IdentityAccess\Ui\Access\CreateToken\CreateTokenRequest
+            openapi_context:
+                summary: Creates JWT.
+                description: Creates and returns new JSON Web Token.
+                security: []
+        refresh:
+            method: POST
+            path: '/refresh_tokens'
+            input: IdentityAccess\Ui\Access\RefreshToken\RefreshTokenRequest
+            openapi_context:
+                summary: Refreshes JWT.
+                description: Refreshes and returns refreshed JSON Web Token.
+                security: []
+    itemOperations:
+        get:
+            controller: ApiPlatform\Core\Action\NotFoundAction
+            read: false
+            output: false

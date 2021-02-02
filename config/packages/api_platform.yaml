@@ -15,6 +15,10 @@ api_platform:
         - '%kernel.project_dir%/src/IdentityAccess/Infrastructure/Access/Query'
         - '%kernel.project_dir%/src/IdentityAccess/Infrastructure/Identity/Query'
 
+    mapping:
+        paths:
+            - '%kernel.project_dir%/src/IdentityAccess/Infrastructure/config/api_platform/resources'
+
     collection:
         order_parameter_name: _order
         pagination:
