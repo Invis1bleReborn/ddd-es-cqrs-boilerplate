@@ -13,10 +13,8 @@ declare(strict_types=1);
 
 namespace IdentityAccess\Infrastructure\Access\Query;
 
-use ApiPlatform\Core\Annotation\ApiProperty;
 use Common\Shared\Domain\ValueObject\DateTime;
 use IdentityAccess\Application\Query\Access\TokenInterface;
-use Symfony\Component\Serializer\Annotation\Ignore;
 
 /**
  * JSON Web Token.
@@ -47,26 +45,16 @@ class Token implements TokenInterface
         $this->refreshTokenDateExpired = $refreshTokenDateExpired;
     }
 
-    /**
-     * @ApiProperty(iri="http://schema.org/accessCode")
-     */
     public function getAccessToken(): string
     {
         return $this->accessToken;
     }
 
-    /**
-     * @ApiProperty(iri="http://schema.org/accessCode")
-     */
     public function getRefreshToken(): string
     {
         return $this->refreshToken;
     }
 
-    /**
-     * @ApiProperty(readable=false)
-     * @Ignore()
-     */
     public function getRefreshTokenDateExpired(): \DateTimeImmutable
     {
         $dateExpired = $this->refreshTokenDateExpired->toNative();
@@ -75,10 +63,6 @@ class Token implements TokenInterface
         return $dateExpired;
     }
 
-    /**
-     * @ApiProperty(identifier=true, readable=false)
-     * @Ignore()
-     */
     public function getId(): string
     {
         return md5($this->accessToken);

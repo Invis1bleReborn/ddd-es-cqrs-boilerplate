@@ -13,7 +13,6 @@ declare(strict_types=1);
 
 namespace IdentityAccess\Infrastructure\Identity\Query;
 
-use ApiPlatform\Core\Annotation\ApiProperty;
 use Assert\AssertionFailedException;
 use Broadway\ReadModel\SerializableReadModel;
 use Common\Shared\Domain\Exception\DateTimeException;
@@ -27,7 +26,6 @@ use IdentityAccess\Domain\Identity\ValueObject\UserId;
 use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\UuidInterface;
 use Symfony\Component\Security\Core\User\UserInterface as SecurityUserInterface;
-use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * User.
@@ -88,9 +86,6 @@ class User implements UserInterface, EnableableUserInterface, SecurityUserInterf
         $this->dateRegistered = $dateRegistered;
     }
 
-    /**
-     * @Groups({"user:id", "user:details", "user:list"})
-     */
     public function getId(): string
     {
         return $this->id->toString();
@@ -103,10 +98,6 @@ class User implements UserInterface, EnableableUserInterface, SecurityUserInterf
         return $this;
     }
 
-    /**
-     * @ApiProperty(iri="http://schema.org/email")
-     * @Groups({"user:details", "user:list"})
-     */
     public function getEmail(): ?string
     {
         return $this->email;
@@ -119,9 +110,6 @@ class User implements UserInterface, EnableableUserInterface, SecurityUserInterf
         return $this;
     }
 
-    /**
-     * @ApiProperty(readable=false, writable=false)
-     */
     public function getHashedPassword(): ?string
     {
         return $this->hashedPassword;
@@ -135,9 +123,6 @@ class User implements UserInterface, EnableableUserInterface, SecurityUserInterf
     }
 
     /**
-     * @ApiProperty()
-     * @Groups({"user:details", "user:list"})
-     *
      * @return string[]
      */
     public function getRoles(): ?array
@@ -145,10 +130,6 @@ class User implements UserInterface, EnableableUserInterface, SecurityUserInterf
         return $this->roles;
     }
 
-    /**
-     * @ApiProperty()
-     * @Groups({"user:details", "user:list"})
-     */
     public function isEnabled(): ?bool
     {
         return $this->enabled;
@@ -161,19 +142,11 @@ class User implements UserInterface, EnableableUserInterface, SecurityUserInterf
         return $this;
     }
 
-    /**
-     * @ApiProperty()
-     * @Groups({"user:details"})
-     */
     public function getRegisteredById(): ?string
     {
         return null === $this->registeredById ? null : $this->registeredById->toString();
     }
 
-    /**
-     * @ApiProperty()
-     * @Groups({"user:details", "user:list"})
-     */
     public function getDateRegistered(): ?\DateTimeImmutable
     {
         if (null === $this->dateRegistered) {

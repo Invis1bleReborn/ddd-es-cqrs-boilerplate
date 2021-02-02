@@ -1,0 +1,14 @@
+IdentityAccess\Infrastructure\Identity\Query\User:
+    attributes:
+        id:
+            groups: [ 'user:id', 'user:details', 'user:list' ]
+        email:
+            groups: [ 'user:details', 'user:list' ]
+        roles:
+            groups: [ 'user:details', 'user:list' ]
+        enabled:
+            groups: [ 'user:details', 'user:list' ]
+        registeredById:
+            groups: [ 'user:details' ]
+        dateRegistered:
+            groups: [ 'user:details', 'user:list' ]

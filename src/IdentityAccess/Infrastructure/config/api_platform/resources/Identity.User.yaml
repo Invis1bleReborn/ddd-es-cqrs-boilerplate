@@ -5,6 +5,16 @@ IdentityAccess\Infrastructure\Identity\Query\User:
         order: []
         mercure: true
         messenger: input
+    properties:
+        email:
+            iri: https://schema.org/email
+        hashedPassword:
+            readable: false
+            writable: false
+        roles: ~
+        enabled: ~
+        registeredById: ~
+        dateRegistered: ~
     collectionOperations:
         get:
             normalization_context:
