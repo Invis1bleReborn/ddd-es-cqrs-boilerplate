@@ -89,8 +89,8 @@ services:
         tags:
             - { name: kernel.event_listener, event: lexik_jwt_authentication.on_jwt_not_found }
 
-    IdentityAccess\Infrastructure\Serializer\Normalizer\OpenApiDecorator:
-        decorates: api_platform.swagger.normalizer.api_gateway
+    IdentityAccess\Infrastructure\OpenApi\Factory\OpenApiFactory:
+        decorates: api_platform.openapi.factory
         arguments:
             $patchData: '%api_doc_patch_data%'
 
