@@ -64,3 +64,15 @@ services:
 
     Broadway\UuidGenerator\UuidGeneratorInterface: '@broadway.uuid.generator'
     Common\Shared\Domain\ValueObject\UuidGeneratorInterface: '@Common\Shared\Infrastructure\Uuid\UuidGenerator'
+
+    Common\Shared\Infrastructure\OpenApi\Factory\UriFixer:
+        decorates: api_platform.openapi.factory
+        decoration_priority: 1000
+
+    Common\Shared\Infrastructure\OpenApi\Factory\BadLinksRemover:
+        decorates: api_platform.openapi.factory
+        decoration_priority: 990
+
+    Common\Shared\Infrastructure\OpenApi\Factory\EmptyResponseContentNullifier:
+        decorates: api_platform.openapi.factory
+        decoration_priority: 980
