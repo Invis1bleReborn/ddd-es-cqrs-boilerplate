@@ -15,7 +15,7 @@ namespace IdentityAccess\Infrastructure\OpenApi\Factory;
 
 use ApiPlatform\Core\OpenApi\Model\Components;
 use ApiPlatform\Core\OpenApi\OpenApi;
-use Common\Shared\Infrastructure\OpenApi\Factory\OpenApiFactoryDecorator;
+use Common\Shared\Infrastructure\OpenApi\Factory\OpenApiDecorator;
 use Common\Shared\Infrastructure\OpenApi\Iterator\Component\Schema\PropertiesIterator;
 use Common\Shared\Infrastructure\OpenApi\Iterator\Component\SchemasIterator;
 use IdentityAccess\Domain\Access\ValueObject\Role;
@@ -23,7 +23,7 @@ use IdentityAccess\Domain\Access\ValueObject\Role;
 /**
  * Class RolesEnumSetter.
  */
-class RolesEnumSetter extends OpenApiFactoryDecorator
+class RolesEnumSetter extends OpenApiDecorator
 {
     protected function decorate(OpenApi $openApi): OpenApi
     {

@@ -18,7 +18,7 @@ use ApiPlatform\Core\OpenApi\Factory\OpenApiFactoryInterface;
 /**
  * Class ApiUriPrefixAwareDecorator.
  */
-abstract class ApiUriPrefixAwareDecorator extends OpenApiFactoryDecorator
+abstract class ApiUriPrefixAwareDecorator extends OpenApiDecorator
 {
     protected string $apiUriPrefix;
 

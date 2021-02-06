@@ -19,7 +19,7 @@ use ApiPlatform\Core\OpenApi\OpenApi;
 /**
  * Class OpenApiFactoryDecorator.
  */
-abstract class OpenApiFactoryDecorator implements OpenApiFactoryInterface
+abstract class OpenApiDecorator implements OpenApiFactoryInterface
 {
     protected OpenApiFactoryInterface $decorated;
 

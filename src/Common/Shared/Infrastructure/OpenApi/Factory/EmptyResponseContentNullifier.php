@@ -20,7 +20,7 @@ use ApiPlatform\Core\OpenApi\OpenApi;
 /**
  * Class BadLinksRemover.
  */
-class EmptyResponseContentNullifier extends OpenApiFactoryDecorator
+class EmptyResponseContentNullifier extends OpenApiDecorator
 {
     use SetPropertyValueTrait;
     use WalkResponsesTrait;

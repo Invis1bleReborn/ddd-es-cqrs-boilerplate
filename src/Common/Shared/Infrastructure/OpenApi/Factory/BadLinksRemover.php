@@ -22,7 +22,7 @@ use ApiPlatform\Core\OpenApi\OpenApi;
 /**
  * Class BadLinksRemover.
  */
-class BadLinksRemover extends OpenApiFactoryDecorator
+class BadLinksRemover extends OpenApiDecorator
 {
     use SetPropertyValueTrait;
     use WalkResponsesTrait;
