@@ -43,7 +43,7 @@ class BadLinksRemover extends OpenApiDecorator
             $operationIndex[$operation->getOperationId()] = true;
         });
 
-        $this->walkResponses($paths, function (int $statusCode, Response $response): void {
+        $this->walkResponses($paths, function (int $statusCode, Response $response) use ($operationIndex): void {
             $links = $response->getLinks();
 
             if (null === $links || 0 === $links->count()) {
