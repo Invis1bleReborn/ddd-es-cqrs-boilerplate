@@ -52,7 +52,14 @@ class PatchApplier extends ApiUriPrefixAwareDecorator
     protected function applyPatch(OpenApi $openApi): OpenApi
     {
         $uriPrefixLength = strlen($this->apiUriPrefix);
-        $schemas = $openApi->getComponents()->getSchemas();
+
+        $components = $openApi->getComponents();
+
+        if (null === $components) {
+            $schemas = null;
+        } else {
+            $schemas = $components->getSchemas();
+        }
 
         $this->walkOperations($openApi->getPaths(), function (
             Operation $operation,
@@ -103,6 +110,10 @@ class PatchApplier extends ApiUriPrefixAwareDecorator
                 'description',
                 $this->patchData[$uri][$method]['schema']['description']
             );
+
+            if (null === $schemas) {
+                return;
+            }
 
             foreach ($requestBody->getContent() as $type => $content) {
                 /* @var MediaType $content */
