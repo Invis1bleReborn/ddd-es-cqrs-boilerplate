@@ -51,8 +51,6 @@ class PatchApplier extends ApiUriPrefixAwareDecorator
 
     protected function applyPatch(OpenApi $openApi): OpenApi
     {
-        $uriPrefixLength = strlen($this->apiUriPrefix);
-
         $components = $openApi->getComponents();
 
         if (null === $components) {
@@ -65,11 +63,8 @@ class PatchApplier extends ApiUriPrefixAwareDecorator
             Operation $operation,
             string $uri,
             string $method
-        ) use (
-            $uriPrefixLength,
-            $schemas
-        ): void {
-            $uri = substr($uri, $uriPrefixLength);
+        ) use ($schemas): void {
+            $uri = preg_replace('#^' . preg_quote($this->apiUriPrefix, '#') . '#', '', $uri);
 
             if (isset($this->patchData[$uri][$method]['responses'])) {
                 foreach ($operation->getResponses() as $statusCode => $response) {
