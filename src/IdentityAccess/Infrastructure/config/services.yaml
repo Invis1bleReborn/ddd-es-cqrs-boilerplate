@@ -89,7 +89,25 @@ services:
         tags:
             - { name: kernel.event_listener, event: lexik_jwt_authentication.on_jwt_not_found }
 
-    IdentityAccess\Infrastructure\Serializer\Normalizer\OpenApiDecorator:
-        decorates: api_platform.swagger.normalizer.api_gateway
+    IdentityAccess\Infrastructure\OpenApi\Factory\TokenOperationsRemover:
+        decorates: api_platform.openapi.factory
+        decoration_priority: 995
+
+    IdentityAccess\Infrastructure\OpenApi\Factory\PatchApplier:
+        decorates: api_platform.openapi.factory
+        decoration_priority: 989
         arguments:
             $patchData: '%api_doc_patch_data%'
+
+    IdentityAccess\Infrastructure\OpenApi\Factory\RolesEnumSetter:
+        decorates: api_platform.openapi.factory
+        decoration_priority: 988
+
+    identity_access.user.property_filter:
+        parent: api_platform.serializer.property_filter
+        autoconfigure: false
+        autowire: false
+        arguments:
+            $parameterName: _properties
+            $whitelist: [ id, email, roles, enabled, registeredById, dateRegistered ]
+        tags: [ api_platform.filter ]

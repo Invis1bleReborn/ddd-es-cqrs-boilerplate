@@ -1,0 +1,4 @@
+IdentityAccess\Infrastructure\Access\Query\Token:
+    attributes:
+        id:
+            ignore: true
