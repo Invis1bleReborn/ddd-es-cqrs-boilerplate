@@ -16,8 +16,7 @@ namespace IdentityAccess\Infrastructure\OpenApi\Factory;
 use ApiPlatform\Core\OpenApi\Model\Components;
 use ApiPlatform\Core\OpenApi\OpenApi;
 use Common\Shared\Infrastructure\OpenApi\Factory\OpenApiDecorator;
-use Common\Shared\Infrastructure\OpenApi\Iterator\Component\Schema\PropertiesIterator;
-use Common\Shared\Infrastructure\OpenApi\Iterator\Component\SchemasIterator;
+use Common\Shared\Infrastructure\OpenApi\Iterator\Component\SchemaPropertiesIterator;
 use IdentityAccess\Domain\Access\ValueObject\Role;
 
 /**
@@ -37,17 +36,15 @@ class RolesEnumSetter extends OpenApiDecorator
     {
         $roles = Role::toArray();
 
-        foreach (new SchemasIterator($components) as $schemaName => $schema) {
-            foreach (new PropertiesIterator($schema) as $propertyName => $property) {
-                if ('array' !== $property['type'] ||
-                    !isset($property['description']) ||
-                    'User roles.' !== $property['description']
-                ) {
-                    continue;
-                }
-
-                $property['items']['enum'] = $roles;
+        foreach (new SchemaPropertiesIterator($components) as $propertyName => $property) {
+            if ('array' !== $property['type'] ||
+                !isset($property['description']) ||
+                'User roles.' !== $property['description']
+            ) {
+                continue;
             }
+
+            $property['items']['enum'] = $roles;
         }
 
         return $components;
